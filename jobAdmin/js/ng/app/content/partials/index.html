@@ -1,0 +1,133 @@
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <thead>
+        <th style="width: 80px;">
+            Id
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Content
+        </th>
+        <th>
+            Language
+        </th>
+        <th style="width: 100px;">
+            Action
+        </th>
+        </thead>
+        <tr data-ng-repeat="n in contents.elements">
+            <td>
+                {{n.id}}
+            </td>
+            <td>
+                {{n.title}}
+            </td>
+            <td>
+                <span data-ng-bind-html="n.content | limitTo : 1520 "></span>
+            </td>
+            <td>
+                <span data-ng-bind="n.language_id == 1 ? 'English' : 'Khmer' "></span>
+            </td>
+            <td>
+                <button
+                    class="btn btn-default"
+                    data-ng-click="edit(n);"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Edit"
+                    tooltip
+                >
+                    <span class="fa fa-pencil-square-o"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div
+        data-ng-if="contents.elements == 0"
+    >
+        <div class="alert alert-danger alert-dismissible">
+            <strong>Warning!</strong> Empty Data.
+        </div>
+    </div>
+    <div
+        data-ng-if="!contents"
+        class="align_center"
+    >
+        <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+    </div>
+</div>
+
+<form data-ng-submit="save();" name="myForm">
+    <div
+        class="modal fade"
+        id="contentPopup"
+        data-keyboard="false"
+        data-backdrop="static"
+    >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                    >
+                        <span>&times;</span>
+                    </button>
+                    <h4>
+                        <label>Content</label>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-responsive">
+                        <tr>
+                            <td>
+                                Title
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    data-ng-model="title"
+                                    required="required"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="5%">
+                                Content:
+                            </td>
+                            <td>
+                                <textarea
+                                    rows="15"
+                                    class="form-control"
+                                    ui-tinymce="tinymceOptions"
+                                    data-ng-model="content"
+                                    required="required"
+                                ></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        class="btn btn-default"
+                        data-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        class="btn btn-primary"
+                        data-ng-disabled="isDisabled"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+

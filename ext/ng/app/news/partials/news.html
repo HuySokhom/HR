@@ -1,0 +1,70 @@
+<div id="property-listing" class="property-listing">
+	<div class="container">
+		<div class="property-left col-md-9 col-sm-6 p_l_z content-area">
+			<div class="news_type">
+				<ul class="nav navbar-nav">
+					<li data-ng-repeat="type in newsType.elements">
+						<span
+							data-ng-class="{active : activeMenu === type.id}"
+							data-ng-click="setActive(type.id)"
+							data-ng-bind="language_id == 1 ? type.name_en : type.name_kh"
+						></span>
+					</li>
+				</ul>
+			</div>
+			<div
+				data-ng-if="!news"
+				class="align_center"
+			>
+				<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+			</div>
+			<div class="property-listing-box sale-block" data-ng-repeat="n in news.elements">
+				<!-- Property Main Box -->
+				<div class="property-main-box">
+					<div class="col-md-4 p_z">
+						<img
+							src="images/{{n.image_thumbnail}}"
+							class="img-news click"
+							alt=""
+							data-ng-click="link(n.type[0].id, n.id)"
+						/>
+					</div>
+					<div class="col-md-8 p_z">
+						<div class="property-details">
+							<div
+								data-ng-click="link(n.type[0].id, n.id)"
+								data-ng-bind="language_id == 1 ? n.detail[0].title : n.detail[1].title"
+								class="click"
+							></div>
+							<div data-ng-bind-html="language_id == 1 ? n.detail[0].content : n.detail[1].content | limitTo:200"></div>
+							<ul>
+								<li>
+									<i class="fa fa-calendar"></i>
+									{{ n.create_date  | date:'MM/dd/yyyy' }}
+								</li>
+								<li>
+									<i class="fa fa-user"></i>
+									{{n.create_by}}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div><!-- Property Main Box /- -->
+			</div>
+			<div class="listing-pagination">
+			<!-- Pagination -->
+			<pagination
+				data-ng-show="totalItems > 10"
+				total-items="totalItems"
+				ng-model="currentPage"
+				ng-change="pageChanged()"
+				max-size="5"
+				items-per-page="10"
+				boundary-links="true"
+			></pagination>
+			<!-- Pagination /- -->
+			</div>
+		</div>
+		<div search></div>
+	</div>
+</div>

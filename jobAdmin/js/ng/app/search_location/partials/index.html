@@ -1,0 +1,153 @@
+<div class="row">
+	<div class="row">
+
+		<!-- province filter-->
+		<div class="col-md-4">
+			<ui-select
+				ng-model="province_list.selected"
+				theme="select2"
+				reset-search-input="false"
+				style="width: 250px;"
+			>
+				<ui-select-match placeholder="Enter Province Name...">
+					{{$select.selected.name}}
+				</ui-select-match>
+				<ui-select-choices
+					repeat="province_list in provinceList track by $index"
+					refresh="refreshProvinceList($select.search)"
+					refresh-delay="0"
+				>
+					<span data-ng-bind-html="province_list.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			<i class="fa fa-refresh" data-ng-click="province_list = {}"></i>
+			<button
+				class="btn btn-default"
+				data-ng-click="save({name: province_list.selected.name, location_id: province_list.selected.id})"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				Add New
+			</button>
+		</div>
+		<div class="col-md-4">
+			<!-- district filter-->
+			<ui-select
+				ng-model="district_list.selected"
+				theme="select2"
+				reset-search-input="false"
+				style="width: 250px;"
+			>
+				<ui-select-match placeholder="Enter District Name...">
+					{{$select.selected.name_en}}
+				</ui-select-match>
+				<ui-select-choices
+					repeat="district_list in districtList track by $index"
+					refresh="refreshDistrictList($select.search)"
+					refresh-delay="0"
+				>
+					<span data-ng-bind-html="district_list.name_en | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			<i class="fa fa-refresh" data-ng-click="district_list = {}"></i>
+			<button
+				class="btn btn-default"
+				data-ng-click="save({name: district_list.selected.name_en, location_id: district_list.selected.id})"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				Add New
+			</button>
+		</div>
+		<div class="col-md-4">
+			<!-- village filter-->
+			<ui-select
+				ng-model="village_list.selected"
+				theme="select2"
+				reset-search-input="false"
+				style="width: 250px;"
+			>
+				<ui-select-match placeholder="Enter Village Name...">
+					{{$select.selected.name_en}}
+				</ui-select-match>
+				<ui-select-choices
+					repeat="village_list in villageList track by $index"
+					refresh="refreshVillageList($select.search)"
+					refresh-delay="0"
+				>
+					<span data-ng-bind-html="village_list.name_en | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			<i class="fa fa-refresh" data-ng-click="village_list = {}"></i>
+			<button
+				class="btn btn-default"
+				data-ng-click="save({name: village_list.selected.name_en, location_id: village_list.selected.id})"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				Add New
+			</button>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<br/>
+	<table class="table table-bordered table-striped">
+		<thead>
+		<th>
+			Id
+		</th>
+		<th>
+			Location Name
+		</th>
+		<th style="width: 180px;">
+			Action
+		</th>
+		</thead>
+		<tr data-ng-repeat="n in district.elements">
+			<td>
+				{{n.id}}
+			</td>
+			<td>
+				{{n.name}}
+			</td>
+			<td>
+				<button
+					class="btn btn-danger"
+					data-ng-click="remove(n.id, $index);"
+					data-toggle="modals"
+					data-placement="bottom"
+					data-target="#messages"
+					title="Delete"
+					tooltip
+				>
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</td>
+		</tr>
+	</table>
+	<div
+		data-ng-if="district.elements == 0"
+	>
+		<div class="alert alert-danger alert-dismissible">
+			<strong>Warning!</strong> Empty Data.
+		</div>
+	</div>
+	<div
+		data-ng-if="!district"
+		class="align_center"
+	>
+		<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+	</div>
+	<div
+		class="panel-footer"
+	>
+		<pagination
+			total-items="totalItems"
+			ng-model="currentPage"
+			ng-change="pageChanged()"
+			max-size="5"
+			items-per-page="10"
+			boundary-links="true"
+		></pagination>
+	</div>
+</div>
+
+
+

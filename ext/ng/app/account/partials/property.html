@@ -1,0 +1,219 @@
+<div class="panel-body">
+	<div class="row">
+		<div class="col-md-3">
+			<button
+				class="btn btn-default"
+				onclick="location.href='account.php#/manage_property/post';"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				Post Property
+			</button>
+			<span class="label label-info" data-ng-if="totalItems > 0">
+				Total of Items: {{totalItems}}
+			</span>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="form-group has-feedback col-sm-4">
+					<input
+						type="text"
+						placeholder="Search Title..."
+						style="width: 106%;"
+						class="form-control"
+						data-ng-model="search_title"
+						data-ng-keypress="($event.which === 13) ? search() : 0"
+					/>
+					<span class="glyphicon glyphicon-search form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback col-sm-4">
+					<input
+						type="text"
+						placeholder="Search Id..."
+						style="width: 106%;"
+						class="form-control"
+						data-ng-model="id"
+						data-ng-keypress="($event.which === 13) ? search() : 0"
+					/>
+					<span class="glyphicon glyphicon-search form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback col-sm-4">
+					<select
+						data-ng-model="category_id"
+						data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
+						class="form-control"
+						data-ng-change="search();"
+						required
+					>
+						<option value="">--Filter By Category--</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<table class="table table-bordered table-striped">
+		<thead>
+			<th>
+				Id
+			</th>
+			<th>
+				Category
+			</th>
+			<th>
+				Title
+			</th>
+			<th>
+				Kind of
+			</th>
+			<th>
+				Price
+			</th>
+			<th>
+				Product View
+			</th>
+			<th>
+				Plan
+			</th>
+			<th>
+				Boost
+			</th>
+			<th width="250px">
+				Action
+			</th>
+		</thead>
+		<tr data-ng-repeat="p in products_post.elements">
+			<td>
+				{{p.products_id}}
+			</td>
+			<td>
+				{{p.categories_name}}
+			</td>
+			<td>
+				<span data-ng-bind="p.products_name"></span>
+			</td>
+
+			<td>
+				<span data-ng-bind="p.products_kind_of"></span>
+			</td>
+			<td>
+				<span data-ng-bind="p.products_price | currency"></span>
+			</td>
+			<td>
+				<span data-ng-bind="p.products_viewed" class="label label-primary"></span>
+			</td>
+			<td>
+				<span data-ng-bind="
+					(p.products_promote == 3) ? 'Plan Pro'
+					: (p.products_promote == 2) ? 'Plan Premium'
+					: (p.products_promote == 1) ? 'Plan Basic'
+					: 'Plan Free'
+				"
+				data-ng-class="
+					(p.products_promote == 3) ? 'label label-danger'
+					: (p.products_promote == 2) ? 'label label-primary'
+					: (p.products_promote == 1) ? 'label label-success'
+					: 'label label-default'
+				"
+				></span>
+			</td>
+			<td>
+				<div data-ng-if="p.products_promote > 0" style="text-align: center;">
+					<img src="images/dollar_sign.jpg" data-ng-click="promote(p);" style="width: 35px;cursor: pointer;">
+				</div>
+				<div data-ng-if="p.products_promote == 0" style="text-align: center;">
+					<img src="images/dollar.jpg" data-ng-click="promote(p);" style="width: 60px;cursor: pointer;">
+				</div>
+			</td>
+			<td>
+				<button
+					class="btn btn-default"
+					data-ng-click="edit(p.products_id);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Edit"
+					tooltip
+				>
+					<span class="fa fa-edit"></span>
+				</button>
+				<button
+					class="btn btn-danger"
+					data-ng-click="remove($index, p.products_id);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Remove"
+					tooltip
+				>
+					<span class="fa fa-trash-o"></span>
+				</button>
+				<button
+					class="btn btn-warning"
+					data-ng-click="updateStatus(p);"
+					data-ng-show="p.products_status == 0"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Inactive"
+					tooltip
+				>
+					<span class="fa fa-minus"></span>
+				</button>
+				<button
+					class="btn btn-success"
+					data-ng-click="updateStatus(p);"
+					data-ng-show="p.products_status == 1"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Active"
+					tooltip
+				>
+					<span class="fa fa-check-square-o"></span>
+				</button>
+				<button
+					class="btn btn-info"
+					data-ng-click="refreshDate(p);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Refresh Product"
+					tooltip
+				>
+					<span class="fa fa-refresh"></span>
+				</button>
+				<button
+					class="btn btn-default"
+					data-ng-click="link(p.products_id);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Link"
+					tooltip
+				>
+					<span class="fa fa-eye"></span>
+				</button>
+			</td>
+		</tr>
+	</table>
+	<div
+		data-ng-if="products_post.elements == 0"
+	>
+		<div class="alert alert-danger">
+			<strong>Warning!</strong> Empty Data.
+		</div>
+	</div>
+	<div
+		data-ng-if="!products_post"
+		class="align_center"
+	>
+	<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+	</div>
+	<div
+		class="panel-footer"
+		data-ng-show="totalItems > 10"
+	>
+		<pagination
+			total-items="totalItems"
+			ng-model="currentPage"
+			ng-change="pageChanged()"
+			max-size="5"
+			items-per-page="10"
+			boundary-links="true"
+		></pagination>
+	</div>
+</div>

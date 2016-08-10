@@ -1,0 +1,62 @@
+<!-- START WIDGETS -->
+<div class="row">
+    <div class="col-md-3">
+        <!-- START WIDGET MESSAGES -->
+        <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
+            <div class="widget-item-left">
+                <span class="fa fa-industry"></span>
+            </div>
+            <div class="widget-data">
+                <div class="widget-int num-count">{{index.total_product}}</div>
+                <div class="widget-title">Total Products</div>
+                <div class="widget-subtitle">On your website</div>
+            </div>
+        </div>
+        <!-- END WIDGET MESSAGES -->
+    </div>
+    <div class="col-md-3">
+
+        <!-- START WIDGET MESSAGES -->
+        <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
+            <div class="widget-item-left">
+                <span class="fa fa-file-word-o"></span>
+            </div>
+            <div class="widget-data">
+                <div class="widget-int num-count">{{index.total_news}}</div>
+                <div class="widget-title">Total News</div>
+                <div class="widget-subtitle">On your website</div>
+            </div>
+        </div>
+        <!-- END WIDGET MESSAGES -->
+
+    </div>
+    <div class="col-md-3">
+
+        <!-- START WIDGET REGISTRED -->
+        <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
+            <div class="widget-item-left">
+                <span class="fa fa-user"></span>
+            </div>
+            <div class="widget-data">
+                <div class="widget-int num-count">{{index.total_customer}}</div>
+                <div class="widget-title">Registred users</div>
+                <div class="widget-subtitle">On your website</div>
+            </div>
+        </div>
+        <!-- END WIDGET REGISTRED -->
+
+    </div>
+    <div class="col-md-3">
+
+        <!-- START WIDGET CLOCK -->
+        <div class="widget widget-info widget-padding-sm">
+            <div class="widget-big-int plugin-date">
+                <ds-widget-clock show-digital digital-format="format"></ds-widget-clock>
+            </div>
+        </div>
+        <!-- END WIDGET CLOCK -->
+
+    </div>
+    <div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar"></div>
+</div>
+<!-- END WIDGETS -->
