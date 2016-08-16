@@ -7,7 +7,7 @@
                 </div><!-- /.footer-bottom-left -->
 
                 <div class="footer-bottom-right">
-                    Power by <a href="https://www.facebook.com/skwebsolution/" target="_blank">SKWEB Solution</a>.
+                    Power by <a href="https://www.facebook.com/skwebsolution/" target="_blank">SKWEBSolution</a>.
                 </div><!-- /.footer-bottom-right -->
             </div><!-- /.container -->
         </div><!-- /.footer-bottom -->

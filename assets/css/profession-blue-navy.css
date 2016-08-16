@@ -10092,7 +10092,9 @@ ul.filter-list:before,
 
 @media (min-width: 1200px) {
   .container {
-    width: 992px !important; } }
+    /*width: 992px !important; */
+  }
+}
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
@@ -16214,7 +16216,7 @@ label {
 .form-control {
   -webkit-appearance: none;
   border-radius: 3px;
-  border: 1px solid #e6e6e6;
+  border: 1px solid rgba(0, 0, 0, 0.4);
   box-shadow: none;
   color: #363636;
   height: 40px; }
@@ -16252,7 +16254,7 @@ textarea.form-control {
 
 .bootstrap-select > .dropdown-toggle {
   background-color: #fff;
-  border: 1px solid #fff;
+  border: 1px solid rgba(0, 0, 0, 0.4);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15) !important;
   font-size: 13px;
   font-weight: 400;

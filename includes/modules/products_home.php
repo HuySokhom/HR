@@ -25,7 +25,11 @@
 
             <div class="form-group col-sm-3">
                 <?php
-                    echo tep_draw_pull_down_menu('categories_id', tep_get_categories(array(array('id' => '', 'text' => TEXT_ALL_CATEGORIES))), NULL, 'id="entryCategories"');
+                    echo tep_draw_pull_down_menu(
+                        'categories_id',
+                        tep_get_categories(array(array('id' => '', 'text' => TEXT_ALL_CATEGORIES))),
+                        NULL,
+                        'id="entryCategories" class="form-control"');
                 ?>
             </div><!-- /.form-group -->
 
@@ -47,7 +51,133 @@
         </div><!-- /.filter -->
     </form>
 </div><!-- /.filter -->
+<div class="col-sm-8">
 
+    <div class="features-company bgWhite">
+        <div class="">
+            <h1 class="title_blue">FEATURED RECRUITERS
+
+            </h1>
+        </div>
+        <div class="features-img">
+            <div class="row space m0">
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/18/cellcard.html">
+                                <img src="http://www.pelprek.com/logo/18/small-146244082920155.jpg" alt="Cellcard">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/12/rma-cambodia-co-ltd.html">
+                                <img src="http://www.pelprek.com/logo/12/small-146482553243778.jpg" alt="RMA Cambodia Co., Ltd">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/28/toyota-cambodia-co-ltd.html">
+                                <img src="http://www.pelprek.com/logo/28/small-146398046918268.jpg" alt="TOYOTA (CAMBODIA) CO., LTD">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/851/nagaworld-limited.html">
+                                <img src="http://www.pelprek.com/logo/851/small-146415225371739.jpg" alt="Nagaworld Limited">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/27/decathlon.html">
+                                <img src="http://www.pelprek.com/logo/27/small-146250498951769.jpg" alt="Decathlon">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/2133/panalpina-world-transport-cambodia-co-ltd.html">
+                                <img src="http://www.pelprek.com/logo/2133/small-146501058426313.jpg" alt="Panalpina World Transport (Cambodia) Co.,Ltd.">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/517/harrods-international-academy.html">
+                                <img src="http://www.pelprek.com/logo/517/small-144746628075019.jpg" alt="Harrods International Academy">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/16/efg-express-food-group-co-ltd.html">
+                                <img src="http://www.pelprek.com/logo/16/small-146423791823261.jpg" alt="EFG (Express Food Group) Co., Ltd">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/2310/company-anz-royal-bank-cambodia-ltd.html">
+                                <img src="http://www.pelprek.com/logo/2310/small-146779649536932.jpg" alt="ANZ Royal Bank (Cambodia) Ltd. ">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/48/sofitel-phnom-penh-phokeethra.html">
+                                <img src="http://www.pelprek.com/logo/48/small-146795042565200.png" alt="Sofitel Phnom Penh Phokeethra">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/9/idp-education-cambodia.html">
+                                <img src="http://www.pelprek.com/logo/9/small-144414237863231.jpg" alt="IDP Education (Cambodia)">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 pr3 pl3 mb3">
+                    <div class="img-table">
+                        <div class="img-wrapper">
+                            <a href="http://www.pelprek.com/company/1199/company-rosewood-hotels-resorts.html">
+                                <img src="http://www.pelprek.com/logo/1199/small-146702720659471.jpg" alt="Rosewood Hotels &amp; Resorts® ">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
 <div class="row">
     <div class="col-sm-6">
         <h2 class="page-header">Popular Companies</h2>
