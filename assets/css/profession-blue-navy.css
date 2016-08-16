@@ -17849,7 +17849,7 @@ ul.filter-list {
   margin-bottom: 60px; }
 
 .positions-list-item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #ddd;
   margin: 0px 0px 0px 0px;
   padding: 25px 0px 25px 0px;
   position: relative; }
@@ -17885,7 +17885,7 @@ ul.filter-list {
       margin: 0px 5px 0px 0px;
       vertical-align: 1px; }
     .positions-list-item h3 img {
-      height: 13px;
+      width: 45px;
       vertical-align: middle; }
 
 .position-list-item-date {

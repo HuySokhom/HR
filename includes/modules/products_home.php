@@ -20,6 +20,33 @@
             $array_candidate[] = $candidates;
         }
     }
+
+    // query job
+    $new_products_query = tep_db_query("
+      select
+        p.products_id,
+        p.create_date,
+        pd.products_name
+      from
+        " . TABLE_PRODUCTS . " p,
+        " . TABLE_PRODUCTS_DESCRIPTION . " pd
+      where
+        p.products_status = 1
+            and
+        p.products_id = pd.products_id
+            and
+        pd.language_id = '" . (int)$languages_id . "'
+            order by
+        p.products_promote desc, rand(), p.products_date_added desc
+        limit " . MAX_DISPLAY_NEW_PRODUCTS
+    );
+    $num_new_products = tep_db_num_rows($new_products_query);
+    $product_array = array();
+    if ($num_new_products > 0) {
+        while ($new_products = tep_db_fetch_array($new_products_query)) {
+            $product_array[] = $new_products;
+        }
+    }
 ?>
 <div class="filter">
     <h2>Search for a Job</h2>
@@ -310,81 +337,3 @@
     </div>
 <!-- /.row -->
 </div>
-
-<?php
-    $new_products_query = tep_db_query("
-      select
-        p.products_id,
-        pd.products_viewed,
-        p.products_image_thumbnail,
-        p.products_image,
-        pd.products_name
-      from
-        " . TABLE_PRODUCTS . " p,
-        " . TABLE_PRODUCTS_DESCRIPTION . " pd
-    where
-        p.products_status = 1
-            and
-        p.products_id = pd.products_id
-            and
-        pd.language_id = '" . (int)$languages_id . "'
-            order by
-        p.products_promote desc, rand(), p.products_date_added desc
-        limit " . MAX_DISPLAY_NEW_PRODUCTS
-    );
-  $num_new_products = tep_db_num_rows($new_products_query);
-
-  if ($num_new_products > 0) {
-
-    $new_prods_content = NULL;
-
-    while ($new_products = tep_db_fetch_array($new_products_query)) {
-      if (strlen($new_products['products_name']) > 35) {
-        $p_name = substr($new_products['products_name'], 0, 40) . '...';
-      }else{
-        $p_name = $new_products['products_name'];
-      }
-      $new_prods_content .= '
-
-            <div class="positions-list-item">
-                <h2>
-                    <a
-                        href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) .'"
-                    >
-                    '. $new_products['products_name'] .'
-                    </a>
-                </h2>
-                <h3>
-                    <span>
-                        '
-                            . tep_image(DIR_WS_IMAGES . $new_products['products_image_thumbnail'],
-                            $new_products['products_name'], SMALL_IMAGE_WIDTH,
-                            SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 170px;"') .
-                        '
-                    </span> New York City, New York <br>
-                </h3>
-
-                <div class="position-list-item-date">09/11/2015</div>
-                <!-- /.position-list-item-date -->
-                <div class="position-list-item-action"><a href="index.html#">Save Position</a></div>
-                <!-- /.position-list-item-action -->
-            </div>
-          ';
-    }
-?>
-    <!-- Rent Property -->
-    <div class="rent-property">
-    <div class="col-md-6 rent">
-      <div class="section-header">
-        <h2 class="page-header">Recent Job Offers</h2>
-      </div>
-    </div>
-    <div class="col-md-12 p_r_z">
-    <div id="rent-property-block" class="rent-property-block">
-      <?php echo $new_prods_content; ?>
-    </div>
-    </div>
-  </div><!-- Rent Property /- -->
-<?php
-  }
-?>
