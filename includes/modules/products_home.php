@@ -312,7 +312,7 @@
                         <div class="col-sm-3 col-md-6 col-xs-3">
                             <div class="candidate-box">
                                 <div class="candidate-box-image">
-                                    <a href="' . tep_href_link(FILENAME_USER_INFO, 'user_id=' . $candidate['customers_id']) . '">
+                                    <a href="' . tep_href_link(FILENAME_INFORMATION, 'info_id=' . $candidate['customers_id']) . '">
                                         <img
                                             src="' . $candidate['photo_thumbnail'] . '"
                                             alt="' . $candidate['user_name'] . '"

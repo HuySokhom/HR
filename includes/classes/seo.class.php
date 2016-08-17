@@ -1515,10 +1515,9 @@ class SEO_URL{
                                 break;
                         default:
                                 if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['NUMBER_QUERIES']++;
-                                $sql = "SELECT information_title as iName 
-                                               FROM ".TABLE_INFORMATION." 
-                                               WHERE information_id='".(int)$iID."' 
-                                               AND language_id='".(int)$this->languages_id."' 
+                                $sql = "SELECT user_name as iName
+                                               FROM ".TABLE_CUSTOMERS."
+                                               WHERE customers_id='".(int)$iID."'
                                                LIMIT 1";
                                 $result = $this->DB->FetchArray( $this->DB->Query( $sql ) );
                                 $iName = $this->strip( $result['iName'] );
@@ -2246,9 +2245,8 @@ class SEO_URL{
    function generate_information_cache(){
            $this->is_cached($this->cache_file . 'INFO', $is_cached, $is_expired);          
            if ( !$is_cached || $is_expired ) { // it's not cached so create it
-                   $sql = "SELECT information_id as id, info_title as name 
-                                  FROM ".TABLE_INFORMATION." 
-                                  WHERE languages_id='".(int)$this->languages_id."'";
+                   $sql = "SELECT customers_id as id, user_name as name
+                                  FROM ".TABLE_CUSTOMERS." ";
                    $information_query = $this->DB->Query( $sql );
                    $information_cache = '';
                    while ($information = $this->DB->FetchArray($information_query)) {

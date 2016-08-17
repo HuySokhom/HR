@@ -49,7 +49,7 @@ define('FILENAME_USER', 'user.php');
   define('FILENAME_POPUP_SEARCH_HELP', 'popup_search_help.php');
   define('FILENAME_PRIVACY', 'privacy.php');
   define('FILENAME_PRODUCT_INFO', 'product_info.php');
-  define('FILENAME_USER_INFO', 'user_info.php');
+  define('FILENAME_INFORMATION', 'user_info.php');
   define('FILENAME_PRODUCT_LISTING', 'product_listing.php');
   define('FILENAME_PRODUCT_REVIEWS', 'product_reviews.php');
   define('FILENAME_PRODUCT_REVIEWS_INFO', 'product_reviews_info.php');
