@@ -28,10 +28,9 @@
 <script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
 <script type="text/javascript" src="assets/libraries/bootstrap-select/js/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
-
 <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
 <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
-
+<script type="text/javascript" src="assets/js/alertify.js"></script>
 <script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
 
 <script type="text/javascript" src="assets/js/profession.js"></script>

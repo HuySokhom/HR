@@ -26,7 +26,8 @@
       select
         p.products_id,
         p.create_date,
-        pd.products_name
+        pd.products_name,
+        p.products_close_date
       from
         " . TABLE_PRODUCTS . " p,
         " . TABLE_PRODUCTS_DESCRIPTION . " pd
@@ -228,77 +229,40 @@
             <h2 class="page-header">Recent Job Offers</h2>
 
             <div class="positions-list">
-
-
-
-                <div class="positions-list-item">
-                    <h2>
-                        <a href="position-detail.html">Junior Java Developer</a>
-
-                    </h2>
-                    <h3><span><img src="assets/img/tmp/instagram.png" alt=""></span> New York City, New York <br></h3>
-
-                    <div class="position-list-item-date">09/11/2015</div><!-- /.position-list-item-date -->
-                    <div class="position-list-item-action"><a href="index.html#">Save Position</a></div><!-- /.position-list-item-action -->
-                </div><!-- /.position-list-item -->
-
-
-
-                <div class="positions-list-item">
-                    <h2>
-                        <a href="position-detail.html">PR Manager</a>
-
-                        <span>Urgent</span>
-
-                    </h2>
-                    <h3><span><img src="assets/img/tmp/facebook.png" alt=""></span> Chicago, Michigan <br></h3>
-
-                    <div class="position-list-item-date">08/11/2015</div><!-- /.position-list-item-date -->
-                    <div class="position-list-item-action"><a href="index.html#">Save Position</a></div><!-- /.position-list-item-action -->
-                </div><!-- /.position-list-item -->
-
-
-
-                <div class="positions-list-item">
-                    <h2>
-                        <a href="position-detail.html">Data Mining Specialist</a>
-
-                    </h2>
-                    <h3><span><img src="assets/img/tmp/twitter.png" alt=""></span> Philadelphia, Pennsylvania <br></h3>
-
-                    <div class="position-list-item-date">07/11/2015</div><!-- /.position-list-item-date -->
-                    <div class="position-list-item-action"><a href="index.html#">Save Position</a></div><!-- /.position-list-item-action -->
-                </div><!-- /.position-list-item -->
-
-
-
-                <div class="positions-list-item">
-                    <h2>
-                        <a href="position-detail.html">Python Developer</a>
-
-                        <span>Featured</span>
-
-                    </h2>
-                    <h3><span><img src="assets/img/tmp/airbnb.png" alt=""></span> Denver, Colorado <br></h3>
-
-                    <div class="position-list-item-date">06/11/2015</div><!-- /.position-list-item-date -->
-                    <div class="position-list-item-action"><a href="index.html#">Save Position</a></div><!-- /.position-list-item-action -->
-                </div><!-- /.position-list-item -->
-                <div class="positions-list-item">
-                    <h2>
-                        <a href="position-detail.html">Senior Data</a>
-
-                        <span>Featured</span>
-
-                    </h2>
-                    <h3><span><img src="assets/img/tmp/dropbox.png" alt=""></span> San Francisco, Dropbox <br></h3>
-
-                    <div class="position-list-item-date">05/11/2015</div><!-- /.position-list-item-date -->
-                    <div class="position-list-item-action"><a href="index.html#">Save Position</a></div><!-- /.position-list-item-action -->
-                </div><!-- /.position-list-item -->
-
+                <!-- position-list-item -->
+                <?php
+                    foreach ($product_array as $product) {
+                        echo '
+                            <div class="positions-list-item">
+                                <h2>
+                                    <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) .'">"'. $product['products_name'] .'"</a>
+                                    <span>Featured</span>
+                                </h2>
+                                <h3>
+                                    <span>
+                                        <img src="assets/img/tmp/airbnb.png" alt="">
+                                    </span>
+                                    Denver, Colorado
+                                    <br>
+                                </h3>
+                                <div class="position-list-item-date">
+                                    "'. $product['products_close_date'] .'"
+                                </div>
+                                <!-- /.position-list-item-date -->
+                                <div
+                                    class="position-list-item-action heart-icon"
+                                    data-product="'. $new_products['products_id']. '"
+                                    data-type="insert"
+                                >
+                                    <a href="javascript:void(0)">Save Position</a>
+                                </div>
+                                <!-- /.position-list-item-action -->
+                            </div>
+                        ';
+                    }
+                ?>
+                <!-- /.position-list-item -->
             </div>
-            <!-- /.positions-list -->
         </div>
     </div>
 </div>

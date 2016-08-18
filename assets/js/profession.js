@@ -81,4 +81,36 @@ $(document).ready(function() {
 		uploadLabel: 'Upload',
 		uploadIcon: ''
 	});
+
+	/**
+	 * Functionality for save Favorite Property
+	 */
+	$('.heart-icon').click(function(){
+		var product_id = $(this).attr('data-product');
+		var type = $(this).attr("data-type");
+		if(type == 'insert'){
+			$(this).attr("data-type", "delete");
+		}else{
+			$(this).attr("data-type", "insert");
+		}
+		//console.log(type);
+		//console.log(product_id);
+		$.ajax
+		({
+			url: 'api/Favorite',
+			data: {products_id: product_id, type: type},
+			type: 'post',
+			success: function(result)
+			{
+				if(result.id){
+					alertify.logPosition("top right");
+					alertify.success("<b>Save:</b> Favorite Success.");
+				}else{
+					alertify.logPosition("top right");
+					alertify.error("<b>Remove:</b> Favorite Success.");
+				}
+				//console.log(result);
+			}
+		});
+	});
 });

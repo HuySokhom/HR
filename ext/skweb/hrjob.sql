@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-08-08 16:39:44
+Date: 2016-08-18 16:56:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `action_recorder` (
   KEY `idx_action_recorder_user_id` (`user_id`),
   KEY `idx_action_recorder_identifier` (`identifier`),
   KEY `idx_action_recorder_date_added` (`date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of action_recorder
@@ -99,6 +99,10 @@ INSERT INTO `action_recorder` VALUES ('59', 'ar_admin_login', '3', 'kom.huy@gmai
 INSERT INTO `action_recorder` VALUES ('60', 'ar_admin_login', '1', 'admin', '', '1', '2016-07-25 08:32:09');
 INSERT INTO `action_recorder` VALUES ('61', 'ar_admin_login', '1', 'admin', '', '1', '2016-08-02 15:25:40');
 INSERT INTO `action_recorder` VALUES ('62', 'ar_admin_login', '1', 'admin', '', '1', '2016-08-02 15:31:14');
+INSERT INTO `action_recorder` VALUES ('63', 'ar_admin_login', '1', 'admin', '', '1', '2016-08-18 11:59:29');
+INSERT INTO `action_recorder` VALUES ('64', 'ar_admin_login', '1', 'admin', '', '1', '2016-08-18 13:26:07');
+INSERT INTO `action_recorder` VALUES ('65', 'ar_admin_login', '1', 'admin', '', '1', '2016-08-18 13:49:44');
+INSERT INTO `action_recorder` VALUES ('66', 'ar_admin_login', '1', 'admin', '', '1', '2016-08-18 14:43:04');
 
 -- ----------------------------
 -- Table structure for `address_book`
@@ -10287,7 +10291,7 @@ CREATE TABLE `categories` (
   `last_modified` datetime DEFAULT NULL,
   PRIMARY KEY (`categories_id`),
   KEY `idx_categories_parent_id` (`parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of categories
@@ -10298,6 +10302,33 @@ INSERT INTO `categories` VALUES ('56', '', '0', '2', '2016-06-18 15:03:23', null
 INSERT INTO `categories` VALUES ('57', '', '0', '3', '2016-06-18 15:04:05', null);
 INSERT INTO `categories` VALUES ('58', '', '0', '4', '2016-06-18 15:04:36', null);
 INSERT INTO `categories` VALUES ('59', '', '0', '5', '2016-06-18 15:05:11', null);
+INSERT INTO `categories` VALUES ('60', '', '0', '0', '2016-08-18 13:28:49', null);
+INSERT INTO `categories` VALUES ('61', '', '0', '0', '2016-08-18 13:28:59', null);
+INSERT INTO `categories` VALUES ('62', '', '0', '0', '2016-08-18 13:29:09', null);
+INSERT INTO `categories` VALUES ('63', '', '0', '0', '2016-08-18 13:29:26', null);
+INSERT INTO `categories` VALUES ('64', '', '0', '0', '2016-08-18 13:29:34', null);
+INSERT INTO `categories` VALUES ('65', '', '0', '0', '2016-08-18 13:29:42', null);
+INSERT INTO `categories` VALUES ('66', '', '0', '0', '2016-08-18 13:29:49', null);
+INSERT INTO `categories` VALUES ('67', '', '0', '0', '2016-08-18 13:29:58', null);
+INSERT INTO `categories` VALUES ('69', '', '0', '0', '2016-08-18 13:30:28', null);
+INSERT INTO `categories` VALUES ('70', '', '0', '0', '2016-08-18 13:30:35', null);
+INSERT INTO `categories` VALUES ('71', '', '0', '0', '2016-08-18 13:30:42', null);
+INSERT INTO `categories` VALUES ('72', '', '0', '0', '2016-08-18 13:30:49', null);
+INSERT INTO `categories` VALUES ('73', '', '0', '0', '2016-08-18 13:30:56', null);
+INSERT INTO `categories` VALUES ('74', '', '0', '0', '2016-08-18 13:31:02', null);
+INSERT INTO `categories` VALUES ('75', '', '0', '0', '2016-08-18 13:31:12', null);
+INSERT INTO `categories` VALUES ('76', '', '0', '0', '2016-08-18 13:31:20', null);
+INSERT INTO `categories` VALUES ('77', '', '0', '0', '2016-08-18 13:31:27', null);
+INSERT INTO `categories` VALUES ('79', '', '0', '0', '2016-08-18 13:31:46', null);
+INSERT INTO `categories` VALUES ('80', '', '0', '0', '2016-08-18 13:31:52', null);
+INSERT INTO `categories` VALUES ('81', '', '0', '0', '2016-08-18 13:31:58', null);
+INSERT INTO `categories` VALUES ('82', '', '0', '0', '2016-08-18 13:32:05', null);
+INSERT INTO `categories` VALUES ('83', '', '0', '0', '2016-08-18 13:32:12', null);
+INSERT INTO `categories` VALUES ('84', '', '0', '0', '2016-08-18 13:32:18', null);
+INSERT INTO `categories` VALUES ('85', '', '0', '0', '2016-08-18 13:32:25', null);
+INSERT INTO `categories` VALUES ('86', '', '0', '0', '2016-08-18 13:32:30', null);
+INSERT INTO `categories` VALUES ('87', '', '0', '0', '2016-08-18 13:32:35', null);
+INSERT INTO `categories` VALUES ('88', '', '0', '0', '2016-08-18 13:32:45', null);
 
 -- ----------------------------
 -- Table structure for `categories_description`
@@ -10310,17 +10341,71 @@ CREATE TABLE `categories_description` (
   `categories_name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`,`categories_id`,`language_id`),
   KEY `idx_categories_name` (`categories_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of categories_description
 -- ----------------------------
-INSERT INTO `categories_description` VALUES ('40', '57', '1', 'Boreys');
-INSERT INTO `categories_description` VALUES ('34', '54', '1', 'Buy');
-INSERT INTO `categories_description` VALUES ('44', '59', '1', 'Commercial');
-INSERT INTO `categories_description` VALUES ('42', '58', '1', 'Condo');
-INSERT INTO `categories_description` VALUES ('38', '56', '1', 'New Developments');
-INSERT INTO `categories_description` VALUES ('36', '55', '1', 'Rent');
+INSERT INTO `categories_description` VALUES ('34', '54', '1', 'Accounting');
+INSERT INTO `categories_description` VALUES ('36', '55', '1', 'Administration');
+INSERT INTO `categories_description` VALUES ('38', '56', '1', 'Architecture/Engineering');
+INSERT INTO `categories_description` VALUES ('40', '57', '1', 'Assistant/Secretary');
+INSERT INTO `categories_description` VALUES ('42', '58', '1', 'Audit/Taxation');
+INSERT INTO `categories_description` VALUES ('44', '59', '1', 'Banking/Insurance');
+INSERT INTO `categories_description` VALUES ('46', '60', '1', 'Cashier/Receptionist');
+INSERT INTO `categories_description` VALUES ('47', '60', '2', 'Cashier/Receptionist');
+INSERT INTO `categories_description` VALUES ('48', '61', '1', 'Catering/Restaurant');
+INSERT INTO `categories_description` VALUES ('49', '61', '2', 'Catering/Restaurant');
+INSERT INTO `categories_description` VALUES ('50', '62', '1', 'Cleaner/Maid');
+INSERT INTO `categories_description` VALUES ('51', '62', '2', 'Cleaner/Maid');
+INSERT INTO `categories_description` VALUES ('52', '63', '1', 'Consultancy');
+INSERT INTO `categories_description` VALUES ('53', '63', '2', 'Consultancy');
+INSERT INTO `categories_description` VALUES ('54', '64', '1', 'Customer Service');
+INSERT INTO `categories_description` VALUES ('55', '64', '2', 'Customer Service');
+INSERT INTO `categories_description` VALUES ('56', '65', '1', 'Design');
+INSERT INTO `categories_description` VALUES ('57', '65', '2', 'Design');
+INSERT INTO `categories_description` VALUES ('58', '66', '1', 'Education/Training');
+INSERT INTO `categories_description` VALUES ('59', '66', '2', 'Education/Training');
+INSERT INTO `categories_description` VALUES ('60', '67', '1', 'Finance');
+INSERT INTO `categories_description` VALUES ('61', '67', '2', 'Finance');
+INSERT INTO `categories_description` VALUES ('64', '69', '1', 'Hotel/Hospitality');
+INSERT INTO `categories_description` VALUES ('65', '69', '2', 'Hotel/Hospitality');
+INSERT INTO `categories_description` VALUES ('66', '70', '1', 'Human Resource');
+INSERT INTO `categories_description` VALUES ('67', '70', '2', 'Human Resource');
+INSERT INTO `categories_description` VALUES ('68', '71', '1', 'Information Technology');
+INSERT INTO `categories_description` VALUES ('69', '71', '2', 'Information Technology');
+INSERT INTO `categories_description` VALUES ('70', '72', '1', 'Lawyer/Legal Service');
+INSERT INTO `categories_description` VALUES ('71', '72', '2', 'Lawyer/Legal Service');
+INSERT INTO `categories_description` VALUES ('72', '73', '1', 'Management');
+INSERT INTO `categories_description` VALUES ('73', '73', '2', 'Management');
+INSERT INTO `categories_description` VALUES ('74', '74', '1', 'Manufacturing');
+INSERT INTO `categories_description` VALUES ('75', '74', '2', 'Manufacturing');
+INSERT INTO `categories_description` VALUES ('76', '75', '1', 'Marketing');
+INSERT INTO `categories_description` VALUES ('77', '75', '2', 'Marketing');
+INSERT INTO `categories_description` VALUES ('78', '76', '1', 'Media/Advertising');
+INSERT INTO `categories_description` VALUES ('79', '76', '2', 'Media/Advertising');
+INSERT INTO `categories_description` VALUES ('80', '77', '1', 'Medical/Health/Nursing');
+INSERT INTO `categories_description` VALUES ('81', '77', '2', 'Medical/Health/Nursing');
+INSERT INTO `categories_description` VALUES ('84', '79', '1', 'Operations');
+INSERT INTO `categories_description` VALUES ('85', '79', '2', 'Operations');
+INSERT INTO `categories_description` VALUES ('86', '80', '1', 'Others');
+INSERT INTO `categories_description` VALUES ('87', '80', '2', 'Others');
+INSERT INTO `categories_description` VALUES ('88', '81', '1', 'Project Management');
+INSERT INTO `categories_description` VALUES ('89', '81', '2', 'Project Management');
+INSERT INTO `categories_description` VALUES ('90', '82', '1', 'Quality Control');
+INSERT INTO `categories_description` VALUES ('91', '82', '2', 'Quality Control');
+INSERT INTO `categories_description` VALUES ('92', '83', '1', 'Resort/Casino');
+INSERT INTO `categories_description` VALUES ('93', '83', '2', 'Resort/Casino');
+INSERT INTO `categories_description` VALUES ('94', '84', '1', 'Sales');
+INSERT INTO `categories_description` VALUES ('95', '84', '2', 'Sales');
+INSERT INTO `categories_description` VALUES ('96', '85', '1', 'Security/Driver');
+INSERT INTO `categories_description` VALUES ('97', '85', '2', 'Security/Driver');
+INSERT INTO `categories_description` VALUES ('98', '86', '1', 'Technician');
+INSERT INTO `categories_description` VALUES ('99', '86', '2', 'Technician');
+INSERT INTO `categories_description` VALUES ('100', '87', '1', 'Telecommunication');
+INSERT INTO `categories_description` VALUES ('101', '87', '2', 'Telecommunication');
+INSERT INTO `categories_description` VALUES ('102', '88', '1', 'Translation/Interpretation');
+INSERT INTO `categories_description` VALUES ('103', '88', '2', 'Translation/Interpretation');
 INSERT INTO `categories_description` VALUES ('39', '56', '2', 'ការវិវត្តថ្មី');
 INSERT INTO `categories_description` VALUES ('43', '58', '2', 'ខុនដូរ');
 INSERT INTO `categories_description` VALUES ('37', '55', '2', 'ជូល');
@@ -11241,7 +11326,7 @@ INSERT INTO `customers_info` VALUES ('2', null, '0', '2015-09-30 16:39:51', null
 INSERT INTO `customers_info` VALUES ('3', null, '0', '2015-11-12 19:26:58', '2015-11-12 19:33:11', '0', null, null);
 INSERT INTO `customers_info` VALUES ('4', '2016-01-09 17:10:45', '2', '2016-01-09 17:06:43', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('5', null, '0', '2016-01-10 14:46:31', '2016-01-10 14:52:53', '0', null, null);
-INSERT INTO `customers_info` VALUES ('6', '2016-07-25 09:10:10', '50', '2016-01-14 13:07:07', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('6', '2016-08-18 14:26:12', '51', '2016-01-14 13:07:07', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('7', '2016-07-25 09:39:23', '5', '2016-06-06 21:26:53', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('8', '2016-06-15 23:58:49', '3', '2016-06-15 22:09:17', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('9', null, '0', '2016-06-15 23:31:05', null, '0', null, null);
@@ -11273,7 +11358,7 @@ CREATE TABLE `customers_plan` (
 -- ----------------------------
 -- Records of customers_plan
 -- ----------------------------
-INSERT INTO `customers_plan` VALUES ('63', '6', '3', '2016-07-23 23:30:46', '2016-08-23 23:30:46', '1', '2016-07-25 22:04:31', '', '2016-07-25 09:31:46');
+INSERT INTO `customers_plan` VALUES ('63', '6', '3', '2016-07-23 23:30:46', '2016-08-23 23:30:46', '1', '2016-08-18 14:27:15', '', '2016-08-18 14:27:15');
 INSERT INTO `customers_plan` VALUES ('64', '7', '1', '2016-07-25 09:38:44', '2016-08-25 09:38:44', '1', '2016-07-25 14:31:44', '', '2016-07-25 14:31:44');
 
 -- ----------------------------
@@ -11364,6 +11449,38 @@ INSERT INTO `district` VALUES ('11', '12', 'Kampot', null, '2016-06-22 16:18:43'
 INSERT INTO `district` VALUES ('12', '12', 'Chum Kiri', null, '2016-06-22 16:18:57', '2016-06-22 16:19:59');
 
 -- ----------------------------
+-- Table structure for `favorite`
+-- ----------------------------
+DROP TABLE IF EXISTS `favorite`;
+CREATE TABLE `favorite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `products_id` int(11) DEFAULT NULL,
+  `session_id` varchar(200) DEFAULT NULL,
+  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of favorite
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `feature_company`
+-- ----------------------------
+DROP TABLE IF EXISTS `feature_company`;
+CREATE TABLE `feature_company` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `campany_name` varchar(127) DEFAULT NULL,
+  `logo` varchar(250) DEFAULT NULL,
+  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of feature_company
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `geo_zones`
 -- ----------------------------
 DROP TABLE IF EXISTS `geo_zones`;
@@ -11445,7 +11562,7 @@ CREATE TABLE `location` (
 INSERT INTO `location` VALUES ('1', 'Phnom Penh', null, '2015-11-12 00:00:00', '2015-11-12 11:35:34');
 INSERT INTO `location` VALUES ('2', 'Preah Sihanouk', null, '2015-11-12 00:00:00', '2015-11-12 11:37:31');
 INSERT INTO `location` VALUES ('3', 'Kampong Cham', null, '2015-11-12 00:00:00', '2015-11-12 11:37:42');
-INSERT INTO `location` VALUES ('4', 'Siem Reap1ew', null, '2015-11-12 00:00:00', '2016-06-16 22:07:11');
+INSERT INTO `location` VALUES ('4', 'Siem Reap', null, '2015-11-12 00:00:00', '2016-08-18 11:58:39');
 INSERT INTO `location` VALUES ('5', 'Battambang', null, '2015-11-12 00:00:00', '2015-11-12 11:37:59');
 INSERT INTO `location` VALUES ('6', 'Kandal', null, '2015-11-12 00:00:00', '2015-11-12 11:38:15');
 INSERT INTO `location` VALUES ('7', 'Banteay Meanchey', null, '2015-11-12 00:00:00', '2015-11-12 11:38:17');
@@ -11989,6 +12106,7 @@ CREATE TABLE `products` (
   `province_id` int(11) NOT NULL,
   `customers_id` int(11) NOT NULL,
   `products_image` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `products_close_date` datetime DEFAULT NULL,
   `products_image_thumbnail` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
   `products_kind_of` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
   `products_price` decimal(15,4) DEFAULT NULL,
@@ -12025,14 +12143,14 @@ CREATE TABLE `products` (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('75', '56', '12', '6', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '13', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 08:56:23', null, null, null, '0', null, null, null, '2016-07-25 08:56:23', '2016-07-25 09:11:37', null, null);
-INSERT INTO `products` VALUES ('76', '55', '12', '6', '', '', 'For Rent', '2323.0000', null, '0', '0', '0', '15', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 08:59:53', null, null, null, '0', null, null, null, '2016-07-25 08:59:53', '2016-07-25 08:59:56', null, null);
-INSERT INTO `products` VALUES ('77', '56', '12', '6', '', '', 'For Rent', '332.0000', null, '0', '8', '0', '15', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:10:30', null, null, null, '0', null, null, null, '2016-07-25 09:10:30', '2016-07-25 09:11:31', null, null);
-INSERT INTO `products` VALUES ('78', '57', '12', '6', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '16', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:10:48', null, null, null, '0', null, null, null, '2016-07-25 09:10:48', '2016-07-25 09:11:36', null, null);
-INSERT INTO `products` VALUES ('79', '57', '12', '6', '', '', 'Both Sale and Rent', '2332.0000', null, '0', '0', '0', '15', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:11:06', null, null, null, '0', null, null, null, '2016-07-25 09:11:06', '2016-07-25 09:14:41', null, null);
-INSERT INTO `products` VALUES ('80', '57', '12', '6', '', '', 'For Rent', '22.0000', null, '0', '0', '0', '14', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:11:27', null, null, null, '0', null, null, null, '2016-07-25 09:11:27', '2016-07-25 09:14:43', null, null);
-INSERT INTO `products` VALUES ('81', '56', '12', '7', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '12', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:16:12', null, null, null, '0', null, null, null, '2016-07-25 09:16:12', '2016-07-25 14:25:24', '', null);
-INSERT INTO `products` VALUES ('82', '56', '12', '7', '', '', 'For Rent', '433.0000', null, '7', '6', '9', '14', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 14:25:01', null, null, null, '0', null, null, null, '2016-07-25 14:25:01', '2016-07-25 14:31:40', null, null);
+INSERT INTO `products` VALUES ('75', '56', '12', '6', '', '2016-08-18 15:17:22', '', 'For Rent', '23.0000', null, '0', '0', '0', '13', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 08:56:23', null, null, null, '0', null, null, null, '2016-07-25 08:56:23', '2016-08-18 15:17:23', null, null);
+INSERT INTO `products` VALUES ('76', '55', '12', '6', '', '2016-09-02 15:17:46', '', 'For Rent', '2323.0000', null, '0', '0', '0', '15', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 08:59:53', null, null, null, '0', null, null, null, '2016-07-25 08:59:53', '2016-08-18 15:17:49', null, null);
+INSERT INTO `products` VALUES ('77', '56', '12', '6', '', '2016-09-07 15:17:42', '', 'For Rent', '332.0000', null, '0', '8', '0', '15', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:10:30', null, null, null, '0', null, null, null, '2016-07-25 09:10:30', '2016-08-18 15:17:45', null, null);
+INSERT INTO `products` VALUES ('78', '57', '12', '6', '', '2016-08-26 15:17:24', '', 'For Rent', '23.0000', null, '0', '0', '0', '16', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:10:48', null, null, null, '0', null, null, null, '2016-07-25 09:10:48', '2016-08-18 15:17:26', null, null);
+INSERT INTO `products` VALUES ('79', '57', '12', '6', '', '2016-08-27 15:17:30', '', 'Both Sale and Rent', '2332.0000', null, '0', '0', '0', '15', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:11:06', null, null, null, '0', null, null, null, '2016-07-25 09:11:06', '2016-08-18 15:17:32', null, null);
+INSERT INTO `products` VALUES ('80', '57', '12', '6', '', '2016-08-31 15:17:27', '', 'For Rent', '22.0000', null, '0', '0', '0', '14', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:11:27', null, null, null, '0', null, null, null, '2016-07-25 09:11:27', '2016-08-18 15:17:29', null, null);
+INSERT INTO `products` VALUES ('81', '56', '12', '7', '', '2016-08-28 15:17:37', '', 'For Rent', '23.0000', null, '0', '0', '0', '12', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:16:12', null, null, null, '0', null, null, null, '2016-07-25 09:16:12', '2016-08-18 15:17:41', '', null);
+INSERT INTO `products` VALUES ('82', '56', '12', '7', '', '2016-09-07 15:17:33', '', 'For Rent', '433.0000', null, '7', '6', '9', '14', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 14:25:01', null, null, null, '0', null, null, null, '2016-07-25 14:25:01', '2016-08-18 15:17:35', null, null);
 
 -- ----------------------------
 -- Table structure for `products_attributes`
@@ -12089,18 +12207,18 @@ CREATE TABLE `products_description` (
 -- ----------------------------
 -- Records of products_description
 -- ----------------------------
-INSERT INTO `products_description` VALUES ('165', '75', '1', '23', '<p>dsaf</p>', null, '0');
-INSERT INTO `products_description` VALUES ('166', '75', '2', 'fff', '<p>dasg223323</p>', null, '0');
-INSERT INTO `products_description` VALUES ('167', '76', '1', '23fcdsa', '', null, '0');
-INSERT INTO `products_description` VALUES ('168', '76', '2', 'ffsdf', '', null, '0');
+INSERT INTO `products_description` VALUES ('165', '75', '1', '23', '<p>dsaf</p>', null, '1');
+INSERT INTO `products_description` VALUES ('166', '75', '2', 'fff', '<p>dasg223323</p>', null, '1');
+INSERT INTO `products_description` VALUES ('167', '76', '1', '23fcdsa', '', null, '2');
+INSERT INTO `products_description` VALUES ('168', '76', '2', 'ffsdf', '', null, '2');
 INSERT INTO `products_description` VALUES ('169', '77', '1', '23r2', '<p>23r23 r</p>', null, '1');
 INSERT INTO `products_description` VALUES ('170', '77', '2', 'df23f2', '<p>23f 2f 23f&nbsp;</p>', null, '1');
 INSERT INTO `products_description` VALUES ('171', '78', '1', '3r', '<p>f3</p>', null, '18');
 INSERT INTO `products_description` VALUES ('172', '78', '2', '32f2', '<p>f3</p>', null, '18');
 INSERT INTO `products_description` VALUES ('173', '79', '1', '32df', '', null, '0');
 INSERT INTO `products_description` VALUES ('174', '79', '2', '23f23f', '', null, '0');
-INSERT INTO `products_description` VALUES ('175', '80', '1', 'ewfwef', '', null, '1');
-INSERT INTO `products_description` VALUES ('176', '80', '2', 'asd', '', null, '1');
+INSERT INTO `products_description` VALUES ('175', '80', '1', 'ewfwef', '', null, '4');
+INSERT INTO `products_description` VALUES ('176', '80', '2', 'asd', '', null, '4');
 INSERT INTO `products_description` VALUES ('177', '81', '1', 'f23f', '', null, '0');
 INSERT INTO `products_description` VALUES ('178', '81', '2', '23fe', '', null, '0');
 INSERT INTO `products_description` VALUES ('179', '82', '1', '32fd', '', null, '0');
@@ -12580,16 +12698,10 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('1bvksc3hkpiohjalb4rpeghsi1', '1469431954', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('8ptp9s9brnq5d35h8so7ro1ne4', '1470126679', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('9t5bh0jebchk33251o0hsa5vd4', '1470131838', 'sessiontoken|s:32:\"161d5eb527624bc9e73b3932dd3d2d04\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('ds1o895u4btgdlg0kpqkptf301', '1470041398', 'sessiontoken|s:32:\"32e5283a8e3b94030315d8e758c44eca\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:3:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:18:\"create_account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:9:\"login.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('h5j8aqhkhmdqd2atclbptq4ht3', '1470033758', 'sessiontoken|s:32:\"07f417bbc17af6cc9998a9c0f0692a31\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:16:\"product_info.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:11:\"products_id\";s:2:\"78\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('i5e5bv395mhc1f1133366u0ll6', '1470304030', 'sessiontoken|s:32:\"7e0d84509c52658fb97bc1a699e4ead3\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:3:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:14:\"info_pages.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"pages_id\";s:1:\"2\";}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:16:\"product_info.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:11:\"products_id\";s:2:\"78\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('j8run7tvo5l0c1lgdsjado9s13', '1470646628', 'sessiontoken|s:32:\"38098b21dc782c5b0d898fe31e64128b\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('p27nsb6hek2ghgbcagghupnsv4', '1469291446', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"3\";s:8:\"username\";s:17:\"kom.huy@gmail.com\";}');
-INSERT INTO `sessions` VALUES ('t9ec9eqfnd4dli1e2svbkorj53', '1469431904', 'sessiontoken|s:32:\"fc676629eaf05e02f1dd40ca390b3986\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"84036\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:3:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:13:\"api/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|s:1:\"2\";customer_id|i:7;user_name|s:4:\"Test\";customers_limit_products|s:2:\"50\";user_type|s:6:\"normal\";customer_default_address_id|s:1:\"9\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
-INSERT INTO `sessions` VALUES ('vgqg5q34tv6uoo22gtm396co73', '1469287416', 'sessiontoken|s:32:\"756057db9e67fd9e735274b11ecd53f9\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"57977\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"login.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:6:\"action\";s:7:\"process\";}s:4:\"post\";a:3:{s:6:\"formid\";s:32:\"97f4dd0dfa4b27fb7292328ae0c299e4\";s:13:\"email_address\";s:13:\"oop@gmail.com\";s:8:\"password\";s:7:\"test123\";}}i:2;a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:13:\"api/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|N;customer_id|i:6;user_name|s:10:\"huy sokhom\";user_type|s:6:\"member\";customer_default_address_id|s:1:\"8\";customer_first_name|s:4:\"Huy \";customer_last_name|s:6:\"Sokhom\";customer_country_id|s:1:\"0\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('2glf5bv8g16h06sc1n9sc0l5k6', '1471506234', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('e9tj53n2jdeeo7smf3ph1b9ql0', '1471509283', 'sessiontoken|s:32:\"678e69a2bb874e6506d3ab593fd4b784\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"80569\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:6;user_name|s:10:\"huy sokhom\";customer_plan|s:1:\"3\";customers_limit_products|s:1:\"5\";user_type|s:6:\"member\";customer_default_address_id|s:1:\"8\";customer_first_name|s:4:\"Huy \";customer_last_name|s:6:\"Sokhom\";customer_country_id|s:1:\"0\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('n7dfrcodtmqrcg7gqo4lr0vll4', '1471504621', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('oi78v41hi7m8gri4vuhpqhqtq1', '1471505142', 'sessiontoken|s:32:\"759ce6af4669e2cf0a930f83d433db23\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 
 -- ----------------------------
 -- Table structure for `specials`
@@ -12699,7 +12811,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('0', 'Guest', 'j8run7tvo5l0c1lgdsjado9s13', '', '1470646626', '1470646626', '/hrjob/');
+INSERT INTO `whos_online` VALUES ('6', 'Huy  Sokhom', 'e9tj53n2jdeeo7smf3ph1b9ql0', '', '1471509173', '1471509283', '/HrJob/');
 
 -- ----------------------------
 -- Table structure for `zones`
