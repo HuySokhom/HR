@@ -26,7 +26,7 @@ RewriteRule ^(.*)-f-(.*).html$ faqdesk_info.php?faqdesk_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-fc-(.*).html$ faqdesk_index.php?faqPath=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-fri-(.*).html$ faqdesk_reviews_info.php?faqdesk_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-fra-(.*).html$ faqdesk_reviews_article.php?faqdesk_id=$2&%{QUERY_STRING}
-RewriteRule ^(.*)-i-(.*).html$ information.php?info_id=$2&%{QUERY_STRING}
+RewriteRule ^(.*)-i-(.*).html$ user_info.php?info_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-links-(.*).html$ links.php?lPath=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-pm-([0-9]+).html$ info_pages.php?pages_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-n-(.*).html$ newsdesk_info.php?newsdesk_id=$2&%{QUERY_STRING}
@@ -34,17 +34,9 @@ RewriteRule ^(.*)-nc-(.*).html$ newsdesk_index.php?newsPath=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-nri-(.*).html$ newsdesk_reviews_info.php?newsdesk_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-nra-(.*).html$ newsdesk_reviews_article.php?newsdesk_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-po-([0-9]+).html$ pollbooth.php?pollid=$2&%{QUERY_STRING}
+#RewriteRule ^(.*)-u-([0-9]+).html$ user_info.php?user_id=$2&%{QUERY_STRING}
 # End Ultimate SEO V2.2d
 
 # start api
 RewriteRule ^api/ api/index.php [L,QSA]
 # /end api
-
-#################################
-###### to rewrite url php #######
-#################################
-
-# remove .php extension from url,
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*)$ $1.php
