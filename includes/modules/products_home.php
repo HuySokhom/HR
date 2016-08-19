@@ -3,7 +3,8 @@
         select
             customers_id,
             user_name,
-            photo_thumbnail
+            photo_thumbnail,
+            skill_title
         from
             customers
         where
@@ -27,18 +28,27 @@
         p.products_id,
         p.create_date,
         pd.products_name,
-        p.products_close_date
+        DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date,
+        cu.photo_thumbnail,
+        cu.company_name,
+        l.name as location
       from
         " . TABLE_PRODUCTS . " p,
+        customers cu,
+        location l,
         " . TABLE_PRODUCTS_DESCRIPTION . " pd
       where
         p.products_status = 1
             and
+        l.id = p.province_id
+            and
         p.products_id = pd.products_id
+            and
+        cu.customers_id = p.customers_id
             and
         pd.language_id = '" . (int)$languages_id . "'
             order by
-        p.products_promote desc, rand(), p.products_date_added desc
+        p.products_promote desc, rand(), p.products_close_date desc
         limit " . MAX_DISPLAY_NEW_PRODUCTS
     );
     $num_new_products = tep_db_num_rows($new_products_query);
@@ -51,55 +61,19 @@
 ?>
 <div class="filter">
     <h2>Search for a Job</h2>
-
-    <?php
-        echo
-            tep_draw_form('advanced_search', tep_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false),
-            'get',
-            'class="form-horizontal" onsubmit="return check_form(this);"') . tep_hide_session_id();
-    ?>
     <div class="row">
-            <div class="form-group col-sm-3">
-                <input type="text" class="form-control" placeholder="Search Job Title..." name="keywords" required/>
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-3">
-                <?php
-                    echo tep_draw_pull_down_menu(
-                        'location',
-                        tep_get_province(array(array('id' => '', 'text' => "Choose Location"))),
-                        NULL,
-                        'id="location" class="form-control"'
-                    );
-                ?>
-            </div><!-- /.form-group -->
+        <?php include(DIR_FS_CATALOG . 'advanced_search_box.php');?>
+    <ul class="filter-list">
+        <?php echo tep_get_categories_list();?>
+    </ul>
 
-            <div class="form-group col-sm-3">
-                <?php
-                    echo tep_draw_pull_down_menu(
-                        'categories_id',
-                        tep_get_categories(array(array('id' => '', 'text' => TEXT_ALL_CATEGORIES))),
-                        NULL,
-                        'id="entryCategories" class="form-control"');
-                ?>
-            </div><!-- /.form-group -->
+    <hr>
 
-            <div class="form-group col-sm-3">
-                <button type="submit" class="btn btn-block btn-secondary">Search</button>
-            </div><!-- /.form-group -->
-        </div><!-- /.row -->
-
-        <ul class="filter-list">
-            <?php echo tep_get_categories_list();?>
-        </ul>
-
-        <hr>
-
-        <div class="filter-actions">
-            <a href="candidates.html">All Candidates</a> <span class="filter-separator">/</span>
-            <a href="positions.html">All Jobs</a> <span class="filter-separator">/</span>
-            <a href="companies.html">All Companies</a>
-        </div><!-- /.filter -->
-    </form>
+    <div class="filter-actions">
+        <a href="candidates.html">All Candidates</a> <span class="filter-separator">/</span>
+        <a href="positions.html">All Jobs</a> <span class="filter-separator">/</span>
+        <a href="companies.html">All Companies</a>
+    </div><!-- /.filter -->
 </div>
 <!-- /.filter -->
 <div class="col-md-8">
@@ -235,18 +209,20 @@
                         echo '
                             <div class="positions-list-item">
                                 <h2>
-                                    <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) .'">"'. $product['products_name'] .'"</a>
+                                    <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) .'">
+                                        '. $product['products_name'] .'
+                                    </a>
                                     <span>Featured</span>
                                 </h2>
                                 <h3>
                                     <span>
-                                        <img src="assets/img/tmp/airbnb.png" alt="">
+                                        <img src="'. $product['photo_thumbnail'] .'" alt="">
                                     </span>
-                                    Denver, Colorado
+                                    '. $product['company_name'] .', '. $product['location'] .'
                                     <br>
                                 </h3>
                                 <div class="position-list-item-date">
-                                    "'. $product['products_close_date'] .'"
+                                    '. $product['products_close_date'] .'
                                 </div>
                                 <!-- /.position-list-item-date -->
                                 <div
@@ -289,7 +265,7 @@
 
                                 <div class="candidate-box-content">
                                     <h2>' . $candidate['user_name'] . '</h2>
-                                    <h3>Java Developer</h3>
+                                    <h3>' . $candidate['skill_title'] . '</h3>
                                 </div><!-- /.candidate-box-content -->
                             </div><!-- /.candidate-box -->
                         </div><!-- /.col-* -->
