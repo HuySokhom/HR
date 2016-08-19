@@ -31,5 +31,4 @@ echo
 <div class="form-group col-sm-3">
   <button type="submit" class="btn btn-block btn-secondary">Search</button>
 </div><!-- /.form-group -->
-</div><!-- /.row -->
 </form>

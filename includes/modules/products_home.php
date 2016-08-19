@@ -61,20 +61,19 @@
 ?>
 <div class="filter">
     <h2>Search for a Job</h2>
-    <div class="row">
-        <?php include(DIR_FS_CATALOG . 'advanced_search_box.php');?>
-    <ul class="filter-list">
-        <?php echo tep_get_categories_list();?>
-    </ul>
-
-    <hr>
-
-    <div class="filter-actions">
-        <a href="candidates.html">All Candidates</a> <span class="filter-separator">/</span>
-        <a href="positions.html">All Jobs</a> <span class="filter-separator">/</span>
-        <a href="companies.html">All Companies</a>
-    </div><!-- /.filter -->
-</div>
+        <div class="row">
+            <?php include(DIR_FS_CATALOG . 'advanced_search_box.php');?>
+        </div><!-- /.row -->
+        <ul class="filter-list">
+            <?php echo tep_get_categories_list();?>
+        </ul>
+        <hr>
+        <div class="filter-actions">
+            <a href="candidates.html">All Candidates</a> <span class="filter-separator">/</span>
+            <a href="positions.html">All Jobs</a> <span class="filter-separator">/</span>
+            <a href="companies.html">All Companies</a>
+        </div><!-- /.filter -->
+    </div>
 <!-- /.filter -->
 <div class="col-md-8">
     <div class="row">

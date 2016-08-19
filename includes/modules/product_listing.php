@@ -36,58 +36,9 @@
             $text = 'Free';
             $class = 'free';
     }
-    $prod_list_contents .= '
-        <div class="property-listing-box sale-block">
-            <!-- Property Main Box -->
-            <div class="property-main-box">
-              <div class="col-md-4 p_z">
-                <a title="Property Image" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '">
-                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: 181px;"') . '
-                </a>
-              </div>
-              <div class="col-md-8 p_z">
-                <div class="property-details">
-                  <span style="display:none;">'. $text .'</span>
-                  <a
-                    title="Property Title"
-                    href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '"
-                  >
-                    ' . $listing['products_name'] .'
-                  </a>
-                  <h4>
-                    ' . $currencies->display_price($listing['products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) .'
-                  </h4>
-                  <p>
-                    ' . $str_description .'
-                  </p>
-                  <ul>
-                    <li><i class="fa fa-eye"></i> '. $listing['products_viewed'] .' </li>
-                    <li><img src="images/aa-listing/bedroom-icon.png" alt="bedroom-icon"> '.$listing['bed_rooms'].' </li>
-                    <li><img src="images/aa-listing/bathroom-icon.png" alt="bathroom-icon"> '.$listing['bath_rooms'].' </li>
-                    <li><i class="fa fa fa-institution"></i> ' . $listing['number_of_floors'] . ' </li>
-                  </ul>
-                </div>
-              </div>
-            </div><!-- Property Main Box /- -->
-          </div>';
-
+    $prod_list_contents .= '';
   }
 
-    echo ' <!-- Property Listing Section -->
-        <div id="property-listing" class="property-listing">
-            <div class="container">
-              <div class="property-left col-md-9 col-sm-6 p_l_z content-area">
-                <div class="section-header p_l_z">
-                  <div class="col-md-10 col-sm-10 p_l_z">
-                    <p>' . PROPERTY . '</p>
-                    <h3>' . LISTING . '</h3>
-                  </div>
-                  <div class="view-list col-md-2 col-sm-2 p_r_z" style="display:none;">
-                    <a title="Grid View" href="aa-listing.html"><i class="fa fa-th "></i></a>
-                    <a class="active" title="List View" href="aa-listing-list.html"><i class="fa fa-bars"></i></a>
-                  </div>
-                </div>
-    ';
     echo $prod_list_contents;
     ?>
 
@@ -120,6 +71,172 @@ else {
 </div>
 <?php
 }
-
 ?>
-<?php include('advanced_search_box_right.php');?>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="filter-stacked">
+                <?php include('advanced_search_box_right.php');?>
+            </div><!-- /.filter-stacked -->
+
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-7">
+            <div class="positions-list">
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">Senior Data</a>
+
+                        <span>Featured</span>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/dropbox.png" alt=""></span> San Francisco, Dropbox <br></h3>
+
+                    <div class="position-list-item-date">10/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">Junior Java Developer</a>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/instagram.png" alt=""></span> New York City, New York <br></h3>
+
+                    <div class="position-list-item-date">09/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">PR Manager</a>
+
+                        <span>Urgent</span>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/facebook.png" alt=""></span> Chicago, Michigan <br></h3>
+
+                    <div class="position-list-item-date">08/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">Data Mining Specialist</a>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/twitter.png" alt=""></span> Philadelphia, Pennsylvania <br></h3>
+
+                    <div class="position-list-item-date">07/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">Python Developer</a>
+
+                        <span>Featured</span>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/airbnb.png" alt=""></span> Denver, Colorado <br></h3>
+
+                    <div class="position-list-item-date">06/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">Senior Data</a>
+
+                        <span>Featured</span>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/dropbox.png" alt=""></span> San Francisco, Dropbox <br></h3>
+
+                    <div class="position-list-item-date">05/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">Junior Java Developer</a>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/instagram.png" alt=""></span> New York City, New York <br></h3>
+
+                    <div class="position-list-item-date">04/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">PR Manager</a>
+
+                        <span>Urgent</span>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/facebook.png" alt=""></span> Chicago, Michigan <br></h3>
+
+                    <div class="position-list-item-date">03/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">Data Mining Specialist</a>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/twitter.png" alt=""></span> Philadelphia, Pennsylvania <br></h3>
+
+                    <div class="position-list-item-date">02/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+                <div class="positions-list-item">
+                    <h2>
+                        <a href="position-detail.html">Python Developer</a>
+
+                        <span>Featured</span>
+
+                    </h2>
+                    <h3><span><img src="assets/img/tmp/airbnb.png" alt=""></span> Denver, Colorado <br></h3>
+
+                    <div class="position-list-item-date">01/11/2015</div><!-- /.position-list-item-date -->
+                    <div class="position-list-item-action"><a href="positions.html#">Save Position</a></div><!-- /.position-list-item-action -->
+                </div><!-- /.position-list-item -->
+
+            </div><!-- /.positions-list -->
+
+            <div class="center">
+                <ul class="pagination">
+                    <li>
+                        <a href="positions.html#">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                    </li>
+
+                    <li><a href="positions.html#">1</a></li>
+                    <li><a href="positions.html#">2</a></li>
+                    <li class="active"><a href="positions.html#">3</a></li>
+                    <li><a href="positions.html#">4</a></li>
+                    <li><a href="positions.html#">5</a></li>
+                    <li>
+                        <a href="positions.html#">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /.center -->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-2">
+            <div class="banner-wrapper">
+                <a href="positions.html#">
+                    <img src="assets/img/tmp/banner-120x600.png" alt="">
+                </a>
+            </div><!-- /.banner-wrapper -->
+        </div><!-- /.col-* -->
+    </div><!-- /.row -->
+</div><!-- /.container -->
+</div><!-- /.main -->

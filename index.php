@@ -40,33 +40,33 @@
     /******************************************************************************************/
     /********************** Optional Product Filter by Categories *****************************/
     /******************************************************************************************/
-
     $listing_sql = "
       select
-          p.products_image,
+          DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date,
           pd.products_name,
           pd.products_viewed,
-          p.products_image_thumbnail,
-          p.bed_rooms,
-          p.bath_rooms,
-          p.number_of_floors,
+          cu.photo_thumbnail,
           p.products_id,
           p.products_promote,
-          SUBSTRING_INDEX(pd.products_description, ' ', 20) as products_description,
-          p.products_price
+          cu.company_name,
+          l.name as location
       from
-          products_description pd, products p
+          products_description pd, products p, customers cu, location l
       where
           p.products_status = 1
               and
           pd.products_id = p.products_id
+              and
+          l.id = p.province_id
+              and
+          cu.customers_id = p.customers_id
               and
           pd.language_id = " . (int)$languages_id . "
               and
           p.categories_id = '" . (int)$current_category_id . "'
       ORDER BY
           p.products_promote DESC,
-          p.products_date_added DESC
+          p.products_close_date DESC
       ";
 
 ?>
