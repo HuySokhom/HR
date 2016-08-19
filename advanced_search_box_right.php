@@ -6,8 +6,9 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
     <h2 class="widget-title">
       <?php echo TEXT_SEARCH;?>
       <span>
-        <?php echo PROPERTY;?>
-      </span></h2>
+        <?php echo JOB;?>
+      </span>
+    </h2>
     <form name="advance_search" action="advanced_search_result.php" method="get">
       <input type="text" class="form-control" placeholder="Search Job Title..." name="keywords" required="">
       <?php

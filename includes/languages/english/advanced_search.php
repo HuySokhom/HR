@@ -48,7 +48,7 @@ define('ERROR_PRICE_TO_LESS_THAN_PRICE_FROM', 'Price To must be greater than or 
 define('ERROR_INVALID_KEYWORDS', 'Invalid keywords.');
 
 define('SEARCH', 'Search');
-define('PROPERTY', 'Property');
+define('JOB', 'Job');
 
 define('ENTRY_BED_FROM', 'Bed From');
 define('ENTRY_BED_TO', 'Bed To');
