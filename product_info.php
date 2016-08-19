@@ -45,7 +45,7 @@
 				and
 			pd.language_id = '" . (int)$languages_id . "'
 	");
-	$product_info = tep_db_fetch_array($product_info_query);var_dump($product_info);
+	$product_info = tep_db_fetch_array($product_info_query);
 ?>
 <br>
 <div class="container">

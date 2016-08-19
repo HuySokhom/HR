@@ -242,6 +242,9 @@
     </div>
 </div>
 <div class="col-md-3">
+    <div class="">
+        <img src="assets/img/advertising.jpg" class="img-responsive">
+    </div>
     <h4>Find Your Best Candidate</h4>
     <div class="row mt-60">
         <div class="candidate-boxes">

@@ -31,6 +31,6 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
   </aside>
 
   <aside class="widget widget-property-featured">
-    <img src="assets/img/tmp/images.jpg" alt="" class="img-responsive" style="width: 100%;">
+    <img src="assets/img/advertising.jpg" alt="" class="img-responsive" style="width: 100%;">
   </aside>
 </div>
