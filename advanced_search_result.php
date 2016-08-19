@@ -196,7 +196,20 @@
     }
   }
 
-  $select_str = "select distinct " . $select_column_list . " pd.products_viewed ,p.bed_rooms, p.bath_rooms, p.number_of_floors, m.manufacturers_id, p.products_id, SUBSTRING_INDEX(pd.products_description, ' ', 20) as products_description, pd.products_name, p.products_price, p.products_tax_class_id, IF(s.status, s.specials_new_products_price, NULL) as specials_new_products_price, IF(s.status, s.specials_new_products_price, p.products_price) as final_price ";
+  $select_str = "select distinct " . $select_column_list . "
+    pd.products_viewed ,
+    DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date,
+    p.bath_rooms, p.number_of_floors,
+    m.manufacturers_id,
+    p.products_id,
+    cu.photo_thumbnail,
+    cu.company_name,
+    l.name as location,
+    pd.products_name,
+    p.products_price,
+    p.products_tax_class_id,
+    IF(s.status, s.specials_new_products_price, NULL) as specials_new_products_price,
+    IF(s.status, s.specials_new_products_price, p.products_price) as final_price ";
 
   if ( (DISPLAY_PRICE_WITH_TAX == 'true') && (tep_not_null($pfrom) || tep_not_null($pto)) ) {
     $select_str .= ", SUM(tr.tax_rate) as tax_rate ";
@@ -212,9 +225,9 @@
     $from_str .= " left join " . TABLE_TAX_RATES . " tr on p.products_tax_class_id = tr.tax_class_id left join " . TABLE_ZONES_TO_GEO_ZONES . " gz on tr.tax_zone_id = gz.geo_zone_id and (gz.zone_country_id is null or gz.zone_country_id = '0' or gz.zone_country_id = '" . (int)$customer_country_id . "') and (gz.zone_id is null or gz.zone_id = '0' or gz.zone_id = '" . (int)$customer_zone_id . "')";
   }
 
-  $from_str .= ", " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_CATEGORIES . " c, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c";
+  $from_str .= ", " . TABLE_PRODUCTS_DESCRIPTION . " pd, customers cu, location l, " . TABLE_CATEGORIES . " c, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c";
 
-  $where_str = " where p.products_status = '1' and p.products_id = pd.products_id and pd.language_id = '" . (int)$languages_id . "' and p.products_id = p2c.products_id and p2c.categories_id = c.categories_id ";
+  $where_str = " where p.products_status = '1' and cu.customers_id = p.customers_id and l.id = p.province_id and p.products_id = pd.products_id and pd.language_id = '" . (int)$languages_id . "' and p.products_id = p2c.products_id and p2c.categories_id = c.categories_id ";
 
   if (isset($HTTP_GET_VARS['categories_id']) && tep_not_null($HTTP_GET_VARS['categories_id'])) {
     if (isset($HTTP_GET_VARS['inc_subcat']) && ($HTTP_GET_VARS['inc_subcat'] == '1')) {

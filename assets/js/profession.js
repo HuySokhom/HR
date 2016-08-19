@@ -113,4 +113,19 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	/**
+	 * Function select menu add active class
+	 **/
+	var selector = ".menu > li a";
+	$(selector).filter(function () {
+		var current = location.href.replace(/#.*/, "");
+		var page = this.href;
+		if(current === page){
+			$(this).parent().addClass('active');
+		}
+		return;
+	});
+
+
 });

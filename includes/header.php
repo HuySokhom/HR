@@ -30,8 +30,8 @@
 
     <div class="header-bottom">
       <div class="container">
-        <ul class="header-nav nav nav-pills collapse">
-          <li class="active">
+        <ul class="header-nav nav nav-pills collapse menu">
+          <li>
             <a href="index.php">Home</a>
           </li>
 
