@@ -17189,7 +17189,7 @@ ul.filter-list {
       margin: 30px 0px 0px 0px; } }
   .hero-content-dark .hero-content-carousel {
     box-shadow: none;
-    background-color: #f7f7f7;
+    background-color: #00487f;
     border: 1px solid #e9e9e9;
   }
   .hero-content-carousel h2 {
@@ -18580,12 +18580,12 @@ ul.filter-list {
 [ 28. Widgets ]
 */
 .widget {
-  margin: 0px 0px 50px 0px; }
+  margin: 20px 0px 15px 0px; }
   .widget h2 {
     font-size: 14px;
     font-weight: 600;
-    margin: 0px 0px 17px 0px;
-    padding: 0px 0px 17px 0px;
+    margin: 0px 0px 10px 0px;
+    padding: 0px 0px 15px 0px;
     position: relative; }
     .widget h2:after {
       background-color: #e9e9e9;

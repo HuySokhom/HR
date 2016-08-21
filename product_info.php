@@ -46,6 +46,33 @@
 			pd.language_id = '" . (int)$languages_id . "'
 	");
 	$product_info = tep_db_fetch_array($product_info_query);
+
+	// query hot jobs
+	$hot_product_query = tep_db_query("
+		select
+			p.products_id,
+			p.customers_id,
+			cu.company_name,
+			pd.products_name
+		from
+			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, customers cu
+		where
+			p.products_status = '1'
+				and
+			cu.customers_id = p.customers_id
+				and
+			pd.products_id = p.products_id
+				and
+			pd.language_id = '" . (int)$languages_id . "'
+		order by
+        	p.products_promote desc, rand(), p.products_close_date desc
+		limit 15
+	");
+	$array_hot = array();
+	while( $product_hot_info = tep_db_fetch_array($hot_product_query) ){
+		$array_hot[] = $product_hot_info ;
+	}
+
 ?>
 <br>
 <div class="container">
@@ -184,28 +211,28 @@
 			  </div><!-- /.company-card -->
 
 			  <div class="hero-content-carousel">
-				  <h2>Hot Jobs</h2>
+				  <h2 style="color: #fff;">Hot Jobs</h2>
 				  <ul class="cycle-slideshow vertical"
 					  data-cycle-fx="carousel"
 					  data-cycle-slides="li"
-					  data-cycle-carousel-visible="7"
-					  data-cycle-carousel-vertical="true">
-					  <li><a href="company-detail.html">Dropbox</a> is looking for UX/UI designer.</li>
-					  <li>Python Developer <a href="index.html#">John Doe</a>.</li>
-					  <li><a href="position-detail.html">IT consultant</a> is needed by <a href="company-detail.html">Twitter</a>.</li>
-					  <li>Project manager wanted for <a href="company-detail.html">e-shop portal</a>.</li>
-					  <li><a href="company-detail.html">Mark Peterson</a> needs to fix his website.</li>
-					  <li><a href="company-detail.html">Facebook</a> is looking for <a href="position-detail.html">beta testers</a>.</li>
-					  <li><a href="company-detail.html">Instagram</a> needs help with new API.</li>
-					  <li><a href="company-detail.html">Dropbox</a> is looking for UX/UI designer.</li>
-					  <li>Python Developer <a href="resume.html">John Doe</a> is looking for work.</li>
-					  <li><a href="position-detail.html">IT consultant</a> is needed by <a href="company-detail.html">Twitter</a>.</li>
-					  <li>Project manager wanted for one time <a href="index.html#">e-shop portal</a>.</li>
-					  <li><a href="company-detail.html">Mark Peterson</a> needs to fix his website.</li>
-					  <li><a href="company-detail.html">Facebook</a> is looking for <a href="position-detail.html">beta testers</a>.</li>
-					  <li><a href="company-detail.html">Instagram</a> needs help with new API.</li>
+					  data-cycle-carousel-visible="10"
+					  data-cycle-carousel-vertical="true"
+				  >
+					  <?php
+					  	foreach($array_hot as $hot){
+							echo '
+								<li>
+									<a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $hot['customers_id']) .'"
+									>
+										' . $hot['products_name'] . '
+									</a>
+									' . $hot['company_name']. '
+								</li>
+							';
+						}
+					  ?>
 				  </ul>
-				  <a href="positions.html" class="hero-content-show-all">Show All</a>
+				  <a href="positions.php" class="hero-content-show-all">Show All</a>
 			  </div>
 			  <div class="widget">
 				  <h2>Apply For Position</h2>
