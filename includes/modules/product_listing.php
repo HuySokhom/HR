@@ -70,7 +70,11 @@
                                     ' . $product['products_close_date'] . '
                                   </div>
                                   <!-- /.position-list-item-date -->
-                                  <div class="position-list-item-action heart-icon">
+                                  <div 
+                                    class="position-list-item-action heart-icon"
+                                    data-product="'. $product['products_id']. '"
+                                    data-type="insert"
+                                  >
                                     <a href="javascript:void(0)">Save Position</a>
                                   </div><!-- /.position-list-item-action -->
                               </div><!-- /.position-list-item -->

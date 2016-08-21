@@ -9,7 +9,11 @@
             company_name,
             customers_website,
             user_type,
-            photo
+            detail,
+            customers_telephone,
+            customers_email_address,
+            customers_address,
+            photo_thumbnail
         FROM
             customers
         WHERE
@@ -214,33 +218,77 @@
     </div>
     <?php
         }else{
+    /**
+     * query product belong to user with filter by ID (int)$_GET['info_id']
+     **/
+    $queryProduct = tep_db_query("
+        select
+        p.products_id,
+        p.create_date,
+        pd.products_name,
+        DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date,
+        cu.photo_thumbnail,
+        cu.company_name,
+        l.name as location
+      from
+        " . TABLE_PRODUCTS . " p,
+        customers cu,
+        location l,
+        " . TABLE_PRODUCTS_DESCRIPTION . " pd
+      where
+        p.products_status = 1
+            and
+        l.id = p.province_id
+            and
+        p.products_id = pd.products_id
+            and
+        cu.customers_id = p.customers_id
+            and
+        cu.customers_id = '".(int)$_GET['info_id']."'
+            and
+        pd.language_id = '" . (int)$languages_id . "'
+            order by
+        p.products_promote desc, rand(), p.products_close_date desc
+        limit " . MAX_DISPLAY_NEW_PRODUCTS
+    );
+    $num_new_products = tep_db_num_rows($queryProduct);
+    $product_array = array();
+    if ($num_new_products > 0) {
+        while ($new_products = tep_db_fetch_array($queryProduct)) {
+            $product_array[] = $new_products;
+        }
+    }
     ?>
     <div class="col-sm-4">
         <div class="company-card">
             <div class="company-card-image">
-                <span>Top Employeer</span>
-                <a href="company-detail.html">
-                    <img src="assets/img/tmp/dropbox.png" alt=""></a>
-
-            </div><!-- /.company-card-image -->
-<?php
-var_dump($customer_info);
-?>
+                <img src="<?php echo $customer_info['photo_thumbnail'];?>" alt="">
+            </div>
+            <!-- /.company-card-image -->
             <div class="company-card-data">
                 <dl>
                     <dt>Website</dt>
-                    <dd><a href="http://example.com">www.example.com</a></dd>
+                    <dd>
+                        <a 
+                            href="<?php echo $customer_info['customers_website'];?>"
+                        >   
+                            <?php echo $customer_info['customers_website'] ? $customer_info['customers_website'] : "N/A";?>
+                        </a>
+                    </dd>
 
                     <dt>E-mail</dt>
-                    <dd><a href="#">info@example.com</a></dd>
+                    <dd>
+                        <a href="mailto:<?php echo $customer_info['customers_email_address'];?>">
+                            <?php echo $customer_info['customers_email_address'];?>
+                        </a>
+                    </dd>
 
                     <dt>Phone</dt>
-                    <dd>1-234-456-789</dd>
+                    <dd><?php echo $customer_info['customers_telephone'];?></dd>
 
                     <dt>Address</dt>
                     <dd>
-                        Everton Street 231,<br>
-                        San Francisco, California
+                        <?php echo $customer_info['customers_address'];?>
                     </dd>
                 </dl>
             </div><!-- /.company-card-data -->
@@ -272,77 +320,51 @@ var_dump($customer_info);
                     <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
                 </div><!-- /.form-group -->
 
-                <button class="btn btn-secondary pull-right" type="submit">Post Message</button>
+                <button class="btn btn-secondary" type="submit">Post Message</button>
             </form>
         </div><!-- /.widget -->
     </div><!-- /.col-* -->
 
     <div class="col-sm-8">
         <div class="company-header">
-            <h1>Dropbox <span>File Hosting Service</span></h1>
-
-            <a href="#" class="btn btn-secondary">Favorite</a>
-            <a href="#" class="btn btn-default">Receive updates</a>
-            <a href="#" class="btn btn-default">Follow</a>
-        </div><!-- /.company-header -->
-
-        <div class="company-stats">
-            <div class="company-stat">
-                <span>Positions</span>
-                <strong>12</strong>
-            </div><!-- /.company-stat -->
-
-            <div class="company-stat">
-                <span>Employees</span>
-                <strong>43</strong>
-            </div><!-- /.company-stat -->
-
-            <div class="company-stat">
-                <span>Followers</span>
-                <strong>324</strong>
-            </div><!-- /.company-stat -->
-        </div><!-- /.company-stat -->
-
+            <h1><?php echo $customer_info['company_name'];?></h1>
+        </div>
+        <!-- /.company-header -->
         <h3 class="page-header">Company Profile</h3>
-
-        <p>
-            Mauris ut blandit dolor. Cras sit amet pulvinar ante. Phasellus elementum vel diam quis molestie. Quisque vitae urna tincidunt, consequat lectus nec, vehicula risus. Proin lacus felis, viverra ut nisl vel, ornare sollicitudin turpis. Vestibulum scelerisque commodo malesuada. Fusce eu augue ex. Praesent risus dui, suscipit in efficitur viverra, eleifend sed erat. Curabitur ac pharetra neque.
-        </p>
+        <?php echo $customer_info['detail'];?>
 
         <h3 class="page-header">Open Positions</h3>
 
         <div class="positions-list">
-            <div class="positions-list-item">
-                <h2><a href="#">Senior Data Analytist</a></h2>
-                <h3><span><img src="assets/img/tmp/dropbox.png" alt=""></span> San Francisco, Dropbox <br></h3>
-
-                <div class="position-list-item-date">11/11/2015</div><!-- /.position-list-item-date -->
-                <div class="position-list-item-action"><a href="#">Save Position</a></div><!-- /.position-list-item-action -->
-            </div><!-- /.positions-list-item -->
-
-            <div class="positions-list-item">
-                <h2><a href="#">Lead Python Developer</a></h2>
-                <h3><span><img src="assets/img/tmp/dropbox.png" alt=""></span> San Francisco, Dropbox <br></h3>
-
-                <div class="position-list-item-date">11/11/2015</div><!-- /.position-list-item-date -->
-                <div class="position-list-item-action"><a href="#">Save Position</a></div><!-- /.position-list-item-action -->
-            </div><!-- /.positions-list-item -->
-
-            <div class="positions-list-item">
-                <h2><a href="#">Personal Relations Manager</a></h2>
-                <h3><span><img src="assets/img/tmp/dropbox.png" alt=""></span> San Francisco, Dropbox <br></h3>
-
-                <div class="position-list-item-date">11/11/2015</div><!-- /.position-list-item-date -->
-                <div class="position-list-item-action"><a href="#">Save Position</a></div><!-- /.position-list-item-action -->
-            </div><!-- /.positions-list-item -->
-
-            <div class="positions-list-item">
-                <h2><a href="#">Account Manager</a></h2>
-                <h3><span><img src="assets/img/tmp/dropbox.png" alt=""></span> San Francisco, Dropbox <br></h3>
-
-                <div class="position-list-item-date">11/11/2015</div><!-- /.position-list-item-date -->
-                <div class="position-list-item-action"><a href="#">Save Position</a></div><!-- /.position-list-item-action -->
-            </div><!-- /.positions-list-item -->
+            <?php
+                foreach ($product_array as $product) {
+                    echo '
+                        <div class="positions-list-item">
+                            <h2>
+                                <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) .'">
+                                    '. $product['products_name'] .'
+                                </a>
+                            </h2>
+                            <h3>
+                                <span>
+                                    <img src="'. $product['photo_thumbnail'] .'" alt="">
+                                </span>
+                                '. $product['company_name'] .', '. $product['location'] .'
+                                <br>
+                            </h3>
+                            <div class="position-list-item-date">
+                                '. $product['products_close_date'] .'
+                            </div>                            <div
+                                class="position-list-item-action heart-icon"
+                                data-product="'. $product['products_id']. '"
+                                data-type="insert"
+                            >
+                                <a href="javascript:void(0)">Save Position</a>
+                            </div>
+                        </div>
+                    ';
+                }
+            ?>
         </div><!-- /.positions-list -->
     </div><!-- /.col-sm-8 -->
     <?php

@@ -226,7 +226,7 @@
                                 <!-- /.position-list-item-date -->
                                 <div
                                     class="position-list-item-action heart-icon"
-                                    data-product="'. $new_products['products_id']. '"
+                                    data-product="'. $product['products_id']. '"
                                     data-type="insert"
                                 >
                                     <a href="javascript:void(0)">Save Position</a>

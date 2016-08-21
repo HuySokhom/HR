@@ -94,7 +94,7 @@ $(document).ready(function() {
 			$(this).attr("data-type", "insert");
 		}
 		//console.log(type);
-		//console.log(product_id);
+		console.log(product_id);
 		$.ajax
 		({
 			url: 'api/Favorite',
