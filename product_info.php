@@ -61,6 +61,8 @@
 				and
 			cu.customers_id = p.customers_id
 				and
+			p.products_id != '".(int)$_GET['products_id'] ."'
+				and
 			pd.products_id = p.products_id
 				and
 			pd.language_id = '" . (int)$languages_id . "'
@@ -222,7 +224,7 @@
 					  	foreach($array_hot as $hot){
 							echo '
 								<li>
-									<a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $hot['customers_id']) .'"
+									<a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $hot['products_id']) .'"
 									>
 										' . $hot['products_name'] . '
 									</a>
