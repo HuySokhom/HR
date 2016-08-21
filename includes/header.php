@@ -54,15 +54,20 @@
             </a>
 
             <ul class="sub-menu">
-              <li><a href="recruitment.php">Recruitment</a></li>
-              <li><a href="training.php">Training</a></li>
-              <li><a href="outsourcing.php">Outsourcing</a></li>
+              <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=1');?>">Recruitment</a></li>
+              <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Training</a></li>
+              <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=3');?>">Outsourcing</a></li>
               <li>
-                <a href="consulting.php">
+                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=4');?>">
                   Consulting
                 </a>
               </li>
             </ul><!-- /.sub-menu -->
+          </li>
+          <li>
+            <a href="contact_us.php">
+              Contact us
+            </a>
           </li>
         </ul>
 
