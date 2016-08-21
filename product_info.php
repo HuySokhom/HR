@@ -144,7 +144,7 @@
 		  <div class="col-sm-4">
 			  <div class="company-card">
 				  <div class="company-card-image">
-					  <a href="<?php tep_href_link(FILENAME_INFORMATION, 'info_id=' . $product_info['customers_id']) ?>">
+					  <a href="<?php echo tep_href_link(FILENAME_INFORMATION, 'info_id=' . $product_info['customers_id']) ?>">
 						  <img src="<?php echo $product_info['photo_thumbnail'];?>" alt=""></a>
 					  </a>
 				  </div><!-- /.company-card-image -->
@@ -183,7 +183,30 @@
 				  </div><!-- /.company-card-data -->
 			  </div><!-- /.company-card -->
 
-
+			  <div class="hero-content-carousel">
+				  <h2>Hot Jobs</h2>
+				  <ul class="cycle-slideshow vertical"
+					  data-cycle-fx="carousel"
+					  data-cycle-slides="li"
+					  data-cycle-carousel-visible="7"
+					  data-cycle-carousel-vertical="true">
+					  <li><a href="company-detail.html">Dropbox</a> is looking for UX/UI designer.</li>
+					  <li>Python Developer <a href="index.html#">John Doe</a>.</li>
+					  <li><a href="position-detail.html">IT consultant</a> is needed by <a href="company-detail.html">Twitter</a>.</li>
+					  <li>Project manager wanted for <a href="company-detail.html">e-shop portal</a>.</li>
+					  <li><a href="company-detail.html">Mark Peterson</a> needs to fix his website.</li>
+					  <li><a href="company-detail.html">Facebook</a> is looking for <a href="position-detail.html">beta testers</a>.</li>
+					  <li><a href="company-detail.html">Instagram</a> needs help with new API.</li>
+					  <li><a href="company-detail.html">Dropbox</a> is looking for UX/UI designer.</li>
+					  <li>Python Developer <a href="resume.html">John Doe</a> is looking for work.</li>
+					  <li><a href="position-detail.html">IT consultant</a> is needed by <a href="company-detail.html">Twitter</a>.</li>
+					  <li>Project manager wanted for one time <a href="index.html#">e-shop portal</a>.</li>
+					  <li><a href="company-detail.html">Mark Peterson</a> needs to fix his website.</li>
+					  <li><a href="company-detail.html">Facebook</a> is looking for <a href="position-detail.html">beta testers</a>.</li>
+					  <li><a href="company-detail.html">Instagram</a> needs help with new API.</li>
+				  </ul>
+				  <a href="positions.html" class="hero-content-show-all">Show All</a>
+			  </div>
 			  <div class="widget">
 				  <h2>Apply For Position</h2>
 

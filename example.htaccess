@@ -37,6 +37,8 @@ RewriteRule ^(.*)-po-([0-9]+).html$ pollbooth.php?pollid=$2&%{QUERY_STRING}
 #RewriteRule ^(.*)-u-([0-9]+).html$ user_info.php?user_id=$2&%{QUERY_STRING}
 # End Ultimate SEO V2.2d
 
+ErrorDocument 404 http://localhost:8080/HR/index.php
+
 # start api
 RewriteRule ^api/ api/index.php [L,QSA]
 # /end api
