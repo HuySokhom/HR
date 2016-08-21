@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL ^ E_DEPRECATED ^ E_NOTICE);
   define('HTTP_SERVER', 'http://localhost');
   define('HTTPS_SERVER', 'http://localhost');
   define('ENABLE_SSL', false);
