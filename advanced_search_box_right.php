@@ -10,7 +10,9 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
       </span>
     </h2>
     <form name="advance_search" action="advanced_search_result.php" method="get">
-      <input type="text" class="form-control" placeholder="Search Job Title..." name="keywords" required="">
+      <?php
+        echo tep_draw_input_field('keywords', '', 'required aria-required="true" id="inputKeywords" placeholder="' . TEXT_SEARCH_PLACEHOLDER . '"', 'search');
+      ?>
       <?php
         echo tep_draw_pull_down_menu(
             'categories_id',

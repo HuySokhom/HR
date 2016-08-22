@@ -582,7 +582,7 @@ function tep_get_location($id = '') {
 
     if (!is_array($categories_array)) $categories_array = array();
 
-    $categories_query = tep_db_query("select c.categories_id, cd.categories_name from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where parent_id = '" . (int)$parent_id . "' and c.categories_id = cd.categories_id and cd.language_id = '" . (int)$languages_id . "' order by sort_order, cd.categories_name");
+    $categories_query = tep_db_query("select c.categories_id, cd.categories_name from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where parent_id = '" . (int)$parent_id . "' and c.categories_id = cd.categories_id and cd.language_id = '" . (int)$languages_id . "' order by cd.categories_name");
     while ($categories = tep_db_fetch_array($categories_query)) {
       $categories_array[] = array('id' => $categories['categories_id'],
                                   'text' => $indent . $categories['categories_name']);
