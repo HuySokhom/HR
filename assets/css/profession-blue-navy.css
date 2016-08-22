@@ -16448,13 +16448,13 @@ textarea.form-control {
 h1.page-header {
   border: 0px;
   font-size: 32px;
-  font-weight: 300;
+  /*font-weight: 300;*/
   margin: 0px;
   padding: 0px 0px 60px 0px; }
 
 h2.page-header {
   font-size: 24px;
-  font-weight: 300;
+  /*font-weight: 300;*/
   padding: 0px 0px 24px 0px;
   margin: 0px 0px 24px 0px; }
   h2.page-header strong {
@@ -16462,7 +16462,7 @@ h2.page-header {
 
 h3.page-header {
   font-size: 18px;
-  font-weight: 300;
+  /*font-weight: 300;*/
   padding: 0px 0px 15px 0px;
   margin: 20px 0px 20px 0px; }
   h3.page-header strong {
@@ -17056,7 +17056,7 @@ h3.page-header {
   .filter h2 {
     margin: 0px 0px 25px 0px;
     font-size: 22px;
-    font-weight: 300;
+    /*font-weight: 300;*/
     line-height: 1;
     padding: 0px; }
   .filter form {
@@ -17105,7 +17105,7 @@ ul.filter-list {
   border-radius: 3px;
   margin: 0px 0px 60px 0px;
   padding: 20px;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
 }
   .filter-stacked form {
     margin: 0px; }
