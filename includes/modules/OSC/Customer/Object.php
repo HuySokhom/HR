@@ -159,7 +159,7 @@ class Object extends DbObj {
 	}
 
 	public function setCustomersWebsite( $string ){
-		$this->customersWebsite = (int)$string;
+		$this->customersWebsite = $string;
 	}
 
 	public function getCustomersWebsite(){

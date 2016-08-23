@@ -3,16 +3,21 @@ app.controller(
 	'$scope'
 	, 'Restful'
 	, function ($scope, Restful){
-		var params = {pagination: 'yes'};
+		var params = {pagination: 'yes', user_type: 'agency', is_agency: 1};
 		var url = 'api/Employers/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
 				$scope.data = data;
-				console.log(data);
 				$scope.totalItems = data.count;
 			});
 		};
-		$scope.init();
+		$scope.init(params);
+
+		$scope.renderLink = function(id, link){
+			var replace = link.toLowerCase().split(' ').join('_');
+			var url = replace + '-i-' + id + '.html';
+			return url;
+		};
 		/**
 		 * start functionality pagination
 		 */

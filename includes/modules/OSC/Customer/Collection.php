@@ -15,8 +15,11 @@ class Collection extends StdCollection {
 		$this->objectType = __NAMESPACE__ .'\Object';
 	}
 
+	public function filterByType( $arg ){
+		$this->addWhere("c.user_type = '" . $arg . "'");
+	}
 
-	public function filterByStatus( $arg ){
+	public function filterByIsAgency( $arg ){
 		$this->addWhere("c.is_agency = '" . (int)$arg . "'");
 	}
 

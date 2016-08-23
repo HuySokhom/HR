@@ -10,17 +10,18 @@
         </div>
     </div>
     <div data-ng-controller="employers_ctrl" class="col-md-9 col-sm-7 ">
-        <div class="companies-list">
+        <div class="companies-list" data-ng-if="data.count > 0">
             <div class="companies-list-item" data-ng-repeat="data in data.elements">
                 <div class="companies-list-item-image">
-                    <a href="companies.html#">
+                    <a href="{{renderLink(data.id, data.company_name)}}">
                         <img src="{{data.photo_thumbnail}}" alt="">
                     </a>
-                </div><!-- /.companies-list-item-image -->
+                </div>
+                <!-- /.companies-list-item-image -->
 
                 <div class="companies-list-item-heading">
                     <h2>
-                        <a href="company-detail.html">
+                        <a href="{{renderLink(data.id, data.company_name)}}">
                             {{data.company_name}}
                         </a>
                     </h2>
@@ -28,22 +29,27 @@
                         <i class="fa fa-map-marker"></i>
                         {{data.location[0].name}}
                     </h3>
-                </div><!-- /.companies-list-item-heading -->
+                </div>
+                <!-- /.companies-list-item-heading -->
 
                 <div class="companies-list-item-count">
-                    <a href="companies.html#">{{data.total}} open positions</a>
-                </div><!-- /.positions-list-item-count -->
+                    <a href="{{renderLink(data.id, data.company_name)}}">{{data.total}} open positions</a>
+                </div>
+                <!-- /.positions-list-item-count -->
 
                 <div class="companies-list-item-rating">
-                   {{data.customers_website}}
-                    <br/>
-                    {{data.customers_telephone}}
-                </div><!-- /.companies-list-item-rating -->
-            </div><!-- /.companies-list-item -->
+                    Website:
+                    <a href="http://{{data.customers_website}}" target="_blank">
+                        {{data.customers_website ? data.customers_website : 'N/A'}}
+                    </a>
+                </div>
+                <!-- /.companies-list-item-rating -->
+            </div>
+            <!-- /.companies-list-item -->
         </div>
 
         <div
-            data-ng-if="data.elements == 0"
+            data-ng-if="data.count == 0"
         >
             <div class="alert alert-danger">
                 <strong>Warning!</strong> Empty Data.
