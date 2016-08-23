@@ -4,6 +4,7 @@ namespace OSC\Customer;
 
 use
 	Aedea\Core\Database\StdObject as DbObj
+	, OSC\Location\Collection as LocationCol
 ;
 
 class Object extends DbObj {
@@ -24,8 +25,15 @@ class Object extends DbObj {
 		, $photo
 		, $photoThumbnail
 		, $detail
+		, $location
+		, $total
 	;
-	
+
+	public function __construct( $params = array() ){
+		parent::__construct($params);
+		$this->location = new LocationCol();
+	}
+
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
@@ -42,7 +50,8 @@ class Object extends DbObj {
 				'skill_title',
 				'company_name',
 				'customers_website',
-				'is_agency',
+				'location',
+				'total'
 			)
 		);
 	
@@ -79,6 +88,24 @@ class Object extends DbObj {
 		}
 	
 		$this->setProperties($this->dbFetchArray($q));
+
+		$this->location->setFilter('id', $this->getCustomersLocation());
+		$this->location->populate();
+
+		$count = $this->dbQuery("
+			SELECT
+				COUNT(products_id)
+				as total
+			FROM
+				products
+			WHERE
+				customers_id = '" . (int)$this->getId() . "'
+					AND
+				products_status = 1
+		");
+		$total = $this->dbFetchArray($count);
+		$this->setTotal($total['total']);
+
 	}
 
 	public function updateUserType() {
@@ -195,20 +222,20 @@ class Object extends DbObj {
 		return $this->userName;
 	}
 
-	public function setCustomersFirstname( $string ){
-		$this->customersFirstname = (string)$string;
+	public function setTotal( $string ){
+		$this->total = (string)$string;
 	}
 	
-	public function getCustomersFirstname(){
-		return $this->customersFirstname;
+	public function getTotal(){
+		return $this->total;
 	}
 	
-	public function setcustomersLastName( $string ){
-		$this->customersLastname = (string)$string;
+	public function setLocation( $string ){
+		$this->location = (string)$string;
 	}
 	
-	public function getCustomersLastname(){
-		return $this->customersLastname;
+	public function getLocation(){
+		return $this->location;
 	}
 	
 	public function setCustomersEmailAddress( $string ){

@@ -21,7 +21,7 @@
   }
 ?>
 <!DOCTYPE html>
-<html <?php echo HTML_PARAMS; ?>  xmlns:ng="http://angularjs.org/">
+<html <?php echo HTML_PARAMS; ?>  xmlns:ng="http://angularjs.org/" data-ng-app="main">
 <head>
     <meta charset="<?php echo CHARSET; ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
