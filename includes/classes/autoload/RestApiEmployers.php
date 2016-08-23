@@ -21,6 +21,7 @@ class RestApiEmployers extends RestApi {
                 'limit' => array( $start, $showDataPerPage )
             )
         );
+        $col->orderById('DESC');
         return $this->getReturn($col, $params);
 
     }

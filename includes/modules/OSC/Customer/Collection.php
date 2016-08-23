@@ -26,5 +26,8 @@ class Collection extends StdCollection {
 	public function filterById( $arg ){
 		$this->addWhere("c.customers_id = '" . (int)$arg . "'");
 	}
-	
+
+	public function orderById($arg){
+		$this->addOrderBy("c.customers_id", $arg);
+	}
 }
