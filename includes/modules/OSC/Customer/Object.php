@@ -9,21 +9,15 @@ use
 class Object extends DbObj {
 			
 	protected
-		$customersFirstname
-		, $customersLastname
-		, $customersFax
-		, $customersEmailAddress
+		$customersEmailAddress
 		, $customersAddress
 		, $customersTelephone
 		, $customersType
 		, $customersLocation
-		, $customersSocialNetwork
-		, $customersAppId
-		, $customersCompanyName
-		, $customersContactName
-		, $customersPlan
-		, $planDate
-		, $planExpire
+		, $skillTitle
+		, $companyName
+		, $customersWebsite
+		, $isAgency
 		, $customersGender
 		, $userName
 		, $userType
@@ -43,12 +37,12 @@ class Object extends DbObj {
 				'detail',
 				'customers_email_address',
 				'customers_address',
-				'customers_fax',
 				'customers_telephone',
 				'customers_location',
-				'customers_plan',
-				'plan_date',
-				'plan_expire',
+				'skill_title',
+				'company_name',
+				'customers_website',
+				'is_agency',
 			)
 		);
 	
@@ -61,16 +55,16 @@ class Object extends DbObj {
 				user_name,
 				user_type,
 				photo,
-				customers_fax,
 				photo_thumbnail,
 				customers_email_address,
 				customers_telephone,
 				customers_address,
 				customers_location,
-				detail,
-				customers_plan,
-				plan_date,
-				plan_expire
+				skill_title,
+				company_name,
+				customers_website,
+				is_agency,
+				detail
 			FROM
 				customers
 			WHERE
@@ -101,7 +95,6 @@ class Object extends DbObj {
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'
 		");
-
 	}
 
 
@@ -130,36 +123,36 @@ class Object extends DbObj {
 	
 	}
 
-	public function setCustomersFax( $string ){
-		$this->customersFax = (string)$string;
+	public function setCompanyName( $string ){
+		$this->companyName = (string)$string;
 	}
 
-	public function getCustomersFax(){
-		return $this->customersFax;
+	public function getCompanyName(){
+		return $this->companyName;
 	}
 
-	public function setCustomersPlan( $string ){
-		$this->customersPlan = (int)$string;
+	public function setCustomersWebsite( $string ){
+		$this->customersWebsite = (int)$string;
 	}
 
-	public function getCustomersPlan(){
-		return $this->customersPlan;
+	public function getCustomersWebsite(){
+		return $this->customersWebsite;
 	}
 
-	public function setPlanDate( $string ){
-		$this->planDate = (string)$string;
+	public function setIsAgency( $string ){
+		$this->isAgency = (string)$string;
 	}
 
-	public function getPlanDate(){
-		return $this->planDate;
+	public function getIsAgency(){
+		return $this->isAgency;
 	}
 
-	public function setPlanExpire( $string ){
-		$this->planExpire = (string)$string;
+	public function setSkillTitle( $string ){
+		$this->skillTitle = (string)$string;
 	}
 
-	public function getPlanExpire(){
-		return $this->planExpire;
+	public function getSkillTitle(){
+		return $this->skillTitle;
 	}
 
 	public function setDetail( $string ){
