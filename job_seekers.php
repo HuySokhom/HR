@@ -9,35 +9,28 @@
             <?php include('advanced_search_box_right.php');?>
         </div>
     </div>
-    <div class="col-md-9 col-sm-7" data-ng-cloak>
+    <div class="col-md-9 col-sm-7" ng-cloak>
         <div class="candidates-list">
             <div class="candidates-list-item" data-ng-repeat="data in data.elements">
                 <div class="candidates-list-item-heading">
                     <div class="candidates-list-item-image">
-                        <a href="candidates.html#">
-                            <img src="assets/img/tmp/resume.jpg" alt="Elliot Sarah Scott">
+                        <a href="{{renderLink(data.id, data.company_name)}}">
+                            <img src="{{data.photo_thumbnail}}">
                         </a>
-
-
-                        <a href="candidates.html#" class="candidates-list-item-image-label">
-                            <img src="assets/img/tmp/instagram.png" alt="">
-                        </a>
-
                     </div><!-- /.candidates-list-item-image -->
 
                     <div class="candidates-list-item-title">
-                        <h2><a href="resume.html">Elliot Sarah Scott</a></h2>
-                        <h3>Data Analytist</h3>
+                        <h2><a href="{{renderLink(data.id, data.user_name)}}">{{data.user_name}}</a></h2>
+                        <h3><i class="fa fa-map-marker"></i> {{data.location[0].name}}</h3>
                     </div><!-- /.candidates-list-item-title -->
                 </div><!-- /.candidates-list-item-heading -->
 
                 <div class="candidates-list-item-location">
-                    <i class="fa fa-map-marker"></i> San Francisco, California
+                    
                 </div><!-- /.candidates-list-item-location -->
 
                 <div class="candidates-list-item-profile">
-                    <span class="candidates-list-item-profile-count">92% completed</span>
-                    <span class="candidates-list-item-profile-bar"><span style="width: 92%"></span></span>
+                    <span data-ng-bind="data.skill_title"></span>
                 </div><!-- /.candidates-list-item-rating -->
             </div>
         </div>
