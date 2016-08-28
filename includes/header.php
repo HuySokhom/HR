@@ -24,7 +24,7 @@
             <li><a href="logoff.php"><i class="fa fa-sign-out"></i> Sign Out</a></li>
           ';
           }?>
-          <li><a href="create-resume.php" class="primary">Create Resume</a></li>
+          <li><a href="account.php#/manage/post" class="primary">Post Job Now</a></li>
         </ul><!-- /.header-actions -->
 
         <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".header-nav">

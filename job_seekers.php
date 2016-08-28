@@ -15,7 +15,7 @@
                 <div class="candidates-list-item-heading">
                     <div class="candidates-list-item-image">
                         <a href="{{renderLink(data.id, data.company_name)}}">
-                            <img src="{{data.photo_thumbnail}}">
+                            <img ng-src="{{data.photo_thumbnail}}">
                         </a>
                     </div><!-- /.candidates-list-item-image -->
 

@@ -14,14 +14,14 @@
             <div class="companies-list-item" data-ng-repeat="data in data.elements">
                 <div class="companies-list-item-image">
                     <a href="{{renderLink(data.id, data.company_name)}}">
-                        <img src="{{data.photo_thumbnail}}" alt="">
+                        <img ng-src="{{data.photo_thumbnail}}" alt="">
                     </a>
                 </div>
                 <!-- /.companies-list-item-image -->
 
                 <div class="companies-list-item-heading">
                     <h2>
-                        <a href="{{renderLink(data.id, data.company_name)}}">
+                        <a href="" ref="{{renderLink(data.id, data.company_name)}}">
                             {{data.company_name}}
                         </a>
                     </h2>

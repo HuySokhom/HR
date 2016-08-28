@@ -38,12 +38,18 @@
 				<div class="panel-heading">
 					<div class="tab-content">
 						<ul class="nav nav-tabs" role="tablist">
-							<li ui-sref-active="active">
-								<a href="account.php#/manage_property" ui-sref="/manage_property">
-									<icon class="fa fa-desktop"></icon>
-									<?php echo ENTRY_MANAGE_POST;?>
-								</a>
-							</li>
+							<?php 
+								if($_SESSION['user_type'] == "agency"){
+									echo '
+										<li ui-sref-active="active">
+											<a ng-href="account.php#/manage" ui-sref="/manage">
+												<icon class="fa fa-desktop"></icon>
+												' . ENTRY_MANAGE_POST . '
+											</a>
+										</li>
+									';
+								}
+							?>
 							<li ui-sref-active="active" ui-sref="/account">
 								<a href="account.php#/account">
 									<i class="fa fa-user"></i>
