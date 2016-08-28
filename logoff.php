@@ -48,8 +48,8 @@ if ( tep_session_is_registered('comments') ) {
   tep_session_unregister('comments');
 }
 
-  $cart->reset();
-
+$cart->reset();
+tep_redirect(tep_href_link(FILENAME_LOGIN, '', 'SSL'));
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <div class="container margin-top">

@@ -56,9 +56,14 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-<div class="container clearfix">
-  <div class="margin-top"></div>
-
+<div class="container">
+  <br/>
+  <div class="col-md-3 col-sm-5 ">
+      <div class="filter-stacked">
+          <?php include('advanced_search_box_right.php');?>
+      </div>
+  </div>
+  <div class="col-md-9 col-sm-7">
   <?php
     if ($messageStack->size('password_forgotten') > 0) {
       echo $messageStack->output('password_forgotten');
@@ -99,6 +104,7 @@
   </div>
 
   </form>
+  </div>
 </div>
 <?php
   }

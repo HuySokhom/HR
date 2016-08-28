@@ -39,7 +39,6 @@
     <link href="assets/fonts/profession/style.css" rel="stylesheet" type="text/css">
     <link href="assets/libraries/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="assets/libraries/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/libraries/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
     <link href="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/profession-blue-navy.css" rel="stylesheet" type="text/css" id="style-primary">
 

@@ -14,8 +14,16 @@
         <!-- /.header-brand -->
 
         <ul class="header-actions nav nav-pills">
-          <li><a href="login.php">Login</a></li>
-          <li><a href="create_account.php">Sign Up</a></li>
+        <?php
+          if(!tep_session_is_registered('customer_id')){
+        ?>
+          <li><a href="login.php"><i class="fa fa-sign-in"></i> Login</a></li>
+          <li><a href="create_account.php"><i class="fa fa-external-link"></i> Sign Up</a></li>
+        <?php }else{
+          echo '<li><a href="account.php"><i class="fa fa-user"></i>  My Account</a></li>
+            <li><a href="logoff.php"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+          ';
+          }?>
           <li><a href="create-resume.php" class="primary">Create Resume</a></li>
         </ul><!-- /.header-actions -->
 

@@ -26,7 +26,6 @@
 <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/tab.js"></script>
 <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/transition.js"></script>
 <script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
-<script type="text/javascript" src="assets/libraries/bootstrap-select/js/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
 <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
 <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>

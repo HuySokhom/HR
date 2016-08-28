@@ -6,18 +6,27 @@
      **/
     $query = tep_db_query("
         SELECT
-            company_name,
-            customers_website,
-            user_type,
-            detail,
-            customers_telephone,
-            customers_email_address,
-            customers_address,
-            photo_thumbnail
+            c.company_name,
+            c.customers_id,
+            c.user_name,
+            l.name as location_name,
+            c.customers_gender,
+            c.customers_website,
+            c.user_type,
+            c.skill_title,
+            c.upload_cv,
+            c.detail,
+            c.customers_telephone,
+            c.customers_email_address,
+            c.customers_address,
+            c.photo_thumbnail,
+            DATE_FORMAT(c.create_date, '%d/%M/%Y') as create_date
         FROM
-            customers
+            customers c, location l
         WHERE
-            customers_id = ". (int)$_GET['info_id'] . "
+            c.customers_id = ". (int)$_GET['info_id'] . "
+                and
+            c.customers_location = l.id
         LIMIT 1
     ");
     $customer_info = tep_db_fetch_array($query);
@@ -28,193 +37,105 @@
         if($customer_info['user_type'] == 'normal')
         {
     ?>
-    <div class="resume">
-        <div class="resume-main">
-            <div class="resume-main-image">
-                <img src="assets/img/tmp/resume.jpg" alt="">
-
-                <a href="#" class="resume-main-image-label">
-                    <img src="assets/img/tmp/instagram.png" alt="">
-                </a>
-            </div><!-- /.resume-main-image -->
-
-            <div class="resume-main-content">
-                <h2>Elliot Sarah Scott
-                    <span class="resume-main-verified"><i class="fa fa-check"></i></span>
-
-        <span class="resume-main-rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <span class="resume-main-rating-count">/ 32</span>
-        </span><!-- /.resume-main-rating -->
-                </h2>
-
-                <h3>Senior Data Analytist</h3>
-
-                <p class="resume-main-contacts">
-                    Timothy Blvd, Silicon Valley, California<br>
-                    Email: <a href="mailto:hello@example.com">hello@example.com</a> - Website: <a href="http://example.com">www.example.com</a>
-                </p><!-- /.resume-main-contact -->
-
-                <div class="resume-main-actions">
-                    <a href="#" class="btn btn-secondary"><i class="fa fa-download"></i> Download</a>
-                    <a href="#" class="btn btn-default">Contact</a>
-                    <a href="#" class="btn btn-default">Save</a>
-                </div><!-- /.resume-main-actions -->
-            </div><!-- /.resume-main-content -->
-        </div><!-- /.resume-main -->
-
-        <div class="resume-chapter">
-            <div class="resume-chapter-inner">
-                <div class="resume-chapter-content">
-                    <div class="row">
-                        <div class="col-sm-3">
-                <span class="resume-chapter-social">
-                    <span class="resume-chapter-social-icon"><i class="fa fa-facebook-square"></i></span>
-                    <span class="resume-chapter-social-value">5 699 likes</span>
-                </span><!-- /.resume-chapter-social -->
-                        </div><!-- /.col-* -->
-
-                        <div class="col-sm-3">
-                <span class="resume-chapter-social">
-                    <span class="resume-chapter-social-icon"><i class="fa fa-twitter-square"></i></span>
-                    <span class="resume-chapter-social-value">800 tweets </span>
-                </span><!-- /.resume-chapter-social -->
-                        </div><!-- /.col-* -->
-
-                        <div class="col-sm-3">
-                <span class="resume-chapter-social">
-                    <span class="resume-chapter-social-icon"><i class="fa fa-linkedin-square"></i></span>
-                    <span class="resume-chapter-social-value">@elliot </span>
-                </span><!-- /.resume-chapter-social -->
-                        </div><!-- /.col-* -->
-
-                        <div class="col-sm-3">
-                <span class="resume-chapter-social">
-                    <span class="resume-chapter-social-icon"><i class="fa fa-youtube-square"></i></span>
-                    <span class="resume-chapter-social-value">@elliot</span>
-                </span><!-- /.resume-chapter-social -->
-                        </div><!-- /.col-* -->
-                    </div><!-- /.row -->
-                </div><!-- /.recume-chapter-content -->
-            </div><!-- /.resume-chapter-inner -->
-        </div><!-- /.resume-chapter -->
-
-        <div class="resume-chapter">
-            <div class="resume-chapter-inner">
-                <div class="resume-chapter-title">
-                    <h2>Summary</h2>
-                </div><!-- /.resume-chapter-title -->
-
-                <div class="resume-chapter-content">
-                    <p>
-                        Curabitur sed tortor id elit elementum tincidunt eget a turpis. Pellentesque nibh felis, rhoncus ut sem vel, blandit viverra felis. Integer consequat volutpat lectus vel commodo.
-                    </p>
-
-                    <p>
-                        Nam pellentesque ac orci at tempus. Nulla sed nunc scelerisque, rhoncus magna vitae, placerat nisi. Fusce convallis ex nec tellus vulputate vehicula. Duis venenatis turpis a varius lacinia. Fusce eu est lectus. Integer commodo fringilla libero, non sodales ipsum consectetur sit amet. Aenean non ligula ac est dapibus feugiat.
-                    </p>
-                </div><!-- /.resume-chapter-content -->
-            </div><!-- /.resume-chapter-inner -->
-        </div><!-- /.resume-chapter -->
-
-        <div class="resume-chapter">
-            <div class="resume-chapter-inner">
-                <div class="resume-chapter-content">
-                    <h2 class="mb40">Working History</h2>
-
-                    <dl>
-                        <dt>Current</dt>
-
-                        <dd>
-                            <h3>Project Manager</h3>
-
-                            <p>
-                                Fusce eu est lectus. Integer commodo fringilla libero, non sodales ipsum consectetur sit amet. Aenean non ligula ac est dapibus feugiat. Fusce convallis ex nec tellus vulputate.
-                            </p>
-                        </dd>
-
-                        <dt>2011 - 2014</dt>
-
-                        <dd>
-                            <h3>Senior UX/UI designer</h3>
-
-                            <p>
-                                Fusce eu est lectus. Integer commodo fringilla libero, non sodales ipsum consectetur sit amet. Aenean non ligula ac est dapibus feugiat. Fusce convallis ex nec tellus vulputate.
-                            </p>
-                        </dd>
-
-                        <dt>2010 - 2011</dt>
-
-                        <dd>
-                            <h3>Junior UX/UI designer</h3>
-
-                            <p>
-                                Fusce eu est lectus. Integer commodo fringilla libero, non sodales ipsum consectetur sit amet. Aenean non ligula ac est dapibus feugiat. Fusce convallis ex nec tellus vulputate.
-                            </p>
-                        </dd>
-
-                        <dt>2009 - 2010</dt>
-
-                        <dd>
-                            <h3>UX Tester</h3>
-
-                            <p>
-                                Fusce eu est lectus. Integer commodo fringilla libero, non sodales ipsum consectetur sit amet. Aenean non ligula ac est dapibus feugiat. Fusce convallis ex nec tellus vulputate.
-                            </p>
-                        </dd>
-                    </dl>
-                </div><!-- /.resume-chapter-content -->
-            </div><!-- /.resume-chapter-inner -->
-        </div><!-- /.resume-chapter -->
-
-        <div class="resume-chapter">
-            <div class="resume-chapter-inner">
-                <div class="resume-chapter-title">
-                    <h2>Experience</h2>
-                </div><!-- /.resume-chapter-title -->
-
-                <div class="resume-chapter-content">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h4>Frameworks</h4>
-
-                            <ul>
-                                <li>Laravel, <span>4 years</span></li>
-                                <li>Zend, <span>3 years</span></li>
-                                <li>CakePHP, <span>1 year</span></li>
-                                <li>Yii, <span>1 year</span></li>
-                            </ul>
-                        </div><!-- /.col-* -->
-
-                        <div class="col-sm-4">
-                            <h4>Operating Systems</h4>
-
-                            <ul>
-                                <li>Debian, <span>7 years</span></li>
-                                <li>FreeBSD, <span>5 years</span></li>
-                                <li>Ubuntu, <span>1 year</span></li>
-                                <li>Gentoo, <span>1 year</span></li>
-                            </ul>
-                        </div><!-- /.col-* -->
-
-                        <div class="col-sm-4">
-                            <h4>Languages</h4>
-
-                            <ul>
-                                <li>English, <span>native</span></li>
-                                <li>German, <span>intermediate</span></li>
-                                <li>French, <span>beginner</span></li>
-                                <li>Spanish, <span>beginner</span></li>
-                            </ul>
-                        </div><!-- /.col-* -->
-                    </div><!-- /.row -->
-                </div><!-- /.resume-chapter-content -->
-            </div><!-- /.resume-chapter-inner -->
-        </div><!-- /.resume-chapter -->
+    <div class="col-md-3 col-sm-5 ">
+        <div class="filter-stacked">
+            <?php include('advanced_search_box_right.php');?>
+        </div>
+    </div>
+    <div class="col-md-9 col-sm-7">
+        <h3>Resume details</h3>
+        <table class="table table-striped">
+            <tr>
+                <td width="110px">
+                    Name:
+                </td>
+                <td>
+                    <?php echo $customer_info['user_name'];?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    <?php echo $customer_info['customers_gender'];?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Skill Title:
+                </td>
+                <td>
+                    <?php echo $customer_info['skill_title'];?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Photo:
+                </td>
+                <td>
+                    <img src="<?php echo $customer_info['photo_thumbnail'];?>" width="130px"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Telephone:
+                </td>
+                <td>
+                    <?php echo $customer_info['customers_telephone'];?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address:
+                </td>
+                <td>
+                    <?php echo $customer_info['customers_address'];?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Location:
+                </td>
+                <td>
+                    <?php echo $customer_info['location_name'];?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description:
+                </td>
+                <td>
+                    <?php echo $customer_info['detail'];?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Created Date:
+                </td>
+                <td>
+                    <?php echo $customer_info['create_date'];?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ID:
+                </td>
+                <td>
+                    #<?php echo $customer_info['customers_id'];?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Download CV:
+                </td>
+                <td>
+                    <a href="<?php echo $customer_info['upload_cv'];?>">
+                        <button class="btn btn-default">Download CV</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
     </div>
     <?php
         }else{

@@ -91,15 +91,14 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-
+<br/>
 <div class="container">
-  <div class="margin-top">
-
-      <?php
-      if ($messageStack->size('login') > 0) {
-          echo $messageStack->output('login');
-      }
-      ?>
+  <?php
+  if ($messageStack->size('login') > 0) {
+      echo $messageStack->output('login');
+  }
+  ?>
+  <div class="row">
     <?php echo $page_content; ?>
   </div>
 </div>

@@ -47,21 +47,6 @@ $(document).ready(function() {
 	});
 
 	/**
-	 * ezMark
-	 */
-	$('input[type=radio], input[type=checkbox]').ezMark();
-
-	/**
-	 * Bootstrap select
-	 */
-	$('select').selectpicker({
-		style: 'btn',
-		template: {
-      		caret: '<i class="fa fa-chevron-down"></i>'
-    	},
-	});
-
-	/**
 	 * Bootstrap wysiwyg
 	 */
 	$('#editor').wysihtml5();;

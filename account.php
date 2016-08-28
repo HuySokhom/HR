@@ -23,9 +23,10 @@
 <link href="ext/dropzone/dropzone.min.css" rel="stylesheet">
 <link href="themes/css/table_price.css" rel="stylesheet">
 <div
-	class="container margin-top"
+	class="container"
 	data-ng-app="main"
-	>
+>
+	<br/>	
 	<?php
 	  if ($messageStack->size('account') > 0) {
 		echo $messageStack->output('account');

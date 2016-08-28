@@ -20,7 +20,7 @@
 
   <p>
     <a href="password_forgotten.php">
-      <button class="btn">
+      <button class="btn btn-default">
         <i class="fa fa-hand-o-right"></i>
         <?php echo MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN; ?>
       </button>
