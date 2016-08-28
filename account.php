@@ -20,8 +20,6 @@
 
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-<link href="ext/dropzone/dropzone.min.css" rel="stylesheet">
-<link href="themes/css/table_price.css" rel="stylesheet">
 <div
 	class="container"
 	data-ng-app="main"
@@ -176,18 +174,6 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <script
 	type="text/javascript"
 	src="ext/ng/app/account/controller/property_edit_ctrl.js"
-></script>
-<script
-	type="text/javascript"
-	src="ext/ng/app/account/controller/news_ctrl.js"
-></script>
-<script
-	type="text/javascript"
-	src="ext/ng/app/account/controller/news_edit_ctrl.js"
-></script>
-<script
-	type="text/javascript"
-	src="ext/ng/app/account/controller/news_post_ctrl.js"
 ></script>
 <script
 	type="text/javascript"
