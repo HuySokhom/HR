@@ -3,10 +3,10 @@
 		<div class="col-md-3">
 			<button
 				class="btn btn-default"
-				onclick="location.href='account.php#/manage_property/post';"
+				onclick="location.href='account.php#/manage/post';"
 			>
-				<span class="glyphicon glyphicon-plus-sign"></span>
-				Post Property
+				<span class="fa fa-plus"></span>
+				Post Job
 			</button>
 			<span class="label label-info" data-ng-if="totalItems > 0">
 				Total of Items: {{totalItems}}
@@ -17,24 +17,24 @@
 				<div class="form-group has-feedback col-sm-4">
 					<input
 						type="text"
-						placeholder="Search Title..."
+						placeholder="Search Job Title..."
 						style="width: 106%;"
 						class="form-control"
 						data-ng-model="search_title"
 						data-ng-keypress="($event.which === 13) ? search() : 0"
 					/>
-					<span class="glyphicon glyphicon-search form-control-feedback"></span>
+					<span class="fa fa-search form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback col-sm-4">
 					<input
 						type="text"
-						placeholder="Search Id..."
+						placeholder="Search ID..."
 						style="width: 106%;"
 						class="form-control"
 						data-ng-model="id"
 						data-ng-keypress="($event.which === 13) ? search() : 0"
 					/>
-					<span class="glyphicon glyphicon-search form-control-feedback"></span>
+					<span class="fa fa-search form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback col-sm-4">
 					<select
@@ -54,28 +54,22 @@
 	<table class="table table-bordered table-striped">
 		<thead>
 			<th>
-				Id
+				ID
 			</th>
 			<th>
 				Category
 			</th>
 			<th>
-				Title
+				Job Title
 			</th>
 			<th>
-				Kind of
-			</th>
-			<th>
-				Price
+				Job Type
 			</th>
 			<th>
 				Product View
 			</th>
 			<th>
-				Plan
-			</th>
-			<th>
-				Boost
+				Expire Date
 			</th>
 			<th width="250px">
 				Action

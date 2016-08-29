@@ -11,19 +11,10 @@ app.controller(
 		$scope.service = new Services();
 		// init tiny option
 		$scope.tinymceOptions = {
-			plugins: [
-				"advlist autolink lists link image charmap print preview hr anchor pagebreak",
-				"searchreplace wordcount visualblocks visualchars fullscreen",
-				"insertdatetime media nonbreaking save table contextmenu directionality",
-				"emoticons template paste textcolor colorpicker textpattern media"
-			],
-			toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-			toolbar2: "print preview media | forecolor backcolor emoticons",
-			image_advtab: true,
-			paste_data_images: true
+			
 		};
 		$scope.optionalImage = [];
-		$scope.propertyTypes = ["For Sale", "For Rent", "Both Sale and Rent"];
+		$scope.propertyTypes = ["Part-Time", "Full-Time"];
 		// init category
 		$scope.initCategory = function(){
 			Restful.get("api/Category").success(function(data){
