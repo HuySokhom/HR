@@ -8,9 +8,9 @@
 				<span class="fa fa-plus"></span>
 				Post Job
 			</button>
-			<span class="label label-info" data-ng-if="totalItems > 0">
+			<button class="btn btn-primary" disabled="disabled">
 				Total of Items: {{totalItems}}
-			</span>
+			</button>
 		</div>
 		<div class="col-md-9">
 			<div class="row">
@@ -21,7 +21,7 @@
 						style="width: 106%;"
 						class="form-control"
 						data-ng-model="search_title"
-						data-ng-keypress="($event.which === 13) ? search() : 0"
+						data-ng-change="search()"
 					/>
 					<span class="fa fa-search form-control-feedback"></span>
 				</div>
@@ -32,7 +32,7 @@
 						style="width: 106%;"
 						class="form-control"
 						data-ng-model="id"
-						data-ng-keypress="($event.which === 13) ? search() : 0"
+						data-ng-change="search()"
 					/>
 					<span class="fa fa-search form-control-feedback"></span>
 				</div>
@@ -66,12 +66,12 @@
 				Job Type
 			</th>
 			<th>
-				Product View
+				View
 			</th>
 			<th>
 				Expire Date
 			</th>
-			<th width="250px">
+			<th width="100px">
 				Action
 			</th>
 		</thead>
@@ -90,97 +90,57 @@
 				<span data-ng-bind="p.products_kind_of"></span>
 			</td>
 			<td>
-				<span data-ng-bind="p.products_price | currency"></span>
-			</td>
-			<td>
 				<span data-ng-bind="p.products_viewed" class="label label-primary"></span>
 			</td>
 			<td>
-				<span data-ng-bind="
-					(p.products_promote == 3) ? 'Plan Pro'
-					: (p.products_promote == 2) ? 'Plan Premium'
-					: (p.products_promote == 1) ? 'Plan Basic'
-					: 'Plan Free'
-				"
-				data-ng-class="
-					(p.products_promote == 3) ? 'label label-danger'
-					: (p.products_promote == 2) ? 'label label-primary'
-					: (p.products_promote == 1) ? 'label label-success'
-					: 'label label-default'
-				"
-				></span>
+				<span data-ng-bind="p.products_close_date"></span>
 			</td>
 			<td>
-				<div data-ng-if="p.products_promote > 0" style="text-align: center;">
-					<img src="images/dollar_sign.jpg" data-ng-click="promote(p);" style="width: 35px;cursor: pointer;">
+				<!-- Single button -->
+				<div class="btn-group">
+				  <button type="button" 
+					  class="btn btn-default dropdown-toggle" 
+					  data-toggle="dropdown" 
+					  aria-haspopup="true" 
+					  aria-expanded="false"
+				  >
+				  		<i class="fa fa-cog"></i>
+				  		Action 
+				  		<span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu">
+				    <li>
+				    	<a href="" data-ng-click="edit(p.products_id);">
+				    		<i class="fa fa-edit"></i>
+				    		Edit
+				    	</a>
+			    	</li>
+				    <li>
+					    <a href="" data-ng-click="remove($index, p.products_id);">
+					    <i class="fa fa-trash-o"></i>
+					    	Delete
+				    	</a>
+			    	</li>
+				    <li>
+				    	<a data-ng-click="updateStatus(p);" href="">
+				    		<i 
+					    		ng-class="p.products_status == 0 ? 'fa fa-minus' : 'fa fa-check-square-o' "
+					    	></i>
+					    	<span
+					    		data-ng-bind="p.products_status == 0 ? 'Inactive' : 'Active'"
+					    	>
+					    	</span>
+				    	</a>
+			    	</li>
+				    <li></li>
+				    <li>
+				    	<a data-ng-click="link(p.products_id);" href="">
+				    		<i class="fa fa-eye"></i>
+				    		View
+			    		</a>
+				    </li>
+				  </ul>
 				</div>
-				<div data-ng-if="p.products_promote == 0" style="text-align: center;">
-					<img src="images/dollar.jpg" data-ng-click="promote(p);" style="width: 60px;cursor: pointer;">
-				</div>
-			</td>
-			<td>
-				<button
-					class="btn btn-default"
-					data-ng-click="edit(p.products_id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Edit"
-					tooltip
-				>
-					<span class="fa fa-edit"></span>
-				</button>
-				<button
-					class="btn btn-danger"
-					data-ng-click="remove($index, p.products_id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Remove"
-					tooltip
-				>
-					<span class="fa fa-trash-o"></span>
-				</button>
-				<button
-					class="btn btn-warning"
-					data-ng-click="updateStatus(p);"
-					data-ng-show="p.products_status == 0"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Inactive"
-					tooltip
-				>
-					<span class="fa fa-minus"></span>
-				</button>
-				<button
-					class="btn btn-success"
-					data-ng-click="updateStatus(p);"
-					data-ng-show="p.products_status == 1"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Active"
-					tooltip
-				>
-					<span class="fa fa-check-square-o"></span>
-				</button>
-				<button
-					class="btn btn-info"
-					data-ng-click="refreshDate(p);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Refresh Product"
-					tooltip
-				>
-					<span class="fa fa-refresh"></span>
-				</button>
-				<button
-					class="btn btn-default"
-					data-ng-click="link(p.products_id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Link"
-					tooltip
-				>
-					<span class="fa fa-eye"></span>
-				</button>
 			</td>
 		</tr>
 	</table>

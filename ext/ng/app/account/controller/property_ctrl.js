@@ -14,7 +14,7 @@ app.controller(
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
 				$scope.products_post = data;
-				//console.log(data);
+				console.log(data);
 				$scope.totalItems = data.count;
 			});
 			Restful.get("api/Category").success(function(data){
@@ -25,7 +25,7 @@ app.controller(
 		$scope.disabled = true;
 
 		$scope.edit = function(id){
-			$location.path("/manage_property/edit/" + id);
+			$location.path("/manage/edit/" + id);
 		};
 
 		$scope.refreshDate = function(params){

@@ -20,26 +20,18 @@ class Object extends DbObj {
 		$customersId
 		, $productsId
 		, $provinceId
-        , $districtId
-        , $villageId
-		, $productsImage
-		, $productsImageThumbnail
-		, $productsPrice
+        , $gender
+        , $salary
 		, $productsDateAdded
 		, $productsStatus
 		, $productsKindOf
-		, $bedRooms
-		, $bathRooms
-		, $numberOfFloors
+		, $numberOfHire
 		, $imageDetail
         , $productDetail
 		, $categoriesId
 		, $categoryDetail
-		, $customersDetail
 		, $productsPromote
-		, $mapLat
-		, $mapTitle
-		, $mapLong
+		, $productsCloseDate
 	;
 
 	public function toArray( $params = array() ){
@@ -48,26 +40,17 @@ class Object extends DbObj {
 				'id',
 				'categories_id',
 				'products_promote',
-				'map_long',
-				'map_lat',
-				'map_title',
 				'category_detail',
-				'customers_detail',
 				'customers_id',
 				'province_id',
-                'district_id',
-                'village_id',
-				'products_image',
-				'products_image_thumbnail',
-				'products_price',
+                'salary',
+                'products_close_date',
 				'create_date',
 				'create_by',
 				'products_status',
 				'products_kind_of',
-				'bed_rooms',
-				'bath_rooms',
-                'number_of_floors',
-				'image_detail',
+                'number_of_hire',
+                'gender',
 				'product_detail'
 			)
 		);
@@ -87,25 +70,17 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				customers_id,
-				map_long,
-				map_lat,
-				map_title,
 				products_promote,
 				categories_id,
 				province_id,
-				district_id,
-				village_id,
-				products_image,
-				products_image_thumbnail,
-				products_price,
 				products_date_added,
 				products_status,
 				products_kind_of,
-				bed_rooms,
-				bath_rooms,
-				number_of_floors,
-				create_date,
-				create_by
+				number_of_hire,
+				salary,
+				products_close_date,
+				create_by,
+				gender
 			FROM
 				products
 			WHERE
@@ -121,17 +96,12 @@ class Object extends DbObj {
 
 		$this->setProperties($this->dbFetchArray($q));
 
-//		$this->customersDetail->setFilter('id', $this->getCustomersId());
-//		$this->customersDetail->populate();
-
  		$this->productDetail->setFilter('id', $this->getId());
  		$this->productDetail->populate();
 
 		$this->categoryDetail->setFilter('categories_id', $this->getCategoriesId());
 		$this->categoryDetail->populate();
 
-		$this->imageDetail->setFilter('products_id', $this->getId());
-		$this->imageDetail->populate();
 	}
 
 	public function updateStatus() {
@@ -205,19 +175,12 @@ class Object extends DbObj {
 				products
 			SET
 				province_id = '" . (int)$this->getProvinceId() . "',
-				map_long = '" . $this->getMapLong() . "',
-				map_lat = '" . $this->getMapLat() . "',
-				map_title = '" . $this->getMapTitle() . "',
 				categories_id = '" . (int)$this->getCategoriesId() . "',
-				district_id = '" . (int)$this->getDistrictId() . "',
-				village_id = '" . (int)$this->getVillageId() . "',
-				products_image = '" . $this->getProductsImage() . "',
-				products_image_thumbnail = '" . $this->getProductsImageThumbnail() . "',
- 				products_price = '" . $this->getProductsPrice() . "',
+				gender = '" . $this->getGender() . "',
+				salary = '" . $this->getSalary() . "',
  				products_kind_of = '" . $this->getProductsKindOf() . "',
- 				number_of_floors = '" . $this->getNumberOfFloors() . "',
- 				bed_rooms = '" . $this->getBedRooms() . "',
- 				bath_rooms = '" . $this->getBathRooms() . "'
+ 				number_of_hire = '" . $this->getNumberOfHire() . "',
+ 				products_close_date = '" . $this->getProductsCloseDate() . "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 		");
@@ -229,47 +192,33 @@ class Object extends DbObj {
 			INSERT INTO
 				products
 			(
-				customers_id,
-				map_long,
-				map_lat,
-				map_title,
+				customers_id,				
 				categories_id,
 				province_id,
-				district_id,
-				village_id,
-				products_image,
-				products_image_thumbnail,
 				products_promote,
-				products_price,
+				salary,
 				products_date_added,
 				products_status,
 				create_date,
 				products_kind_of,
-				bed_rooms,
-				bath_rooms,
-				number_of_floors
+				gender,
+				products_close_date,
+				number_of_hire
 			)
 				VALUES
 			(
 				'" . (int)$this->getCustomersId() . "',
-				'" . $this->getMapLong() . "',
-				'" . $this->getMapLat() . "',
-				'" . $this->getMapTitle() . "',
 				'" . (int)$this->getCategoriesId() . "',
 				'" . (int)$this->getProvinceId() . "',
-				'" . (int)$this->getDistrictId() . "',
-				'" . (int)$this->getVillageId() . "',
- 				'" . $this->dbEscape( $this->getProductsImage() ) . "',
- 				'" . $this->dbEscape( $this->getProductsImageThumbnail() ) . "',
  				'" . (int)$this->getProductsPromote() . "',
-				'" . $this->getProductsPrice() . "',
+				'" . $this->getSalary() . "',
  				NOW(),
  				1,
  				NOW(),
 				'" . $this->getProductsKindOf() . "',
-				'" . (int)$this->getBedRooms() . "',
-				'" . (int)$this->getBathRooms() . "',
-				'" . (int)$this->getNumberOfFloors() . "'
+				'" . $this->getGender() . "',
+				'" . $this->getProductsCloseDate() . "',
+				'" . $this->getNumberOfHire() . "'
 			)
 		");
 		$this->setProductsId( $this->dbInsertId() );
@@ -402,11 +351,11 @@ class Object extends DbObj {
 		$this->categoriesId = (int)$int;
 	}
 
-    public function getNumberOfFloors(){
-        return $this->numberOfFloors;
+    public function getNumberOfHire(){
+        return $this->numberOfHire;
     }
-    public function setNumberOfFloors( $int ){
-        $this->numberOfFloors = (int)$int;
+    public function setNumberOfHire( $int ){
+        $this->numberOfHire = (int)$int;
     }
 
 	public function getCategoryDetail(){
@@ -423,24 +372,24 @@ class Object extends DbObj {
 		$this->customersDetail = $array;
 	}
 
-	public function getMapLat(){
-		return $this->mapLat;
+	public function getProductsCloseDate(){
+		return $this->productsCloseDate;
 	}
-	public function setMapLat( $string ){
-		$this->mapLat = $string;
-	}
-
-	public function getMapTitle(){
-		return $this->mapTitle;
-	}
-	public function setMapTitle( $string ){
-		$this->mapTitle = $string;
+	public function setProductsCloseDate( $string ){
+		$this->productsCloseDate = $string;
 	}
 
-	public function getMapLong(){
-		return $this->mapLong;
+	public function getSalary(){
+		return $this->salary;
 	}
-	public function setMapLong( $string ){
-		$this->mapLong = $string;
+	public function setSalary( $string ){
+		$this->salary = $string;
+	}
+
+	public function getGender(){
+		return $this->gender;
+	}
+	public function setGender( $string ){
+		$this->gender = $string;
 	}
 }

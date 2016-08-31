@@ -19,7 +19,7 @@
                 Job Type:
             </label>
             <select
-                data-ng-model="property_type"
+                data-ng-model="job_type"
                 data-ng-options="p for p in propertyTypes"
                 class="form-control"
                 required
@@ -27,18 +27,33 @@
                 <option value="">--Select Type--</option>
             </select>
             <label>
+                Gender:
+            </label>
+            <select
+                data-ng-model="gender"
+                data-ng-options="p for p in genders"
+                class="form-control"
+                required
+            >
+                <option value="">--Select Gender--</option>
+            </select>
+            <label>
                 Job Title:
             </label>
             <input
                 type="text"
                 class="form-control"
-                data-ng-model="title_en"
+                data-ng-model="title"
                 required
             />
             <label>
                 Salary:
             </label>
             <input type="text" class="form-control" required data-ng-model="salary"/>
+            <label>
+                Number of Hire:
+            </label>
+            <input type="text" class="form-control" required data-ng-model="number_of_hire"/>
             <label>
                 Location:
             </label>
@@ -68,7 +83,7 @@
                 class="form-control"
                 data-ng-model="description"
                 ui-tinymce="tinymceOptions"
-                rows="10"
+                rows="14"
             ></textarea>
         </div>
     </div>
@@ -80,7 +95,7 @@
                 </label>
                 <textarea
                     class="form-control"
-                    data-ng-model="benefit"
+                    data-ng-model="benefits"
                     ui-tinymce="tinymceOptions"
                     rows="10"
                 ></textarea>
@@ -91,7 +106,7 @@
                 </label>
                 <textarea
                     class="form-control"
-                    data-ng-model="requirment"
+                    data-ng-model="requirement"
                     ui-tinymce="tinymceOptions"
                     rows="10"
                 ></textarea>
@@ -111,7 +126,7 @@
             </button>
             <button
                 class="btn btn-default"
-                onclick="location.href='account.php#/manage';"
+                ng-click="back($event);"
             >
                 <i class="fa fa-close"></i>
                 Close

@@ -15,6 +15,7 @@ app.controller(
 		};
 		$scope.optionalImage = [];
 		$scope.propertyTypes = ["Part-Time", "Full-Time"];
+		$scope.genders = ["Male", "Female", "Both"];
 		// init category
 		$scope.initCategory = function(){
 			Restful.get("api/Category").success(function(data){
@@ -44,154 +45,39 @@ app.controller(
 			// set object to save into news
 			var data = {
 				products: {
-					products_image: $scope.image,
-					products_image_thumbnail: $scope.image_thumbnail,
-					map_lat: $scope.marker.coords.latitude,
-					map_long: $scope.marker.coords.longitude,
-					map_title: $scope.map_title,
 					categories_id: $scope.categories_id,
 					province_id: $scope.province_id,
-					district_id: $scope.district_id,
-					village_id: $scope.commune_id,
-					products_price: $scope.price,
-					products_kind_of: $scope.property_type,
-					bed_rooms: $scope.bed_rooms,
-					bath_rooms: $scope.bath_rooms,
-					number_of_floors: $scope.number_of_floors,
+					products_close_date: $scope.expire_date,
+					salary: $scope.salary,
+					number_of_hire: $scope.number_of_hire,
+					gender: $scope.gender,
+					products_kind_of: $scope.job_type,
 				},
 				products_description: [
 					{
-						products_name: $scope.title_en,
-						products_description: $scope.content_en,
+						products_name: $scope.title,
+						products_description: $scope.description,
+						benefits: $scope.benefits,
+						skill: $scope.requirement,
 						language_id: 1
-					},
-					{
-						products_name: $scope.title_kh,
-						products_description: $scope.content_kh,
-						language_id: 2
 					}
-				],
-				products_image: $scope.optionalImage
+				]
 			};
 			$scope.disabled = false;
-			//console.log(data);
+			console.log(data);
 			Restful.post("api/Session/User/ProductPost", data).success(function (data) {
 				$scope.disabled = true;
-				//console.log(data);
+				console.log(data);
 				$scope.service.alertMessage('<b>Complete: </b>Save Success.');
-				$location.path('manage_property');
+				$location.path('manage');
 			});
 		};
 
-		//functionality upload image
-		$scope.uploadPic = function(file, type) {
-			// validate on if image option limit with 8 photo.
-			if(type == 'optional') {
-				if($scope.optionalImage.length >= 8){
-					return $scope.service.alertMessagePromt('<b>Warning: </b>We limit image upload only 8 photo.');
-				}
-			}
-			if (file) {
-				file.upload = Upload.upload({
-					url: 'api/UploadImage',
-					data: {file: file, username: $scope.username},
-				});
-				file.upload.then(function (response) {
-					$timeout(function () {
-						file.result = response.data;
-						if(type == 'feature_image') {
-							$scope.image = response.data.image;
-							$scope.image_thumbnail = response.data.image_thumbnail;
-						}
-						if(type == 'optional') {
-							var option = {
-								image: response.data.image,
-								image_thumbnail: response.data.image_thumbnail
-							};
-							$scope.optionalImage.push(option);
-						}
-					});
-				}, function (response) {
-					if (response.status > 0)
-						$scope.errorMsg = response.status + ': ' + response.data;
-				}, function (evt) {
-					// Math.min is to fix I	E which reports 200% sometimes
-					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-				});
-			}
+		$scope.back = function($event){
+			$event.preventDefault();
+			$location.path('/manage');
 		};
 
-		// remove image
-		$scope.removeImage = function ($index) {
-			$scope.optionalImage.splice($index, 1);
-		};
-
-		/*************************************
-		 * start google map functionality  ***
-		 * start google map functionality  ***
-		 ************************************/
-
-		$scope.map = {
-			center: {
-				latitude: 11.534289603605892,
-				longitude: 104.88615066528314
-			},
-			zoom: 10
-		};
-		$scope.options = {
-			scrollwheel: true
-		};
-		$scope.coordsUpdates = 0;
-		$scope.dynamicMoveCtr = 0;
-		$scope.marker = {
-			id: 0,
-			coords: {
-				latitude: 11.534289603605892,
-				longitude: 104.88615066528314
-			},
-			options: {
-				draggable: true
-			},
-			events: {
-				dragend: function(marker, eventName, args) {
-					var lat = marker.getPosition().lat();
-					var lon = marker.getPosition().lng();
-					//$log.log(lat);
-					//$log.log(lon);
-
-					$scope.marker.options = {
-						draggable: true,
-						labelContent: "",
-						labelAnchor: "100 0",
-						labelClass: "marker-labels"
-					};
-				}
-			}
-		};
-		/************************************************************************ /
-		/******* to set every move marker set center map uncommand ***************/
-		/******************************************************************* *****/
-		//$scope.$watchCollection("marker.coords", function(newVal, oldVal) {
-		//	$scope.map.center.latitude = $scope.marker.coords.latitude;
-		//	$scope.map.center.longitude = $scope.marker.coords.longitude;
-		//	if (_.isEqual(newVal, oldVal))
-		//		return;
-		//	$scope.coordsUpdates++;
-		//});
-		//$timeout(function() {
-		//	$scope.marker.coords = {
-		//		latitude: 11.75,
-		//		longitude: 105.07
-		//	};
-		//	$scope.dynamicMoveCtr++;
-		//	$timeout(function() {
-		//		$scope.marker.coords = {
-		//			latitude: 11.75,
-		//			longitude: 105.07
-		//		};
-		//		$scope.dynamicMoveCtr++;
-		//	}, 2000);
-		//}, 1000);
 
 	}
 ]);

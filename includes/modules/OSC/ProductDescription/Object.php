@@ -14,6 +14,8 @@ class Object extends DbObj {
 		, $productsDescription
 		, $productsViewed
 		, $languageId
+		, $skill
+		, $benefits
 	;
 	
 	public function toArray( $params = array() ){
@@ -21,7 +23,9 @@ class Object extends DbObj {
 			'include' => array(
 				'products_name',
 				'products_description',
-				'products_viewed'
+				'products_viewed',
+				'benefits',
+				'skill'
 			)
 		);
 		return parent::toArray($args);
@@ -32,7 +36,9 @@ class Object extends DbObj {
 			SELECT
 				products_name,
 				products_description,
-				products_viewed
+				products_viewed,
+				benefits,
+				skill
 			FROM
 				products_description
 			WHERE
@@ -59,7 +65,9 @@ class Object extends DbObj {
 				products_description
 			SET 
 				products_name = '" .  $this->dbEscape( $this->getProductsName() ). "',
-				products_description = '" .  $this->dbEscape( $this->getProductsDescription() ). "'
+				products_description = '" .  $this->dbEscape( $this->getProductsDescription() ). "',
+				benefits = '" .  $this->dbEscape( $this->getBenefits() ). "',
+				skill = '" .  $this->dbEscape( $this->getSkill() ). "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 					AND
@@ -87,14 +95,18 @@ class Object extends DbObj {
 				products_name,
 				products_description,
 				products_id,
-				language_id
+				language_id,
+				skill,
+				benefits
 			)
 				VALUES
 			(
  				'" . $this->dbEscape( $this->getProductsName() ) . "',
  				'" . $this->dbEscape( $this->getProductsDescription() ) . "',
 				'" . $this->getProductsId() . "',
-				'" . $this->getLanguageId() . "'
+				'" . $this->getLanguageId() . "',
+				'" . $this->getSkill() . "',
+				'" . $this->getBenefits() . "'
 			)
 		");
 	}
@@ -136,6 +148,23 @@ class Object extends DbObj {
 	
 	public function getProductsId(){
 		return $this->productsId;
+	}
+
+	public function setBenefits( $string ){
+		$this->benefits = $string;
+	}
+	
+	public function getBenefits(){
+		return $this->benefits;
+	}
+
+
+	public function setSkill( $string ){
+		$this->skill = $string;
+	}
+	
+	public function getSkill(){
+		return $this->skill;
 	}
 
 }
