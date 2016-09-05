@@ -12,18 +12,10 @@ app.controller(
 	, function ($scope, Restful, $stateParams, Services, $location, $alertify, $log, Upload, $timeout){
 		// init tiny option
 		$scope.tinymceOptions = {
-			plugins: [
-				"advlist autolink lists link image charmap print preview hr anchor pagebreak",
-				"searchreplace wordcount visualblocks visualchars fullscreen",
-				"insertdatetime media nonbreaking save table contextmenu directionality",
-				"emoticons template paste textcolor colorpicker textpattern media"
-			],
-			toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-			toolbar2: "print preview media | forecolor backcolor emoticons",
-			image_advtab: true,
-			paste_data_images: true
 		};
-		$scope.propertyTypes = ["For Sale", "For Rent", "Both Sale and Rent"];
+		$scope.disabled = true;
+		$scope.propertyTypes = ["Part-Time", "Full-Time"];
+		$scope.genders = ["Male", "Female", "Both"];
 		// init category
 		$scope.initCategory = function(){
 			Restful.get("api/Category").success(function(data){
@@ -32,28 +24,9 @@ app.controller(
 			Restful.get("api/Location").success(function(data){
 				$scope.provinces = data;
 			});
-			Restful.get("api/District/").success(function(data){
-				$scope.districts = data;
-			});
-			Restful.get("api/Village/").success(function(data){
-				$scope.communes = data;
-			});
 		};
 		$scope.initCategory();
 
-		// functional for init district
-		$scope.initDistrict = function(id){
-			Restful.get("api/District/" + id).success(function(data){
-				$scope.districts = data;
-				$scope.communes = '';
-			});
-		};
-		// functional for init Commune
-		$scope.initCommune = function(id){
-			Restful.get("api/Village/" + id).success(function(data){
-				$scope.communes = data;
-			});
-		};
 		var url = 'api/Session/User/ProductPost/';
 		$scope.service = new Services();
 
@@ -78,96 +51,9 @@ app.controller(
 				$scope.longitude = data.elements[0].map_long;
 				$scope.latitude = data.elements[0].map_lat;
 
-				/********* Start init UI Google Map NG *************/
-				$scope.map = {
-					center: {
-						latitude: $scope.latitude,
-						longitude: $scope.longitude
-					},
-					zoom: 10
-				};
-				$scope.options = {
-					scrollwheel: true
-				};
-				$scope.coordsUpdates = 0;
-				$scope.dynamicMoveCtr = 0;
-
-				$scope.marker = {
-					id: 0,
-					coords: {
-						latitude: $scope.latitude,
-						longitude: $scope.longitude
-					},
-					options: {
-						draggable: true
-					},
-					events: {
-						dragend: function(marker, eventName, args) {
-							var lat = marker.getPosition().lat();
-							var lon = marker.getPosition().lng();
-							//$log.log(lat);
-							//$log.log(lon);
-
-							$scope.marker.options = {
-								draggable: true,
-								labelContent: "",
-								labelAnchor: "100 0",
-								labelClass: "marker-labels"
-							};
-						}
-					}
-				};
-
-				/********* End init UI Google Map NG *************/
 			});
 		};
-		$scope.init();
-		$scope.longitude = 104;
-		$scope.latitude = 11;
-		/*************************************
-		 * start google map functionality  ***
-		 * start google map functionality  ***
-		 ************************************/
-
-		$scope.map = {
-			center: {
-				latitude: $scope.latitude,
-				longitude: $scope.longitude
-			},
-			zoom: 10
-		};
-		$scope.options = {
-			scrollwheel: true
-		};
-		$scope.coordsUpdates = 0;
-		$scope.dynamicMoveCtr = 0;
-
-		$scope.marker = {
-			id: 0,
-			coords: {
-				latitude: $scope.latitude,
-				longitude: $scope.longitude
-			},
-			options: {
-				draggable: true
-			},
-			events: {
-				dragend: function(marker, eventName, args) {
-					var lat = marker.getPosition().lat();
-					var lon = marker.getPosition().lng();
-					//$log.log(lat);
-					//$log.log(lon);
-
-					$scope.marker.options = {
-						draggable: true,
-						labelContent: "",
-						labelAnchor: "100 0",
-						labelClass: "marker-labels"
-					};
-				}
-			}
-		};
-		/************* End of Functionality google map NG ************************/
+		$scope.init();		
 
 		/***************** update functionality *******************/
 		$scope.save = function(){
@@ -211,48 +97,9 @@ app.controller(
 			});
 		};
 
-		//functionality upload
-		$scope.uploadPic = function(file, type) {
-			// validate on if image option limit with 8 photo.
-			if(type == 'optional') {
-				if($scope.optionalImage.length >= 8){
-					return $scope.service.alertMessagePromt('<b>Warning: </b>We limit image upload only 8 photo.');
-				}
-			}
-			if (file) {
-				file.upload = Upload.upload({
-					url: 'api/UploadImage',
-					data: {file: file, username: $scope.username},
-				});
-				file.upload.then(function (response) {
-					$timeout(function () {
-						file.result = response.data;
-						if(type == 'feature_image') {
-							$scope.image = response.data.image;
-							$scope.image_thumbnail = response.data.image_thumbnail;
-						}
-						if(type == 'optional') {
-							var option = {
-								image: response.data.image,
-								image_thumbnail: response.data.image_thumbnail
-							};
-							$scope.optionalImage.push(option);
-						}
-					});
-				}, function (response) {
-					if (response.status > 0)
-						$scope.errorMsg = response.status + ': ' + response.data;
-				}, function (evt) {
-					// Math.min is to fix I	E which reports 200% sometimes
-					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-				});
-			}
+		$scope.back = function($event){
+			$event.preventDefault();
+			$location.path('/manage');
 		};
-
-		// remove image
-		$scope.removeImage = function ($index) {
-			$scope.optionalImage.splice($index, 1);
-		};
-
 	}
 ]);

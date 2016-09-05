@@ -9,22 +9,11 @@
 				Post Job
 			</button>
 			<button class="btn btn-primary" disabled="disabled">
-				Total of Items: {{totalItems}}
+				Total of Jobs: {{totalItems}}
 			</button>
 		</div>
 		<div class="col-md-9">
 			<div class="row">
-				<div class="form-group has-feedback col-sm-4">
-					<input
-						type="text"
-						placeholder="Search Job Title..."
-						style="width: 106%;"
-						class="form-control"
-						data-ng-model="search_title"
-						data-ng-change="search()"
-					/>
-					<span class="fa fa-search form-control-feedback"></span>
-				</div>
 				<div class="form-group has-feedback col-sm-4">
 					<input
 						type="text"
@@ -37,6 +26,17 @@
 					<span class="fa fa-search form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback col-sm-4">
+					<input
+						type="text"
+						placeholder="Search Job Title..."
+						style="width: 106%;"
+						class="form-control"
+						data-ng-model="search_title"
+						data-ng-change="search()"
+					/>
+					<span class="fa fa-search form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback col-sm-4">
 					<select
 						data-ng-model="category_id"
 						data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
@@ -44,7 +44,7 @@
 						data-ng-change="search();"
 						required
 					>
-						<option value="">--Filter By Category--</option>
+						<option value="">Filter By Category</option>
 					</select>
 				</div>
 			</div>
@@ -104,21 +104,20 @@
 					  aria-haspopup="true" 
 					  aria-expanded="false"
 				  >
-				  		<i class="fa fa-cog"></i>
-				  		Action 
+				  		<i class="fa fa-cog"></i> 
 				  		<span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu">
 				    <li>
+				    	<a data-ng-click="link(p.products_id);" href="">
+				    		<i class="fa fa-eye"></i>
+				    		View
+			    		</a>
+				    </li>
+				    <li>
 				    	<a href="" data-ng-click="edit(p.products_id);">
 				    		<i class="fa fa-edit"></i>
 				    		Edit
-				    	</a>
-			    	</li>
-				    <li>
-					    <a href="" data-ng-click="remove($index, p.products_id);">
-					    <i class="fa fa-trash-o"></i>
-					    	Delete
 				    	</a>
 			    	</li>
 				    <li>
@@ -132,13 +131,12 @@
 					    	</span>
 				    	</a>
 			    	</li>
-				    <li></li>
 				    <li>
-				    	<a data-ng-click="link(p.products_id);" href="">
-				    		<i class="fa fa-eye"></i>
-				    		View
-			    		</a>
-				    </li>
+					    <a href="" data-ng-click="remove($index, p.products_id);">
+					    <i class="fa fa-trash-o"></i>
+					    	Delete
+				    	</a>
+			    	</li>
 				  </ul>
 				</div>
 			</td>

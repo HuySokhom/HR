@@ -98,9 +98,14 @@
       echo $messageStack->output('login');
   }
   ?>
-  <div class="row">
-    <?php echo $page_content; ?>
-  </div>
+    <div class="col-md-3">
+      <div class="filter-stacked">
+        <?php require('advanced_search_box_right.php');?>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <?php echo $page_content; ?>
+    </div>
 </div>
 
 <?php

@@ -13,7 +13,6 @@ app.controller(
 		$scope.tinymceOptions = {
 			
 		};
-		$scope.optionalImage = [];
 		$scope.propertyTypes = ["Part-Time", "Full-Time"];
 		$scope.genders = ["Male", "Female", "Both"];
 		// init category
@@ -64,10 +63,8 @@ app.controller(
 				]
 			};
 			$scope.disabled = false;
-			console.log(data);
 			Restful.post("api/Session/User/ProductPost", data).success(function (data) {
 				$scope.disabled = true;
-				console.log(data);
 				$scope.service.alertMessage('<b>Complete: </b>Save Success.');
 				$location.path('manage');
 			});

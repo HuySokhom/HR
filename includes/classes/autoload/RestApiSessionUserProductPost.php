@@ -77,7 +77,8 @@ class RestApiSessionUserProductPost extends RestApi {
 						p.products_kind_of,
 						c.categories_name,
 						pd.products_name,
-						pd.products_viewed
+						pd.products_viewed,
+						DATE_FORMAT(p.products_close_date, '%d/%M/%Y') as products_close_date
 					from
 						products p, products_description pd, categories_description c
 					where
@@ -90,7 +91,7 @@ class RestApiSessionUserProductPost extends RestApi {
 				while ($product_info = tep_db_fetch_array($query)){
 					$array[] = $product_info;
 				}
-				$count = tep_db_query("select count(products_id) as total from products where customers_id = '" . $userId . "'");
+				$count = tep_db_query("select count(p.products_id) as total from products p, products_description pd where customers_id = '" . $userId . "' and p.products_id = pd.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
 				$total = tep_db_fetch_array($count);
 
 				return array(

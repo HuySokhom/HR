@@ -274,14 +274,19 @@
     echo $messageStack->output('create_account');
   }
   ?>
-
+<div class="col-md-3">
+      <div class="filter-stacked">
+        <?php require('advanced_search_box_right.php');?>
+      </div>
+    </div>
+    <div class="col-md-9">
 <div class="alert alert-warning">
   <?php echo sprintf(TEXT_ORIGIN_LOGIN, tep_href_link(FILENAME_LOGIN, tep_get_all_get_params(), 'SSL')); ?><span class="inputRequirement pull-right text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></span>
 </div>
 
 <?php echo tep_draw_form('create_account', tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'class="form-horizontal" onsubmit="return check_form(create_account);"', true) . tep_draw_hidden_field('action', 'process'); ?>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-7">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="form-group has-feedback">
@@ -338,18 +343,25 @@
             </div>
           </div>
         </div>
-  <div class="buttonSet">
-    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fa fa-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
+    <div class="buttonSet">
+      <div class="text-right">
+        <?php 
+          echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 
+            'fa fa-chevron-right', null, 
+            'primary', null, 'btn-success'); 
+        ?>
+      </div>
   </div>
 </form>
 </div></div></div>
-    <div class="col-md-6">
+    <div class="col-md-5">
   <div class="panel panel-default">
     <div class="panel-body">
       <h4><?php echo MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER; ?></h4>
       <p>
         <i class="fa fa-hand-o-right"></i>
         <?php echo MODULE_CONTENT_JOIN_FREE; ?>
+      </p>
       <p>
         <i class="fa fa-hand-o-right"></i>
         <?php echo MODULE_CONTENT_SELL_OR_RENT; ?>
@@ -362,6 +374,7 @@
   </div>
     </div>
   </div>
+</div>
 </div>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');

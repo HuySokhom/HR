@@ -207,8 +207,9 @@
 						  <dt>Address</dt>
 						  <dd>
 							  <?php echo $product_info['customers_address'];?>
-						  </dd>
+						  </dd>						  
 					  </dl>
+					  <div><button class="btn btn-primary">Apply Now</button></div>
 				  </div><!-- /.company-card-data -->
 			  </div><!-- /.company-card -->
 
