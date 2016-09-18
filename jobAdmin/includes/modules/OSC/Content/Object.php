@@ -36,14 +36,14 @@ class Object extends DbObj {
 			SELECT
 				status
 			FROM
-				content
+				page
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
 		
 		if( ! $this->dbNumRows($q) ){
 			throw new \Exception(
-				"404: Content not found",
+				"404: Page not found",
 				404
 			);
 		}

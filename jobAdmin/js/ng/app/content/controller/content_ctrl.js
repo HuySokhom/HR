@@ -34,8 +34,8 @@ app.controller(
 		// save functionality
 		$scope.save = function(){
 			var data = {
-				title: $scope.title,
-				content: $scope.content,
+				pages_title: $scope.title,
+				pages_content: $scope.content,
 				language_id: $scope.language_id,
 			};
 			$scope.isDisabled = true;
@@ -53,9 +53,9 @@ app.controller(
 
 		// edit functionality
 		$scope.edit = function(params){console.log(params);
-			$scope.content = params.content;
+			$scope.content = params.pages_content;
 			$scope.id = params.id;
-			$scope.title = params.title;
+			$scope.title = params.pages_title;
 			$scope.language_id = params.language_id;
 			$('#contentPopup').modal('show');
 		};

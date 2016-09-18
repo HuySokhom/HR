@@ -13,6 +13,7 @@ class RestApiEmployers extends RestApi {
 
         $params['GET']['user_type'] ? $col->filterByType($params['GET']['user_type']) : '';
         $params['GET']['is_agency'] ? $col->filterByIsAgency($params['GET']['is_agency']) : '';
+        $col->orderByRandom();
         // start limit page
         $showDataPerPage = 10;
         $start = $params['GET']['start'];

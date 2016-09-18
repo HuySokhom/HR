@@ -7,13 +7,7 @@
         <th>
             Title
         </th>
-        <th>
-            Content
-        </th>
-        <th>
-            Language
-        </th>
-        <th style="width: 100px;">
+        <th style="width: 80px;">
             Action
         </th>
         </thead>
@@ -22,13 +16,7 @@
                 {{n.id}}
             </td>
             <td>
-                {{n.title}}
-            </td>
-            <td>
-                <span data-ng-bind-html="n.content | limitTo : 1520 "></span>
-            </td>
-            <td>
-                <span data-ng-bind="n.language_id == 1 ? 'English' : 'Khmer' "></span>
+                {{n.pages_title}}
             </td>
             <td>
                 <button

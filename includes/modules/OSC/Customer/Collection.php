@@ -30,4 +30,9 @@ class Collection extends StdCollection {
 	public function orderById($arg){
 		$this->addOrderBy("c.customers_id", $arg);
 	}
+
+	public function orderByRandom(){
+		$this->addOrderBy("RAND()");
+	}
+
 }

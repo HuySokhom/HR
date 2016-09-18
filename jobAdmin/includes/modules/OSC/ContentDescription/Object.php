@@ -9,8 +9,9 @@ use
 class Object extends DbObj {
 		
 	protected
-		$content
-		, $title
+		$pagesContent
+		, $pagesTitle
+		, $pagesId
 		, $languageId
 	;
 
@@ -18,8 +19,9 @@ class Object extends DbObj {
 		$args = array(
 			'include' => array(
 				'id',
-				'content',
-				'title',
+				'pages_content',
+				'pages_title',
+				'pages_id',
 				'language_id'
 			)
 		);
@@ -30,18 +32,19 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				title,
-				content,
-				language_id
+				pages_title,
+				pages_content,
+				language_id,
+				pages_id
 			FROM
-				content_description
+				page_description
 			WHERE
 				id = '" . (int)$this->getId() . "'	
 		");
 		
 		if( ! $this->dbNumRows($q) ){
 			throw new \Exception(
-				"404: Content description not found",
+				"404: Page Description not found",
 				404
 			);
 		}
@@ -55,10 +58,10 @@ class Object extends DbObj {
 		}
 		$this->dbQuery("
 			UPDATE
-				content_description
+				page_description
 			SET
-				title = '" .  $this->getTitle() . "',
-				content = '" . $this->dbEscape(  $this->getContent() ) . "',
+				pages_title = '" .  $this->getPagesTitle() . "',
+				pages_content = '" . $this->dbEscape(  $this->getPagesContent() ) . "',
 				update_by = '" . $this->getUpdateBy() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
@@ -70,18 +73,18 @@ class Object extends DbObj {
 	public function insert(){
 		$this->dbQuery("
 			INSERT INTO
-				content_description
+				page_description
 			(
-				content,
-				title,
+				pages_content,
+				pages_title,
 				create_by,
 				create_date,
 				language_id
 			)
 				VALUES
 			(
-				'" . $this->dbEscape(  $this->getContent() ) . "',
-				'" . $this->getTitle() . "',
+				'" . $this->dbEscape(  $this->getPagesContent() ) . "',
+				'" . $this->getPagesTitle() . "',
 				'" . $this->getCreateBy() ."',
 				NOW(),
 				'" . $this->getLanguageId() ."'
@@ -90,19 +93,19 @@ class Object extends DbObj {
 		$this->setId( $this->dbInsertId() );
 	}
 
-	public function setContent( $string ){
-		$this->content = $string;
+	public function setPagesContent( $string ){
+		$this->pagesContent = $string;
 	}
 	
-	public function getContent(){
-		return $this->content;
+	public function getPagesContent(){
+		return $this->pagesContent;
 	}
 
-	public function setTitle( $string ){
-		$this->title = (string)$string;
+	public function setPagesTitle( $string ){
+		$this->pagesTitle = (string)$string;
 	}
-	public function getTitle(){
-		return $this->title;
+	public function getPagesTitle(){
+		return $this->pagesTitle;
 	}
 
 	public function setLanguageId( $string ){
@@ -110,5 +113,12 @@ class Object extends DbObj {
 	}
 	public function getLanguageId(){
 		return $this->languageId;
+	}
+
+	public function setPagesId( $string ){
+		$this->pagesId = (int)$string;
+	}
+	public function getPagesId(){
+		return $this->pagesId;
 	}
 }
