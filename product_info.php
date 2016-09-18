@@ -18,6 +18,7 @@
 			cu.customers_address,
 			cu.customers_website,
 			cu.customers_telephone,
+			cu.detail,
 			p.products_kind_of,
 			p.gender,
 			p.number_of_hire,
@@ -157,17 +158,19 @@
 				  </dl>
 			  </div><!-- /.position-general-information -->
 
-			  <h3 class="page-header">Description, duties, responsibilities</h3>
+			  <h3 class="page-header background-header">Description, duties, responsibilities</h3>
 			  <p>
 				  <?php echo $product_info['products_description'];?>
 			  </p>
 
-			  <h3 class="page-header">Other benefits</h3>
+			  <h3 class="page-header background-header">Other benefits</h3>
 			  <?php echo $product_info['benefits'];?>
 
-			  <h3 class="page-header">Personality requirements and skills</h3>
+			  <h3 class="page-header background-header">Personality requirements and skills</h3>
 			  <?php echo $product_info['skill'];?>
 
+			  <h3 class="page-header background-header">About Company</h3>
+			  <?php echo $product_info['detail'];?>
 		  </div><!-- /.col-* -->
 
 		  <div class="col-sm-4">

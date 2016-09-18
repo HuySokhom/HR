@@ -168,37 +168,38 @@ class RestApiSessionUserProductPost extends RestApi {
 				$cols->populate();
 				$col = $cols->getFirstElement();
 				$col->setProductsId($productId);
-				$col->setProperties($params['PUT']['products']);
+				$col->setProperties($params['PUT']);
 				$col->update();
 
 				// update category to product
 				$productToCategoryObject = new ProductToCategoryObj();
 				$productToCategoryObject->setProductsId($productId);
-				$productToCategoryObject->setCategoriesId($params['PUT']['products']['categories_id']);
+				$productToCategoryObject->setCategoriesId($params['PUT']['categories_detail']);
 				$productToCategoryObject->update();
 
 				// save product description
-				$fields = $params['PUT']['products_description'];
+				$fields = $params['PUT']['product_detail'];
 				$productDetailObject = new ProductDescriptionObj();
 				foreach ( $fields as $k => $v){
 					$productDetailObject->setProductsId($productId);
+					$productDetailObject->setLanguageId(1);
 					$productDetailObject->setProperties($v);
 					$productDetailObject->update();
 					unset($v);
 				}
 
 				// update product image
-				$imageFields = $params['PUT']['products_image'];
-				$productImageObject = new ProductImageObj();
-				$productImageObject->setProductsId($productId);
-				// delete first insert new after
-				$productImageObject->delete();
-				foreach ( $imageFields as $k => $v){
-					$productImageObject->setProductsId($productId);
-					$productImageObject->setProperties($v);
-					$productImageObject->insert();
-					unset($v);
-				}
+//				$imageFields = $params['PUT']['products_image'];
+//				$productImageObject = new ProductImageObj();
+//				$productImageObject->setProductsId($productId);
+//				// delete first insert new after
+//				$productImageObject->delete();
+//				foreach ( $imageFields as $k => $v){
+//					$productImageObject->setProductsId($productId);
+//					$productImageObject->setProperties($v);
+//					$productImageObject->insert();
+//					unset($v);
+//				}
 				return array(
 					'data' => array(
 						'data' => 'update success'

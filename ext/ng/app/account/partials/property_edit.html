@@ -6,9 +6,10 @@
         <div class="col-md-6">
             <label>
                 Type:
+                <span class="require">*</span>
             </label>
             <select
-                data-ng-model="categories_id"
+                data-ng-model="model.categories_id"
                 data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
                 class="form-control"
                 data-ng-selected="categories_id == c.categories_id"
@@ -18,9 +19,10 @@
             </select>
             <label>
                 Job Type
+                <span class="require">*</span>
             </label>
             <select
-                data-ng-model="property_type"
+                data-ng-model="model.products_kind_of"
                 data-ng-options="p for p in propertyTypes"
                 class="form-control"
                 data-ng-selected="property_type == p"
@@ -30,9 +32,10 @@
             </select>
             <label>
                 Gender:
+                <span class="require">*</span>
             </label>
             <select
-                data-ng-model="gender"
+                data-ng-model="model.gender"
                 data-ng-options="p for p in genders"
                 class="form-control"
                 required
@@ -41,26 +44,28 @@
             </select>
             <label>
                 Job Title:
+                <span class="require">*</span>
             </label>
             <input
                 type="text"
                 class="form-control"
-                data-ng-model="title"
+                data-ng-model="model.product_detail[0].products_name"
                 required
             />
             <label>
                 Salary:
             </label>
-            <input type="text" class="form-control" required data-ng-model="salary"/>
+            <input type="text" class="form-control" required data-ng-model="model.salary"/>
             <label>
                 Number of Hire:
             </label>
-            <input type="text" class="form-control" required data-ng-model="number_of_hire"/>
+            <input type="text" class="form-control" required data-ng-model="model.number_of_hire"/>
             <label>
                 Location:
+                <span class="require">*</span>
             </label>
             <select
-                data-ng-model="province_id"
+                data-ng-model="model.province_id"
                 data-ng-options="p.id as p.name for p in provinces.elements"
                 class="form-control"
                 data-ng-change="initDistrict(province_id);"
@@ -70,20 +75,23 @@
             </select>
             <label>
                 Expire Date:
+                <span class="require">*</span>
             </label>
             <input
                 type="text"
                 class="form-control"
-                data-ng-model="expire_date"
-            >
+                data-ng-model="model.products_close_date"
+                required
+            />
         </div>
         <div class="col-md-6">
             <label>
                 Description, duties, responsibilities:
+                <span class="require">*</span>
             </label>
             <textarea
                 class="form-control"
-                data-ng-model="description"
+                data-ng-model="model.product_detail[0].products_description"
                 ui-tinymce="tinymceOptions"
                 rows="14"
             ></textarea>
@@ -94,10 +102,11 @@
             <div class="col-md-6">
                 <label>
                     Other benefits:
+                    <span class="require">*</span>
                 </label>
                 <textarea
                     class="form-control"
-                    data-ng-model="benefits"
+                    data-ng-model="model.product_detail[0].benefits"
                     ui-tinymce="tinymceOptions"
                     rows="10"
                 ></textarea>
@@ -105,10 +114,11 @@
             <div class="col-md-6">
                 <label> 
                     Personality requirements and skills:
+                    <span class="require">*</span>
                 </label>
                 <textarea
                     class="form-control"
-                    data-ng-model="requirement"
+                    data-ng-model="model.product_detail[0].skill"
                     ui-tinymce="tinymceOptions"
                     rows="10"
                 ></textarea>
