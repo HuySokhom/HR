@@ -43,6 +43,52 @@
         </div>
     </div>
     <div class="col-md-9 col-sm-7">
+        <div class="col-md-3 col-lg-3 " align="center">
+            <img alt="User Pic"
+                 src="<?php echo $customer_info['photo_thumbnail'];?>"
+                 class="img-responsive"/>
+        </div>
+        <div class="col-md-9 col-lg-9 ">
+            <table class="table table-user-information">
+                <tbody>
+                <tr>
+                    <td>Department:</td>
+                    <td>Programming</td>
+                </tr>
+                <tr>
+                    <td>Hire date:</td>
+                    <td>06/23/2013</td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>01/24/1988</td>
+                </tr>
+
+                <tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>Male</td>
+                </tr>
+                <tr>
+                    <td>Home Address</td>
+                    <td>Metro Manila,Philippines</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><a href="mailto:info@support.com">info@support.com</a></td>
+                </tr>
+                <td>Phone Number</td>
+                <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
+                </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+
+            <a href="#" class="btn btn-primary">My Sales Performance</a>
+            <a href="#" class="btn btn-primary">Team Sales Performance</a>
+        </div>
         <h3>Resume details</h3>
         <table class="table table-striped">
             <tr>

@@ -94,9 +94,9 @@
         </ul>
         <hr>
         <div class="filter-actions">
-            <a href="candidates.html">All Candidates</a> <span class="filter-separator">/</span>
-            <a href="positions.html">All Jobs</a> <span class="filter-separator">/</span>
-            <a href="companies.html">All Companies</a>
+            <a href="job_seekers.php">All Candidates</a> <span class="filter-separator">/</span>
+            <a href="positions.php">All Jobs</a> <span class="filter-separator">/</span>
+            <a href="employers.php">All Companies</a>
         </div><!-- /.filter -->
     </div>
 <!-- /.filter -->

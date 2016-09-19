@@ -14,7 +14,7 @@
             <div class="candidates-list-item" data-ng-repeat="data in data.elements">
                 <div class="candidates-list-item-heading">
                     <div class="candidates-list-item-image">
-                        <a href="{{renderLink(data.id, data.company_name)}}">
+                        <a href="{{renderLink(data.id, data.user_name)}}">
                             <img ng-src="{{data.photo_thumbnail}}">
                         </a>
                     </div><!-- /.candidates-list-item-image -->
@@ -30,6 +30,7 @@
                 </div><!-- /.candidates-list-item-location -->
 
                 <div class="candidates-list-item-profile">
+                    <spa>Position:</spa>
                     <span data-ng-bind="data.skill_title"></span>
                 </div><!-- /.candidates-list-item-rating -->
             </div>

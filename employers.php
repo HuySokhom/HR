@@ -21,7 +21,7 @@
 
                 <div class="companies-list-item-heading">
                     <h2>
-                        <a href="" ref="{{renderLink(data.id, data.company_name)}}">
+                        <a href="{{renderLink(data.id, data.company_name)}}">
                             {{data.company_name}}
                         </a>
                     </h2>
