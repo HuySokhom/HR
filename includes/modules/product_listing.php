@@ -106,11 +106,7 @@
               </div><!-- /.col-* -->
 
               <div class="col-sm-2">
-                  <div class="banner-wrapper">
-                      <a href="">
-                          <img src="assets/img/tmp/banner-120x600.png" alt="">
-                      </a>
-                  </div><!-- /.banner-wrapper -->
+                <?php include('advertisement_right.php');?>
               </div><!-- /.col-* -->
           </div><!-- /.row -->
       </div><!-- /.container -->
