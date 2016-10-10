@@ -10,6 +10,20 @@
         </div>
     </div>
     <div class="col-md-9 col-sm-7" ng-cloak>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="inputPassword">Search Name:</label>
+                <input class="form-control" data-ng-model="filterName" type="text" placeholder="search candidate name...">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputPassword">Disabled</label>
+                <select class="form-control" data-ng-model="filterCategory" ></select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputPassword">Disabled</label>
+                <select class="form-control"></select>
+            </div>
+        </div>
         <div class="candidates-list">
             <div class="candidates-list-item" data-ng-repeat="data in data.elements">
                 <div class="candidates-list-item-heading">

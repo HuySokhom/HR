@@ -20,6 +20,7 @@
 
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
+<link href="ext/ng/lib/angular-moment-picker/angular-moment-picker.min.css" rel="stylesheet" type="text/css">
 <div
 	class="container"
 	data-ng-app="main"
@@ -122,6 +123,14 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <script
 	type="text/javascript"
 	src="ext/ng/lib/angular-alertify/js/ngAlertify.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/lib/momentjs/moment.min.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/lib/angular-moment-picker/angular-moment-picker.min.js"
 ></script>
 <script src="ext/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
 <!-- for no html5 browsers support -->
