@@ -73,27 +73,10 @@
                 type="text"
                 class="form-control"
                 data-ng-model="expire_date"
-                moment-picker="datepicker"
-                format="DD/MM/YYYY"
-                start-view="date"
+                datetime-picker
+                date-format="dd-MM-yyyy"
+                date-only
             >
-            <div class="input-group"
-                 moment-picker="datepicker"
-                 start-view="year"
-                 format="YYYY-MM-DD">
-                <span class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                </span>
-                <input class="form-control"
-                       placeholder="Select a date"
-                       ng-model="datepicker">
-            </div>
-            <div moment-picker="ctrl.myInput"
-                 disable="true"
-                 autoclose="true"
-                 today="true"
-                 keyboard="true">
-            </div>
         </div>
         <div class="col-md-6">
             <label>

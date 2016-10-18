@@ -20,7 +20,7 @@
 
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-<link href="ext/ng/lib/angular-moment-picker/angular-moment-picker.min.css" rel="stylesheet" type="text/css">
+<link href="ext/ng/lib/angular-datetime/angularjs-datetime-picker.css" rel="stylesheet" type="text/css">
 <div
 	class="container"
 	data-ng-app="main"
@@ -77,11 +77,11 @@
 				</div>
 			</div>
 
-			<div class="alert alert-info">
-				<i class="fa fa-star"></i>
-				<?php echo TEXT_PLAN;?>
-			</div>
-			<div plan></div>
+<!--			<div class="alert alert-info">-->
+<!--				<i class="fa fa-star"></i>-->
+<!--				--><?php //echo TEXT_PLAN;?>
+<!--			</div>-->
+<!--			<div plan></div>-->
 		</div>
     <?php
     	// don't need to show
@@ -126,11 +126,7 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/lib/momentjs/moment.min.js"
-></script>
-<script
-	type="text/javascript"
-	src="ext/ng/lib/angular-moment-picker/angular-moment-picker.min.js"
+	src="ext/ng/lib/angular-datetime/angularjs-datetime-picker.min.js"
 ></script>
 <script src="ext/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
 <!-- for no html5 browsers support -->
