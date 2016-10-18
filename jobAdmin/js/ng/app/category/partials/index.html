@@ -14,10 +14,7 @@
 			Id
 		</th>
 		<th>
-			Name En
-		</th>
-		<th>
-			Name Kh
+			Name
 		</th>
 		<th>
 			Parent Id
@@ -42,9 +39,6 @@
 		</td>
 		<td>
 			<span data-ng-bind="c.detail[0].categories_name"></span>
-		</td>
-		<td>
-			<span data-ng-bind="c.detail[1].categories_name"></span>
 		</td>
 		<td>
 			{{c.parent_id}}
@@ -82,6 +76,18 @@
 	<div class="alert alert-danger alert-dismissible">
 		<strong>Warning!</strong> Empty Data.
 	</div>
+</div>
+<div
+	class="panel-footer"
+>
+	<pagination
+		total-items="totalItems"
+		ng-model="currentPage"
+		ng-change="pageChanged()"
+		max-size="5"
+		items-per-page="10"
+		boundary-links="true"
+	></pagination>
 </div>
 
 <form data-ng-submit="save();" name="myForm">

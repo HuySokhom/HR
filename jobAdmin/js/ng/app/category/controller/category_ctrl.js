@@ -10,7 +10,7 @@ app.controller(
 	, function ($scope, Restful, Services, $location, Upload, $alertify, $timeout){
 		$scope.service = new Services();
 		var url = "api/Category/";
-		var params = {};
+		var params = {pagination: 'yes'};
 		function init(params){
 			Restful.get(url, params).success(function(data){
 				$scope.category = data;
@@ -92,6 +92,15 @@ app.controller(
 					ev.preventDefault();
 				});
 		};
-
+		/**
+		 * start functionality pagination
+		 */
+		$scope.currentPage = 1;
+		//get another portions of data on page changed
+		$scope.pageChanged = function() {
+			$scope.pageSize = 10 * ( $scope.currentPage - 1 );
+			params.start = $scope.pageSize;
+			init(params);
+		};
 	}
 ]);
