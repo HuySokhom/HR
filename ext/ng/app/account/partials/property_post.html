@@ -6,6 +6,7 @@
         <div class="col-md-6">
             <label>
                 Category Type:
+                <span class="require">*</span>
             </label>
             <select
                 data-ng-model="categories_id"
@@ -17,6 +18,7 @@
             </select>
             <label>
                 Job Type:
+                <span class="require">*</span>
             </label>
             <select
                 data-ng-model="job_type"
@@ -28,6 +30,7 @@
             </select>
             <label>
                 Gender:
+                <span class="require">*</span>
             </label>
             <select
                 data-ng-model="gender"
@@ -39,6 +42,7 @@
             </select>
             <label>
                 Job Title:
+                <span class="require">*</span>
             </label>
             <input
                 type="text"
@@ -48,14 +52,24 @@
             />
             <label>
                 Salary:
+                <span class="require">*</span>
             </label>
-            <input type="text" class="form-control" required data-ng-model="salary"/>
+            <select
+                class="form-control"
+                required
+                data-ng-model="salary"
+                data-ng-options="range as range for range in rangeSalary"
+            >
+                <option value="">--Select Range Salary--</option>
+            </select>
             <label>
                 Number of Hire:
+                <span class="require">*</span>
             </label>
-            <input type="text" class="form-control" required data-ng-model="number_of_hire"/>
+            <input type="number" min="1" class="form-control" required data-ng-model="number_of_hire"/>
             <label>
                 Location:
+                <span class="require">*</span>
             </label>
             <select
                 data-ng-model="province_id"
@@ -68,6 +82,7 @@
             </select>
             <label>
                 Expire Date:
+                <span class="require">*</span>
             </label>
             <input
                 type="text"
@@ -81,13 +96,21 @@
         <div class="col-md-6">
             <label>
                 Description, duties, responsibilities:
+                <span class="require">*</span>
             </label>
-            <textarea
-                class="form-control"
+            <trix-editor
                 data-ng-model="description"
-                ui-tinymce="tinymceOptions"
-                rows="14"
-            ></textarea>
+                angular-trix trix-initialize="trixInitialize(e, editor);"
+                trix-change="trixChange(e, editor);"
+                trix-selection-change="trixSelectionChange(e, editor);"
+                trix-focus="trixFocus(e, editor);"
+                trix-blur="trixBlur(e, editor);"
+                trix-file-accept="trixFileAccept(e, editor);"
+                trix-attachment-add="trixAttachmentAdd(e, editor);"
+                placeholder="Write something.."
+                trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                style="overflow: scroll;height: 444px;overflow-y: auto;overflow-x: auto;">
+            </trix-editor>
         </div>
     </div>
     <div class="row">
@@ -95,24 +118,40 @@
             <div class="col-md-6">
                 <label>
                     Other benefits:
+                    <span class="require">*</span>
                 </label>
-                <textarea
-                    class="form-control"
-                    data-ng-model="benefits"
-                    ui-tinymce="tinymceOptions"
-                    rows="10"
-                ></textarea>
+                <trix-editor
+                        data-ng-model="benefits"
+                        angular-trix trix-initialize="trixInitialize(e, editor);"
+                        trix-change="trixChange(e, editor);"
+                        trix-selection-change="trixSelectionChange(e, editor);"
+                        trix-focus="trixFocus(e, editor);"
+                        trix-blur="trixBlur(e, editor);"
+                        trix-file-accept="trixFileAccept(e, editor);"
+                        trix-attachment-add="trixAttachmentAdd(e, editor);"
+                        placeholder="Write something.."
+                        trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                        style="overflow: scroll;height: 444px;overflow-y: auto;overflow-x: auto;">
+                </trix-editor>
             </div>
             <div class="col-md-6">
                 <label> 
                     Personality requirements and skills:
+                    <span class="require">*</span>
                 </label>
-                <textarea
-                    class="form-control"
-                    data-ng-model="requirement"
-                    ui-tinymce="tinymceOptions"
-                    rows="10"
-                ></textarea>
+                <trix-editor
+                        data-ng-model="requirement"
+                        angular-trix trix-initialize="trixInitialize(e, editor);"
+                        trix-change="trixChange(e, editor);"
+                        trix-selection-change="trixSelectionChange(e, editor);"
+                        trix-focus="trixFocus(e, editor);"
+                        trix-blur="trixBlur(e, editor);"
+                        trix-file-accept="trixFileAccept(e, editor);"
+                        trix-attachment-add="trixAttachmentAdd(e, editor);"
+                        placeholder="Write something.."
+                        trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                        style="overflow: scroll;height: 444px;overflow-y: auto;overflow-x: auto;">
+                </trix-editor>
             </div>
         </div>
     </div>

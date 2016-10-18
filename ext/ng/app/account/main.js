@@ -4,11 +4,11 @@ var app = angular.module(
 	 	'ui.router'
 		, 'ui.bootstrap'
 		, 'ngSanitize'
-		, 'ui.tinymce'
 		, 'ngFileUpload'
 		, 'ngCookies'
 		, 'ngAlertify'
 		, 'angularjs-datetime-picker'
+		, 'angularTrix'
 	]
 );
 // range with number

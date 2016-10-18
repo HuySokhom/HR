@@ -21,6 +21,7 @@
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <link href="ext/ng/lib/angular-datetime/angularjs-datetime-picker.css" rel="stylesheet" type="text/css">
+<link href="ext/ng/lib/angular-trix/trix.css" rel="stylesheet" type="text/css">
 <div
 	class="container"
 	data-ng-app="main"
@@ -94,8 +95,10 @@ require(DIR_WS_INCLUDES . 'template_bottom.php');
 require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
 
-<!-- lib -->
-<script src="ext/tinymce/tinymce.min.js"></script>
+<script
+	type="text/javascript"
+	src="ext/ng/lib/angular-trix/trix.js"
+></script>
 <script
 	type="text/javascript"
 	src="ext/ng/lib/angular/1.3.15/angular.min.js"
@@ -114,7 +117,7 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/lib/angular-tinymce/tinymce.js"
+	src="ext/ng/lib/angular-trix/angular-trix.min.js"
 ></script>
 <script
 	type="text/javascript"

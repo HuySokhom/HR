@@ -9,10 +9,10 @@ app.controller(
 	, '$log'
 	, function ($scope, Restful, Services, $location, Upload, $timeout, $log){
 		$scope.service = new Services();
-		// init tiny option
-		$scope.tinymceOptions = {
-			
-		};
+
+		$scope.rangeSalary = ['50$ -> 100$', '100$ -> 200$',
+			'200$ -> 400$', '400$ -> 800$', '800$ -> 1500$',
+			'1500$ -> 2000$', '2000$ -> 4000$', 'Negotiation'];
 		$scope.propertyTypes = ["Part-Time", "Full-Time"];
 		$scope.genders = ["Male", "Female", "Both"];
 		// init category
@@ -67,6 +67,7 @@ app.controller(
 				$scope.disabled = true;
 				$scope.service.alertMessage('<b>Complete: </b>Save Success.');
 				$location.path('manage');
+				console.log(data);
 			});
 		};
 
