@@ -10,9 +10,7 @@ app.controller(
 	, 'Upload'
 	, '$timeout'
 	, function ($scope, Restful, $stateParams, Services, $location, $alertify, $log, Upload, $timeout){
-		// init tiny option
-		$scope.tinymceOptions = {
-		};
+
 		$scope.disabled = true;
 		$scope.propertyTypes = ["Part-Time", "Full-Time"];
 		$scope.genders = ["Male", "Female", "Both"];

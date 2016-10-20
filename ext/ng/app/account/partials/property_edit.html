@@ -89,12 +89,19 @@
                 Description, duties, responsibilities:
                 <span class="require">*</span>
             </label>
-            <textarea
-                class="form-control"
-                data-ng-model="model.product_detail[0].products_description"
-                ui-tinymce="tinymceOptions"
-                rows="14"
-            ></textarea>
+            <trix-editor
+                    data-ng-model="model.product_detail[0].products_description"
+                    angular-trix trix-initialize="trixInitialize(e, editor);"
+                    trix-change="trixChange(e, editor);"
+                    trix-selection-change="trixSelectionChange(e, editor);"
+                    trix-focus="trixFocus(e, editor);"
+                    trix-blur="trixBlur(e, editor);"
+                    trix-file-accept="trixFileAccept(e, editor);"
+                    trix-attachment-add="trixAttachmentAdd(e, editor);"
+                    placeholder="Write something.."
+                    trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                    style="overflow: scroll;height: 444px;overflow-y: auto;overflow-x: auto;">
+            </trix-editor>
         </div>
     </div>
     <div class="row">
@@ -104,24 +111,38 @@
                     Other benefits:
                     <span class="require">*</span>
                 </label>
-                <textarea
-                    class="form-control"
-                    data-ng-model="model.product_detail[0].benefits"
-                    ui-tinymce="tinymceOptions"
-                    rows="10"
-                ></textarea>
+                <trix-editor
+                        data-ng-model="model.product_detail[0].benefits"
+                        angular-trix trix-initialize="trixInitialize(e, editor);"
+                        trix-change="trixChange(e, editor);"
+                        trix-selection-change="trixSelectionChange(e, editor);"
+                        trix-focus="trixFocus(e, editor);"
+                        trix-blur="trixBlur(e, editor);"
+                        trix-file-accept="trixFileAccept(e, editor);"
+                        trix-attachment-add="trixAttachmentAdd(e, editor);"
+                        placeholder="Write something.."
+                        trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                        style="overflow: scroll;height: 444px;overflow-y: auto;overflow-x: auto;">
+                </trix-editor>
             </div>
             <div class="col-md-6">
                 <label> 
                     Personality requirements and skills:
                     <span class="require">*</span>
                 </label>
-                <textarea
-                    class="form-control"
-                    data-ng-model="model.product_detail[0].skill"
-                    ui-tinymce="tinymceOptions"
-                    rows="10"
-                ></textarea>
+                <trix-editor
+                        data-ng-model="model.product_detail[0].skill"
+                        angular-trix trix-initialize="trixInitialize(e, editor);"
+                        trix-change="trixChange(e, editor);"
+                        trix-selection-change="trixSelectionChange(e, editor);"
+                        trix-focus="trixFocus(e, editor);"
+                        trix-blur="trixBlur(e, editor);"
+                        trix-file-accept="trixFileAccept(e, editor);"
+                        trix-attachment-add="trixAttachmentAdd(e, editor);"
+                        placeholder="Write something.."
+                        trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                        style="overflow: scroll;height: 444px;overflow-y: auto;overflow-x: auto;">
+                </trix-editor>
             </div>
         </div>
     </div>
