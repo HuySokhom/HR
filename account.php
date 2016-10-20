@@ -24,7 +24,6 @@
 <link href="ext/ng/lib/angular-trix/trix.css" rel="stylesheet" type="text/css">
 <div
 	class="container"
-	data-ng-app="main"
 >
 	<br/>	
 	<?php

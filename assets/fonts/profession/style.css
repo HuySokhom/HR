@@ -26,3 +26,9 @@
 .profession-logo:before {
 	content: "\e600";
 }
+.header-info{
+	font-size: 20px;
+	color: #00487f;
+	border-bottom: 1px solid #ddd;
+	padding: 0px 0px 10px 0px;
+}

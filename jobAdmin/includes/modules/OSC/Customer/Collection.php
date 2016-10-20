@@ -40,4 +40,12 @@ class Collection extends StdCollection {
 		$this->addWhere("c.customers_plan = '" . (int)$arg . "'");
 	}
 
+	public function filterByPosition( $arg ){
+		$this->addWhere("c.user_name = '%" . $arg. "%' ");
+	}
+
+	public function filterByLocation( $arg ){
+		$this->addWhere("c.customers_location = '" . $arg. "' ");
+	}
+
 }
