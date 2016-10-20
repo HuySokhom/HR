@@ -84,14 +84,21 @@
                 Expire Date:
                 <span class="require">*</span>
             </label>
-            <input
-                type="text"
-                class="form-control"
-                data-ng-model="expire_date"
-                datetime-picker
-                date-format="dd-MM-yyyy"
-                date-only
-            >
+            <div class="input-group">
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="expire_date"
+                    datetime-picker
+                    date-format="dd-MM-yyyy"
+                    date-only
+                >
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+            </div>
         </div>
         <div class="col-md-6">
             <label>

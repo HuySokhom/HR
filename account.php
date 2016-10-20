@@ -100,6 +100,10 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
+	src="ext/ng/lib/momentjs/moment.min.js"
+></script>
+<script
+	type="text/javascript"
 	src="ext/ng/lib/angular/1.3.15/angular.min.js"
 ></script>
 <script

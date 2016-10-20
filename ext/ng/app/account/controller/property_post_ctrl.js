@@ -11,8 +11,8 @@ app.controller(
 		$scope.service = new Services();
 
 		$scope.rangeSalary = ['50$ -> 100$', '100$ -> 200$',
-			'200$ -> 400$', '400$ -> 800$', '800$ -> 1500$',
-			'1500$ -> 2000$', '2000$ -> 4000$', 'Negotiation'];
+			'200$ -> 500$', '500$ -> 1000$', '1000$ -> 2000$',
+			'2000$ -> 4000$', 'Negotiation'];
 		$scope.propertyTypes = ["Part-Time", "Full-Time"];
 		$scope.genders = ["Male", "Female", "Both"];
 		// init category
@@ -39,6 +39,7 @@ app.controller(
 				$scope.communes = data;
 			});
 		};
+		$scope.expire_date = moment().format('DD-MM-YYYY')
 		// save functionality
 		$scope.save = function(){
 			// set object to save into news
@@ -46,7 +47,7 @@ app.controller(
 				products: {
 					categories_id: $scope.categories_id,
 					province_id: $scope.province_id,
-					products_close_date: $scope.expire_date,
+					products_close_date: moment($scope.expire_date, 'DD.MM.YYYY').format('YYYY/MM/DD'),
 					salary: $scope.salary,
 					number_of_hire: $scope.number_of_hire,
 					gender: $scope.gender,
