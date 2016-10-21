@@ -32,9 +32,13 @@ class RestApiUploadImage extends RestApi {
                 // check extension is valid image
                 if (!in_array($ext, array(
                     'jpg',
+                    'JPG',
                     'jpeg',
+                    'JPEG',
                     'gif',
+                    'GIF',
                     'png',
+                    'PNG',
                 ))
                 ) {
                     continue;

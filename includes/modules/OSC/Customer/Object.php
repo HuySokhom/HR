@@ -136,14 +136,15 @@ class Object extends DbObj {
 				customers
 			SET
 				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
+				company_name = '" . $this->dbEscape( $this->getCompanyName() ) . "',
 				customers_email_address = '" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',
 				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
 				photo_thumbnail = '" . $this->dbEscape( $this->getPhotoThumbnail() ) . "',
 				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
-				customers_fax = '" . $this->dbEscape( $this->getCustomersFax() ) . "',
 				customers_location = '" . (int)$this->getCustomersLocation() . "',
 				detail = '" . $this->dbEscape( $this->getDetail() ). "',
-				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "'
+				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "',
+				customers_website = '" . $this->dbEscape( $this->getCustomersWebsite() ) . "'
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'
 		");

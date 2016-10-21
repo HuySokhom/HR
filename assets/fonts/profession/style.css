@@ -32,3 +32,17 @@
 	border-bottom: 1px solid #ddd;
 	padding: 0px 0px 10px 0px;
 }
+.thumb {
+	width: 230px;
+	margin-top: 10px;
+}
+form .progress {
+	line-height: 15px;
+}
+.progress div {
+	font-size: smaller;
+	background: #3C64FF;
+	width: 0;
+	color: #ffffff;
+	margin-top: 10px;
+}

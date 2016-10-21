@@ -48,6 +48,7 @@
                 type="text"
                 class="form-control"
                 data-ng-model="title"
+                placeholder="Job Title"
                 required
             />
             <label>
@@ -66,7 +67,7 @@
                 Number of Hire:
                 <span class="require">*</span>
             </label>
-            <input type="number" min="1" class="form-control" required data-ng-model="number_of_hire"/>
+            <input type="number" min="1" class="form-control" required data-ng-model="number_of_hire" placeholder="Number Of Hire"/>
             <label>
                 Location:
                 <span class="require">*</span>
@@ -114,7 +115,7 @@
                 trix-blur="trixBlur(e, editor);"
                 trix-file-accept="trixFileAccept(e, editor);"
                 trix-attachment-add="trixAttachmentAdd(e, editor);"
-                placeholder="Write something.."
+                placeholder="Write description.."
                 trix-attachment-remove="trixAttachmentRemove(e, editor);"
                 style="overflow: scroll;height: 444px;overflow-y: auto;overflow-x: auto;">
             </trix-editor>
@@ -136,7 +137,7 @@
                         trix-blur="trixBlur(e, editor);"
                         trix-file-accept="trixFileAccept(e, editor);"
                         trix-attachment-add="trixAttachmentAdd(e, editor);"
-                        placeholder="Write something.."
+                        placeholder="Write benefits.."
                         trix-attachment-remove="trixAttachmentRemove(e, editor);"
                         style="overflow: scroll;height: 444px;overflow-y: auto;overflow-x: auto;">
                 </trix-editor>
@@ -155,7 +156,7 @@
                         trix-blur="trixBlur(e, editor);"
                         trix-file-accept="trixFileAccept(e, editor);"
                         trix-attachment-add="trixAttachmentAdd(e, editor);"
-                        placeholder="Write something.."
+                        placeholder="Write requirements.."
                         trix-attachment-remove="trixAttachmentRemove(e, editor);"
                         style="overflow: scroll;height: 444px;overflow-y: auto;overflow-x: auto;">
                 </trix-editor>

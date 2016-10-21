@@ -177,7 +177,7 @@
 			  <div class="company-card">
 				  <div class="company-card-image">
 					  <a href="<?php echo tep_href_link(FILENAME_INFORMATION, 'info_id=' . $product_info['customers_id']) ?>">
-						  <img src="<?php echo $product_info['photo_thumbnail'];?>" alt=""></a>
+						  <img src="images/<?php echo $product_info['photo_thumbnail'];?>" alt=""></a>
 					  </a>
 				  </div><!-- /.company-card-image -->
 

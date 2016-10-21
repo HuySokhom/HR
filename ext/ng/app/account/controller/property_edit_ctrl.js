@@ -15,6 +15,7 @@ app.controller(
 		$scope.propertyTypes = ["Part-Time", "Full-Time"];
 		$scope.genders = ["Male", "Female", "Both"];
 		// init category
+
 		$scope.initCategory = function(){
 			Restful.get("api/Category").success(function(data){
 				$scope.categoryList = data;
