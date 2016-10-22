@@ -81,7 +81,8 @@ app.config([
 			.state('/account', {
 				url: '/account',
 				templateUrl: 'ext/ng/app/account/partials/account.html',
-                controller: 'account_ctrl'
+                controller: 'account_ctrl',
+				controllerAs: 'vm'
 			})
 			.state('/account/edit', {
 				url: '/account/edit',

@@ -290,8 +290,8 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="form-group has-feedback">
-          <label for="inputName" class="control-label col-sm-4"><?php echo ENTRY_NAME; ?></label>
-          <div class="col-sm-8">
+          <label for="inputName" class="control-label col-sm-5"><?php echo ENTRY_NAME; ?></label>
+          <div class="col-sm-7">
             <?php
             echo tep_draw_input_field('name', NULL, 'required aria-required="true" id="inputName" placeholder="' . ENTRY_NAME . '"');
             echo FORM_REQUIRED_INPUT;
@@ -300,8 +300,8 @@
           </div>
         </div>
         <div class="form-group has-feedback">
-          <label for="inputEmail" class="control-label col-sm-4"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
-          <div class="col-sm-8">
+          <label for="inputEmail" class="control-label col-sm-5"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
+          <div class="col-sm-7">
             <?php
             echo tep_draw_input_field('email_address', NULL, 'required aria-required="true" id="inputEmail" placeholder="' . ENTRY_EMAIL_ADDRESS . '"', 'email');
             echo FORM_REQUIRED_INPUT;
@@ -311,8 +311,8 @@
         </div>
         <div class="contentText">
           <div class="form-group has-feedback">
-            <label for="inputPassword" class="control-label col-sm-4"><?php echo ENTRY_PASSWORD; ?></label>
-            <div class="col-sm-8">
+            <label for="inputPassword" class="control-label col-sm-5"><?php echo ENTRY_PASSWORD; ?></label>
+            <div class="col-sm-7">
               <?php
               echo tep_draw_password_field('password', NULL, 'required aria-required="true" id="inputPassword" placeholder="' . ENTRY_PASSWORD . '"');
               echo FORM_REQUIRED_INPUT;
@@ -321,8 +321,8 @@
             </div>
           </div>
           <div class="form-group has-feedback">
-            <label for="inputConfirmation" class="control-label col-sm-4"><?php echo ENTRY_PASSWORD_CONFIRMATION; ?></label>
-            <div class="col-sm-8">
+            <label for="inputConfirmation" class="control-label col-sm-5"><?php echo ENTRY_PASSWORD_CONFIRMATION; ?></label>
+            <div class="col-sm-7">
               <?php
               echo tep_draw_password_field('confirmation', NULL, 'required aria-required="true" id="inputConfirmation" placeholder="' . ENTRY_PASSWORD_CONFIRMATION . '"');
               echo FORM_REQUIRED_INPUT;
@@ -334,8 +334,8 @@
 
         <div class="contentText">
           <div class="form-group has-feedback">
-            <label for="inputPassword" class="control-label col-sm-4"><?php echo ENTRY_TYPE; ?></label>
-            <div class="col-sm-8">
+            <label for="inputPassword" class="control-label col-sm-5"><?php echo ENTRY_TYPE; ?></label>
+            <div class="col-sm-7">
               <select name="type" class="form-control">
                 <option value="normal">Job Seeker</option>
                 <option value="agency">Employee</option>

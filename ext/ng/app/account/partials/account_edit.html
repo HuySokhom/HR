@@ -4,8 +4,14 @@
 			<div class="form-group">
 				<label>Photo</label>
 				<div class="center">
-					<img src="images/icon-person.png" data-ng-if="!vm.account.photo" class="img-thumbnail">
-					<img src="images/{{vm.account.photo}}" data-ng-if="vm.account.photo" class="img-thumbnail">
+					<img src="images/icon-person.png"
+						 data-ng-if="!vm.account.photo"
+						 style="width: 100%;margin-bottom: 10px;"
+						 class="img-thumbnail">
+					<img src="images/{{vm.account.photo}}"
+						 data-ng-if="vm.account.photo"
+						 style="width: 100%;margin-bottom: 10px;"
+						 class="img-thumbnail">
 					<input type="file" accept="image/*"
 						   ng-model="picFile"
 						   ngf-max-size="2MB"
@@ -103,14 +109,14 @@
 	</div><!-- /.row -->
 	<hr>
 
-	<div class="center">
+	<div class="">
 		<a href="javascript" class="btn btn-default" ui-sref="/account">
 			<i class="fa fa-close"></i>
 			Discard
 		</a>
 		<button type="submit" class="btn btn-secondary">
 			<i class="fa fa-save"></i>
-			Save Resume
+			Save
 		</button>
 	</div><!-- /.center -->
 </form>
