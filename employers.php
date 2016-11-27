@@ -9,7 +9,7 @@
             <?php include('advanced_search_box_right.php');?>
         </div>
     </div>
-    <div class="col-md-9 col-sm-7" ng-cloak>
+    <div class="col-md-9 col-sm-9" ng-cloak>
         <div class="companies-list" data-ng-if="data.count > 0">
             <div class="companies-list-item" data-ng-repeat="data in data.elements">
                 <div class="companies-list-item-image">

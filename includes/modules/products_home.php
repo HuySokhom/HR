@@ -141,7 +141,6 @@
                                     <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) .'">
                                         '. $product['products_name'] .'
                                     </a>
-                                    <span>Featured</span>
                                 </h2>
                                 <h3>
                                     <span>
@@ -173,7 +172,7 @@
 </div>
 <div class="col-md-3">
     <div class="">
-        <img src="assets/img/advertising.jpg" class="img-responsive">
+        <img src="images/free-ads.jpg" class="img-responsive">
     </div>
     <h4>Find Your Best Candidate</h4>
     <div class="row mt-60">

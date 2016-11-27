@@ -37,14 +37,14 @@
     <br>
     <div class="container">
           <div class="row">
-              <div class="col-sm-3">
+              <div class="col-md-3 col-sm-4">
                   <div class="filter-stacked">
                       <?php include('advanced_search_box_right.php');?>
                   </div><!-- /.filter-stacked -->
 
               </div>
               <!-- /.col-* -->
-              <div class="col-sm-7">
+              <div class="col-md-9 col-sm-8">
               <?php
               if($row > 0) {
                   foreach ($prod_list_contents as $product) {
@@ -55,8 +55,6 @@
                                       <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . '">
                                         ' . $product['products_name'] . '
                                       </a>
-                                      <span>Featured</span>
-
                                   </h2>
                                   <h3>
                                     <span>
@@ -103,10 +101,6 @@
                   <?php
               }
               ?>
-              </div><!-- /.col-* -->
-
-              <div class="col-sm-2">
-                <?php include('advertisement_right.php');?>
               </div><!-- /.col-* -->
           </div><!-- /.row -->
       </div><!-- /.container -->

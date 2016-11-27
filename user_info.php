@@ -42,101 +42,118 @@
             <?php include('advanced_search_box_right.php');?>
         </div>
     </div>
-    <div class="col-md-7 col-sm-6">
-        <h3>Resume details</h3>
-        <br>
-        <div class="col-md-3 col-lg-3 " align="center">
-            <img alt="User Pic"
-                 src="<?php echo $customer_info['photo_thumbnail'];?>"
-                 class="img-responsive"/>
-        </div>
-        <div class="col-md-7 col-lg-7 ">
-            <table class="table table-user-information">
-                <tbody>
-                <tr>
-                    <td width="110px">
-                        Name:
-                    </td>
-                    <td>
+    <div class="col-md-9 col-sm-8">
+        <div class="resume">
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <br/>
+                    <img src="<?php echo $customer_info['photo_thumbnail'];?>" alt="" class="img-thumbnail"/>
+                </div>
+                <!-- /.resume-main-image -->
+                <div class="col-md-9">
+                    <h2>
                         <?php echo $customer_info['user_name'];?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Gender:
-                    </td>
-                    <td>
-                        <?php echo $customer_info['customers_gender'];?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Skill Title:
-                    </td>
-                    <td>
+                        <span class="resume-main-verified">
+                            <i class="fa fa-check"></i>
+                        </span>
+                    </h2>
+                    <h3>
                         <?php echo $customer_info['skill_title'];?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Telephone:
-                    </td>
-                    <td>
-                        <?php echo $customer_info['customers_telephone'];?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Address:
-                    </td>
-                    <td>
+                    </h3>
+
+                    <p class="resume-main-contacts">
                         <?php echo $customer_info['customers_address'];?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Location:
-                    </td>
-                    <td>
-                        <?php echo $customer_info['location_name'];?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Description:
-                    </td>
-                    <td>
-                        <?php echo $customer_info['detail'];?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Created Date:
-                    </td>
-                    <td>
-                        <?php echo $customer_info['create_date'];?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        ID:
-                    </td>
-                    <td>
-                        #<?php echo $customer_info['customers_id'];?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Download CV:
-                    </td>
-                    <td>
-                        <a href="<?php echo $customer_info['upload_cv'];?>">
-                            <button class="btn btn-default">Download CV</button>
+                        <br>
+                        Email: <a href="mailto:<?php echo $customer_info['customers_email_address'];?>">
+                            <?php echo $customer_info['customers_email_address'];?>
                         </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                        - Tel: <a href="tel:<?php echo $customer_info['customers_telephone'];?>">
+                            <?php echo $customer_info['customers_telephone'];?>
+                        </a>
+                    </p>
+                    <!-- /.resume-main-contact -->
+
+                    <div class="resume-main-actions">
+                        <a href="#" class="btn btn-secondary"><i class="fa fa-download"></i> Download CV</a>
+                    </div>
+                    <br/>
+                    <!-- /.resume-main-actions -->
+                </div>
+
+                <!-- /.resume-main-content -->
+            </div>
+            <div class="clearfix"></div>
+            <!-- /.resume-main -->
+
+            <div class="resume-chapter">
+                <div class="resume-chapter-inner">
+                    <div class="resume-chapter-content">
+                        <div class="row">
+                            <div class="col-sm-3">
+                        <span class="resume-chapter-social">
+                            <span class="resume-chapter-social-icon"><i class="fa fa-facebook-square"></i></span>
+                            <span class="resume-chapter-social-value">5 699 likes</span>
+                        </span><!-- /.resume-chapter-social -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-3">
+                        <span class="resume-chapter-social">
+                            <span class="resume-chapter-social-icon"><i class="fa fa-twitter-square"></i></span>
+                            <span class="resume-chapter-social-value">800 tweets </span>
+                        </span><!-- /.resume-chapter-social -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-3">
+                        <span class="resume-chapter-social">
+                            <span class="resume-chapter-social-icon"><i class="fa fa-linkedin-square"></i></span>
+                            <span class="resume-chapter-social-value">@elliot </span>
+                        </span><!-- /.resume-chapter-social -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-3">
+                        <span class="resume-chapter-social">
+                            <span class="resume-chapter-social-icon"><i class="fa fa-youtube-square"></i></span>
+                            <span class="resume-chapter-social-value">@elliot</span>
+                        </span><!-- /.resume-chapter-social -->
+                            </div><!-- /.col-* -->
+                        </div><!-- /.row -->
+                    </div><!-- /.recume-chapter-content -->
+                </div><!-- /.resume-chapter-inner -->
+            </div><!-- /.resume-chapter -->
+
+            <div class="resume-chapter">
+                <div class="resume-chapter-inner">
+                    <div class="resume-chapter-title">
+                        <h2>Summary</h2>
+                    </div><!-- /.resume-chapter-title -->
+
+                    <div class="resume-chapter-content">
+                        <?php echo $customer_info['customers_summary'];?>
+                    </div><!-- /.resume-chapter-content -->
+                </div><!-- /.resume-chapter-inner -->
+            </div><!-- /.resume-chapter -->
+
+            <div class="resume-chapter">
+                <div class="resume-chapter-inner">
+                    <div class="resume-chapter-content">
+                        <h2 class="mb40">Working History</h2>
+                        <?php echo $customer_info['customers_working_history'];?>
+                    </div><!-- /.resume-chapter-content -->
+                </div><!-- /.resume-chapter-inner -->
+            </div><!-- /.resume-chapter -->
+
+            <div class="resume-chapter">
+                <div class="resume-chapter-inner">
+                    <div class="resume-chapter-title">
+                        <h2>Experience</h2>
+                    </div>
+                    <!-- /.resume-chapter-title -->
+
+                    <div class="resume-chapter-content">
+                        <?php echo $customer_info['customers_experience'];?>
+                    </div><!-- /.resume-chapter-content -->
+                </div><!-- /.resume-chapter-inner -->
+            </div><!-- /.resume-chapter -->
         </div>
     </div>
     <?php
@@ -182,7 +199,7 @@
         }
     }
     ?>
-    <div class="col-sm-3">
+    <div class="col-md-3 col-sm-4">
         <div class="company-card">
             <div class="company-card-image">
                 <img src="<?php echo $customer_info['photo_thumbnail'];?>" alt="">
@@ -248,7 +265,7 @@
         </div><!-- /.widget -->
     </div><!-- /.col-* -->
 
-    <div class="col-sm-7">
+    <div class="col-md-9 col-sm-8">
         <div class="company-header">
             <h2><?php echo $customer_info['company_name'];?></h2>
         </div>
@@ -293,9 +310,7 @@
     <?php
         }
     ?>
-    <div class="col-md-2 col-sm-2">
-        <?php include(DIR_WS_MODULES . 'advertisement_right.php');?>
-    </div>
+
 </div>
 <?php
     require(DIR_WS_INCLUDES . 'template_bottom.php');

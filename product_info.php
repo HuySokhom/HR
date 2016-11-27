@@ -114,7 +114,7 @@
 			  <div class="position-header">
 				  <h1>
 					  <?php echo $product_info['products_name'];?>
-					  <span>Urgent</span>
+						<!--<span>Urgent</span>-->
 				  </h1>
 			  </div><!-- /.position-header -->
 
