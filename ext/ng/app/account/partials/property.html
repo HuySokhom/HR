@@ -95,6 +95,7 @@
 			</td>
 			<td>
 				<span data-ng-bind="p.products_name"></span>
+				<label class="label label-warning" ng-if="p.products_status == 0">Disable</label>
 			</td>
 
 			<td>
@@ -122,22 +123,22 @@
 				    <li>
 				    	<a data-ng-click="link(p.products_id);" href="">
 				    		<i class="fa fa-eye"></i>
-				    		View
+				    		View this job
 			    		</a>
 				    </li>
 				    <li>
 				    	<a href="" data-ng-click="edit(p.products_id);">
 				    		<i class="fa fa-edit"></i>
-				    		Edit
+				    		Edit this job
 				    	</a>
 			    	</li>
 				    <li>
 				    	<a data-ng-click="updateStatus(p);" href="">
 				    		<i 
-					    		ng-class="p.products_status == 0 ? 'fa fa-minus' : 'fa fa-check-square-o' "
+					    		ng-class="p.products_status == 0 ? 'fa fa-check-square-o' : 'fa fa-minus' "
 					    	></i>
 					    	<span
-					    		data-ng-bind="p.products_status == 0 ? 'Inactive' : 'Active'"
+					    		data-ng-bind="p.products_status == 0 ? 'Enable this job' : 'Disable this job'"
 					    	>
 					    	</span>
 				    	</a>
@@ -145,7 +146,7 @@
 				    <li>
 					    <a href="" data-ng-click="remove($index, p.products_id);">
 					    <i class="fa fa-trash-o"></i>
-					    	Delete
+					    	Delete this job
 				    	</a>
 			    	</li>
 				  </ul>
