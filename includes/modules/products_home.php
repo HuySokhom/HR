@@ -117,7 +117,7 @@
                             <div class="img-table">
                                 <div class="img-wrapper">
                                     <a href="'. tep_href_link(FILENAME_INFORMATION, 'info_id=' . $feature['customers_id'] ) .'">
-                                        <img src="'. $feature['photo_thumbnail'] .'">
+                                        <img src="images/'. $feature['photo_thumbnail'] .'">
                                     </a>
                                 </div>
                             </div>

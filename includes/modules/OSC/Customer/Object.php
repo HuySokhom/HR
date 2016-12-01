@@ -144,7 +144,8 @@ class Object extends DbObj {
 				customers_location = '" . (int)$this->getCustomersLocation() . "',
 				detail = '" . $this->dbEscape( $this->getDetail() ). "',
 				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "',
-				customers_website = '" . $this->dbEscape( $this->getCustomersWebsite() ) . "'
+				customers_website = '" . $this->dbEscape( $this->getCustomersWebsite() ) . "',
+				location = '" . $this->dbEscape( $this->getLocation() ) . "'
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'
 		");
@@ -232,7 +233,7 @@ class Object extends DbObj {
 	}
 	
 	public function setLocation( $string ){
-		$this->location = (string)$string;
+		$this->location = (int)$string;
 	}
 	
 	public function getLocation(){

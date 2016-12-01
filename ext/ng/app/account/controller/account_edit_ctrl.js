@@ -32,7 +32,7 @@ app.controller(
 					vm.service.alertMessage('<strong>Complete: </strong> Update Success.');
 					$location.path('account');
 				}else{
-					vm.service.alertMessage('<strong>Warning: </strong> Email Existing. Please use other email..');
+					vm.service.alertMessageWarning('<strong>Warning: </strong> Email Existing. Please use other email..');
 				}
 			});
 		};

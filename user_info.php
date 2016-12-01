@@ -157,7 +157,7 @@
         </div>
     </div>
     <?php
-        }else{
+        }else{var_dump($customer_info);
     /**
      * query product belong to user with filter by ID (int)$_GET['info_id']
      **/
