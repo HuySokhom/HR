@@ -212,7 +212,6 @@
 							  <?php echo $product_info['customers_address'];?>
 						  </dd>						  
 					  </dl>
-					  <div><button class="btn btn-primary">Apply Now</button></div>
 				  </div><!-- /.company-card-data -->
 			  </div><!-- /.company-card -->
 
@@ -241,23 +240,7 @@
 				  <a href="positions.php" class="hero-content-show-all">Show All</a>
 			  </div>
 			  <div class="widget">
-				  <h2>Apply For Position</h2>
-
-				  <form>
-					  <div class="form-group">
-						  <input type="text" id="name" class="form-control" placeholder="Name" required>
-					  </div><!-- /.form-group -->
-
-					  <div class="form-group">
-						  <input type="email" class="form-control" id="email" placeholder="Your E-mail" required>
-					  </div><!-- /.form-group -->
-
-					  <div class="form-group">
-						  <textarea class="form-control" rows="5" id="text" placeholder="Your Message" required></textarea>
-					  </div><!-- /.form-group -->
-
-					  <button class="btn btn-secondary pull-right" type="submit" id="sendEmail">Apply Now</button>
-				  </form>
+                  <img src="images/free-ads.jpg" class="img-responsive">
 			  </div><!-- /.widget -->
 		  </div><!-- /.col-* -->
 	  </div><!-- /.row -->
