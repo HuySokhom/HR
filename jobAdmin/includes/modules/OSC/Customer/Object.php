@@ -31,6 +31,7 @@ class Object extends DbObj {
 		, $photoThumbnail
 		, $detail
 		, $isAgency
+        , $statusApprove
 	;
 	
 	public function toArray( $params = array() ){
@@ -42,6 +43,7 @@ class Object extends DbObj {
 				'is_agency',
 				'photo',
 				'status',
+                'status_approve',
 				'photo_thumbnail',
 				'detail',
 				'customers_email_address',
@@ -66,6 +68,7 @@ class Object extends DbObj {
 				plan_date,
 				plan_expire,
 				status,
+				status_approve,
 				user_type,
 				photo,
 				is_agency,
@@ -138,6 +141,21 @@ class Object extends DbObj {
 				customers_id = '" . (int)$this->getId() . "'
 		");
 	}
+
+    public function updateStatusFeature() {
+        if( !$this->getId() ) {
+            throw new Exception("save method requires id");
+        }
+        $this->dbQuery("
+			UPDATE
+				customers
+			SET
+				status_approve = '" .  $this->getStatusApprove() . "',
+				update_by = '" .  $this->getUpdateBy() . "'
+			WHERE
+				customers_id = '" . (int)$this->getId() . "'
+		");
+    }
 
 	public function delete() {
 
@@ -359,4 +377,11 @@ class Object extends DbObj {
 		return $this->isAgency;
 	}
 
+    public function setStatusApprove( $string ){
+        $this->statusApprove = (int)$string;
+    }
+
+    public function getStatusApprove(){
+        return $this->statusApprove;
+    }
 }

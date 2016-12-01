@@ -35,7 +35,22 @@ app.controller(
 		];
 		$scope.updateStatus = function(params){
 			params.is_agency == 1 ? params.is_agency = 0 : params.is_agency = 1;
-			Restful.patch(url + params.id, params ).success(function(data) {
+            var data = {
+                agency: 'yes',
+                is_agency: params.status_approve
+            };
+			Restful.patch(url + params.id, data ).success(function(data) {
+				$scope.service.alertMessage('<strong>Success: </strong>Update Success.');
+			});
+		};
+
+		$scope.updateStatusApprove = function(params){
+			params.status_approve == 1 ? params.status_approve = 0 : params.status_approve = 1;
+			var data = {
+				approve: 'yes',
+                status_approve: params.status_approve
+			};
+			Restful.patch(url + params.id, data).success(function(data) {
 				$scope.service.alertMessage('<strong>Success: </strong>Update Success.');
 			});
 		};

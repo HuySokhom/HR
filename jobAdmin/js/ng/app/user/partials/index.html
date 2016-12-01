@@ -82,6 +82,9 @@
 		<th style="width: 120px;">
 			Agency Partner
 		</th>
+		<th style="width: 120px;">
+			Feature Partner
+		</th>
 		<th style="width: 140px;">
 			Action
 		</th>
@@ -151,6 +154,32 @@
 						data-placement="top"
 						title="Inactive"
 						tooltip
+					>
+						<span class="fa fa-minus-square-o"></span>
+					</button>
+				</div>
+			</td>
+			<td align="center">
+				<div data-ng-if="u.user_type == 'agency'">
+					<button
+							class="btn btn-success"
+							data-ng-click="updateStatusApprove(u);"
+							data-ng-if="u.status_approve == 1"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Active"
+							tooltip
+					>
+						<span class="fa fa-check-square-o"></span>
+					</button>
+					<button
+							class="btn btn-warning"
+							data-ng-if="u.status_approve == 0"
+							data-ng-click="updateStatusApprove(u);"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Inactive"
+							tooltip
 					>
 						<span class="fa fa-minus-square-o"></span>
 					</button>

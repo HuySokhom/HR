@@ -82,6 +82,9 @@
 			<th>
 				Expire Date
 			</th>
+			<th>
+				Status
+			</th>
 			<th width="100px">
 				Action
 			</th>
@@ -95,7 +98,6 @@
 			</td>
 			<td>
 				<span data-ng-bind="p.products_name"></span>
-				<label class="label label-warning" ng-if="p.products_status == 0">Disable</label>
 			</td>
 
 			<td>
@@ -106,6 +108,10 @@
 			</td>
 			<td>
 				<span data-ng-bind="p.products_close_date"></span>
+			</td>
+			<td>
+				<label class="label label-warning" ng-if="p.products_status == 0">Pending</label>
+				<label class="label label-success" ng-if="p.products_status == 1">Approve</label>
 			</td>
 			<td>
 				<!-- Single button -->

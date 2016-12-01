@@ -144,9 +144,9 @@
                                 </h2>
                                 <h3>
                                     <span>
-                                        <img src="'. $product['photo_thumbnail'] .'" alt="">
+                                        <img src="images/'. $product['photo_thumbnail'] .'" alt="">
                                     </span>
-                                    '. $product['company_name'] .', '. $product['location'] .'
+                                    '. $product['company_name'] .'
                                     <br>
                                 </h3>
                                 <div class="position-list-item-date">
@@ -158,7 +158,8 @@
                                     data-product="'. $product['products_id']. '"
                                     data-type="insert"
                                 >
-                                    <a href="javascript:void(0)">Save Position</a>
+                                    <i class="fa fa-map-marker"></i>
+                                    '. $product['location'] .'
                                 </div>
                                 <!-- /.position-list-item-action -->
                             </div>

@@ -69,8 +69,13 @@ class RestApiCustomer extends RestApi {
 		$obj = new CustomersObject();
 		$obj->setId($this->getId());
 		$obj->setUpdateBy($_SESSION['admin']['username']);
-		$obj->setIsAgency($params['PATCH']['is_agency']);
-		$obj->updateStatusAgency();
+		if($params['PATCH']['agency']){
+            $obj->setIsAgency($params['PATCH']['is_agency']);
+            $obj->updateStatusAgency();
+        }else{
+            $obj->setStatusApprove($params['PATCH']['status_approve']);
+            $obj->updateStatusFeature();
+        }
 	}
 
 	public function delete(){
