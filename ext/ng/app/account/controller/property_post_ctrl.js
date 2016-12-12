@@ -39,7 +39,7 @@ app.controller(
 				$scope.communes = data;
 			});
 		};
-		$scope.expire_date = moment().format('DD-MM-YYYY')
+		$scope.expire_date = moment().format('DD-MM-YYYY');
 		// save functionality
 		$scope.save = function(){
 			// set object to save into news

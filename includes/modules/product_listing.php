@@ -64,17 +64,16 @@
                                     <br>
                                   </h3>
 
-                                  <div class="position-list-item-date">
-                                    ' . $product['products_close_date'] . '
-                                  </div>
                                   <!-- /.position-list-item-date -->
                                   <div 
-                                    class="position-list-item-action heart-icon"
-                                    data-product="'. $product['products_id']. '"
-                                    data-type="insert"
+                                    class="position-list-item-date"
                                   >
-                                    <a href="javascript:void(0)">Save Position</a>
+                                    Close Date
                                   </div><!-- /.position-list-item-action -->
+                                  
+                                  <div class="position-list-item-action">
+                                    ' . $product['products_close_date'] . '
+                                  </div>
                               </div><!-- /.position-list-item -->
 
                           </div>
