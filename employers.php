@@ -4,17 +4,17 @@
 ?>
 <br>
 <div class="container" data-ng-controller="employers_ctrl" >
-    <div class="col-md-3 col-sm-5 ">
+    <div class="col-md-3 col-sm-4">
         <div class="filter-stacked">
             <?php include('advanced_search_box_right.php');?>
         </div>
     </div>
-    <div class="col-md-9 col-sm-9" ng-cloak>
+    <div class="col-md-9 col-sm-8" ng-cloak>
         <div class="companies-list" data-ng-if="data.count > 0">
             <div class="companies-list-item" data-ng-repeat="data in data.elements">
                 <div class="companies-list-item-image">
                     <a href="{{renderLink(data.id, data.company_name)}}">
-                        <img ng-src="{{data.photo_thumbnail}}" alt="">
+                        <img ng-src="images/{{data.photo_thumbnail}}" alt="">
                     </a>
                 </div>
                 <!-- /.companies-list-item-image -->

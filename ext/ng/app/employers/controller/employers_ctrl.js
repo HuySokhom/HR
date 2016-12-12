@@ -7,7 +7,7 @@ app.controller(
 		var url = 'api/Employers/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.data = data;
+				$scope.data = data;console.log(data);
 				$scope.totalItems = data.count;
 			});
 		};

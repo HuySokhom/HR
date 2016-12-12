@@ -181,15 +181,14 @@
             <?php
                 foreach($array_candidate as $candidate) {
                     echo '
-                        <div class="col-sm-3 col-md-6 col-xs-3">
+                        <div class="col-sm-3 col-md-6 col-xs-6">
                             <div class="candidate-box">
                                 <div class="candidate-box-image">
                                     <a href="' . tep_href_link(FILENAME_INFORMATION, 'info_id=' . $candidate['customers_id']) . '">
                                         <img
-                                            src="' . $candidate['photo_thumbnail'] . '"
+                                            src="images/' . $candidate['photo_thumbnail'] . '"
                                             alt="' . $candidate['user_name'] . '"
                                             class="img-responsive"
-                                            style="height: 70px;"
                                         />
                                     </a>
                                 </div>
