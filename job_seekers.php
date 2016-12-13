@@ -10,20 +10,6 @@
         </div>
     </div>
     <div class="col-md-9 col-sm-7" ng-cloak>
-        <div class="row">
-            <div class="form-group col-md-4">
-                <label for="inputPassword">Search Name:</label>
-                <input class="form-control" data-ng-model="filterName" type="text" placeholder="search candidate name...">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputPassword">Disabled</label>
-                <select class="form-control" data-ng-model="filterCategory" ></select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputPassword">Disabled</label>
-                <select class="form-control"></select>
-            </div>
-        </div>
         <div class="candidates-list">
             <div class="candidates-list-item" data-ng-repeat="data in data.elements">
                 <div class="candidates-list-item-heading">
@@ -34,7 +20,7 @@
                     </div><!-- /.candidates-list-item-image -->
 
                     <div class="candidates-list-item-title">
-                        <h2><a href="{{renderLink(data.id, data.user_name)}}">{{data.user_name}}</a></h2>
+                        <h2><a href="{{renderLink(data.id, data.company_name)}}">{{data.company_name}}</a></h2>
                         <h3><i class="fa fa-map-marker"></i> {{data.location[0].name}}</h3>
                     </div><!-- /.candidates-list-item-title -->
                 </div><!-- /.candidates-list-item-heading -->

@@ -20,6 +20,9 @@
             c.customers_email_address,
             c.customers_address,
             c.photo_thumbnail,
+            c.experience,
+            c.working_history,
+            c.summary,
             DATE_FORMAT(c.create_date, '%d/%M/%Y') as create_date
         FROM
             customers c, location l
@@ -47,12 +50,12 @@
             <div class="col-md-12">
                 <div class="col-md-3">
                     <br/>
-                    <img src="<?php echo $customer_info['photo_thumbnail'];?>" alt="" class="img-thumbnail"/>
+                    <img src="images/<?php echo $customer_info['photo_thumbnail'];?>" alt="" class="img-thumbnail"/>
                 </div>
                 <!-- /.resume-main-image -->
                 <div class="col-md-9">
                     <h2>
-                        <?php echo $customer_info['user_name'];?>
+                        <?php echo $customer_info['company_name'];?>
                         <span class="resume-main-verified">
                             <i class="fa fa-check"></i>
                         </span>
@@ -124,12 +127,9 @@
             <div class="resume-chapter">
                 <div class="resume-chapter-inner">
                     <div class="resume-chapter-title">
-                        <h2>Summary</h2>
+                        <h2 class="mb40">Summary</h2>
+                        <?php echo $customer_info['summary'];?>
                     </div><!-- /.resume-chapter-title -->
-
-                    <div class="resume-chapter-content">
-                        <?php echo $customer_info['customers_summary'];?>
-                    </div><!-- /.resume-chapter-content -->
                 </div><!-- /.resume-chapter-inner -->
             </div><!-- /.resume-chapter -->
 
@@ -137,7 +137,7 @@
                 <div class="resume-chapter-inner">
                     <div class="resume-chapter-content">
                         <h2 class="mb40">Working History</h2>
-                        <?php echo $customer_info['customers_working_history'];?>
+                        <?php echo $customer_info['working_history'];?>
                     </div><!-- /.resume-chapter-content -->
                 </div><!-- /.resume-chapter-inner -->
             </div><!-- /.resume-chapter -->
@@ -145,13 +145,10 @@
             <div class="resume-chapter">
                 <div class="resume-chapter-inner">
                     <div class="resume-chapter-title">
-                        <h2>Experience</h2>
+                        <h2 class="mb40">Experience</h2>
+                        <?php echo $customer_info['experience'];?>
                     </div>
                     <!-- /.resume-chapter-title -->
-
-                    <div class="resume-chapter-content">
-                        <?php echo $customer_info['customers_experience'];?>
-                    </div><!-- /.resume-chapter-content -->
                 </div><!-- /.resume-chapter-inner -->
             </div><!-- /.resume-chapter -->
         </div>

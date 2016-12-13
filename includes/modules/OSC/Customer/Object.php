@@ -27,6 +27,9 @@ class Object extends DbObj {
 		, $detail
 		, $location
 		, $total
+        , $summary
+        , $workingHistory
+        , $experience
 	;
 
 	public function __construct( $params = array() ){
@@ -39,6 +42,9 @@ class Object extends DbObj {
 			'include' => array(
 				'id',
 				'user_name',
+                'summary',
+                'experience',
+                'working_history',
 				'user_type',
 				'photo',
 				'photo_thumbnail',
@@ -73,7 +79,10 @@ class Object extends DbObj {
 				company_name,
 				customers_website,
 				is_agency,
-				detail
+				detail,
+				summary,
+                experience,
+                working_history
 			FROM
 				customers
 			WHERE
@@ -136,6 +145,10 @@ class Object extends DbObj {
 				customers
 			SET
 				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
+				summary = '" . $this->dbEscape( $this->getSummary() ) . "',
+				skill_title = '" . $this->dbEscape( $this->getSkillTitle() ) . "',
+				working_history = '" . $this->dbEscape( $this->getWorkingHistory() ) . "',
+				experience = '" . $this->dbEscape( $this->getExperience() ) . "',
 				company_name = '" . $this->dbEscape( $this->getCompanyName() ) . "',
 				customers_email_address = '" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',
 				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
@@ -145,14 +158,38 @@ class Object extends DbObj {
 				detail = '" . $this->dbEscape( $this->getDetail() ). "',
 				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "',
 				customers_website = '" . $this->dbEscape( $this->getCustomersWebsite() ) . "',
-				location = '" . $this->dbEscape( $this->getLocation() ) . "'
+				customers_location = '" . $this->dbEscape( $this->getCustomersLocation() ) . "'
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'
 		");
 	
 	}
 
-	public function setCompanyName( $string ){
+    public function setSummary( $string ){
+        $this->summary = $string;
+    }
+
+    public function getSummary(){
+        return $this->summary;
+    }
+
+    public function setExperience( $string ){
+        $this->experience = $string;
+    }
+
+    public function getExperience(){
+        return $this->experience;
+    }
+
+    public function setWorkingHistory( $string ){
+        $this->workingHistory = $string;
+    }
+
+    public function getWorkingHistory(){
+        return $this->workingHistory;
+    }
+
+    public function setCompanyName( $string ){
 		$this->companyName = (string)$string;
 	}
 

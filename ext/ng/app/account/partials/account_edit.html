@@ -186,7 +186,7 @@
 						<label>Skill Title</label>
 						<input type="text"
 							   class="form-control"
-							   placeholder="Website..."
+							   placeholder="Skill Title..."
 							   data-ng-model="vm.account.skill_title"
 						/>
 					</div><!-- /.form-group -->
@@ -207,7 +207,7 @@
 						<label>Location</label>
 						<select
 								class="form-control"
-								data-ng-model="vm.account.location"
+								data-ng-model="vm.account.customers_location"
 								data-ng-options="location.id as location.name for location in vm.locations"
 								required
 						>
@@ -247,7 +247,7 @@
 					<div class="form-group">
 						<label>Working History</label>
 						<trix-editor
-								data-ng-model="vm.account.summary"
+								data-ng-model="vm.account.working_history"
 								angular-trix trix-initialize="trixInitialize(e, editor);"
 								trix-change="trixChange(e, editor);"
 								trix-selection-change="trixSelectionChange(e, editor);"
@@ -265,7 +265,7 @@
 					<div class="form-group">
 						<label>Experience</label>
 						<trix-editor
-								data-ng-model="vm.account.summary"
+								data-ng-model="vm.account.experience"
 								angular-trix trix-initialize="trixInitialize(e, editor);"
 								trix-change="trixChange(e, editor);"
 								trix-selection-change="trixSelectionChange(e, editor);"

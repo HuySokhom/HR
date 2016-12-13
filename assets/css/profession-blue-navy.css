@@ -16531,7 +16531,7 @@ h3.page-header {
     text-decoration: none; }
 
 .mb40 {
-  margin-bottom: 40px !important; }
+  margin-bottom: 20px !important; }
 
 .social-links {
   font-size: 20px;
@@ -17636,14 +17636,14 @@ ul.filter-list {
 .candidates-list-item-image {
   background-color: #fff;
   /*border: 1px solid #e9e9e9;*/
-  border-radius: 50%;
+  border-radius: 10%;
   float: left;
   height: 48px;
   margin: 0px 22px 0px 0px;
   position: relative;
-  width: 48px; }
+  width: 70px; }
   .candidates-list-item-image img {
-    border-radius: 50%;
+    border-radius: 10%;
     width: 100%; }
 
 .candidates-list-item-heading {
