@@ -1,60 +1,152 @@
 <div class="panel-body">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="form-group">
-                <label>Photo</label>
-                <div class="center">
-                    <img src="images/icon-person.png"
-                         data-ng-if="!vm.account.photo"
-                         style="width: 100%;margin-bottom: 10px;"
-                         class="img-thumbnail">
-                    <img src="images/{{vm.account.photo}}"
-                         data-ng-if="vm.account.photo"
-                         style="width: 100%;margin-bottom: 10px;"
-                         class="img-thumbnail">
-                </div>
-            </div><!-- /.form-group-->
-        </div><!-- /.col-* -->
+    <div ng-if="vm.account.user_type == 'agency'">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Photo</label>
+                    <div class="center">
+                        <img src="images/icon-person.png"
+                             data-ng-if="!vm.account.photo"
+                             style="width: 100%;margin-bottom: 10px;"
+                             class="img-thumbnail">
+                        <img src="images/{{vm.account.photo}}"
+                             data-ng-if="vm.account.photo"
+                             style="width: 100%;margin-bottom: 10px;"
+                             class="img-thumbnail">
+                    </div>
+                </div><!-- /.form-group-->
+            </div><!-- /.col-* -->
 
-        <div class="col-sm-8 row">
-            <div class="col-sm-6">
+            <div class="col-sm-9">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Company Name:</label>
+                        <div data-ng-bind="vm.account.company_name"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Email Address:</label>
+                        <div data-ng-bind="vm.account.customers_email_address"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Website:</label>
+                        <div data-ng-bind="vm.account.customers_website"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Telephone:</label>
+                        <div data-ng-bind="vm.account.customers_telephone"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Location:</label>
+                        <div data-ng-bind-html="vm.account.location[0].name"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Address:</label>
+                        <div data-ng-bind-html="vm.account.customers_address"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+            </div><!-- /.col-* -->
+        </div><!-- /.row -->
+        <h3 class="page-header">About Company Information</h3>
+        <div data-ng-bind-html="vm.account.detail">
+        </div>
+    </div>
+    <div ng-if="vm.account.user_type == 'normal'">
+        <div class="row">
+            <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Company Name:</label>
-                    <div data-ng-bind="vm.account.company_name"></div>
-                </div><!-- /.form-group -->
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Email Address:</label>
-                    <div data-ng-bind="vm.account.customers_email_address"
-                    ></div>
-                </div><!-- /.form-group -->
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Website:</label>
-                    <div data-ng-bind="vm.account.customers_website"
-                    ></div>
-                </div><!-- /.form-group -->
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Telephone:</label>
-                    <div data-ng-bind="vm.account.customers_telephone"
-                    ></div>
-                </div><!-- /.form-group -->
-            </div>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label>Address:</label>
-					<div data-ng-bind-html="vm.account.customers_address"
-                    ></div>
-                </div><!-- /.form-group -->
-            </div>
-        </div><!-- /.col-* -->
-    </div><!-- /.row -->
-    <h3 class="page-header">About Company Information</h3>
-    <div data-ng-bind-html="vm.account.detail">
+                    <label>Photo</label>
+                    <div class="center">
+                        <img src="images/icon-person.png"
+                             data-ng-if="!vm.account.photo"
+                             style="width: 100%;margin-bottom: 10px;"
+                             class="img-thumbnail">
+                        <img src="images/{{vm.account.photo}}"
+                             data-ng-if="vm.account.photo"
+                             style="width: 100%;margin-bottom: 10px;"
+                             class="img-thumbnail">
+                    </div>
+                </div><!-- /.form-group-->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-9">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Full Name:</label>
+                        <div data-ng-bind="vm.account.company_name"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Email Address:</label>
+                        <div data-ng-bind="vm.account.customers_email_address"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Skill Title:</label>
+                        <div data-ng-bind="vm.account.skill_title"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Telephone:</label>
+                        <div data-ng-bind="vm.account.customers_telephone"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Location:</label>
+                        <div data-ng-bind-html="vm.account.location[0].name"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Address:</label>
+                        <div data-ng-bind-html="vm.account.customers_address"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Summary:</label>
+                        <div data-ng-bind-html="vm.account.summary"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Working History:</label>
+                        <div data-ng-bind-html="vm.account.working_history"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Experience:</label>
+                        <div data-ng-bind-html="vm.account.experience"
+                        ></div>
+                    </div><!-- /.form-group -->
+                </div>
+            </div><!-- /.col-* -->
+        </div>
+
     </div>
     <!-- /.row -->
     <hr>
