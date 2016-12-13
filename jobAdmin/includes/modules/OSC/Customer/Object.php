@@ -32,15 +32,24 @@ class Object extends DbObj {
 		, $detail
 		, $isAgency
         , $statusApprove
+        , $isPublish
+        , $summary
+        , $workingHistory
+        , $experience
+        , $companyName
+        , $skillTitle
+        , $customersWebsite
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
-				'user_name',
+				'company_name',
 				'user_type',
+                'customers_website',
 				'is_agency',
+                'skill_title',
 				'photo',
 				'status',
                 'status_approve',
@@ -52,8 +61,10 @@ class Object extends DbObj {
 				'customers_telephone',
 				'customers_location',
 				'customers_plan',
-				'plan_date',
-				'plan_expire',
+				'summary',
+				'working_history',
+                'experience',
+                'is_publish',
 			)
 		);
 	
@@ -63,10 +74,12 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				user_name,
-				customers_plan,
-				plan_date,
-				plan_expire,
+				company_name,
+				summary,
+				working_history,
+				skill_title,
+				customers_website,
+                experience,
 				status,
 				status_approve,
 				user_type,
@@ -78,7 +91,8 @@ class Object extends DbObj {
 				customers_telephone,
 				customers_address,
 				customers_location,
-				detail
+				detail,
+				is_publish
 			FROM
 				customers
 			WHERE
@@ -112,7 +126,26 @@ class Object extends DbObj {
 
 	}
 
-	public function updateStatus() {
+
+    public function updateIsPublish() {
+
+        if( !$this->getId() ) {
+            throw new Exception("save method requires id");
+        }
+
+        $this->dbQuery("
+			UPDATE
+				customers
+			SET
+				is_publish = '" . (int)$this->getIsPublish() . "'
+			WHERE
+				customers_id = '" . (int)$this->getId() . "'
+		");
+
+    }
+
+
+    public function updateStatus() {
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
 		}
@@ -183,7 +216,12 @@ class Object extends DbObj {
 			UPDATE
 				customers
 			SET
-				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
+				company_name = '" . $this->dbEscape( $this->getCompanyName() ) . "',
+				summary = '" . $this->dbEscape( $this->getSummary() ) . "',
+				customers_website = '" . $this->dbEscape( $this->getCustomersWebsite() ) . "',
+				skill_title = '" . $this->dbEscape( $this->getSkillTitle() ) . "',
+				working_summary = '" . $this->dbEscape( $this->getWorkingHistory() ) . "',
+				experience = '" . $this->dbEscape( $this->getExperience() ) . "',
 				user_type = '" . $this->dbEscape( $this->getUserType() ) . "',
 				customers_email_address = '" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',
 				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
@@ -383,5 +421,62 @@ class Object extends DbObj {
 
     public function getStatusApprove(){
         return $this->statusApprove;
+    }
+
+    public function setExperience( $string ){
+        $this->experience = $string;
+    }
+
+    public function getExperience(){
+        return $this->experience;
+    }
+
+    public function setWorkingHistory( $string ){
+        $this->workingHistory = $string;
+    }
+
+    public function getWorkingHistory(){
+        return $this->workingHistory;
+    }
+
+    public function setSummary( $string ){
+        $this->summary = $string;
+    }
+
+
+    public function getSkillTitle(){
+        return $this->skillTitle;
+    }
+
+    public function setSkillTitle( $string ){
+        $this->skillTitle = $string;
+    }
+
+    public function getSummary(){
+        return $this->summary;
+    }
+
+    public function setCompanyName( $string ){
+        $this->companyName = $string;
+    }
+
+    public function getCompanyName(){
+        return $this->companyName;
+    }
+
+    public function setCustomersWebsite( $string ){
+        $this->customersWebsite = $string;
+    }
+
+    public function getCustomersWebsite(){
+        return $this->customersWebsite;
+    }
+
+    public function setIsPublish( $string ){
+        $this->isPublish = (int)$string;
+    }
+
+    public function getIsPublish(){
+        return $this->isPublish;
     }
 }
