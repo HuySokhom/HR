@@ -23,6 +23,10 @@ class Collection extends StdCollection {
 		$this->addWhere("c.is_agency = '" . (int)$arg . "'");
 	}
 
+	public function filterByIsPublish( $arg ){
+		$this->addWhere("c.is_publish = '" . (int)$arg . "'");
+	}
+
 	public function filterById( $arg ){
 		$this->addWhere("c.customers_id = '" . (int)$arg . "'");
 	}
