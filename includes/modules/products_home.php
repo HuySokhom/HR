@@ -9,8 +9,10 @@
             customers
         where
             status = 1
-        and
+              and
             user_type = 'normal'
+              and 
+            is_publish = 1
         order by rand()
             limit 12"
     );
@@ -31,12 +33,14 @@
             customers
         where
             status = 1
-                and
+              and
             user_type = 'agency'
-                and
+              and
             is_agency = 1
-                and
+              and
             status_approve = 1
+              and
+            is_publish = 1
         order by rand()           
     ");
     $num_featured = tep_db_num_rows($feature_query);
@@ -64,6 +68,8 @@
         " . TABLE_PRODUCTS_DESCRIPTION . " pd
       where
         p.products_status = 1
+            and 
+        p.is_publish = 1
             and
         l.id = p.province_id
             and

@@ -18,7 +18,7 @@
 
   tep_session_unregister('customer_id');
   tep_session_unregister('user_type');
-  tep_session_unregister('user_name');
+  tep_session_unregister('customers_email_address');
   tep_session_unregister('customer_default_address_id');
   tep_session_unregister('customer_first_name');
   tep_session_unregister('customer_last_name');

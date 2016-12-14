@@ -110,8 +110,8 @@
 				<span data-ng-bind="p.products_close_date"></span>
 			</td>
 			<td>
-				<label class="label label-warning" ng-if="p.products_status == 0">Pending</label>
-				<label class="label label-success" ng-if="p.products_status == 1">Approve</label>
+				<label class="label label-warning" ng-if="p.is_publish == 0">Pending</label>
+				<label class="label label-success" ng-if="p.is_publish == 1">Approve</label>
 			</td>
 			<td>
 				<!-- Single button -->

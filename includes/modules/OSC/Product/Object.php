@@ -32,6 +32,7 @@ class Object extends DbObj {
 		, $categoryDetail
 		, $productsPromote
 		, $productsCloseDate
+        , $isPublish
 	;
 
 	public function toArray( $params = array() ){
@@ -51,7 +52,8 @@ class Object extends DbObj {
 				'products_kind_of',
                 'number_of_hire',
                 'gender',
-				'product_detail'
+				'product_detail',
+                'is_publish',
 			)
 		);
 		return parent::toArray($args);
@@ -80,7 +82,8 @@ class Object extends DbObj {
 				salary,
 				products_close_date,
 				create_by,
-				gender
+				gender,
+				is_publish
 			FROM
 				products
 			WHERE
@@ -203,7 +206,8 @@ class Object extends DbObj {
 				products_kind_of,
 				gender,
 				products_close_date,
-				number_of_hire
+				number_of_hire,
+				is_publish
 			)
 				VALUES
 			(
@@ -218,7 +222,8 @@ class Object extends DbObj {
 				'" . $this->getProductsKindOf() . "',
 				'" . $this->getGender() . "',
 				'" . $this->getProductsCloseDate() . "',
-				'" . $this->getNumberOfHire() . "'
+				'" . $this->getNumberOfHire() . "',
+				0
 			)
 		");
 		$this->setProductsId( $this->dbInsertId() );

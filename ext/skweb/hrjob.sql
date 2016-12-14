@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-12-13 23:51:01
+Date: 2016-12-14 11:05:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -133,7 +133,7 @@ CREATE TABLE `address_book` (
   `entry_zone_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`address_book_id`),
   KEY `idx_address_book_customers_id` (`customers_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of address_book
@@ -162,6 +162,8 @@ INSERT INTO `address_book` VALUES ('21', '26', '', null, '', '', '', null, '', '
 INSERT INTO `address_book` VALUES ('22', '27', '', null, '', '', '', null, '', '', null, '36', '0');
 INSERT INTO `address_book` VALUES ('23', '29', '', null, '', '', '', null, '', '', null, '36', '0');
 INSERT INTO `address_book` VALUES ('24', '30', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('25', '31', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('26', '32', '', null, '', '', '', null, '', '', null, '36', '0');
 
 -- ----------------------------
 -- Table structure for address_format
@@ -11236,7 +11238,7 @@ CREATE TABLE `customers` (
   `is_publish` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`customers_id`),
   KEY `idx_customers_email_address` (`customers_email_address`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of customers
@@ -11245,6 +11247,8 @@ INSERT INTO `customers` VALUES ('27', '2', '', '', 'df', 'Sokhom', 'agency', 'ht
 INSERT INTO `customers` VALUES ('28', '1', '13', 'asdf', 'sdf', '', null, null, null, null, '', null, null, '', '0', '0000-00-00 00:00:00', '', null, '', '', null, '', '0', null, null, null, null, '1', null, null, '2016-12-01 16:45:43', null, '0', null, null, null, '0');
 INSERT INTO `customers` VALUES ('29', '1', '', '', '', 'sokhom', 'normal', null, 'Huy Polin', 'Programmer', 'news/13321959_1183957978334484_4925719335806500888_n.1481556565.jpg', 'news_thumbnail/13321959_1183957978334484_4925719335806500888_n.1481556565.jpg', '', '', '0', '0000-00-00 00:00:00', 'huysokhom@yahoo.com', '23', 'Phnom Penh', '096 789654', '', '$P$DjSrds4P3kZnb6gLkCzbbL8VLM7Nh80', '0', null, null, null, '', '1', null, '2016-12-01 16:16:58', '2016-12-13 22:00:14', '', '0', null, null, null, '0');
 INSERT INTO `customers` VALUES ('30', '1', '', '', '', 'morm sreypov', 'normal', '', 'Morm SreyPov', 'Web Developer', 'morm_sreypov/2016-12-13/images/outlook-photography-jobs-2..jpg', 'morm_sreypov/2016-12-13/image_thumbnail/outlook-photography-jobs-2..jpg', '', '', '0', '0000-00-00 00:00:00', 'sreypov@gmail.com', '24', 'Phnom Penh cambodia.', '096 491 9993', '', '$P$Da.pcrr4v9ST/MqmmooiRifHrIVLMq.', '0', null, null, null, '', '1', null, '2016-12-12 16:45:46', '2016-12-13 23:39:50', null, '0', '<div><!--block-->01-08-2016 - present :&nbsp; Front End Developer at Corarl Co., Ltd<br>01-01-2016 - 01-08-2016 : Full Stack at CINET Technology&nbsp;<br>01-09-2013 - 31-12-2016: Web Developer at EvanNay Solution&nbsp;<br>01-11-2012 - 30-08-2013: Web Developer at Atmosphere Technology Co., Ltd&nbsp;<br>08-02-2012 - 30-11-2012<strong>:&nbsp;</strong>Technician at Numixcam Co., Ltd&nbsp;</div>', '<div><!--block-->Anti-Virus and Utilities Software Computer Maintenance and Repair, Networking, Internet and Email.&nbsp;<br>Computer Programming &nbsp;<strong>:</strong>&nbsp;HTML5, CSS3, JavaScript, Jquery, Ajax, AngularJs, PHP, ASP.Net, C#, MVC Pattern, SQL, LINQ, API, CMS Framework (WordPress, Joomla)<br>Database<strong>:&nbsp;</strong>SQL Server, Oracle, MYSQL&nbsp;<br>Network<strong>:</strong>&nbsp;Window Server 2008<br>Using Git Tool and Kanbanary (Software management)<br>Linux.</div>', '<div><!--block-->I assure that all information I have provided above is true, completed and<br>correct to the best of my knowledge and belief. I understand that any false or<br>withheld on this application leads to termination or dismissal.&nbsp;</div>', '1');
+INSERT INTO `customers` VALUES ('31', '0', '', '', '', '', 'normal', null, null, null, '', null, null, '', '0', '0000-00-00 00:00:00', 'abc@gmail.com', '25', '', '', '', '$P$DKfTePyxkHaDtnB93VqwDRAku03h230', '0', null, null, null, '', '1', null, '2016-12-14 04:24:12', '2016-12-14 10:24:12', null, '0', null, null, null, '0');
+INSERT INTO `customers` VALUES ('32', '0', '', '', '', '', 'agency', 'ezecom.com', 'Ezecom', '', 'aaa@gmail.com/2016-12-14/images/hands..jpg', 'aaa@gmail.com/2016-12-14/image_thumbnail/hands..jpg', '<div><!--block-->OOPo</div>', '', '0', '0000-00-00 00:00:00', 'aaa@gmail.com', '26', '124124124', '09562213', '', '$P$DgneIrte1C6nICSXdnVJ8oiky8rW6K/', '0', null, null, null, '', '1', null, '2016-12-14 04:24:51', '2016-12-14 10:48:35', null, '0', '', '', '', '0');
 
 -- ----------------------------
 -- Table structure for customers_basket
@@ -12160,15 +12164,17 @@ CREATE TABLE `products` (
   `gender` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
   `experience` int(11) NOT NULL,
   `qualification` varchar(127) COLLATE utf8_unicode_ci NOT NULL,
+  `is_publish` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`products_id`,`categories_id`,`province_id`,`customers_id`),
   KEY `idx_products_model` (`products_model`),
   KEY `idx_products_date_added` (`products_date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=928 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=929 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('927', '71', '1', '27', null, '2016-12-31 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-01 12:02:22', null, null, null, '0', null, null, null, '2016-12-01 12:02:22', null, null, null, '500.00', '4', 'Both', '0', '');
+INSERT INTO `products` VALUES ('927', '71', '1', '27', null, '2016-12-31 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-01 12:02:22', null, null, null, '0', null, null, null, '2016-12-01 12:02:22', '2016-12-14 11:04:21', null, null, '500.00', '4', 'Both', '0', '', '1');
+INSERT INTO `products` VALUES ('928', '54', '1', '32', null, '2016-12-31 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-14 10:50:32', null, null, null, '0', null, null, null, '2016-12-14 10:50:32', '2016-12-14 10:51:05', null, null, '500.00', '3', 'Both', '0', '', null);
 
 -- ----------------------------
 -- Table structure for products_attributes
@@ -12222,12 +12228,13 @@ CREATE TABLE `products_description` (
   `benefits` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`,`products_id`,`language_id`),
   KEY `products_name` (`products_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_description
 -- ----------------------------
 INSERT INTO `products_description` VALUES ('192', '927', '1', 'Web Developer (Urgent)', '<div><!--block--><br>- Correct errors by making appropriate changes and then rechecking the program to ensure that the desired results are produced.<br>- Conduct trial runs of programs and software applications to be sure they will produce the<br>desired information and that the instructions are correct.<br>- Compile and write documentation of program development and subsequent revisions,<br>inserting comments in the coded instructions so others can understand the program.<br>- Write, update, and maintain computer programs or software packages to handle specific jobs,<br>such as tracking inventory, storing or retrieving data, or controlling other equipment.<br>- Consult with managerial, engineering, and technical personnel to clarify program intent,<br>identify problems, and suggest changes.<br>- Perform or direct revision, repair, or expansion of existing programs to increase operating<br>efficiency or adapt to new requirements.</div>', null, '9', '<div><!--block--><br>- Graduated from University major in IT or other training center related to IT<br>- Experiences as a system development minimum 3 years<br>- Knowledge about phase development (design, implementation, verification and requirement<br>definition, operational)<br>- Knowledge about PHP more than 4 years (have experiences for implements system) and<br>have used framework ( also welcome for person who know Java, Objective-C, Python)<br>- Knowledge about MySQL more than 2 years (Can performance tuning), and also welcome for<br>who can use Oracle, PostgreSQL<br>- Knowledge about Git more than 2 years (It is plus if you are experience about development by<br>Pull and Request), and we are welcome for you for VirtualBox, Vagrant<br>- Knowledge about Object Oriented, MVC, and also welcome who can use Domain Driven<br>(DDD)<br>- Knowledge about development approach (Waterfall, Agile)<br>- Experiences as Leader and can use English or Japanese (The big advance if you can use<br>Japanese)</div>', '<div><!--block-->Work condition<br>Working Hour : Monday to Friday, 8:00 am to 5:00 pm (1hour Launch time)<br>Holiday : Saturday and Sunday, Follow Cambodia calendar for public holiday<br>Salary : Negotiation (Depend on your ability good pay)<br>Other benefit : Company will pay you for gasoline by calculation.<br>Salary increase by performance<br>Chance for going to Japan if you become a Manager<br>We are looking for real candidate who want to develop the skill at our company, and want to be a CTO in<br>the soon future.</div>');
+INSERT INTO `products_description` VALUES ('193', '928', '1', 'Accounting Senior', '<ul><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li></ul>', null, '4', '<ul><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li></ul>', '<ul><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li></ul>');
 
 -- ----------------------------
 -- Table structure for products_images
@@ -12363,12 +12370,13 @@ CREATE TABLE `products_to_categories` (
   `products_id` int(11) NOT NULL,
   `categories_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`products_id`,`categories_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_to_categories
 -- ----------------------------
 INSERT INTO `products_to_categories` VALUES ('88', '927', '71');
+INSERT INTO `products_to_categories` VALUES ('89', '928', '54');
 
 -- ----------------------------
 -- Table structure for product_contact_person
@@ -12540,6 +12548,7 @@ CREATE TABLE `sessions` (
 INSERT INTO `sessions` VALUES ('11e9sat82roc7tb9pvlp4ff9h4', '1481621594', 'sessiontoken|s:32:\"735e5a9b6c02512c854e11e0bc5510be\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"98620\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|s:1:\"0\";customer_id|i:30;user_name|s:12:\"morm sreypov\";customers_limit_products|N;user_type|s:6:\"normal\";customer_default_address_id|s:2:\"24\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
 INSERT INTO `sessions` VALUES ('5s5n00rkoe0cif5sn3sqftnpn1', '1481647776', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('gvokgqcecv1h6pdfgtvmrqodi2', '1481647776', 'sessiontoken|s:32:\"47dad21c1c11189a2f65421e90b21f4a\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"28433\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:30;user_name|s:12:\"morm sreypov\";customer_plan|s:1:\"0\";customers_limit_products|N;user_type|s:6:\"normal\";customer_default_address_id|s:2:\"24\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('nn09civ86phm8j2dhpseu6jg33', '1481688263', 'sessiontoken|s:32:\"77e326a9d9483f6214b7edabd483ad50\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"38435\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:32;customers_email_address|s:13:\"aaa@gmail.com\";user_type|s:6:\"agency\";customer_default_address_id|s:2:\"26\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
 
 -- ----------------------------
 -- Table structure for specials
@@ -12649,7 +12658,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('30', ' ', 'gvokgqcecv1h6pdfgtvmrqodi2', '', '1481646925', '1481647776', '/hrJob/index.php');
+INSERT INTO `whos_online` VALUES ('32', ' ', 'nn09civ86phm8j2dhpseu6jg33', '', '1481685172', '1481688263', '/hrJob/index.php');
 
 -- ----------------------------
 -- Table structure for zones

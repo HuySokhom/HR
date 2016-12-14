@@ -34,7 +34,9 @@
 		from
 			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, location l, customers cu
 		where
-			p.products_status = '1'
+			p.products_status = 1
+			    and 
+            p.is_publish = 1
 				and
 			cu.customers_id = p.customers_id
 				and

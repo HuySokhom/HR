@@ -8,18 +8,18 @@
 class RestApiUploadImage extends RestApi {
 
     public function get(){
-        if ( !isset($_SESSION['user_name']) ) {
+        if ( !isset($_SESSION['customers_email_address']) ) {
             throw new \Exception(
                 "403: Access Denied",
                 403
             );
         } else {
-            return array(data => array('user_name' => $_SESSION['user_name']));
+            return array(data => array('customers_email_address' => $_SESSION['customers_email_address']));
         }
     }
 
     public function post( $params ){
-        if ( !isset($_SESSION['user_name']) ) {
+        if ( !isset($_SESSION['customers_email_address']) ) {
             throw new \Exception(
                 "403: Access Denied",
                 403
@@ -43,7 +43,7 @@ class RestApiUploadImage extends RestApi {
                 ) {
                     continue;
                 }
-                $user = str_replace(' ', '_', $_SESSION['user_name']);
+                $user = str_replace(' ', '_', $_SESSION['customers_email_address']);
                 // add timestamp to image name to prevent against overwrites
                 $file['name'] = substr($file['name'], 0, strlen($ext) * -1) . '.' . $ext;
 

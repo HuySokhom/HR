@@ -222,13 +222,13 @@
         tep_session_recreate();
       }
 
-      $user_name = $name;
+      $customers_email_address = $customers_email_address;
       $user_type = $type;
       $customer_first_name = $firstname;
       $customer_default_address_id = $address_id;
       $customer_country_id = $country;
       $customer_zone_id = $zone_id;
-      tep_session_register('user_name');
+      tep_session_register('customers_email_address');
       tep_session_register('user_type');
       tep_session_register('customer_id');
       tep_session_register('customer_first_name');
@@ -289,16 +289,6 @@
   <div class="col-md-7">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div class="form-group has-feedback">
-          <label for="inputName" class="control-label col-sm-5"><?php echo ENTRY_NAME; ?></label>
-          <div class="col-sm-7">
-            <?php
-            echo tep_draw_input_field('name', NULL, 'required aria-required="true" id="inputName" placeholder="' . ENTRY_NAME . '"');
-            echo FORM_REQUIRED_INPUT;
-            if (tep_not_null(ENTRY_NAME_TEXT)) echo '<span class="help-block">' . ENTRY_NAME_TEXT . '</span>';
-            ?>
-          </div>
-        </div>
         <div class="form-group has-feedback">
           <label for="inputEmail" class="control-label col-sm-5"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
           <div class="col-sm-7">
