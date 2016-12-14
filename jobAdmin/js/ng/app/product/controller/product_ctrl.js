@@ -31,11 +31,12 @@ app.controller(
 			Restful.get(url, params).success(function(data){
 				$scope.products = data;
 				$scope.totalItems = data.count;
+				console.log(data);
 			});
 			Restful.get("api/Category").success(function(data){
 				$scope.categoryList = data;
 			});
-			Restful.get("api/Customer").success(function(data){
+			Restful.get("api/Customer", {type: 'agency'}).success(function(data){
 				$scope.customerList = data;
 			});
 		};
@@ -76,8 +77,8 @@ app.controller(
 		};
 
 		$scope.updateStatus = function(params){
-			params.products_status == 1 ? params.products_status = 0 : params.products_status = 1;
-			var data = { status: params.products_status, name: "update_status"};
+			params.is_publish == 1 ? params.is_publish = 0 : params.is_publish = 1;
+			var data = { status: params.is_publish, name: "update_status"};
 			Restful.patch(url + params.id, data).success(function(data){console.log(data);
 				$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
 			});

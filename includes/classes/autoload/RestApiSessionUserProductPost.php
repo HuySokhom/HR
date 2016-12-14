@@ -74,6 +74,7 @@ class RestApiSessionUserProductPost extends RestApi {
 						p.products_price,
 						p.products_promote,
 						p.products_status,
+						p.is_publish,
 						p.products_kind_of,
 						c.categories_name,
 						pd.products_name,

@@ -19,7 +19,7 @@ class Object extends DbObj {
 		, $customersCompanyName
 		, $customersContactName
 		, $customersGender
-		, $userName
+		, $companyName
 		, $userType
 		, $photo
 		, $photoThumbnail
@@ -31,7 +31,7 @@ class Object extends DbObj {
 		$args = array(
 			'include' => array(
 				'id',
-				'user_name',
+				'company_name',
 				'user_type',
 				'customers_telephone'
 			)
@@ -43,7 +43,7 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				user_name,
+				company_name,
 				user_type,
 				customers_telephone
 			FROM
@@ -103,12 +103,12 @@ class Object extends DbObj {
 		return $this->photoThumbnail;
 	}
 
-	public function setUserName( $string ){
-		$this->userName = (string)$string;
+	public function setCompanyName( $string ){
+		$this->companyName = (string)$string;
 	}
 
-	public function getUserName(){
-		return $this->userName;
+	public function getCompanyName(){
+		return $this->companyName;
 	}
 
 	public function setCustomersEmailAddress( $string ){

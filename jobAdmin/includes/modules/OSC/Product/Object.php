@@ -40,6 +40,7 @@ class Object extends DbObj {
 		, $mapTitle
 		, $mapLong
 		, $productsPromote
+        , $isPublish
 	;
 	
 	public function toArray( $params = array() ){
@@ -69,6 +70,7 @@ class Object extends DbObj {
 				'image_detail',
 				'product_detail',
 				'products_promote',
+                'is_publish',
 			)
 		);
 		return parent::toArray($args);
@@ -105,7 +107,8 @@ class Object extends DbObj {
 				bath_rooms,
 				number_of_floors,
 				create_date,
-				create_by
+				create_by,
+				is_publish
 			FROM
 				products
 			WHERE
@@ -142,7 +145,7 @@ class Object extends DbObj {
 			UPDATE
 				products
 			SET 
-				products_status = '" . (int)$this->getProductsStatus() . "'
+				is_publish = '" . (int)$this->getProductsStatus() . "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 		");
@@ -280,6 +283,13 @@ class Object extends DbObj {
 	public function setMapLat( $string ){
 		$this->mapLat = $string;
 	}
+
+    public function getIsPublish(){
+        return $this->isPublish;
+    }
+    public function setIsPublish( $string ){
+        $this->isPublish = $string;
+    }
 
 	public function getProductsPromote(){
 		return $this->productsPromote;
