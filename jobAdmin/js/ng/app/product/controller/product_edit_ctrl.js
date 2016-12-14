@@ -9,185 +9,31 @@ app.controller(
 	, 'Upload'
 	, '$timeout'
 	, function ($scope, Restful, $stateParams, Services, $location, $alertify, Upload, $timeout){
-		// init tiny option
-		$scope.tinymceOptions = {
-			plugins: [
-				"advlist autolink lists link image charmap print preview hr anchor pagebreak",
-				"searchreplace wordcount visualblocks visualchars fullscreen",
-				"insertdatetime media nonbreaking save table contextmenu directionality",
-				"emoticons template paste textcolor colorpicker textpattern media"
-			],
-			toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-			toolbar2: "print preview media | forecolor backcolor emoticons",
-			image_advtab: true,
-			paste_data_images: true
-		};
-		$scope.propertyTypes = ["For Sale", "For Rent", "Both Sale and Rent"];
-		$scope.sortType = [
-			{
-				id: 0,
-				name: 'Free Plan'
-			},
-			{
-				id: 1,
-				name: 'Basic Plan'
-			},
-			{
-				id: 2,
-				name: 'Premium Plan'
-			},
-			{
-				id: 3,
-				name: 'Pro Plan'
-			},
-		];
-		// init category
-		$scope.initCategory = function(){
-			Restful.get("api/Category").success(function(data){
-				$scope.categoryList = data;
-			});
-			Restful.get("api/Location").success(function(data){
-				$scope.provinces = data;
-			});
-			Restful.get("api/District/").success(function(data){
-				$scope.districts = data;console.log(data);
-			});
-			Restful.get("api/Village/").success(function(data){
-				$scope.communes = data;console.log(data);
-			});
-		};
-		$scope.initCategory();
+		var vm = this;
+		vm.tinymceOptions = {};
+		vm.disabled = true;
+		vm.propertyTypes = ["Part-Time", "Full-Time"];
+		vm.genders = ["Male", "Female", "Both"];
 
-		// functional for init district
-		$scope.initDistrict = function(id){
-			Restful.get("api/District/" + id).success(function(data){
-				$scope.districts = data;
-				$scope.communes = '';
-			});
-		};
-		// functional for init Commune
-		$scope.initCommune = function(id){
-			Restful.get("api/Village/" + id).success(function(data){
-				$scope.communes = data;
-			});
-		};
 		var url = 'api/Product/';
-		$scope.service = new Services();
+		vm.service = new Services();
 
-		$scope.init = function(params){
+		vm.init = function(params){
 			Restful.get(url + $stateParams.id, params).success(function(data){
-				$scope.optionalImage = data.elements[0].image_detail;
-				$scope.district_id = data.elements[0].district_id;
-				$scope.province_id = data.elements[0].province_id;
-				$scope.property_type = data.elements[0].products_kind_of;
-				$scope.bed_rooms = data.elements[0].bed_rooms;
-				$scope.bath_rooms = data.elements[0].bath_rooms;
-				$scope.number_of_floors = data.elements[0].number_of_floors;
-				$scope.image_thumbnail = data.elements[0].products_image_thumbnail;
-				$scope.image = data.elements[0].products_image;
-				$scope.price = data.elements[0].products_price;
-				$scope.categories_id = data.elements[0].categories_id;
-				$scope.commune_id = data.elements[0].village_id;
-				$scope.title_en = data.elements[0].product_detail[0].products_name;
-				$scope.title_kh = data.elements[0].product_detail[1].products_name;
-				$scope.content_en = data.elements[0].product_detail[0].products_description;
-				$scope.content_kh = data.elements[0].product_detail[1].products_description;
-				$scope.property_plan = data.elements[0].products_promote;
-				$scope.longitude = data.elements[0].map_long;
-				$scope.latitude = data.elements[0].map_lat;
-
-				/********* Start init UI Google Map NG *************/
-				$scope.map = {
-					center: {
-						latitude: $scope.latitude,
-						longitude: $scope.longitude
-					},
-					zoom: 10
-				};
-				$scope.options = {
-					scrollwheel: true
-				};
-				$scope.coordsUpdates = 0;
-				$scope.dynamicMoveCtr = 0;
-
-				$scope.marker = {
-					id: 0,
-					coords: {
-						latitude: $scope.latitude,
-						longitude: $scope.longitude
-					},
-					options: {
-						draggable: true
-					},
-					events: {
-						dragend: function(marker, eventName, args) {
-							var lat = marker.getPosition().lat();
-							var lon = marker.getPosition().lng();
-							//$log.log(lat);
-							//$log.log(lon);
-
-							$scope.marker.options = {
-								draggable: true,
-								labelContent: "",
-								labelAnchor: "100 0",
-								labelClass: "marker-labels"
-							};
-						}
-					}
-				};
-
-				/********* End init UI Google Map NG *************/
+                vm.model = data.elements[0];
+                console.log(vm.model);
 			});
+            Restful.get("api/Category").success(function(data){
+                vm.categoryList = data;
+            });
+            Restful.get("api/Location").success(function(data){
+                vm.locations = data;
+            });
 		};
-		$scope.init();
-		$scope.longitude = 104;
-		$scope.latitude = 11;
-		/*************************************
-		 * start google map functionality  ***
-		 * start google map functionality  ***
-		 ************************************/
+		vm.init();
 
-		$scope.map = {
-			center: {
-				latitude: $scope.latitude,
-				longitude: $scope.longitude
-			},
-			zoom: 10
-		};
-		$scope.options = {
-			scrollwheel: true
-		};
-		$scope.coordsUpdates = 0;
-		$scope.dynamicMoveCtr = 0;
-
-		$scope.marker = {
-			id: 0,
-			coords: {
-				latitude: $scope.latitude,
-				longitude: $scope.longitude
-			},
-			options: {
-				draggable: true
-			},
-			events: {
-				dragend: function(marker, eventName, args) {
-					var lat = marker.getPosition().lat();
-					var lon = marker.getPosition().lng();
-					//$log.log(lat);
-					//$log.log(lon);
-
-					$scope.marker.options = {
-						draggable: true,
-						labelContent: "",
-						labelAnchor: "100 0",
-						labelClass: "marker-labels"
-					};
-				}
-			}
-		};
-		/************* End of Functionality google map NG ************************/
 		// update functionality
-		$scope.save = function(){
+		vm.save = function(){
 			// set object to save into news
 			var data = {
 				products: {
@@ -220,22 +66,22 @@ app.controller(
 				],
 				products_image: $scope.optionalImage
 			};
-			$scope.disabled = false;
+            vm.disabled = false;
 
 			Restful.put(url + $stateParams.id, data).success(function (data) {
-				$scope.disabled = true;
+                vm.disabled = true;
 				console.log(data);
-				$scope.service.alertMessage('<b>Complete: </b>Update Success.');
+                vm.service.alertMessage('<b>Complete: </b>Update Success.');
 				$location.path('product');
 			});
 		};
 
 		//functionality upload
-		$scope.uploadPic = function(file, type) {
+		vm.uploadPic = function(file, type) {
 			// validate on if image option limit with 8 photo.
 			if(type == 'optional') {
-				if($scope.optionalImage.length >= 8){
-					return $scope.service.alertMessagePromt('<b>Warning: </b>We limit image upload only 8 photo.');
+				if(vm.optionalImage.length >= 8){
+					return vm.service.alertMessagePromt('<b>Warning: </b>We limit image upload only 8 photo.');
 				}
 			}
 			if (file) {
@@ -247,15 +93,15 @@ app.controller(
 					$timeout(function () {
 						file.result = response.data;
 						if(type == 'feature_image') {
-							$scope.image = response.data.image;
-							$scope.image_thumbnail = response.data.image_thumbnail;
+                            vm.image = response.data.image;
+                            vm.image_thumbnail = response.data.image_thumbnail;
 						}
 						if(type == 'optional') {
 							var option = {
 								image: response.data.image,
 								image_thumbnail: response.data.image_thumbnail
 							};
-							$scope.optionalImage.push(option);
+                            vm.optionalImage.push(option);
 						}
 					});
 				}, function (response) {
@@ -268,9 +114,10 @@ app.controller(
 			}
 		};
 
-		// remove image
-		$scope.removeImage = function ($index) {
-			$scope.optionalImage.splice($index, 1);
+		vm.back = function($event){
+			$event.preventDefault();
+			$location.path('/product');
 		};
+
 	}
 ]);

@@ -1,172 +1,174 @@
-<div class="">
-	<div class="form-group has-feedback col-sm-2">
-		<input
+<div class="panel">
+	<div class="panel-body">
+
+		<div class="form-group has-feedback col-sm-2">
+			<input
 				type="text"
 				placeholder="Search Id..."
 				style="width: 106%;"
 				class="form-control"
 				data-ng-model="id"
 				data-ng-keypress="($event.which === 13) ? search() : 0"
-		/>
-		<span class="glyphicon glyphicon-search form-control-feedback"></span>
-	</div>
-	<div class="form-group has-feedback col-sm-2">
-		<input
-			type="text"
-			placeholder="Search Title..."
-			style="width: 106%;"
-			class="form-control"
-			data-ng-model="search_title"
-			data-ng-keypress="($event.which === 13) ? search() : 0"
-		/>
-		<span class="glyphicon glyphicon-search form-control-feedback"></span>
-	</div>
-	<div class="form-group has-feedback col-sm-3">
-		<select
-			data-ng-model="category_id"
-			data-ng-options="c.categories_id as c.detail[0].categories_name for c in categoryList.elements"
-			class="form-control"
-			data-ng-change="search();"
-			required
-		>
-			<option value="">--Filter By Category--</option>
-		</select>
-	</div>
-	<div class="form-group has-feedback col-sm-3">
-		<select
-			data-ng-model="customer_id"
-			data-ng-options="c.id as c.company_name for c in customerList.elements"
-			class="form-control"
-			data-ng-change="search();"
-			required
-		>
-			<option value="">--Filter By Customer--</option>
-		</select>
-	</div>
+			/>
+			<span class="glyphicon glyphicon-search form-control-feedback"></span>
+		</div>
+		<div class="form-group has-feedback col-sm-2">
+			<input
+				type="text"
+				placeholder="Search Title..."
+				style="width: 106%;"
+				class="form-control"
+				data-ng-model="search_title"
+				data-ng-keypress="($event.which === 13) ? search() : 0"
+			/>
+			<span class="glyphicon glyphicon-search form-control-feedback"></span>
+		</div>
+		<div class="form-group has-feedback col-sm-3">
+			<select
+				data-ng-model="category_id"
+				data-ng-options="c.categories_id as c.detail[0].categories_name for c in categoryList.elements"
+				class="form-control"
+				data-ng-change="search();"
+				required
+			>
+				<option value="">--Filter By Category--</option>
+			</select>
+		</div>
+		<div class="form-group has-feedback col-sm-3">
+			<select
+				data-ng-model="customer_id"
+				data-ng-options="c.id as c.company_name for c in customerList.elements"
+				class="form-control"
+				data-ng-change="search();"
+				required
+			>
+				<option value="">--Filter By Customer--</option>
+			</select>
+		</div>
+		<div class="form-group has-feedback col-sm-2">
+			<h2 class="label label-info" data-ng-if="totalItems > 0">
+				Total of Items: {{totalItems}}
+			</h2>
+		</div>
+		<div class="col-sm-12">
+			<table class="table table-striped table-bordered default-font">
+				<tr>
+					<th>
+						Id
+					</th>
+					<th>
+						Category
+					</th>
+					<th>
+						Name
+					</th>
+					<th>
+						Kind Of
+					</th>
+					<th>
+						View
+					</th>
+					<th>
+						Create By
+					</th>
+					<th width="270px;">
+						Action
+					</th>
+				</tr>
+				<tr data-ng-if="!products">
+					<td colspan="8" align="center">
+						<img src="images/icons/gettestr-large-spinner-orange.gif"/>
+					</td>
+				</tr>
+				<tr
+						data-ng-repeat="p in products.elements"
+				>
+					<td>
+						{{p.id}}
+					</td>
+					<td>
+						{{p.category_detail[0].categories_name}}
+					</td>
+					<td>
+						<span data-ng-bind="p.product_detail[0].products_name"></span>
+					</td>
+					<td>
+						<span data-ng-bind="p.products_kind_of"></span>
+					</td>
+					<td>
+						<span data-ng-bind="p.product_detail[0].products_viewed" class="label label-primary"></span>
+					</td>
+					<td>
+						<span data-ng-bind="p.customers_detail[0].company_name" data-ng-if="p.customers_id != 0"></span>
+						<span data-ng-bind="p.create_by" data-ng-if="p.customers_id == 0"></span>
+					</td>
+					<td width="">
+						<button
+							class="btn btn-default"
+							data-ng-click="edit(p.id);"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Edit"
+							tooltip
+						>
+							<span class="fa fa-edit"></span>
+						</button>
+						<button
+							class="btn btn-warning"
+							data-ng-click="updateStatus(p);"
+							data-ng-show="p.is_publish == 0"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Publish"
+							tooltip
+						>
+							<span class="fa fa-minus-circle"></span>
+						</button>
+						<button
+							class="btn btn-success"
+							data-ng-click="updateStatus(p);"
+							data-ng-show="p.is_publish == 1"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="UnPublish"
+							tooltip
+						>
+							<span class="fa fa-check-square-o"></span>
+						</button>
 
-	<div class="form-group has-feedback col-sm-2">
-		<h2 class="label label-info" data-ng-if="totalItems > 0">
-			Total of Items: {{totalItems}}
-		</h2>
+						<button
+							class="btn btn-danger"
+							data-ng-click="remove(p.id);"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Remove"
+							tooltip
+						>
+							<span class="fa fa-trash-o"></span>
+						</button>
+					</td>
+				</tr>
+			</table>
+			<div
+				data-ng-if="products.elements == 0"
+			>
+				<div class="alert alert-danger alert-dismissible">
+					<strong>Warning!</strong> Empty Data.
+				</div>
+			</div>
+			<div
+				class="panel-footer"
+				data-ng-show="totalItems > 10"
+			>
+				<pagination
+					total-items="totalItems"
+					ng-model="currentPage"
+					ng-change="pageChanged()"
+					max-size="10"
+					items-per-page="10"
+					boundary-links="true"
+				></pagination>
+			</div>
+		</div>
 	</div>
 </div>
-<br/>
-<table class="table table-striped table-bordered default-font">
-	<tr>
-		<th>
-			Id
-		</th>
-		<th>
-			Category
-		</th>
-		<th>
-			Name
-		</th>
-		<th>
-			Kind Of
-		</th>
-		<th>
-			View
-		</th>
-		<th>
-			Create By
-		</th>
-		<th width="270px;">
-			Action
-		</th>
-	</tr>
-	<tr data-ng-if="!products">
-		<td colspan="8" align="center">
-			<img src="images/icons/gettestr-large-spinner-orange.gif"/>
-		</td>
-	</tr>
-	<tr
-		data-ng-repeat="p in products.elements"
-	>
-		<td>
-			{{p.id}}
-		</td>
-		<td>
-			{{p.category_detail[0].categories_name}}
-		</td>
-		<td>
-			<span data-ng-bind="p.product_detail[0].products_name"></span>
-		</td>
-		<td>
-			<span data-ng-bind="p.products_kind_of"></span>
-		</td>
-		<td>
-			<span data-ng-bind="p.product_detail[0].products_viewed" class="label label-primary"></span>
-		</td>
-		<td>
-			<span data-ng-bind="p.customers_detail[0].company_name" data-ng-if="p.customers_id != 0"></span>
-			<span data-ng-bind="p.create_by" data-ng-if="p.customers_id == 0"></span>
-		</td>
-		<td width="">
-			<button
-				class="btn btn-default"
-				data-ng-click="edit(p.id);"
-				data-toggle="tooltip"
-				data-placement="top"
-				title="Edit"
-				tooltip
-			>
-				<span class="fa fa-edit"></span>
-			</button>
-			<button
-				class="btn btn-warning"
-				data-ng-click="updateStatus(p);"
-				data-ng-show="p.is_publish == 0"
-				data-toggle="tooltip"
-				data-placement="top"
-				title="Publish"
-				tooltip
-			>
-				<span class="fa fa-minus-circle"></span>
-			</button>
-			<button
-				class="btn btn-success"
-				data-ng-click="updateStatus(p);"
-				data-ng-show="p.is_publish == 1"
-				data-toggle="tooltip"
-				data-placement="top"
-				title="UnPublish"
-				tooltip
-			>
-				<span class="fa fa-check-square-o"></span>
-			</button>
-
-			<button
-				class="btn btn-danger"
-				data-ng-click="remove(p.id);"
-				data-toggle="tooltip"
-				data-placement="top"
-				title="Remove"
-				tooltip
-			>
-				<span class="fa fa-trash-o"></span>
-			</button>
-		</td>
-	</tr>
-</table>
-<div
-	data-ng-if="products.elements == 0"
->
-	<div class="alert alert-danger alert-dismissible">
-		<strong>Warning!</strong> Empty Data.
-	</div>
-</div>
-<div
-	class="panel-footer"
-	data-ng-show="totalItems > 10"
->
-	<pagination
-		total-items="totalItems"
-		ng-model="currentPage"
-		ng-change="pageChanged()"
-		max-size="10"
-		items-per-page="10"
-		boundary-links="true"
-	></pagination>
-</div>
-

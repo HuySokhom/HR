@@ -15,7 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
 <meta name="robots" content="noindex,nofollow">
-<link rel="shortcut icon" href="images/icons/ico.png">
+<link rel="shortcut icon" href="../assets/favicon.png">
 <title>HR King Job Recruitment</title>
 <base href="<?php echo ($request_type == 'SSL') ? HTTPS_SERVER . DIR_WS_HTTPS_ADMIN : HTTP_SERVER . DIR_WS_ADMIN; ?>" />
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">

@@ -397,4 +397,11 @@ class Object extends DbObj {
 	public function setGender( $string ){
 		$this->gender = $string;
 	}
+
+    public function getIsPublish(){
+        return $this->isPublish;
+    }
+    public function setIsPublish( $string ){
+        $this->isPublish = $string;
+    }
 }

@@ -297,20 +297,15 @@
                                 </a>
                             </h2>
                             <h3>
-                                <span>
-                                    <img src="' . $product['photo_thumbnail'] . '" alt="">
-                                </span>
-                                ' . $product['company_name'] . ', ' . $product['location'] . '
-                                <br>
+                                ' . $product['location'] . '
                             </h3>
-                            <div class="position-list-item-date">
+                            <div class="position-list-item-action">
                                 ' . $product['products_close_date'] . '
-                            </div>                            <div
-                                class="position-list-item-action heart-icon"
-                                data-product="' . $product['products_id'] . '"
-                                data-type="insert"
+                            </div>                            
+                            <div
+                                class="position-list-item-date"
                             >
-                                <a href="javascript:void(0)">Save Position</a>
+                                Close Date
                             </div>
                         </div>
                     ';

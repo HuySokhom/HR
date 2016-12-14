@@ -19,6 +19,8 @@ class Object extends DbObj {
 	protected
 		$customersId
 		, $productsId
+        , $salary
+        , $gender
 		, $provinceId
         , $districtId
         , $villageId
@@ -41,35 +43,28 @@ class Object extends DbObj {
 		, $mapLong
 		, $productsPromote
         , $isPublish
+        , $productsCloseDate
+        , $numberOfHire
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
-				'id',
-				'map_long',
-				'map_lat',
-				'map_title',
-				'categories_id',
-				'category_detail',
-				'customers_detail',
-				'customers_id',
-				'province_id',
-                'district_id',
-                'village_id',
-				'products_image',
-				'products_image_thumbnail',
-				'products_price',
-				'create_date',
-				'create_by',
-				'products_status',
-				'products_kind_of',
-				'bed_rooms',
-				'bath_rooms',
-                'number_of_floors',
-				'image_detail',
-				'product_detail',
-				'products_promote',
+                'id',
+                'categories_id',
+                'products_promote',
+                'category_detail',
+                'customers_id',
+                'province_id',
+                'salary',
+                'products_close_date',
+                'create_date',
+                'create_by',
+                'products_status',
+                'products_kind_of',
+                'number_of_hire',
+                'gender',
+                'product_detail',
                 'is_publish',
 			)
 		);
@@ -78,7 +73,6 @@ class Object extends DbObj {
 
 	public function __construct( $params = array() ){
  		parent::__construct($params);
-
  		$this->productDetail = new ProductDescriptionCol();
 		$this->customersDetail = new CustomerCol();
 		$this->categoryDetail = new CategoryCollection();
@@ -89,25 +83,17 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				customers_id,
-				map_long,
-				map_lat,
-				map_title,
+				products_promote,
 				categories_id,
 				province_id,
-				products_promote,
-				district_id,
-				village_id,
-				products_image,
-				products_image_thumbnail,
-				products_price,
 				products_date_added,
 				products_status,
 				products_kind_of,
-				bed_rooms,
-				bath_rooms,
-				number_of_floors,
-				create_date,
+				number_of_hire,
+				salary,
+				products_close_date,
 				create_by,
+				gender,
 				is_publish
 			FROM
 				products
@@ -208,20 +194,12 @@ class Object extends DbObj {
 				products
 			SET
 				province_id = '" . (int)$this->getProvinceId() . "',
-				map_long = '" . $this->getMapLong() . "',
-				map_lat = '" . $this->getMapLat() . "',
-				map_title = '" . $this->getMapTitle() . "',
 				categories_id = '" . (int)$this->getCategoriesId() . "',
-				district_id = '" . (int)$this->getDistrictId() . "',
-				village_id = '" . (int)$this->getVillageId() . "',
-				products_image = '" . $this->getProductsImage() . "',
-				products_promote = '" . $this->getProductsPromote() . "',
-				products_image_thumbnail = '" . $this->getProductsImageThumbnail() . "',
- 				products_price = '" . $this->getProductsPrice() . "',
+				gender = '" . $this->getGender() . "',
+				salary = '" . $this->getSalary() . "',
  				products_kind_of = '" . $this->getProductsKindOf() . "',
- 				number_of_floors = '" . $this->getNumberOfFloors() . "',
- 				bed_rooms = '" . $this->getBedRooms() . "',
- 				bath_rooms = '" . $this->getBathRooms() . "'
+ 				number_of_hire = '" . $this->getNumberOfHire() . "',
+ 				products_close_date = '" . $this->getProductsCloseDate() . "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 		");
@@ -451,5 +429,33 @@ class Object extends DbObj {
 	public function setCustomersDetail( $array ){
 		$this->customersDetail = $array;
 	}
+
+    public function getSalary(){
+        return $this->salary;
+    }
+    public function setSalary( $string ){
+        $this->salary = $string;
+    }
+
+    public function getGender(){
+        return $this->gender;
+    }
+    public function setGender( $string ){
+        $this->gender = $string;
+    }
+
+    public function getProductsCloseDate(){
+        return $this->productsCloseDate;
+    }
+    public function setProductsCloseDate( $string ){
+        $this->productsCloseDate = $string;
+    }
+
+    public function getNumberOfHire(){
+        return $this->numberOfHire;
+    }
+    public function setNumberOfHire( $int ){
+        $this->numberOfHire = (int)$int;
+    }
 
 }

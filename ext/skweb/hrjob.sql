@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-12-14 11:05:11
+Date: 2016-12-14 15:12:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `action_recorder` (
   KEY `idx_action_recorder_user_id` (`user_id`),
   KEY `idx_action_recorder_identifier` (`identifier`),
   KEY `idx_action_recorder_date_added` (`date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of action_recorder
@@ -112,6 +112,7 @@ INSERT INTO `action_recorder` VALUES ('72', 'ar_admin_login', '1', 'admin', '', 
 INSERT INTO `action_recorder` VALUES ('73', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-01 11:54:07');
 INSERT INTO `action_recorder` VALUES ('74', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-12 21:53:39');
 INSERT INTO `action_recorder` VALUES ('75', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-13 22:17:04');
+INSERT INTO `action_recorder` VALUES ('76', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-14 11:06:27');
 
 -- ----------------------------
 -- Table structure for address_book
@@ -11245,10 +11246,10 @@ CREATE TABLE `customers` (
 -- ----------------------------
 INSERT INTO `customers` VALUES ('27', '2', '', '', 'df', 'Sokhom', 'agency', 'http://skweb.asia', 'SKWeb Solution', null, 'Sokhom/2016-12-01/images/hands..jpg', 'Sokhom/2016-12-01/image_thumbnail/hands..jpg', '<div><!--block--><strong>SKWeb Solution</strong>&nbsp;we found in 2014 is a company technology to serve business customer from hard to easy management.</div>', '', '1', '0000-00-00 00:00:00', 'kom.huy@gmail.com', '22', 'Phnom Penh sdfa', '070 955 102', '', '$P$DyAWp3gnKkrLeaMW.mF.MjaOqfCl1t/', '0', null, null, null, '', '1', null, '2016-12-01 05:58:18', '2016-12-13 22:52:30', 'admin', '1', null, null, null, '1');
 INSERT INTO `customers` VALUES ('28', '1', '13', 'asdf', 'sdf', '', null, null, null, null, '', null, null, '', '0', '0000-00-00 00:00:00', '', null, '', '', null, '', '0', null, null, null, null, '1', null, null, '2016-12-01 16:45:43', null, '0', null, null, null, '0');
-INSERT INTO `customers` VALUES ('29', '1', '', '', '', 'sokhom', 'normal', null, 'Huy Polin', 'Programmer', 'news/13321959_1183957978334484_4925719335806500888_n.1481556565.jpg', 'news_thumbnail/13321959_1183957978334484_4925719335806500888_n.1481556565.jpg', '', '', '0', '0000-00-00 00:00:00', 'huysokhom@yahoo.com', '23', 'Phnom Penh', '096 789654', '', '$P$DjSrds4P3kZnb6gLkCzbbL8VLM7Nh80', '0', null, null, null, '', '1', null, '2016-12-01 16:16:58', '2016-12-13 22:00:14', '', '0', null, null, null, '0');
-INSERT INTO `customers` VALUES ('30', '1', '', '', '', 'morm sreypov', 'normal', '', 'Morm SreyPov', 'Web Developer', 'morm_sreypov/2016-12-13/images/outlook-photography-jobs-2..jpg', 'morm_sreypov/2016-12-13/image_thumbnail/outlook-photography-jobs-2..jpg', '', '', '0', '0000-00-00 00:00:00', 'sreypov@gmail.com', '24', 'Phnom Penh cambodia.', '096 491 9993', '', '$P$Da.pcrr4v9ST/MqmmooiRifHrIVLMq.', '0', null, null, null, '', '1', null, '2016-12-12 16:45:46', '2016-12-13 23:39:50', null, '0', '<div><!--block-->01-08-2016 - present :&nbsp; Front End Developer at Corarl Co., Ltd<br>01-01-2016 - 01-08-2016 : Full Stack at CINET Technology&nbsp;<br>01-09-2013 - 31-12-2016: Web Developer at EvanNay Solution&nbsp;<br>01-11-2012 - 30-08-2013: Web Developer at Atmosphere Technology Co., Ltd&nbsp;<br>08-02-2012 - 30-11-2012<strong>:&nbsp;</strong>Technician at Numixcam Co., Ltd&nbsp;</div>', '<div><!--block-->Anti-Virus and Utilities Software Computer Maintenance and Repair, Networking, Internet and Email.&nbsp;<br>Computer Programming &nbsp;<strong>:</strong>&nbsp;HTML5, CSS3, JavaScript, Jquery, Ajax, AngularJs, PHP, ASP.Net, C#, MVC Pattern, SQL, LINQ, API, CMS Framework (WordPress, Joomla)<br>Database<strong>:&nbsp;</strong>SQL Server, Oracle, MYSQL&nbsp;<br>Network<strong>:</strong>&nbsp;Window Server 2008<br>Using Git Tool and Kanbanary (Software management)<br>Linux.</div>', '<div><!--block-->I assure that all information I have provided above is true, completed and<br>correct to the best of my knowledge and belief. I understand that any false or<br>withheld on this application leads to termination or dismissal.&nbsp;</div>', '1');
+INSERT INTO `customers` VALUES ('29', '1', '', '', '', 'sokhom', 'normal', null, 'Huy Polin', 'Programmer', 'news/13321959_1183957978334484_4925719335806500888_n.1481556565.jpg', 'news_thumbnail/13321959_1183957978334484_4925719335806500888_n.1481556565.jpg', '', '', '0', '0000-00-00 00:00:00', 'huysokhom@yahoo.com', '23', 'Phnom Penh', '096 789654', '', '$P$DjSrds4P3kZnb6gLkCzbbL8VLM7Nh80', '0', null, null, null, '', '1', null, '2016-12-01 16:16:58', '2016-12-14 14:08:00', '', '0', null, null, null, '1');
+INSERT INTO `customers` VALUES ('30', '1', '', '', '', 'morm sreypov', 'normal', '', 'Morm SreyPov', 'Web Developer', 'news/outlook-photography-jobs-2.1481699260.jpg', 'news_thumbnail/outlook-photography-jobs-2.1481699260.jpg', '', '', '0', '0000-00-00 00:00:00', 'sreypov@gmail.com', '24', 'Phnom Penh cambodia.\ncambodia kingdom of cambodia', '096 491 9993@', '', '$P$Da.pcrr4v9ST/MqmmooiRifHrIVLMq.', '0', null, null, null, '', '1', null, '2016-12-12 16:45:46', '2016-12-14 14:07:42', '', '0', '<div><!--block-->01-08-2016 - present :&nbsp; Front End Developer at Corarl Co., Ltd<br />01-01-2016 - 01-08-2016 : Full Stack at CINET Technology&nbsp;<br />01-09-2013 - 31-12-2016: Web Developer at EvanNay Solution&nbsp;<br />01-11-2012 - 30-08-2013: Web Developer at Atmosphere Technology Co., Ltd&nbsp;<br />08-02-2012 - 30-11-2012<strong>:&nbsp;</strong>Technician at Numixcam Co., Ltd&nbsp;</div>\n<div>&nbsp;</div>', '<div><!--block-->Anti-Virus and Utilities Software Computer Maintenance and Repair, Networking, Internet and Email.&nbsp;<br />Computer Programming &nbsp;<strong>:</strong>&nbsp;HTML5, CSS3, JavaScript, Jquery, Ajax, AngularJs, PHP, ASP.Net, C#, MVC Pattern, SQL, LINQ, API, CMS Framework (WordPress, Joomla)<br />Database<strong>:&nbsp;</strong>SQL Server, Oracle, MYSQL&nbsp;<br />Network<strong>:</strong>&nbsp;Window Server 2008<br />Using Git Tool and Kanbanary (Software management)<br />Linux.</div>\n<div>&nbsp;</div>', '<div><!--block-->I assure that all information I have provided above is true, completed and<br />correct to the best of my knowledge and belief. I understand that any false or<br />withheld on this application leads to termination or dismissal.&nbsp;</div>\n<div>&nbsp;</div>', '1');
 INSERT INTO `customers` VALUES ('31', '0', '', '', '', '', 'normal', null, null, null, '', null, null, '', '0', '0000-00-00 00:00:00', 'abc@gmail.com', '25', '', '', '', '$P$DKfTePyxkHaDtnB93VqwDRAku03h230', '0', null, null, null, '', '1', null, '2016-12-14 04:24:12', '2016-12-14 10:24:12', null, '0', null, null, null, '0');
-INSERT INTO `customers` VALUES ('32', '0', '', '', '', '', 'agency', 'ezecom.com', 'Ezecom', '', 'aaa@gmail.com/2016-12-14/images/hands..jpg', 'aaa@gmail.com/2016-12-14/image_thumbnail/hands..jpg', '<div><!--block-->OOPo</div>', '', '0', '0000-00-00 00:00:00', 'aaa@gmail.com', '26', '124124124', '09562213', '', '$P$DgneIrte1C6nICSXdnVJ8oiky8rW6K/', '0', null, null, null, '', '1', null, '2016-12-14 04:24:51', '2016-12-14 10:48:35', null, '0', '', '', '', '0');
+INSERT INTO `customers` VALUES ('32', '3', '', '', '', '', 'agency', 'ezecom.com', 'Ezecom', '', 'aaa@gmail.com/2016-12-14/images/hands..jpg', 'aaa@gmail.com/2016-12-14/image_thumbnail/hands..jpg', '<div><!--block-->OOPo</div>', '', '1', '0000-00-00 00:00:00', 'aaa@gmail.com', '26', '124124124', '09562213', '', '$P$DgneIrte1C6nICSXdnVJ8oiky8rW6K/', '0', null, null, null, '', '1', null, '2016-12-14 04:24:51', '2016-12-14 15:11:18', '', '1', '', '', '', '1');
 
 -- ----------------------------
 -- Table structure for customers_basket
@@ -12174,7 +12175,7 @@ CREATE TABLE `products` (
 -- Records of products
 -- ----------------------------
 INSERT INTO `products` VALUES ('927', '71', '1', '27', null, '2016-12-31 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-01 12:02:22', null, null, null, '0', null, null, null, '2016-12-01 12:02:22', '2016-12-14 11:04:21', null, null, '500.00', '4', 'Both', '0', '', '1');
-INSERT INTO `products` VALUES ('928', '54', '1', '32', null, '2016-12-31 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-14 10:50:32', null, null, null, '0', null, null, null, '2016-12-14 10:50:32', '2016-12-14 10:51:05', null, null, '500.00', '3', 'Both', '0', '', null);
+INSERT INTO `products` VALUES ('928', '54', '1', '32', null, '2016-12-31 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-14 10:50:32', null, null, null, '0', null, null, null, '2016-12-14 10:50:32', '2016-12-14 11:59:34', null, null, '500.00', '3', 'Both', '0', '', '0');
 
 -- ----------------------------
 -- Table structure for products_attributes
@@ -12546,9 +12547,10 @@ CREATE TABLE `sessions` (
 -- Records of sessions
 -- ----------------------------
 INSERT INTO `sessions` VALUES ('11e9sat82roc7tb9pvlp4ff9h4', '1481621594', 'sessiontoken|s:32:\"735e5a9b6c02512c854e11e0bc5510be\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"98620\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|s:1:\"0\";customer_id|i:30;user_name|s:12:\"morm sreypov\";customers_limit_products|N;user_type|s:6:\"normal\";customer_default_address_id|s:2:\"24\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('1n0mleq0rbrji0fvbtfa7qs2s5', '1481703099', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('5s5n00rkoe0cif5sn3sqftnpn1', '1481647776', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('gvokgqcecv1h6pdfgtvmrqodi2', '1481647776', 'sessiontoken|s:32:\"47dad21c1c11189a2f65421e90b21f4a\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"28433\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:30;user_name|s:12:\"morm sreypov\";customer_plan|s:1:\"0\";customers_limit_products|N;user_type|s:6:\"normal\";customer_default_address_id|s:2:\"24\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
-INSERT INTO `sessions` VALUES ('nn09civ86phm8j2dhpseu6jg33', '1481688263', 'sessiontoken|s:32:\"77e326a9d9483f6214b7edabd483ad50\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"38435\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:32;customers_email_address|s:13:\"aaa@gmail.com\";user_type|s:6:\"agency\";customer_default_address_id|s:2:\"26\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('nn09civ86phm8j2dhpseu6jg33', '1481703092', 'sessiontoken|s:32:\"77e326a9d9483f6214b7edabd483ad50\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"38435\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:32;customers_email_address|s:13:\"aaa@gmail.com\";user_type|s:6:\"agency\";customer_default_address_id|s:2:\"26\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
 
 -- ----------------------------
 -- Table structure for specials
@@ -12658,7 +12660,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('32', ' ', 'nn09civ86phm8j2dhpseu6jg33', '', '1481685172', '1481688263', '/hrJob/index.php');
+INSERT INTO `whos_online` VALUES ('32', ' ', 'nn09civ86phm8j2dhpseu6jg33', '', '1481702729', '1481703091', '/hrJob/index.php');
 
 -- ----------------------------
 -- Table structure for zones
