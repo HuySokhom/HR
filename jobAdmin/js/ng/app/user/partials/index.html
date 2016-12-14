@@ -58,36 +58,33 @@
 	<br/>
 	<table class="table table-bordered table-striped" style="font-size: 12px;">
 		<thead>
-		<th>
-			Id
-		</th>
-		<th>
-			Type
-		</th>
-		<th>
-			Plan
-		</th>
-		<th>
-			User Name
-		</th>
-		<th>
-			Email Address
-		</th>
-		<th>
-			Telephone
-		</th>
-		<th>
-			Address
-		</th>
-		<th style="width: 120px;">
-			Agency Partner
-		</th>
-		<th style="width: 120px;">
-			Feature Partner
-		</th>
-		<th style="width: 140px;">
-			Action
-		</th>
+			<th>
+				Id
+			</th>
+			<th>
+				Type
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				Email Address
+			</th>
+			<th>
+				Telephone
+			</th>
+			<th>
+				Address
+			</th>
+			<th style="width: 120px;">
+				Agency Partner
+			</th>
+			<th style="width: 50px;">
+				Publish
+			</th>
+			<th style="width: 140px;">
+				Action
+			</th>
 		</thead>
 		<tr data-ng-repeat="u in users.elements">
 			<td>
@@ -106,23 +103,7 @@
 				</span>
 			</td>
 			<td>
-				 <span
-					 data-ng-bind="
-                        (u.customers_plan == 3) ? 'Plan Pro'
-                        : (u.customers_plan == 2) ? 'Plan Premium'
-                        : (u.customers_plan == 1) ? 'Plan Basic'
-                        : 'Plan Free'
-                    "
-					 data-ng-class="
-                        (u.customers_plan == 3) ? 'label label-danger'
-                        : (u.customers_plan == 2) ? 'label label-primary'
-                        : (u.customers_plan == 1) ? 'label label-success'
-                        : 'label label-default'
-                    "
-				 ></span>
-			</td>
-			<td>
-				{{u.user_name}}
+				{{u.company_name}}
 			</td>
 			<td>
 				{{u.customers_email_address}}
@@ -159,31 +140,29 @@
 					</button>
 				</div>
 			</td>
-			<td align="center">
-				<div data-ng-if="u.user_type == 'agency'">
-					<button
-							class="btn btn-success"
-							data-ng-click="updateStatusApprove(u);"
-							data-ng-if="u.status_approve == 1"
-							data-toggle="tooltip"
-							data-placement="top"
-							title="Active"
-							tooltip
-					>
-						<span class="fa fa-check-square-o"></span>
-					</button>
-					<button
-							class="btn btn-warning"
-							data-ng-if="u.status_approve == 0"
-							data-ng-click="updateStatusApprove(u);"
-							data-toggle="tooltip"
-							data-placement="top"
-							title="Inactive"
-							tooltip
-					>
-						<span class="fa fa-minus-square-o"></span>
-					</button>
-				</div>
+			<td>
+				<button
+					class="btn btn-success"
+					data-ng-click="updateStatusApprove(u);"
+					data-ng-if="u.is_publish == 1"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Active"
+					tooltip
+				>
+					<span class="fa fa-check-square-o"></span>
+				</button>
+				<button
+					class="btn btn-warning"
+					data-ng-if="u.is_publish == 0"
+					data-ng-click="updateStatusApprove(u);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Inactive"
+					tooltip
+				>
+					<span class="fa fa-minus-square-o"></span>
+				</button>
 			</td>
 			<td>
 				<button

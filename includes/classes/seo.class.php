@@ -1496,7 +1496,7 @@ class SEO_URL{
 
 
 /**
- * Function to get the informatin name. Use evaluated cache, per page cache, or database query in that order of precedent.
+ * Function to get the information name. Use evaluated cache, per page cache, or database query in that order of precedent.
  * @author Bobby Easland 
  * @version 1.1
  * @param integer $iID
@@ -1515,7 +1515,7 @@ class SEO_URL{
                                 break;
                         default:
                                 if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['NUMBER_QUERIES']++;
-                                $sql = "SELECT user_name as iName
+                                $sql = "SELECT company_name as iName
                                    FROM ".TABLE_CUSTOMERS."
                                    WHERE customers_id='".(int)$iID."'
                                    LIMIT 1";

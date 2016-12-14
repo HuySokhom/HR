@@ -220,7 +220,7 @@ class Object extends DbObj {
 				summary = '" . $this->dbEscape( $this->getSummary() ) . "',
 				customers_website = '" . $this->dbEscape( $this->getCustomersWebsite() ) . "',
 				skill_title = '" . $this->dbEscape( $this->getSkillTitle() ) . "',
-				working_summary = '" . $this->dbEscape( $this->getWorkingHistory() ) . "',
+				working_history = '" . $this->dbEscape( $this->getWorkingHistory() ) . "',
 				experience = '" . $this->dbEscape( $this->getExperience() ) . "',
 				user_type = '" . $this->dbEscape( $this->getUserType() ) . "',
 				customers_email_address = '" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',

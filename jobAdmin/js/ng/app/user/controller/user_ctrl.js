@@ -45,10 +45,10 @@ app.controller(
 		};
 
 		$scope.updateStatusApprove = function(params){
-			params.status_approve == 1 ? params.status_approve = 0 : params.status_approve = 1;
+			params.is_publish == 1 ? params.is_publish = 0 : params.is_publish = 1;
 			var data = {
 				approve: 'yes',
-                status_approve: params.status_approve
+                is_publish: params.is_publish
 			};
 			Restful.patch(url + params.id, data).success(function(data) {
 				$scope.service.alertMessage('<strong>Success: </strong>Update Success.');

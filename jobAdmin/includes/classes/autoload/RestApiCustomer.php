@@ -73,8 +73,8 @@ class RestApiCustomer extends RestApi {
             $obj->setIsAgency($params['PATCH']['is_agency']);
             $obj->updateStatusAgency();
         }else{
-            $obj->setStatusApprove($params['PATCH']['status_approve']);
-            $obj->updateStatusFeature();
+            $obj->setIsPublish($params['PATCH']['is_publish']);
+            $obj->updateIsPublish();
         }
 	}
 

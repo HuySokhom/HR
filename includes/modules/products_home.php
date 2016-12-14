@@ -2,7 +2,7 @@
     $candidate_query = tep_db_query("
         select
             customers_id,
-            user_name,
+            company_name,
             photo_thumbnail,
             skill_title
         from
@@ -193,7 +193,7 @@
                                     <a href="' . tep_href_link(FILENAME_INFORMATION, 'info_id=' . $candidate['customers_id']) . '">
                                         <img
                                             src="images/' . $candidate['photo_thumbnail'] . '"
-                                            alt="' . $candidate['user_name'] . '"
+                                            alt="' . $candidate['company_name'] . '"
                                             class="img-responsive"
                                         />
                                     </a>
@@ -201,7 +201,7 @@
                                 <!-- /.candidate-box-image -->
 
                                 <div class="candidate-box-content">
-                                    <h2>' . $candidate['user_name'] . '</h2>
+                                    <h2>' . $candidate['company_name'] . '</h2>
                                     <h3>' . $candidate['skill_title'] . '</h3>
                                 </div><!-- /.candidate-box-content -->
                             </div><!-- /.candidate-box -->

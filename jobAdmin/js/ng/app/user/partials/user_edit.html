@@ -1,165 +1,272 @@
-<form name="account" data-ng-submit="save();">
-	<table class="table table-bordered">
-		<tr>
-			<td>
-				Type:
-			</td>
-			<td>
-				<select class="form-control" data-ng-model="type">
-					<option value="normal">Normal</option>
-					<option value="agency">Agency</option>
-					<option value="member">Member</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				User Plan:
-			</td>
-			<td>
-				<select
-					data-ng-model="user_plan"
-					data-ng-options="n.id as n.name for n in sortType"
-					class="form-control"
-					data-ng-selected="user_plan == n.id"
-				>
-					<option value="">--Select Plan--</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Plan Date:
-			</td>
-			<td>
-				<label>Start Date:</label>
-				<input type="text" class="form-control" data-ng-model="plan_date"/>
-				<label>Expire Date:</label>
-				<input type="text" class="form-control" data-ng-model="plan_expire"/>
-			</td>
-		</tr>
-		<tr>
-			<td width="20%">
-				User Name:
-			</td>
-			<td>
-				<input type="text" data-ng-model="user_name" required="required" class="form-control" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				E-Mail Address:
-			</td>
-			<td>
-				<input type="email" data-ng-model="email" required="required" class="form-control" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Address:
-			</td>
-			<td>
-				<textarea
-					data-ng-model="address"
-					required="required"
-					class="form-control"
-					rows="5"
-				></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Location:
-			</td>
-			<td>
-				<select
-					class="form-control"
-					data-ng-model="location"
-					data-ng-options="location.id as location.name for location in locations"
-					data-ng-init="location == location.id"
-					required
-				>
-					<option value="">--Select--</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Telephone:
-			</td>
-			<td>
-				<input type="text" data-ng-model="telephone" required="required" class="form-control" />
-			</td>
-		</tr>
-		<tr data-ng-show="type == 'agency' || type == 'member'">
-			<td>
-				Fax:
-			</td>
-			<td>
-				<input type="text" data-ng-model="fax" class="form-control" />
-			</td>
-		</tr>
-		<tr data-ng-show="type == 'agency' || type == 'member'">
-			<td>
-				Detail:
-			</td>
-			<td>
-				<textarea
-					ui-tinymce="tinymceOptions"
-					data-ng-model="detail"
-					id="detail"
-					class="form-control"
-				></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Photo:
-			</td>
-			<td>
-				<input
-					type="file"
-					ng-model="picFile"
-					name="file"
-					accept="image/*"
-					ngf-max-size="2MB"
-					ngf-model-invalid="errorFiles"
-					ngf-select="uploadPic(picFile)"
-					class="form-control"
-				>
-				<i ng-show="myForm.file.$error.maxSize">
-					File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
-				</i>
-				<img
-					ng-show="photo_thumbnail"
-					class="thumb"
-					src="../images/{{photo_thumbnail}}"
-				>
-                <span class="progress" ng-show="picFile.progress >= 0">
-                    <div
-						style="width: {{picFile.progress}}%"
-						ng-bind="picFile.progress + '%'"
-					>
-					</div>
-                </span>
-				<span ng-show="picFile.result">Upload Successful</span>
-				<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-			</td>
-		</tr>
-	</table>
-	<div class="align-right">
-		<button
-			class="btn btn-primary"
-		>
-			<i class="fa fa-save"></i>
-			Save
-		</button>
+<div class="panel">
+	<div class="panel-body">
+		<form data-ng-submit="vm.save()" name="accountForm">
+			<div ng-if="vm.account.user_type == 'agency'">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label>Photo</label>
+							<div class="center">
+								<img src="../images/icon-person.png"
+									 data-ng-if="!vm.account.photo"
+									 style="width: 100%;margin-bottom: 10px;"
+									 class="img-thumbnail">
+								<img src="../images/{{vm.account.photo}}"
+									 data-ng-if="vm.account.photo"
+									 style="width: 100%;margin-bottom: 10px;"
+									 class="img-thumbnail">
+								<input type="file" accept="image/*"
+									   ng-model="picFile"
+									   ngf-max-size="2MB"
+									   ngf-model-invalid="errorFiles"
+									   ngf-select="vm.uploadPic(picFile, 'feature_image')"
+									   class="form-control">
+								<i ng-show="accountForm.file.$error.maxSize">
+									File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+								</i>
+								<span class="progress" ng-show="picFile.progress >= 0">
+									<div
+											style="width:{{picFile.progress}}%"
+											ng-bind="picFile.progress + '%'"
+									>
+									</div>
+								</span>
+								<span ng-show="picFile.result">Upload Successful</span>
+								<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+							</div>
+						</div><!-- /.form-group-->
+					</div><!-- /.col-* -->
+
+					<div class="col-sm-9">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Company Name</label>
+								<input type="text"
+									   class="form-control"
+									   required
+									   placeholder="Company Name..."
+									   data-ng-model="vm.account.company_name"
+								/>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Email Address</label>
+								<input type="text"
+									   class="form-control"
+									   placeholder="Email Address"
+									   required
+									   data-ng-model="vm.account.customers_email_address"
+								/>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Website</label>
+								<input type="text"
+									   class="form-control"
+									   placeholder="Website..."
+									   data-ng-model="vm.account.customers_website"
+								/>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Telephone</label>
+								<input type="text"
+									   class="form-control"
+									   placeholder="Telephone..."
+									   required
+									   data-ng-model="vm.account.customers_telephone"
+								/>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Location</label>{{vm.account.customers_location}}
+								<select
+										class="form-control"
+										data-ng-model="vm.account.location"
+										data-ng-options="location.id as location.name for location in vm.locations"
+										required
+								>
+									<option value="">--Select--</option>
+								</select>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Address</label>
+								<textarea required
+										  placeholder="Address Information..."
+										  class="form-control"
+										  data-ng-model="vm.account.customers_address"
+								></textarea>
+							</div><!-- /.form-group -->
+						</div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>About Company Information</label>
+                                <textarea
+                                    ui-tinymce="tinymceOptions"
+                                    data-ng-model="vm.account.detail"
+                                    id="detail"
+                                    class="form-control"
+                                ></textarea>
+                            </div><!-- /.form-group -->
+                        </div>
+					</div><!-- /.col-* -->
+				</div><!-- /.row -->
+
+			</div>
+			<div ng-if="vm.account.user_type == 'normal'">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label>Photo</label>
+							<div class="center">
+								<img src="../images/icon-person.png"
+									 data-ng-if="!vm.account.photo"
+									 style="width: 100%;margin-bottom: 10px;"
+									 class="img-thumbnail">
+								<img src="../images/{{vm.account.photo}}"
+									 data-ng-if="vm.account.photo"
+									 style="width: 100%;margin-bottom: 10px;"
+									 class="img-thumbnail">
+								<input type="file" accept="image/*"
+									   ng-model="picFile"
+									   ngf-max-size="2MB"
+									   ngf-model-invalid="errorFiles"
+									   ngf-select="vm.uploadPic(picFile, 'feature_image')"
+									   class="form-control">
+								<i ng-show="accountForm.file.$error.maxSize">
+									File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+								</i>
+								<span class="progress" ng-show="picFile.progress >= 0">
+									<div
+											style="width:{{picFile.progress}}%"
+											ng-bind="picFile.progress + '%'"
+									>
+									</div>
+								</span>
+								<span ng-show="picFile.result">Upload Successful</span>
+								<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+							</div>
+						</div><!-- /.form-group-->
+					</div><!-- /.col-* -->
+
+					<div class="col-sm-9">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Full Name</label>
+								<input type="text"
+									   class="form-control"
+									   required
+									   placeholder="Company Name..."
+									   data-ng-model="vm.account.company_name"
+								/>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Email Address</label>
+								<input type="text"
+									   class="form-control"
+									   placeholder="Email Address"
+									   required
+									   data-ng-model="vm.account.customers_email_address"
+								/>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Skill Title</label>
+								<input type="text"
+									   class="form-control"
+									   placeholder="Skill Title..."
+									   data-ng-model="vm.account.skill_title"
+								/>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Telephone</label>
+								<input type="text"
+									   class="form-control"
+									   placeholder="Telephone..."
+									   required
+									   data-ng-model="vm.account.customers_telephone"
+								/>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Location</label>
+								<select
+										class="form-control"
+										data-ng-model="vm.account.customers_location"
+										data-ng-options="location.id as location.name for location in vm.locations"
+										required
+								>
+									<option value="">--Select--</option>
+								</select>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Address</label>
+								<textarea required
+										  placeholder="Address Information..."
+										  class="form-control"
+										  data-ng-model="vm.account.customers_address"
+								></textarea>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Summary</label>
+                                <textarea
+                                        ui-tinymce="tinymceOptions"
+                                        data-ng-model="vm.account.summary"
+                                        class="form-control"
+                                ></textarea>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Working History</label>
+                                <textarea
+                                        ui-tinymce="tinymceOptions"
+                                        data-ng-model="vm.account.working_history"
+                                        class="form-control"
+                                ></textarea>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Experience</label>
+                                <textarea
+                                        ui-tinymce="tinymceOptions"
+                                        data-ng-model="vm.account.experience"
+                                        class="form-control"
+                                ></textarea>
+							</div>
+						</div>
+					</div><!-- /.col-* -->
+
+				</div><!-- /.row -->
+			</div>
+			<hr>
+			<div class="">
+				<a href="javascript" class="btn btn-default" ui-sref="/user">
+					<i class="fa fa-close"></i>
+					Discard
+				</a>
+				<button type="submit" class="btn btn-secondary">
+					<i class="fa fa-save"></i>
+					Save
+				</button>
+			</div><!-- /.center -->
+		</form>
 	</div>
-</form>
-<button
-	class="btn btn-default"
-	onclick="location.href='#/user';"
->
-	<i class="fa fa-close"></i>
-	Close
-</button>
+</div>
