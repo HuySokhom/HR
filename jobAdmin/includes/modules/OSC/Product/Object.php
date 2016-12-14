@@ -434,7 +434,7 @@ class Object extends DbObj {
         return $this->salary;
     }
     public function setSalary( $string ){
-        $this->salary = $string;
+        $this->salary = doubleval($string);
     }
 
     public function getGender(){
