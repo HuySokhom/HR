@@ -138,12 +138,13 @@
 							 class="img-thumbnail">
 						<input type="file" accept="image/*"
 							   ng-model="picFile"
-							   ngf-max-size="2MB"
+							   ngf-max-size="1MB"
+							   name="fileImage"
 							   ngf-model-invalid="errorFiles"
 							   ngf-select="vm.uploadPic(picFile, 'feature_image')"
 							   class="form-control">
-						<i ng-show="accountForm.file.$error.maxSize">
-							File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+						<i ng-show="accountForm.fileImage.$error.maxSize">
+							File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 1M
 						</i>
 						<span class="progress" ng-show="picFile.progress >= 0">
 							<div
@@ -152,8 +153,42 @@
 							>
 							</div>
 						</span>
-						<span ng-show="picFile.result">Upload Successful</span>
+						<span ng-show="picFile.result.data">Upload Successful</span>
 						<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+					</div>
+					<hr />
+					<label>
+						CV:
+						<span data-ng-if="!vm.account.upload_cv">
+							N/A
+						</span>
+						<span data-ng-if="vm.account.upload_cv">
+							<a href="{{vm.account.upload_cv}}">
+								{{vm.account.upload_cv}}
+							</a>
+						</span>
+					</label>
+					<div class="center">
+						<input type="file"
+							   accept="application/pdf"
+							   ng-model="picFileCV"
+							   ngf-max-size="1MB"
+							   name="fileCV"
+							   ngf-model-invalid="errorFilesCV"
+							   ngf-select="vm.uploadCV(picFileCV)"
+							   class="form-control">
+						<i ng-show="accountForm.fileCV.$error.maxSize">
+							File too large {{errorFilesCV[0].size / 1000000|number:1}}MB: max 1M
+						</i>
+						<span class="progress" ng-show="errorMsgCV.progress >= 0">
+							<div
+								style="width:{{picFileCV.progress}}%"
+								ng-bind="picFileCV.progress + '%'"
+							>
+							</div>
+						</span>
+						<span ng-show="picFileCV.result.data">Upload Successful</span>
+						<span class="err" ng-show="errorMsgCV">{{errorMsgCV}}</span>
 					</div>
 				</div><!-- /.form-group-->
 			</div><!-- /.col-* -->

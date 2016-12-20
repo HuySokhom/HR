@@ -30,6 +30,7 @@ class Object extends DbObj {
         , $summary
         , $workingHistory
         , $experience
+        , $uploadCv
 	;
 
 	public function __construct( $params = array() ){
@@ -57,6 +58,7 @@ class Object extends DbObj {
 				'company_name',
 				'customers_website',
 				'location',
+                'upload_cv',
 				'total'
 			)
 		);
@@ -82,7 +84,8 @@ class Object extends DbObj {
 				detail,
 				summary,
                 experience,
-                working_history
+                working_history,
+                upload_cv
 			FROM
 				customers
 			WHERE
@@ -145,6 +148,7 @@ class Object extends DbObj {
 				customers
 			SET
 				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
+				upload_cv = '" . $this->dbEscape( $this->getUploadCv() ) . "',
 				summary = '" . $this->dbEscape( $this->getSummary() ) . "',
 				skill_title = '" . $this->dbEscape( $this->getSkillTitle() ) . "',
 				working_history = '" . $this->dbEscape( $this->getWorkingHistory() ) . "',
@@ -164,6 +168,14 @@ class Object extends DbObj {
 		");
 	
 	}
+
+    public function setUploadCv( $string ){
+        $this->uploadCv = $string;
+    }
+
+    public function getUploadCv(){
+        return $this->uploadCv;
+    }
 
     public function setSummary( $string ){
         $this->summary = $string;

@@ -21,6 +21,7 @@
             c.customers_address,
             c.photo_thumbnail,
             c.experience,
+            c.upload_cv,
             c.working_history,
             c.summary,
             DATE_FORMAT(c.create_date, '%d/%M/%Y') as create_date
@@ -82,7 +83,10 @@
                             <!-- /.resume-main-contact -->
 
                             <div class="resume-main-actions">
-                                <a href="#" class="btn btn-secondary"><i class="fa fa-download"></i> Download CV</a>
+                                <a href="<?php echo $customer_info['upload_cv']; ?>" class="btn btn-secondary">
+                                    <i class="fa fa-download"></i>
+                                    Download CV
+                                </a>
                             </div>
                             <br/>
                             <!-- /.resume-main-actions -->

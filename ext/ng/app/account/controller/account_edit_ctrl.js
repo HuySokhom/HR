@@ -38,6 +38,29 @@ app.controller(
 		};
 
 		//functionality upload
+		vm.uploadCV = function(file) {
+			if (file) {
+				file.upload = Upload.upload({
+					url: 'api/UploadCV',
+					data: {file: file},
+				});
+				file.upload.then(function (response) {
+					$timeout(function () {
+						console.log(response);
+						file.result = response.data;
+						vm.account.upload_cv = response.data.upload_cv;
+					});
+				}, function (response) {
+					if (response.status > 0)
+						vm.errorMsgCV = response.status + ': ' + response.data;
+				}, function (evt) {
+					// Math.min is to fix I	E which reports 200% sometimes
+					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+				});
+			}
+		};
+
+		//functionality upload
 		vm.uploadPic = function(file) {
 			if (file) {
 				file.upload = Upload.upload({
