@@ -37,7 +37,7 @@ app.controller(
 			params.is_agency == 1 ? params.is_agency = 0 : params.is_agency = 1;
             var data = {
                 agency: 'yes',
-                is_agency: params.status_approve
+                is_agency: params.is_agency
             };
 			Restful.patch(url + params.id, data ).success(function(data) {
 				$scope.service.alertMessage('<strong>Success: </strong>Update Success.');
