@@ -31,8 +31,7 @@
             c.customers_id = ". (int)$_GET['info_id'] . "
                 and
             c.customers_location = l.id
-                and 
-            is_publish = 1
+                
         LIMIT 1
     ");
     $customer_info = tep_db_fetch_array($query);

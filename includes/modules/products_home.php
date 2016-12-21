@@ -79,7 +79,7 @@
             and
         pd.language_id = '" . (int)$languages_id . "'
             order by
-        p.products_promote desc, rand(), p.products_close_date desc
+        p.products_id desc, p.products_close_date desc
         limit " . MAX_DISPLAY_NEW_PRODUCTS
     );
     $num_new_products = tep_db_num_rows($new_products_query);
