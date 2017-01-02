@@ -3,7 +3,7 @@ app.controller(
 	'$scope'
 	, 'Restful'
 	, function ($scope, Restful){
-		var params = {pagination: 'yes', user_type: 'normal'};
+		var params = {pagination: 'yes', user_type: 'normal', is_publish: 'yes'};
 		var url = 'api/Employers/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){

@@ -17,6 +17,9 @@ class RestApiUploadCV extends RestApi {
                 if (!in_array($ext, array(
                     'pdf',
                     'PDF',
+                    'doc',
+                    'docx',
+                    'DOC'
                 ))
                 ) {
                     continue;
