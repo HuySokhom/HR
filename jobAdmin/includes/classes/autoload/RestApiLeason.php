@@ -10,7 +10,7 @@ class RestApiLeason extends RestApi {
 	public function get($params){
 		$col = new LeasonCol();
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
-		$params['GET']['title'] ? $col->filterByTitle($params['GET']['title']) : '';
+		$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
 		// start limit page
 		$showDataPerPage = 10;
 		$start = $params['GET']['start'];
@@ -67,6 +67,11 @@ class RestApiLeason extends RestApi {
 		$obj->setUpdateBy($_SESSION['admin']['username']);
 		$obj->setStatus($params['PATCH']['status']);
 		$obj->updateStatus();
+		return array(
+			'data' => array(
+				'success' => 'true'
+			)
+		);
 	}
 
 	public function delete(){

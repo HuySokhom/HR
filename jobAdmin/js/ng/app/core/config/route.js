@@ -126,6 +126,11 @@ app.config([
 				templateUrl: 'js/ng/app/leason/partials/create.html',
 				controller: 'create_ctrl as vm'
 			})
+			.state('leason.edit', {
+				url: '/edit/:id',
+				templateUrl: 'js/ng/app/leason/partials/create.html',
+				controller: 'create_ctrl as vm'
+			})
 		;
 		$urlRouterProvider.otherwise('/');
 		// use the HTML5 History API to remove # url

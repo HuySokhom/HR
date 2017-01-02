@@ -16,9 +16,11 @@ class Object extends DbObj {
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
+				'id',
 				'file_leason',
 				'title',
-				'description'
+				'description',
+				'status'
 			)
 		);
 		return parent::toArray($args);
@@ -29,7 +31,8 @@ class Object extends DbObj {
 			SELECT
 				title,
 				file_leason,
-				description
+				description,
+				status
 			FROM
 				leason
 			WHERE
@@ -48,7 +51,7 @@ class Object extends DbObj {
 	}
 	
 	public function update() {
-		if( !$this->getLanguageId() ) {
+		if( !$this->getId() ) {
 			throw new Exception("save method requires language id");
 		}
 		$this->dbQuery("
@@ -60,22 +63,37 @@ class Object extends DbObj {
 				file_leason = '" .  $this->getFileLeason() . "',
 				update_by = '" .  $this->getUpdateBy() . "'
 			WHERE
-				id = '" . (int)$this->getNewsId() . "'
+				id = '" . (int)$this->getId() . "'
 		");
 	}
 
 	public function delete(){
-		if( !$this->getNewsId() ) {
+		if( !$this->getId() ) {
 			throw new Exception("delete method requires id to be set");
 		}
 		$this->dbQuery("
 			DELETE FROM
 				leason
 			WHERE
-				id = '" . (int)$this->getNewsId() . "'
+				id = '" . (int)$this->getId() . "'
 		");
 	}
-	
+
+	public function updateStatus() {
+		if( !$this->getId() ) {
+			throw new Exception("save method requires language id");
+		}
+		$this->dbQuery("
+			UPDATE
+				leason
+			SET
+				status = '" .  $this->getStatus() . "',
+				update_by = '" .  $this->getUpdateBy() . "'
+			WHERE
+				id = '" . (int)$this->getId() . "'
+		");
+	}
+
 	public function insert(){	
 		$this->dbQuery("
 			INSERT INTO

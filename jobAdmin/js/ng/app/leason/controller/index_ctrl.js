@@ -2,35 +2,35 @@ app.controller(
 	'leason_ctrl', [
 	'$scope'
 	, 'Restful'
-	, '$location'
+	, '$state'
 	, 'Services'
 	, 'alertify'
-	, function ($scope, Restful, $location, Services, $alertify){
-		$scope.service = new Services();
+	, function ($scope, Restful, $state, Services, $alertify){
+		var vm = this;
+		vm.service = new Services();
+		vm.params = {};
 		var url = 'api/Leason/';
-		$scope.init = function(params){
+		vm.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.news = data;
-				$scope.totalItems = data.count;
-			});
-			Restful.get("api/NewsType").success(function(data){
-				$scope.newsType = data;
+				vm.leason = data;
+				vm.totalItems = data.count;
 			});
 		};
-		$scope.init();
+		vm.init(vm.params);
 
-		$scope.updateStatus = function(params){
+		vm.updateStatus = function(params){
+			console.log(params);
 			params.status === 1 ? params.status = 0 : params.status = 1;
 			Restful.patch(url + params.id, params ).success(function(data) {
-				$scope.service.alertMessage('<strong>Success: </strong>Update Success.');
+				console.log(data);
+				vm.service.alertMessage('<strong>Success: </strong>Update Success.');
 			});
 		};
 
 		// remove functionality
-		$scope.remove = function(id, $index){
-			$scope.id = id;
-			$scope.index = $index;
-
+		vm.remove = function(id, $index){
+			vm.id = id;
+			vm.index = $index;
 			$alertify.okBtn("Ok")
 				.cancelBtn("Cancel")
 				.confirm("Are you sure want to delete this news?", function (ev) {
@@ -38,10 +38,10 @@ app.controller(
 					// event variable, so you can use
 					// it here.
 					ev.preventDefault();
-					Restful.delete( url + $scope.id ).success(function(data){
-						$scope.disabled = true;
-						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.init();
+					Restful.delete( url + vm.id ).success(function(data){
+						vm.disabled = true;
+						vm.service.alertMessage('<strong>Complete: </strong>Delete Success.');
+						vm.init(vm.params);
 						//$scope.news.elements.splice($scope.index, 1);
 						//$('#message').modal('hide');
 					});
@@ -54,27 +54,22 @@ app.controller(
 
 		};
 		// search functionality
-		$scope.search = function(){
-			params.search_title = $scope.search_title;
-			params.id = $scope.id;
-			params.type = $scope.news_type_id;
-			$scope.init(params);
-		};
-		// edit functionality
-		$scope.edit = function(id){
-			$location.path('/news/edit/' + id);
+		vm.search = function(){
+			vm.params.search_title = vm.search_title;
+			vm.params.id = vm.id;
+			vm.init(vm.params);
 		};
 
 		/**
 		 * start functionality pagination
 		 */
-		var params = {};
-		$scope.currentPage = 1;
+
+		vm.currentPage = 1;
 		//get another portions of data on page changed
-		$scope.pageChanged = function() {
-			$scope.pageSize = 10 * ( $scope.currentPage - 1 );
-			params.start = $scope.pageSize;
-			$scope.init(params);
+		vm.pageChanged = function() {
+			vm.pageSize = 10 * ( vm.currentPage - 1 );
+			params.start = vm.pageSize;
+			vm.init(params);
 		};
 	}
 ]);
