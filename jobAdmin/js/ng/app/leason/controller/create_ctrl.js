@@ -7,8 +7,10 @@ app.controller(
 	, 'Upload'
 	, '$timeout'
 	, '$anchorScroll'
-	, function ($scope, Restful, Services, $state, Upload, $timeout, $anchorScroll){
+	, '$stateParams'
+	, function ($scope, Restful, Services, $state, Upload, $timeout, $anchorScroll, $stateParams){
 		var vm = this;
+		vm.disabled = true;
 		vm.service = new Services();
 		// init tiny option
 		vm.tinymceOptions = {
@@ -24,18 +26,29 @@ app.controller(
 			paste_data_images: true
 		};
 		vm.leason = {};
+
+		var currentPage = $state.current.name;
+		if(currentPage == 'leason.edit'){
+			Restful.get('api/Leason/' + $stateParams.id).success(function(data){
+				vm.leason = data.elements[0];
+				console.log(data);
+			});
+		}
+
 		vm.save = function(){
+			console.log(vm.leason);
 			if (!$scope.leasonForm.$valid) {
                 $anchorScroll();
                 return;
             }
 			vm.disabled = false;
-			//console.log(data);
 			Restful.post('api/Leason', vm.leason).success(function (data) {
-				vm.disabled = true;
 				console.log(data);
 				vm.service.alertMessage('Complete Save Success.');
 				$state.go('leason');
+			}).finally( function(data){
+				console.log(data);
+				vm.disabled = true;
 			});
 		};
 

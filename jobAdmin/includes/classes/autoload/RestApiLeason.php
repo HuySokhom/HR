@@ -9,6 +9,7 @@ class RestApiLeason extends RestApi {
 
 	public function get($params){
 		$col = new LeasonCol();
+		$col->sortById();
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
 		// start limit page

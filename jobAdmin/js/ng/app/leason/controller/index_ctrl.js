@@ -68,8 +68,8 @@ app.controller(
 		//get another portions of data on page changed
 		vm.pageChanged = function() {
 			vm.pageSize = 10 * ( vm.currentPage - 1 );
-			params.start = vm.pageSize;
-			vm.init(params);
+			vm.params.start = vm.pageSize;
+			vm.init(vm.params);
 		};
 	}
 ]);

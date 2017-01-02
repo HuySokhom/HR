@@ -19,6 +19,11 @@ class Collection extends StdCollection {
 		$this->addWhere("l.id = '" . (int)$arg. "' ");
 	}
 
+	public function sortById(){
+		$this->addOrderBy("l.id", 'desc');
+	}
+
+
 	public function filterByTitle( $arg ){
 		$this->addWhere("l.title LIKE '%" . $arg. "%' ");
 	}
