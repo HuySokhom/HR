@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-12-14 15:12:12
+Date: 2017-01-02 22:13:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `action_recorder` (
   KEY `idx_action_recorder_user_id` (`user_id`),
   KEY `idx_action_recorder_identifier` (`identifier`),
   KEY `idx_action_recorder_date_added` (`date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of action_recorder
@@ -113,6 +113,14 @@ INSERT INTO `action_recorder` VALUES ('73', 'ar_admin_login', '1', 'admin', '', 
 INSERT INTO `action_recorder` VALUES ('74', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-12 21:53:39');
 INSERT INTO `action_recorder` VALUES ('75', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-13 22:17:04');
 INSERT INTO `action_recorder` VALUES ('76', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-14 11:06:27');
+INSERT INTO `action_recorder` VALUES ('77', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-20 14:52:49');
+INSERT INTO `action_recorder` VALUES ('78', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-20 17:54:35');
+INSERT INTO `action_recorder` VALUES ('79', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-20 18:30:57');
+INSERT INTO `action_recorder` VALUES ('80', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-21 23:07:47');
+INSERT INTO `action_recorder` VALUES ('81', 'ar_admin_login', '1', 'admin', '', '1', '2016-12-30 22:48:46');
+INSERT INTO `action_recorder` VALUES ('82', 'ar_admin_login', '1', 'admin', '', '1', '2017-01-02 14:22:12');
+INSERT INTO `action_recorder` VALUES ('83', 'ar_admin_login', '1', 'admin', '', '1', '2017-01-02 15:47:48');
+INSERT INTO `action_recorder` VALUES ('84', 'ar_admin_login', '1', 'admin', '', '1', '2017-01-02 20:14:42');
 
 -- ----------------------------
 -- Table structure for address_book
@@ -134,7 +142,7 @@ CREATE TABLE `address_book` (
   `entry_zone_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`address_book_id`),
   KEY `idx_address_book_customers_id` (`customers_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of address_book
@@ -165,6 +173,10 @@ INSERT INTO `address_book` VALUES ('23', '29', '', null, '', '', '', null, '', '
 INSERT INTO `address_book` VALUES ('24', '30', '', null, '', '', '', null, '', '', null, '36', '0');
 INSERT INTO `address_book` VALUES ('25', '31', '', null, '', '', '', null, '', '', null, '36', '0');
 INSERT INTO `address_book` VALUES ('26', '32', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('27', '33', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('28', '34', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('29', '35', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('30', '36', '', null, '', '', '', null, '', '', null, '36', '0');
 
 -- ----------------------------
 -- Table structure for address_format
@@ -272,9 +284,9 @@ CREATE TABLE `cache` (
 -- ----------------------------
 -- Records of cache
 -- ----------------------------
-INSERT INTO `cache` VALUES ('3f99e969ab97a4ed9b2f66db76e4c167', '1', 'seo_urls_v2_MANUFACTURERS', 'S0lNy8xL1VD3dfQLdXN0DgkNcg2K93P0dY03VtdRUE8qrVTXtOZKwanKHKQqvyQjtQi/OkMDkMLixJxUkDoA', '1', '1', 'EVAL', '2016-11-30 17:05:39', '2016-12-30 17:05:39');
-INSERT INTO `cache` VALUES ('5aea2ef0968befad405de776007fa7b2', '1', 'seo_urls_v2_PRODUCTS', 'fdFNC8IwDAbgu7/CWxUUXOrHiidRj34geh5zSWdB17GJ+/vSzKPp+X0gbxIk6yoaqfPltLttr9lxc9hnq4WaDBVoNV4P8C9Y9sAW2OayWvWqAZmkgehGBoYBoBVJOguEOttRBCUBWdARAv0oi/Io3gghkQX3LZu8frhiitS6siJ5PcPdkT709HXM6dDNveklTjbzQDqSAfzEPUL48977WjQp/16O+aNibICvHMl505B/AQ==', '1', '1', 'EVAL', '2016-11-30 17:05:39', '2016-12-30 17:05:39');
-INSERT INTO `cache` VALUES ('82c85abb1a53ab2274cf8f913897f181', '1', 'seo_urls_v2_CATEGORIES', 'jZTNbtVADIX3PAW7WyQiUaBJEKsKVawACbFhVZmJb2I68QSPp3DfHscVO+rb/fHf+WxPeCTGi8OH6283H798/X77+frTze3V28PL5wdIqTRW4vnw4v2z6f/KK1dOKzFVFVAqHKh7V0taSDFpE0SerT5KXGTwsFqtBLBWTIIKcgoKjR7RJlKFP+e6ereLfwDfWRfEtQlwwseT9692fYK6EIpgwm2f2noLQi4fQtQnFbQ59ipRxGuPyAiMsgJNQfI3Li3WeTZ/UuBL72BTq1pWlK6i3FM4quOdsNIcYO0dK04tudO2BrYN0db0DtQ274zRDmYpinkpdSOFTBpMNziYpa3AnXlcmkSzDc6E+FjM351gZzu5cMlljmo4lwy/TygZZ8jnTRycjzUFM64YQR8cjynbEfbzCE0cnM0KcofxjQ6OZ8WJAKZ7FKUaJ3Y6uz5BXhCyLtzkTIyjKhs+vID6+LaODqnoghKpHM4m5af9ie4p3o0O5lfzHelSYZWSgzYcyr4lonbKxCXQOpYKGaOOHYf9JsOmp0nInA5SOhNfOEoEwXGNTsNOAFNZ18YGJX6yo/8+O0Ku2aXE9na2/WX+C/wL', '1', '1', 'EVAL', '2016-11-30 17:05:39', '2016-12-30 17:05:39');
+INSERT INTO `cache` VALUES ('3f99e969ab97a4ed9b2f66db76e4c167', '1', 'seo_urls_v2_MANUFACTURERS', 'S0lNy8xL1VD3dfQLdXN0DgkNcg2K93P0dY03VtdRUE8qrVTXtOZKwanKHKQqvyQjtQi/OkMDkMLixJxUkDoA', '1', '1', 'EVAL', '2017-01-02 08:22:03', '2017-02-01 08:22:03');
+INSERT INTO `cache` VALUES ('5aea2ef0968befad405de776007fa7b2', '1', 'seo_urls_v2_PRODUCTS', 'S0lNy8xL1VAPCPJ3CXUOifdz9HWNtzQyV9dRUE9JLUvNyS9ILdItLUpPzSvRTc5IzEtPVde05krBrs0CpC0xOTm/NK8kMy9dtzg1LzO/CI8GS4g9xZnpeXBrQMoB', '1', '1', 'EVAL', '2017-01-02 08:22:02', '2017-02-01 08:22:02');
+INSERT INTO `cache` VALUES ('82c85abb1a53ab2274cf8f913897f181', '1', 'seo_urls_v2_CATEGORIES', 'jZTNbtVADIX3PAW7WyQiUaBJEKsKVawACbFhVZmJb2I68QSPp3DfHscVO+rb/fHf+WxPeCTGi8OH6283H798/X77+frTze3V28PL5wdIqTRW4vnw4v2z6f/KK1dOKzFVFVAqHKh7V0taSDFpE0SerT5KXGTwsFqtBLBWTIIKcgoKjR7RJlKFP+e6ereLfwDfWRfEtQlwwseT9692fYK6EIpgwm2f2noLQi4fQtQnFbQ59ipRxGuPyAiMsgJNQfI3Li3WeTZ/UuBL72BTq1pWlK6i3FM4quOdsNIcYO0dK04tudO2BrYN0db0DtQ274zRDmYpinkpdSOFTBpMNziYpa3AnXlcmkSzDc6E+FjM351gZzu5cMlljmo4lwy/TygZZ8jnTRycjzUFM64YQR8cjynbEfbzCE0cnM0KcofxjQ6OZ8WJAKZ7FKUaJ3Y6uz5BXhCyLtzkTIyjKhs+vID6+LaODqnoghKpHM4m5af9ie4p3o0O5lfzHelSYZWSgzYcyr4lonbKxCXQOpYKGaOOHYf9JsOmp0nInA5SOhNfOEoEwXGNTsNOAFNZ18YGJX6yo/8+O0Ku2aXE9na2/WX+C/wL', '1', '1', 'EVAL', '2017-01-02 08:22:03', '2017-02-01 08:22:03');
 
 -- ----------------------------
 -- Table structure for cambodia_province
@@ -11239,7 +11251,7 @@ CREATE TABLE `customers` (
   `is_publish` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`customers_id`),
   KEY `idx_customers_email_address` (`customers_email_address`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of customers
@@ -11247,9 +11259,13 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` VALUES ('27', '2', '', '', 'df', 'Sokhom', 'agency', 'http://skweb.asia', 'SKWeb Solution', null, 'Sokhom/2016-12-01/images/hands..jpg', 'Sokhom/2016-12-01/image_thumbnail/hands..jpg', '<div><!--block--><strong>SKWeb Solution</strong>&nbsp;we found in 2014 is a company technology to serve business customer from hard to easy management.</div>', '', '1', '0000-00-00 00:00:00', 'kom.huy@gmail.com', '22', 'Phnom Penh sdfa', '070 955 102', '', '$P$DyAWp3gnKkrLeaMW.mF.MjaOqfCl1t/', '0', null, null, null, '', '1', null, '2016-12-01 05:58:18', '2016-12-13 22:52:30', 'admin', '1', null, null, null, '1');
 INSERT INTO `customers` VALUES ('28', '1', '13', 'asdf', 'sdf', '', null, null, null, null, '', null, null, '', '0', '0000-00-00 00:00:00', '', null, '', '', null, '', '0', null, null, null, null, '1', null, null, '2016-12-01 16:45:43', null, '0', null, null, null, '0');
 INSERT INTO `customers` VALUES ('29', '1', '', '', '', 'sokhom', 'normal', null, 'Huy Polin', 'Programmer', 'news/13321959_1183957978334484_4925719335806500888_n.1481556565.jpg', 'news_thumbnail/13321959_1183957978334484_4925719335806500888_n.1481556565.jpg', '', '', '0', '0000-00-00 00:00:00', 'huysokhom@yahoo.com', '23', 'Phnom Penh', '096 789654', '', '$P$DjSrds4P3kZnb6gLkCzbbL8VLM7Nh80', '0', null, null, null, '', '1', null, '2016-12-01 16:16:58', '2016-12-14 14:08:00', '', '0', null, null, null, '1');
-INSERT INTO `customers` VALUES ('30', '1', '', '', '', 'morm sreypov', 'normal', '', 'Morm SreyPov', 'Web Developer', 'news/outlook-photography-jobs-2.1481699260.jpg', 'news_thumbnail/outlook-photography-jobs-2.1481699260.jpg', '', '', '0', '0000-00-00 00:00:00', 'sreypov@gmail.com', '24', 'Phnom Penh cambodia.\ncambodia kingdom of cambodia', '096 491 9993@', '', '$P$Da.pcrr4v9ST/MqmmooiRifHrIVLMq.', '0', null, null, null, '', '1', null, '2016-12-12 16:45:46', '2016-12-14 14:07:42', '', '0', '<div><!--block-->01-08-2016 - present :&nbsp; Front End Developer at Corarl Co., Ltd<br />01-01-2016 - 01-08-2016 : Full Stack at CINET Technology&nbsp;<br />01-09-2013 - 31-12-2016: Web Developer at EvanNay Solution&nbsp;<br />01-11-2012 - 30-08-2013: Web Developer at Atmosphere Technology Co., Ltd&nbsp;<br />08-02-2012 - 30-11-2012<strong>:&nbsp;</strong>Technician at Numixcam Co., Ltd&nbsp;</div>\n<div>&nbsp;</div>', '<div><!--block-->Anti-Virus and Utilities Software Computer Maintenance and Repair, Networking, Internet and Email.&nbsp;<br />Computer Programming &nbsp;<strong>:</strong>&nbsp;HTML5, CSS3, JavaScript, Jquery, Ajax, AngularJs, PHP, ASP.Net, C#, MVC Pattern, SQL, LINQ, API, CMS Framework (WordPress, Joomla)<br />Database<strong>:&nbsp;</strong>SQL Server, Oracle, MYSQL&nbsp;<br />Network<strong>:</strong>&nbsp;Window Server 2008<br />Using Git Tool and Kanbanary (Software management)<br />Linux.</div>\n<div>&nbsp;</div>', '<div><!--block-->I assure that all information I have provided above is true, completed and<br />correct to the best of my knowledge and belief. I understand that any false or<br />withheld on this application leads to termination or dismissal.&nbsp;</div>\n<div>&nbsp;</div>', '1');
+INSERT INTO `customers` VALUES ('30', '1', '', '', '', 'morm sreypov', 'normal', '', 'Morm SreyPov', 'Web Developer', 'news/outlook-photography-jobs-2.1481699260.jpg', 'news_thumbnail/outlook-photography-jobs-2.1481699260.jpg', '', '', '0', '0000-00-00 00:00:00', 'sreypov@gmail.com', '24', 'Phnom Penh cambodia.\ncambodia kingdom of cambodia', '096 491 9993', '', '$P$Da.pcrr4v9ST/MqmmooiRifHrIVLMq.', '0', null, null, null, '', '1', null, '2016-12-12 16:45:46', '2016-12-20 10:44:38', '', '0', '<div><!--block-->01-08-2016 - present :&nbsp; Front End Developer at Corarl Co., Ltd<br />01-01-2016 - 01-08-2016 : Full Stack at CINET Technology&nbsp;<br />01-09-2013 - 31-12-2016: Web Developer at EvanNay Solution&nbsp;<br />01-11-2012 - 30-08-2013: Web Developer at Atmosphere Technology Co., Ltd&nbsp;<br />08-02-2012 - 30-11-2012<strong>:&nbsp;</strong>Technician at Numixcam Co., Ltd&nbsp;</div>\n<div>&nbsp;</div>', '<div><!--block-->Anti-Virus and Utilities Software Computer Maintenance and Repair, Networking, Internet and Email.&nbsp;<br />Computer Programming &nbsp;<strong>:</strong>&nbsp;HTML5, CSS3, JavaScript, Jquery, Ajax, AngularJs, PHP, ASP.Net, C#, MVC Pattern, SQL, LINQ, API, CMS Framework (WordPress, Joomla)<br />Database<strong>:&nbsp;</strong>SQL Server, Oracle, MYSQL&nbsp;<br />Network<strong>:</strong>&nbsp;Window Server 2008<br />Using Git Tool and Kanbanary (Software management)<br />Linux.</div>\n<div>&nbsp;</div>', '<div><!--block-->I assure that all information I have provided above is true, completed and<br />correct to the best of my knowledge and belief. I understand that any false or<br />withheld on this application leads to termination or dismissal.&nbsp;</div>\n<div>&nbsp;</div>', '1');
 INSERT INTO `customers` VALUES ('31', '0', '', '', '', '', 'normal', null, null, null, '', null, null, '', '0', '0000-00-00 00:00:00', 'abc@gmail.com', '25', '', '', '', '$P$DKfTePyxkHaDtnB93VqwDRAku03h230', '0', null, null, null, '', '1', null, '2016-12-14 04:24:12', '2016-12-14 10:24:12', null, '0', null, null, null, '0');
-INSERT INTO `customers` VALUES ('32', '3', '', '', '', '', 'agency', 'ezecom.com', 'Ezecom', '', 'aaa@gmail.com/2016-12-14/images/hands..jpg', 'aaa@gmail.com/2016-12-14/image_thumbnail/hands..jpg', '<div><!--block-->OOPo</div>', '', '1', '0000-00-00 00:00:00', 'aaa@gmail.com', '26', '124124124', '09562213', '', '$P$DgneIrte1C6nICSXdnVJ8oiky8rW6K/', '0', null, null, null, '', '1', null, '2016-12-14 04:24:51', '2016-12-14 15:11:18', '', '1', '', '', '', '1');
+INSERT INTO `customers` VALUES ('32', '3', '', '', '', '', 'agency', 'ezecom.com', 'Ezecom', '', 'aaa@gmail.com/2016-12-14/images/hands..jpg', 'aaa@gmail.com/2016-12-14/image_thumbnail/hands..jpg', '<div><!--block-->OOPo</div>', '', '1', '0000-00-00 00:00:00', 'aaa@gmail.com', '26', '124124124', '09562213', '', '$P$DgneIrte1C6nICSXdnVJ8oiky8rW6K/', '0', null, null, null, '', '1', null, '2016-12-14 04:24:51', '2016-12-21 23:13:40', 'admin', '1', '', '', '', '1');
+INSERT INTO `customers` VALUES ('33', '2', '', '', '', '', 'normal', '', 'ZC ZC', 'asdg', 'll@ll.com/2016-12-20/images/15577957_1183882385058987_7297427826728258381_o..jpg', 'll@ll.com/2016-12-20/image_thumbnail/15577957_1183882385058987_7297427826728258381_o..jpg', '', 'cv/ll@ll.com/2016-12-20/KhmerKeyboard_NiDA_V1.0..pdf', '0', '0000-00-00 00:00:00', 'll@ll.com', '27', 'sd ga', '34242', '', '$P$DLoRn8DnPOufDdpOfavdkRaxbmMOVT1', '0', null, null, null, '', '1', null, '2016-12-20 04:47:47', '2016-12-20 14:53:00', null, '0', '<div><!--block-->asdgh asdgh</div>', '<div><!--block-->erth dfsa</div>', '<div><!--block-->&nbsp;asdfh asdh&nbsp;</div>', '1');
+INSERT INTO `customers` VALUES ('34', '1', '', '', '', '', 'normal', '', 'OOP', 'PIO', 'ii@ii.com/2016-12-30/images/15723437_1188652997915259_8881058516554804451_o..jpg', 'ii@ii.com/2016-12-30/image_thumbnail/15723437_1188652997915259_8881058516554804451_o..jpg', '', 'cv/ii@ii.com/2016-12-30/IT Programmer..doc', '0', '0000-00-00 00:00:00', 'ii@ii.com', '28', '13r13r', '0281 31', '', '$P$Dld3aN9xsqEqapIv3D7TBwbY1hcA1L1', '0', null, null, null, '', '1', null, '2016-12-20 11:55:57', '2016-12-30 22:49:36', null, '0', '<div><!--block-->asg</div>', '', '<div><!--block-->sagdasg</div>', '1');
+INSERT INTO `customers` VALUES ('35', '1', '', '', '', '', 'normal', '', 'Sok Bora', 'Programmer', '', '', '', '', '0', '0000-00-00 00:00:00', 'oo@oo.com', '29', 'Phnom Penh', '093 999999', '', '$P$DQz4GbSSh18WHi9xYf26dF8v38bL2t0', '0', null, null, null, '', '1', null, '2016-12-20 12:25:29', '2016-12-21 23:25:18', null, '0', '<ul><li><!--block-->company a</li><li><!--block-->company b</li></ul>', '<ul><li><!--block-->html css, javascript, php, asp</li></ul>', '<ol><li><!--block--><strong>grad</strong></li><li><!--block-->sdf</li><li><!--block-->sadg</li></ol><ul><li><!--block-->wet</li></ul>', '0');
+INSERT INTO `customers` VALUES ('36', '1', '', '', '', '', 'agency', '', 'Company A', '', '', '', '<div><!--block-->company found in 2016</div>', '', '1', '0000-00-00 00:00:00', 'aa@aa.com', '30', 'address oss', '088 490 353', '', '$P$Dsd9yKw1ZC4v94Fry/Lt54M6ck8OTy.', '0', null, null, null, '', '1', null, '2016-12-20 12:41:54', '2016-12-21 23:25:09', 'admin', '1', '', '', '', '0');
 
 -- ----------------------------
 -- Table structure for customers_basket
@@ -11566,6 +11582,47 @@ CREATE TABLE `languages` (
 -- ----------------------------
 INSERT INTO `languages` VALUES ('1', 'English', 'en', 'icon.gif', 'english', '1');
 INSERT INTO `languages` VALUES ('2', 'Khmer', 'kh', 'icon.gif', 'khmer', '0');
+
+-- ----------------------------
+-- Table structure for leason
+-- ----------------------------
+DROP TABLE IF EXISTS `leason`;
+CREATE TABLE `leason` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `file_leason` varchar(225) NOT NULL DEFAULT '0',
+  `title` varchar(550) DEFAULT NULL,
+  `description` longtext,
+  `status` tinyint(1) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `create_by` varchar(127) DEFAULT NULL,
+  `update_by` varchar(127) DEFAULT NULL,
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of leason
+-- ----------------------------
+INSERT INTO `leason` VALUES ('19', '10', 'asgw', '<p>asdgasdg</p>', '1', null, null, 'admin', '2017-01-02 21:08:50');
+INSERT INTO `leason` VALUES ('20', '10', 'asdដសាដង', '<ul>\n<li>asdg</li>\n<li>sad</li>\n<li>gas&nbsp;</li>\n<li>dg</li>\n<li>asdg&nbsp;</li>\n<li>sdag<a href=\"https://www.google.com.kh/url?sa=i&amp;rct=j&amp;q=&amp;esrc=s&amp;source=images&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwivuvbR44bNAhXoUKYKHVUqDtkQjRwIBw&amp;url=http%3A%2F%2Fwww.clipartpanda.com%2Fcategories%2Fnation-clipart&amp;psig=AFQjCNGmfEYVelXpLnoQ99DeEOzjA71BEQ&amp;ust=1464868788074950\"><img src=\"https://www.google.com.kh/url?sa=i&amp;rct=j&amp;q=&amp;esrc=s&amp;source=images&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwivuvbR44bNAhXoUKYKHVUqDtkQjRwIBw&amp;url=http%3A%2F%2Fwww.clipartpanda.com%2Fcategories%2Fnation-clipart&amp;psig=AFQjCNGmfEYVelXpLnoQ99DeEOzjA71BEQ&amp;ust=1464868788074950\" alt=\"\" /><iframe src=\"//www.youtube.com/embed/pMUC7b7wc-k\" width=\"560\" height=\"314\" allowfullscreen=\"allowfullscreen\"></iframe></a></li>\n<li>asdg</li>\n<li>asdg</li>\n<li>asdgសាដងឹេាយេសដវាសវ</li>\n</ul>', '1', null, null, 'admin', '2017-01-02 21:04:39');
+INSERT INTO `leason` VALUES ('77', 'leason/Choc-Drip-Gelato-Cake.1483368732.jpg', 'asdg asg', '', '1', '2017-01-02 21:52:15', 'admin', null, null);
+INSERT INTO `leason` VALUES ('78', 'leason/employee query.1483368746.PNG', 'as ASF', '', '1', '2017-01-02 21:52:37', 'admin', null, null);
+INSERT INTO `leason` VALUES ('79', 'leason/employee query.1483368807.PNG', 'Q# FWSCA', '<p>C ASF&nbsp;</p>', '1', '2017-01-02 21:53:29', 'admin', null, null);
+INSERT INTO `leason` VALUES ('80', 'leason/Choc-Drip-Gelato-Cake.1483368896.jpg', '32322323', '<p>sad sgd</p>', '1', '2017-01-02 21:54:57', 'admin', null, null);
+INSERT INTO `leason` VALUES ('81', 'leason/employee query.1483368904.PNG', 'asdg', '<p>asdg asdg&nbsp;</p>', '1', '2017-01-02 21:55:05', 'admin', null, null);
+INSERT INTO `leason` VALUES ('82', 'leason/employee query.1483368911.PNG', 'sad', '<p>s sg&nbsp;</p>', '1', '2017-01-02 21:55:12', 'admin', null, null);
+INSERT INTO `leason` VALUES ('83', 'leason/Choc-Drip-Gelato-Cake.1483368918.jpg', 'as', '<p>asdg asgd&nbsp;</p>', '1', '2017-01-02 21:55:19', 'admin', null, null);
+INSERT INTO `leason` VALUES ('84', 'leason/Choc-Drip-Gelato-Cake.1483368924.jpg', 'asdf', '<p>asd asd&nbsp;</p>', '1', '2017-01-02 21:55:25', 'admin', null, null);
+INSERT INTO `leason` VALUES ('85', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'asd', '<p>asd as</p>', '1', '2017-01-02 21:55:32', 'admin', null, null);
+INSERT INTO `leason` VALUES ('86', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'asd', '<p>asd as</p>', '1', '2017-01-02 22:02:26', 'admin', null, null);
+INSERT INTO `leason` VALUES ('87', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'asd12e12e12e', '<p>asd asS AS AS AS F</p>', '1', '2017-01-02 22:02:34', 'admin', null, null);
+INSERT INTO `leason` VALUES ('88', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'asd12e12e12e', '<p>asd asS AS AS AS Fas fasf at3 t2332 tegwdzsv dv&nbsp;</p>', '1', '2017-01-02 22:02:59', 'admin', null, null);
+INSERT INTO `leason` VALUES ('89', '', 'asd', '<p>asdg asdg&nbsp;</p>', '1', '2017-01-02 22:03:21', 'admin', null, null);
+INSERT INTO `leason` VALUES ('90', '', 'asd', '<p>asdg asdg&nbsp;</p>', '1', '2017-01-02 22:03:26', 'admin', null, null);
+INSERT INTO `leason` VALUES ('91', '', 'asd', '<p>asdg asdg&nbsp;</p>', '1', '2017-01-02 22:03:32', 'admin', null, null);
+INSERT INTO `leason` VALUES ('92', 'leason/employee query.1483369433.PNG', 'asdf asd !@!', '<p>asd as gd</p>', '1', '2017-01-02 22:03:56', 'admin', null, null);
+INSERT INTO `leason` VALUES ('93', 'leason/employee query.1483369433.PNG', 'asdf asd !@!  3r233  23', '<p>asd as gdtt32323t 23232332 23<strong>23 23 232<em>35 23</em></strong></p>', '1', '2017-01-02 22:04:08', 'admin', null, null);
+INSERT INTO `leason` VALUES ('94', 'leason/employee query.1483369433.PNG', 'asdf asd !@!  3r233  23', '<p>asd as gdtt32323t 23232332 23<strong>23 23 232<em>35 23</em></strong></p>', '1', '2017-01-02 22:04:19', 'admin', null, null);
 
 -- ----------------------------
 -- Table structure for location
@@ -12093,7 +12150,7 @@ CREATE TABLE `page_description` (
 -- ----------------------------
 -- Records of page_description
 -- ----------------------------
-INSERT INTO `page_description` VALUES ('1', '1', '1', 'Recuritment', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\n<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>', '');
+INSERT INTO `page_description` VALUES ('1', '1', '1', 'Recuritment', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\n<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>\n<p>as</p>\n<p>dfasdgfasdglknslgjaskgd</p>', '');
 INSERT INTO `page_description` VALUES ('2', '2', '1', 'Traning', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\n<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>', '');
 INSERT INTO `page_description` VALUES ('3', '3', '1', 'Out Sourcing', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\n<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>', '');
 INSERT INTO `page_description` VALUES ('4', '4', '1', 'Consulting', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\n<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>', '');
@@ -12169,13 +12226,14 @@ CREATE TABLE `products` (
   PRIMARY KEY (`products_id`,`categories_id`,`province_id`,`customers_id`),
   KEY `idx_products_model` (`products_model`),
   KEY `idx_products_date_added` (`products_date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=929 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=930 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('927', '71', '1', '27', null, '2016-12-31 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-01 12:02:22', null, null, null, '0', null, null, null, '2016-12-01 12:02:22', '2016-12-14 11:04:21', null, null, '500.00', '4', 'Both', '0', '', '1');
-INSERT INTO `products` VALUES ('928', '54', '1', '32', null, '2016-12-31 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-14 10:50:32', null, null, null, '0', null, null, null, '2016-12-14 10:50:32', '2016-12-14 11:59:34', null, null, '500.00', '3', 'Both', '0', '', '0');
+INSERT INTO `products` VALUES ('927', '80', '15', '27', null, '2016-10-31 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-01 12:02:22', null, null, null, '0', null, null, null, '2016-12-01 12:02:22', '2016-12-14 16:58:01', null, null, '100.00', '1', 'Male', '0', '', '1');
+INSERT INTO `products` VALUES ('928', '55', '3', '32', null, '2016-10-31 00:00:00', null, 'Part-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-14 10:50:32', null, null, null, '0', null, null, null, '2016-12-14 10:50:32', '2016-12-14 16:48:54', null, null, '450.00', '2', 'Male', '0', '', '1');
+INSERT INTO `products` VALUES ('929', '65', '3', '36', null, '2016-12-20 00:00:00', null, 'Full-Time', null, null, null, null, null, null, null, null, null, null, '0', null, '1', '0', '2016-12-20 18:59:10', null, null, null, '0', null, null, null, '2016-12-20 18:59:10', '2016-12-20 19:04:06', null, null, '0.00', '2', 'Both', '0', '', '1');
 
 -- ----------------------------
 -- Table structure for products_attributes
@@ -12229,13 +12287,14 @@ CREATE TABLE `products_description` (
   `benefits` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`,`products_id`,`language_id`),
   KEY `products_name` (`products_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_description
 -- ----------------------------
-INSERT INTO `products_description` VALUES ('192', '927', '1', 'Web Developer (Urgent)', '<div><!--block--><br>- Correct errors by making appropriate changes and then rechecking the program to ensure that the desired results are produced.<br>- Conduct trial runs of programs and software applications to be sure they will produce the<br>desired information and that the instructions are correct.<br>- Compile and write documentation of program development and subsequent revisions,<br>inserting comments in the coded instructions so others can understand the program.<br>- Write, update, and maintain computer programs or software packages to handle specific jobs,<br>such as tracking inventory, storing or retrieving data, or controlling other equipment.<br>- Consult with managerial, engineering, and technical personnel to clarify program intent,<br>identify problems, and suggest changes.<br>- Perform or direct revision, repair, or expansion of existing programs to increase operating<br>efficiency or adapt to new requirements.</div>', null, '9', '<div><!--block--><br>- Graduated from University major in IT or other training center related to IT<br>- Experiences as a system development minimum 3 years<br>- Knowledge about phase development (design, implementation, verification and requirement<br>definition, operational)<br>- Knowledge about PHP more than 4 years (have experiences for implements system) and<br>have used framework ( also welcome for person who know Java, Objective-C, Python)<br>- Knowledge about MySQL more than 2 years (Can performance tuning), and also welcome for<br>who can use Oracle, PostgreSQL<br>- Knowledge about Git more than 2 years (It is plus if you are experience about development by<br>Pull and Request), and we are welcome for you for VirtualBox, Vagrant<br>- Knowledge about Object Oriented, MVC, and also welcome who can use Domain Driven<br>(DDD)<br>- Knowledge about development approach (Waterfall, Agile)<br>- Experiences as Leader and can use English or Japanese (The big advance if you can use<br>Japanese)</div>', '<div><!--block-->Work condition<br>Working Hour : Monday to Friday, 8:00 am to 5:00 pm (1hour Launch time)<br>Holiday : Saturday and Sunday, Follow Cambodia calendar for public holiday<br>Salary : Negotiation (Depend on your ability good pay)<br>Other benefit : Company will pay you for gasoline by calculation.<br>Salary increase by performance<br>Chance for going to Japan if you become a Manager<br>We are looking for real candidate who want to develop the skill at our company, and want to be a CTO in<br>the soon future.</div>');
-INSERT INTO `products_description` VALUES ('193', '928', '1', 'Accounting Senior', '<ul><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li></ul>', null, '4', '<ul><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li></ul>', '<ul><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li></ul>');
+INSERT INTO `products_description` VALUES ('192', '927', '1', 'Web Developer (Urgent) change', '<div><!--block--><br /><em><strong>- Correct errors by making appropriate changes and then rechecking the program to ensure that the desired results are produced.</strong></em><br /><em><strong>- Conduct trial runs of programs and software applications to be sure they will produce the</strong></em><br /><em><strong>desired information and that the instructions are correct.</strong></em><br /><em><strong>- Compile and write documentation of program development and subsequent revisions,</strong></em><br /><em><strong>inserting comments in the coded instructions so others can understand the program.</strong></em><br /><em><strong>- Write, update, and maintain computer programs or software packages to handle specific jobs,</strong></em><br /><em><strong>such as tracking inventory, storing or retrieving data, or controlling other equipment.</strong></em><br /><em><strong>- Consult with managerial, engineering, and technical personnel to clarify program intent,</strong></em><br /><em><strong>identify problems, and suggest changes.</strong></em><br /><em><strong>- Perform or direct revision, repair, or expansion of existing programs to increase operating</strong></em><br /><em><strong>efficiency or adapt to new requirements.</strong></em></div>', null, '21', '<ol>\n<li></li>\n<li>- Graduated from University major in IT or other training center related to IT</li>\n<li>- Experiences as a system development minimum 3 years</li>\n<li>- Knowledge about phase development (design, implementation, verification and requirement</li>\n<li>definition, operational)</li>\n<li>- Knowledge about PHP more than 4 years (have experiences for implements system) and</li>\n<li>have used framework ( also welcome for person who know Java, Objective-C, Python)</li>\n<li>- Knowledge about MySQL more than 2 years (Can performance tuning), and also welcome for</li>\n<li>who can use Oracle, PostgreSQL</li>\n<li>- Knowledge about Git more than 2 years (It is plus if you are experience about development by</li>\n<li>Pull and Request), and we are welcome for you for VirtualBox, Vagrant</li>\n<li>- Knowledge about Object Oriented, MVC, and also welcome who can use Domain Driven</li>\n<li>(DDD)</li>\n<li>- Knowledge about development approach (Waterfall, Agile)</li>\n<li>- Experiences as Leader and can use English or Japanese (The big advance if you can use</li>\n<li>Japanese)</li>\n</ol>\n<!--block-->', '<ul>\n<li>Work condition</li>\n<li>Working Hour : Monday to Friday, 8:00 am to 5:00 pm (1hour Launch time)</li>\n<li>Holiday : Saturday and Sunday, Follow Cambodia calendar for public holiday</li>\n<li>Salary : Negotiation (Depend on your ability good pay)</li>\n<li>Other benefit : Company will pay you for gasoline by calculation.</li>\n<li>Salary increase by performance</li>\n<li>Chance for going to Japan if you become a Manager</li>\n<li>We are looking for real candidate who want to develop the skill at our company, and want to be a CTO in</li>\n<li>the soon future.</li>\n</ul>\n<!--block-->');
+INSERT INTO `products_description` VALUES ('193', '928', '1', 'Accounting Senior', '<ol><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li><li><!--block-->free free free free free&nbsp;</li></ol>', null, '10', '<ul><li><pre><!--block-->free free free free free </pre></li><li><pre><!--block-->free free free free free </pre></li><li><pre><!--block-->free free free free free </pre></li><li><pre><!--block-->free free free free free </pre></li></ul>', '<ul><li><blockquote><!--block-->free free free free free&nbsp;</blockquote></li><li><blockquote><!--block-->free free free free free&nbsp;</blockquote></li><li><blockquote><!--block-->free free free free free&nbsp;</blockquote></li><li><blockquote><!--block-->free free free free free&nbsp;</blockquote></li><li><blockquote><!--block-->free free free free free&nbsp;</blockquote></li><li><blockquote><!--block-->free free free free free&nbsp;</blockquote></li></ul>');
+INSERT INTO `products_description` VALUES ('194', '929', '1', 'Designer urgent', '<div><!--block-->ោិាសដ្ោថ្ាសងលក្ាសផដោ្ោាសងលើសកលើសាកើ</div>', null, '2', '<div><!--block-->ាសដងាសហាសដាសងាសដងាសងាសដសដង</div>', '<div><!--block-->ាសដងាសហាសហារឹដបាបរបថដសថហថដសហ​សថ​ដសដថ</div>');
 
 -- ----------------------------
 -- Table structure for products_images
@@ -12371,13 +12430,14 @@ CREATE TABLE `products_to_categories` (
   `products_id` int(11) NOT NULL,
   `categories_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`products_id`,`categories_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_to_categories
 -- ----------------------------
-INSERT INTO `products_to_categories` VALUES ('88', '927', '71');
-INSERT INTO `products_to_categories` VALUES ('89', '928', '54');
+INSERT INTO `products_to_categories` VALUES ('88', '927', '0');
+INSERT INTO `products_to_categories` VALUES ('89', '928', '0');
+INSERT INTO `products_to_categories` VALUES ('90', '929', '65');
 
 -- ----------------------------
 -- Table structure for product_contact_person
@@ -12546,11 +12606,8 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('11e9sat82roc7tb9pvlp4ff9h4', '1481621594', 'sessiontoken|s:32:\"735e5a9b6c02512c854e11e0bc5510be\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"98620\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|s:1:\"0\";customer_id|i:30;user_name|s:12:\"morm sreypov\";customers_limit_products|N;user_type|s:6:\"normal\";customer_default_address_id|s:2:\"24\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
-INSERT INTO `sessions` VALUES ('1n0mleq0rbrji0fvbtfa7qs2s5', '1481703099', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('5s5n00rkoe0cif5sn3sqftnpn1', '1481647776', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('gvokgqcecv1h6pdfgtvmrqodi2', '1481647776', 'sessiontoken|s:32:\"47dad21c1c11189a2f65421e90b21f4a\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"28433\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:30;user_name|s:12:\"morm sreypov\";customer_plan|s:1:\"0\";customers_limit_products|N;user_type|s:6:\"normal\";customer_default_address_id|s:2:\"24\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
-INSERT INTO `sessions` VALUES ('nn09civ86phm8j2dhpseu6jg33', '1481703092', 'sessiontoken|s:32:\"77e326a9d9483f6214b7edabd483ad50\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"38435\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:32;customers_email_address|s:13:\"aaa@gmail.com\";user_type|s:6:\"agency\";customer_default_address_id|s:2:\"26\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('lf9pqqjas4fi4puprpkr3ofa33', '1483369942', 'sessiontoken|s:32:\"b0f60e96fc522ff810a91bbe9f619c35\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('nabhu8lbhfe74ppsdda04bi7m7', '1483369930', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 
 -- ----------------------------
 -- Table structure for specials
@@ -12660,7 +12717,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('32', ' ', 'nn09civ86phm8j2dhpseu6jg33', '', '1481702729', '1481703091', '/hrJob/index.php');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 'lf9pqqjas4fi4puprpkr3ofa33', '', '1483364862', '1483369941', '/hrJob/');
 
 -- ----------------------------
 -- Table structure for zones

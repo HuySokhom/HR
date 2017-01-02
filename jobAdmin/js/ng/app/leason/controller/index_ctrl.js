@@ -29,7 +29,6 @@ app.controller(
 
 		// remove functionality
 		vm.remove = function(id, $index){
-			vm.id = id;
 			vm.index = $index;
 			$alertify.okBtn("Ok")
 				.cancelBtn("Cancel")
@@ -38,12 +37,10 @@ app.controller(
 					// event variable, so you can use
 					// it here.
 					ev.preventDefault();
-					Restful.delete( url + vm.id ).success(function(data){
+					Restful.delete( url + id ).success(function(data){
 						vm.disabled = true;
 						vm.service.alertMessage('<strong>Complete: </strong>Delete Success.');
 						vm.init(vm.params);
-						//$scope.news.elements.splice($scope.index, 1);
-						//$('#message').modal('hide');
 					});
 				}, function(ev) {
 					// The click event is in the
