@@ -641,7 +641,7 @@ class SEO_URL{
                                            'newsdesk_reviews_id' => '-nri-',
                                            'newsdesk_article_id' => '-nra-',
                                            'pages_id' => '-pm-',
-                                           'pollid' => '-po-',
+                                           'lesson_id' => '-le-',
                                            'products_id_review' => '-pr-',
                                            'products_id_review_info' => '-pri-',
                                            'tPath' => '-t-'
@@ -1013,10 +1013,10 @@ class SEO_URL{
                                                    break;
                                    } # end switch
                             break;
-                                case 'pollid':
+                                case 'lesson_id':
                                    switch(true){
-                                           case ($page == 'pollbooth.php'):
-                                                   $url = $this->make_url($page, $this->get_pollbooth($p2[1]), $p2[0], $p2[1], '.html');
+                                           case ($page == 'lesson_info.php'):
+                                                   $url = $this->make_url($page, $this->get_lesson($p2[1]), $p2[0], $p2[1], '.html');
                                                    break;
                                            default: 
                                                    $container[$p2[0]] = $p2[1];
@@ -1571,28 +1571,28 @@ class SEO_URL{
  * @param integer $poID
  * @return string
  */
-		function get_pollbooth($poID){
+		function get_lesson($ID){
                 switch(true){
-                        case ($this->attributes['USE_SEO_CACHE_GLOBAL'] == 'true' && defined('POLLBOOTH_' . $poID)):
+                        case ($this->attributes['USE_SEO_CACHE_GLOBAL'] == 'true' && defined('LESSON' . $ID)):
                                 if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['CACHE_QUERY_SAVINGS']++;
-                                $return = constant('POLLBOOTH_' . $poID);
-                                $this->cache['POLLBOOTH'][$poID] = $return;
+                                $return = constant('LESSON' . $ID);
+                                $this->cache['LESSON'][$ID] = $return;
                                 break;
-                        case ($this->attributes['USE_SEO_CACHE_GLOBAL'] == 'true' && isset($this->cache['POLLBOOTH'][$poID])):
+                        case ($this->attributes['USE_SEO_CACHE_GLOBAL'] == 'true' && isset($this->cache['LESSON'][$ID])):
                                 if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['CACHE_QUERY_SAVINGS']++;
-                                $return = $this->cache['POLLBOOTH'][$poID];
+                                $return = $this->cache['LESSON'][$ID];
                                 break;
                         default:
                                 if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['NUMBER_QUERIES']++;
-                                $sql = "SELECT optiontext as poName 
-                                                FROM " . TABLE_PHESIS_POLL_DATA . " 
-                                                WHERE pollid='".(int)$poID."' 
+                                $sql = "SELECT title
+                                                FROM leason
+                                                WHERE id='".(int)$ID."'
                                                 AND language_id='".(int)$this->languages_id."' 
                                                 LIMIT 1";
                                 $result = $this->DB->FetchArray( $this->DB->Query( $sql ) );
-                                $poName = $this->strip( $result['poName'] );
-                                $this->cache['POLLS'][$poID] = $poName;
-                                if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['QUERIES']['POLLBOOTH'][] = $sql;
+                                $poName = $this->strip( $result['title'] );
+                                $this->cache['POLLS'][$ID] = $poName;
+                                if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['QUERIES']['LESSON'][] = $sql;
                                 $return = $poName;
                                 break;
 								

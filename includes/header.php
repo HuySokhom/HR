@@ -77,6 +77,11 @@
               Contact us
             </a>
           </li>
+          <li>
+            <a href="lesson.php">
+              Lesson
+            </a>
+          </li>
         </ul>
 
       </div><!-- /.container -->

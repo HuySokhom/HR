@@ -10,7 +10,7 @@ RewriteEngine On
 
   # Change the following line using the instructions above  
   
-RewriteBase /HR/
+RewriteBase /hrJob/
 
 RewriteRule ^(.*)-p-(.*).html$ product_info.php?products_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-c-(.*).html$ index.php?cPath=$2&%{QUERY_STRING}
@@ -33,11 +33,12 @@ RewriteRule ^(.*)-n-(.*).html$ newsdesk_info.php?newsdesk_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-nc-(.*).html$ newsdesk_index.php?newsPath=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-nri-(.*).html$ newsdesk_reviews_info.php?newsdesk_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-nra-(.*).html$ newsdesk_reviews_article.php?newsdesk_id=$2&%{QUERY_STRING}
-RewriteRule ^(.*)-po-([0-9]+).html$ pollbooth.php?pollid=$2&%{QUERY_STRING}
+#RewriteRule ^(.*)-po-([0-9]+).html$ pollbooth.php?pollid=$2&%{QUERY_STRING}
+RewriteRule ^(.*)-le-([0-9]+).html$ lesson_info.php?lesson_id=$2&%{QUERY_STRING}
 #RewriteRule ^(.*)-u-([0-9]+).html$ user_info.php?user_id=$2&%{QUERY_STRING}
 # End Ultimate SEO V2.2d
 
-ErrorDocument 404 http://localhost:8080/HR/index.php
+ErrorDocument 404 http://localhost:8080/hrJob/index.php
 
 # start api
 RewriteRule ^api/ api/index.php [L,QSA]
