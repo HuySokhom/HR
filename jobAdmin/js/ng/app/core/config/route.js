@@ -3,6 +3,7 @@ app.config([
 	'$urlRouterProvider',
 	'$locationProvider',
 	function($stateProvider, $urlRouterProvider, $locationProvider) {
+		
 		$stateProvider
 			.state('/', {
 				url: '/',
@@ -109,9 +110,37 @@ app.config([
 				templateUrl: 'js/ng/app/search_location/partials/index.html',
 				controller: 'search_popular_ctrl as vm'
 			})
+
+			.state('leason', {
+                url: '/leason',
+                template: '<div ui-view></div>',
+                redirectTo: 'leason.list'
+            })
+			.state('leason.list', {
+				url: '',
+				templateUrl: 'js/ng/app/leason/partials/index.html',
+				controller: 'leason_ctrl as vm'
+			})
+			.state('leason.create', {
+				url: '/create',
+				templateUrl: 'js/ng/app/leason/partials/create.html',
+				controller: 'create_ctrl as vm'
+			})
 		;
 		$urlRouterProvider.otherwise('/');
 		// use the HTML5 History API to remove # url
 		// $locationProvider.html5Mode(true);
 	}
 ]);
+
+app.run(['$rootScope', '$state', function($rootScope, $state) {
+
+	$rootScope.someData = "hello";
+
+    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+      if (to.redirectTo) {
+        evt.preventDefault();
+        $state.go(to.redirectTo, params, {location: 'replace'})
+      }
+    });
+}]);

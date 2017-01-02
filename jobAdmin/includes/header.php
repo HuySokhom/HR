@@ -32,9 +32,9 @@
 <!--          <li>-->
 <!--            <a href="#/popular_location"><span class="fa fa-clock-o"></span> Popular Search</a>-->
 <!--          </li>-->
-<!--          <li>-->
-<!--            <a href="#/news"><span class="fa fa-dashboard"></span> News</a>-->
-<!--          </li>-->
+          <li>
+            <a ui-sref="leason"><span class="fa fa-file-pdf-o"></span> Leason</a>
+          </li>
 <!--          <li>-->
 <!--            <a href="#/news_type"><span class="fa fa-crop"></span> News Type</a>-->
 <!--          </li>-->

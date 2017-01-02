@@ -30,7 +30,7 @@
     src="js/ng/app/index/controller/index_ctrl.js"
 ></script>
 <!--- News plugin -->
-<script
+<!-- <script
     type="text/javascript"
     src="js/ng/app/news/controller/news_ctrl.js"
 ></script>
@@ -41,9 +41,9 @@
 <script
     type="text/javascript"
     src="js/ng/app/news/controller/news_edit_ctrl.js"
-></script>
+></script> -->
 <!--- News Type plugin -->
-<script
+<!-- <script
     type="text/javascript"
     src="js/ng/app/news/controller/type_ctrl.js"
 ></script>
@@ -54,7 +54,7 @@
 <script
     type="text/javascript"
     src="js/ng/app/news/controller/type_edit_ctrl.js"
-></script>
+></script> -->
 <!--- Image Slider plugin -->
 <script
     type="text/javascript"
@@ -78,14 +78,14 @@
     type="text/javascript"
     src="js/ng/app/location/controller/location_ctrl.js"
 ></script>
-<script
+<!-- <script
     type="text/javascript"
     src="js/ng/app/location/controller/village_ctrl.js"
 ></script>
 <script
     type="text/javascript"
     src="js/ng/app/location/controller/district_ctrl.js"
-></script>
+></script> -->
 <!--- End location plugin -->
 <!-- Start plugin category and product -->
 <script
@@ -107,10 +107,10 @@
 <!--- End category and product plugin -->
 
 <!--- Add popular search location plugin -->
-<script
+<!-- <script
     type="text/javascript"
     src="js/ng/app/search_location/controller/search_popular_ctrl.js"
-></script>
+></script> -->
 <!--- Add popular search location plugin -->
 <script
     type="text/javascript"
@@ -118,17 +118,26 @@
 ></script>
 
 <!--- Add customer_plan_ctrl plugin -->
-<script
+<!-- <script
     type="text/javascript"
     src="js/ng/app/customer_plan/controller/customer_plan_ctrl.js"
 ></script>
-
+ -->
 <!--- Add report_customer_expire_ctrl plugin -->
 <script
     type="text/javascript"
     src="js/ng/app/report_customer_expire/controller/report_customer_expire_ctrl.js"
 ></script>
 
+<!--- Add leason_ctrl plugin -->
+<script
+    type="text/javascript"
+    src="js/ng/app/leason/controller/index_ctrl.js"
+></script>
+<script
+    type="text/javascript"
+    src="js/ng/app/leason/controller/create_ctrl.js"
+></script>
 
 </body>
 </html>
