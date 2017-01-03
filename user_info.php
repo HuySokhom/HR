@@ -37,6 +37,8 @@
     $customer_info = tep_db_fetch_array($query);
     $countRow = tep_db_num_rows($query);
 ?>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849c71a603c3db"></script>
 <br>
 <div class="container">
 <?php
@@ -79,8 +81,10 @@
                                     <?php echo $customer_info['customers_telephone']; ?>
                                 </a>
                             </p>
+                            <br/>
                             <!-- /.resume-main-contact -->
-
+                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                            <div class="addthis_native_toolbox"></div>
                             <div class="resume-main-actions">
                                 <?php
                                     if (!tep_session_is_registered('customer_id')) {
@@ -108,42 +112,6 @@
                     </div>
                     <div class="clearfix"></div>
                     <!-- /.resume-main -->
-
-                    <div class="resume-chapter">
-                        <div class="resume-chapter-inner">
-                            <div class="resume-chapter-content">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                        <span class="resume-chapter-social">
-                            <span class="resume-chapter-social-icon"><i class="fa fa-facebook-square"></i></span>
-                            <span class="resume-chapter-social-value">5 699 likes</span>
-                        </span><!-- /.resume-chapter-social -->
-                                    </div><!-- /.col-* -->
-
-                                    <div class="col-sm-3">
-                        <span class="resume-chapter-social">
-                            <span class="resume-chapter-social-icon"><i class="fa fa-twitter-square"></i></span>
-                            <span class="resume-chapter-social-value">800 tweets </span>
-                        </span><!-- /.resume-chapter-social -->
-                                    </div><!-- /.col-* -->
-
-                                    <div class="col-sm-3">
-                        <span class="resume-chapter-social">
-                            <span class="resume-chapter-social-icon"><i class="fa fa-linkedin-square"></i></span>
-                            <span class="resume-chapter-social-value">@elliot </span>
-                        </span><!-- /.resume-chapter-social -->
-                                    </div><!-- /.col-* -->
-
-                                    <div class="col-sm-3">
-                        <span class="resume-chapter-social">
-                            <span class="resume-chapter-social-icon"><i class="fa fa-youtube-square"></i></span>
-                            <span class="resume-chapter-social-value">@elliot</span>
-                        </span><!-- /.resume-chapter-social -->
-                                    </div><!-- /.col-* -->
-                                </div><!-- /.row -->
-                            </div><!-- /.recume-chapter-content -->
-                        </div><!-- /.resume-chapter-inner -->
-                    </div><!-- /.resume-chapter -->
 
                     <div class="resume-chapter">
                         <div class="resume-chapter-inner">
@@ -259,11 +227,8 @@
 
 
                 <div class="widget">
-                    <ul class="social-links">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_native_toolbox"></div>
                 </div><!-- /.widget -->
 
                 <div class="widget">
