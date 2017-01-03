@@ -12,7 +12,9 @@
           <!-- /.header-logo-->
         </div>
         <!-- /.header-brand -->
-
+        <div class="col-md-7">
+          <img src="http://banner.khmer24.ws/www/images/b62cb58c0bfbc3992c7c8d36f1cd3878.gif" width="980" height="130" alt="" title="" border="0" class="img-responsive">
+        </div>
         <ul class="header-actions nav nav-pills">
         <?php
           if(!tep_session_is_registered('customer_id')){

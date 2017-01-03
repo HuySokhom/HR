@@ -82,10 +82,23 @@
                             <!-- /.resume-main-contact -->
 
                             <div class="resume-main-actions">
-                                <a href="<?php echo $customer_info['upload_cv']; ?>" class="btn btn-secondary">
-                                    <i class="fa fa-download"></i>
-                                    Download CV
-                                </a>
+                                <?php
+                                    if (!tep_session_is_registered('customer_id')) {
+                                        echo '
+                                            <button disabled class="btn btn-secondary">
+                                                  <i class="fa fa-download"></i>
+                                                  <small>Login to download cv</small>
+                                              </button>
+                                          ';
+                                    }else{
+                                        echo '
+                                        <a href="' . $customer_info['upload_cv'] . '" class="btn btn-secondary" download>
+                                              <i class="fa fa-download"></i>
+                                              Download CV
+                                          </a>
+                                      ';
+                                    }
+                                ?>
                             </div>
                             <br/>
                             <!-- /.resume-main-actions -->

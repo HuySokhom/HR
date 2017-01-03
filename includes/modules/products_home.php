@@ -179,7 +179,18 @@
 </div>
 <div class="col-md-3">
     <div class="">
-        <img src="images/free-ads.jpg" class="img-responsive">
+<!--        <img src="images/free-ads.jpg" class="img-responsive">-->
+        <div class="fb-page"
+             data-href="https://www.facebook.com/skwebsolution/"
+             data-small-header="false" data-adapt-container-width="true"
+             data-hide-cover="false" data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/skwebsolution/"
+                        class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/skwebsolution/">
+                    SKWeb Solution
+                </a>
+            </blockquote>
+        </div>
     </div>
     <h4>Find Your Best Candidate</h4>
     <div class="row mt-60">
