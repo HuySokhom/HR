@@ -1,0 +1,220 @@
+<button 
+	class="btn btn-default default-font" 
+	data-toggle="modal" 
+	data-target="#banners"
+	data-ng-click="add();"
+>
+	<span class="glyphicon glyphicon-plus"></span>
+	Add Advertisement Image
+</button>
+<br/><br/>
+<table class="table table-striped table-bordered default-font">
+	<tr>
+		<th width="5%">
+			Id
+		</th>
+		<th width="20%">
+			Title
+		</th>
+		<th width="35%">
+			Image
+		</th>
+		<th width="20%">
+			Advertisement Location
+		</th>
+		<th width="20%">
+			Action
+		</th>
+	</tr>
+	<tr data-ng-if="!banners">
+		<td colspan="4" align="center">
+			<img src="images/icons/gettestr-large-spinner-orange.gif"/>
+		</td>
+	</tr>
+	<tr
+		data-ng-repeat="b in banners.elements"
+	>
+		<td>
+			{{b.id}}
+		</td>
+		<td>
+			<span data-ng-bind="b.title"></span>
+		</td>
+		<td>
+			<img
+				ng-src="../images/{{b.image}}"
+				style="width: 150px;"
+				data-ng-show="b.image"
+			>
+		</td>
+		<td>
+			{{b.location}}
+		</td>
+		<td>
+			<button
+				class="btn"
+				data-ng-class="(b.status === 1) ? 'btn-success' : 'btn-warning'"
+				data-ng-click="updateStatus(b);"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="{{(b.status === 1) ? 'Active' : 'Inactive'}}"
+				tooltip
+			>				
+				<span class="fa" 
+					data-ng-class="(b.status === 1) ? 'fa-check-square-o' : 'fa fa-minus-circle'"></span>
+			</button>
+			<button
+				class="btn btn-default"
+				data-ng-click="edit(b);"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="Edit"
+				tooltip
+			>
+				<span class="fa fa-pencil-square-o"></span>
+			</button>
+			<button
+				class="btn btn-danger"
+				data-ng-click="remove($index, b);"
+				data-toggle="modals"
+				data-placement="top"
+				title="Delete"
+				tooltip
+			>
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
+		</td>
+	</tr>
+</table>
+<div
+	data-ng-if="banners.elements == 0"
+>
+	<div class="alert alert-danger alert-dismissible">
+		<strong>Warning!</strong> Empty Data.
+	</div>
+</div>
+
+<form data-ng-submit="save();" name="myForm">
+	<div
+		class="modal fade"
+		id="banners"
+		data-keyboard="false"
+		data-backdrop="static"
+	>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button
+						type="button"
+						class="close"
+						data-dismiss="modal"
+					>
+						<span>&times;</span>
+					</button>
+					<h4>
+						<label>Advertisement Image</label>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-bordered table-responsive">
+						<tr>
+							<td width="15%">
+								Title:
+							</td>
+							<td>
+								<input
+									type="text"
+									class="form-control"
+									data-ng-model="data.title"
+									required="required"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Image:
+							</td>
+							<td>
+								<input
+									type="file"
+									ng-model="picFile"
+									name="file"
+									accept="image/*"
+									ngf-max-size="2MB"
+									ngf-model-invalid="errorFiles"
+									ngf-select="uploadPic(picFile)"
+								>
+								<small>
+									recommand 800px * 85px
+								</small>
+								<i ng-show="myForm.file.$error.maxSize" class="error">
+									File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+								</i>
+								<div>
+									<img
+										ng-show="data.image"
+										class="thumb"
+										src="../images/{{data.image}}"
+									>
+								<span class="progress" ng-show="picFile.progress >= 0">
+									<div
+										style="width:{{picFile.progress}}%"
+										ng-bind="picFile.progress + '%'"
+									>
+									</div>
+								</span>
+									<span ng-show="picFile.result">Upload Successful</span>
+									<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Sort Order:
+							</td>
+							<td>
+								<input type="text" data-ng-model="data.sort_order" class="form-control"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Link:
+							</td>
+							<td>
+								<input type="text" data-ng-model="data.link" class="form-control"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Location:
+							</td>
+							<td>
+								<select class="form-control" required="required" data-ng-model="data.location">
+									<option value="top">Top Header</option>
+									<option value="right">Right</option>
+									<option value="left">Left</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button
+						class="btn btn-default"
+						data-dismiss="modal"
+					>
+						Close
+					</button>
+					<button
+						class="btn btn-primary"
+						data-ng-disabled="isDisabled"
+					>
+						Save
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+

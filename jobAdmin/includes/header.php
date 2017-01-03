@@ -28,7 +28,12 @@
           <li><a href="#/category"><span class="fa fa-code-fork"></span> Categories</a></li>
           <li><a href="#/product"><span class="fa fa-sitemap"></span> Products</a></li>
           <li><a href="#/user"><span class="fa fa-users"></span> Users</a></li>
-<!--          <li><a href="#/slider"><span class="fa fa-film"></span> Image Slider</a></li>-->
+          <li>
+            <a ui-sref="advertisement">
+              <span class="fa fa-film"></span>
+              Advertisement
+            </a>
+          </li>
 <!--          <li>-->
 <!--            <a href="#/popular_location"><span class="fa fa-clock-o"></span> Popular Search</a>-->
 <!--          </li>-->

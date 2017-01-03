@@ -1,3 +1,13 @@
+<?php
+  $query = tep_db_query("
+    select
+      title, link, image
+    from
+      advertising_banner
+    where status = 1 order by id desc limit 1
+  ");
+  $ad = tep_db_fetch_array($query);
+?>
 <div class="header-wrapper">
   <div class="header">
     <div class="header-top">
@@ -13,7 +23,14 @@
         </div>
         <!-- /.header-brand -->
         <div class="col-md-7">
-          <img src="http://banner.khmer24.ws/www/images/b62cb58c0bfbc3992c7c8d36f1cd3878.gif" width="980" height="130" alt="" title="" border="0" class="img-responsive">
+          <a href="<?php echo $ad['link'];?>" target="_blank">
+            <img src="images/<?php echo $ad['image'];?>"
+                 alt="<?php echo $ad['title'];?>"
+                 title="<?php echo $ad['title'];?>"
+                 border="0"
+                 style="width: 800px;height: 85px;"
+                 class="img-responsive"/>
+          </a>
         </div>
         <ul class="header-actions nav nav-pills">
         <?php

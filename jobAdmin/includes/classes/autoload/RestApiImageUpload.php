@@ -11,9 +11,13 @@ class RestApiImageUpload extends RestApi {
 			// check extension is valid image
 			if( ! in_array($ext, array(
 				'jpg',
+				'JPG',
 				'jpeg',
+				'JPEG',
 				'gif',
+				'GIF',
 				'png',
+				'PNG',
 			))){
 				continue;
 			}
@@ -46,6 +50,9 @@ class RestApiImageUpload extends RestApi {
 		/* read the source image */
 		if( $file['type'] == 'image/jpeg' ){
 			$source_image = imagecreatefromjpeg($src);
+		}
+		else if( $file['type'] == 'image/gif'){
+			$source_image = imagecreatefromgif($src);
 		}else{
 			$source_image = imagecreatefrompng($src);
 		}
