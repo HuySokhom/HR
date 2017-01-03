@@ -4,7 +4,9 @@
       title, link, image
     from
       advertising_banner
-    where status = 1 order by id desc limit 1
+    where
+      status = 1 and location = 'top'
+    order by id desc limit 1
   ");
   $ad = tep_db_fetch_array($query);
 ?>
@@ -22,16 +24,22 @@
           <!-- /.header-logo-->
         </div>
         <!-- /.header-brand -->
-        <div class="col-md-7">
-          <a href="<?php echo $ad['link'];?>" target="_blank">
-            <img src="images/<?php echo $ad['image'];?>"
-                 alt="<?php echo $ad['title'];?>"
-                 title="<?php echo $ad['title'];?>"
-                 border="0"
-                 style="width: 800px;height: 85px;"
-                 class="img-responsive"/>
-          </a>
-        </div>
+        <?php
+          if(tep_db_num_rows($query) > 0) {
+        ?>
+            <div class="col-md-7">
+              <a href="<?php echo $ad['link']; ?>" target="_blank">
+                <img src="images/<?php echo $ad['image']; ?>"
+                     alt="<?php echo $ad['title']; ?>"
+                     title="<?php echo $ad['title']; ?>"
+                     border="0"
+                     style="width: 800px;height: 85px;"
+                     class="img-responsive"/>
+              </a>
+            </div>
+        <?php
+          }
+        ?>
         <ul class="header-actions nav nav-pills">
         <?php
           if(!tep_session_is_registered('customer_id')){

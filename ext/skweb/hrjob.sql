@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-01-02 22:13:04
+Date: 2017-01-03 22:46:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `action_recorder` (
   KEY `idx_action_recorder_user_id` (`user_id`),
   KEY `idx_action_recorder_identifier` (`identifier`),
   KEY `idx_action_recorder_date_added` (`date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of action_recorder
@@ -121,6 +121,7 @@ INSERT INTO `action_recorder` VALUES ('81', 'ar_admin_login', '1', 'admin', '', 
 INSERT INTO `action_recorder` VALUES ('82', 'ar_admin_login', '1', 'admin', '', '1', '2017-01-02 14:22:12');
 INSERT INTO `action_recorder` VALUES ('83', 'ar_admin_login', '1', 'admin', '', '1', '2017-01-02 15:47:48');
 INSERT INTO `action_recorder` VALUES ('84', 'ar_admin_login', '1', 'admin', '', '1', '2017-01-02 20:14:42');
+INSERT INTO `action_recorder` VALUES ('85', 'ar_admin_login', '1', 'admin', '', '1', '2017-01-03 21:37:45');
 
 -- ----------------------------
 -- Table structure for address_book
@@ -216,6 +217,29 @@ INSERT INTO `administrators` VALUES ('1', 'admin', '$P$DRRMOl769qtOxrbeggl2nKo1K
 INSERT INTO `administrators` VALUES ('2', 'admin123', '$P$DiZa27yqE2eLd0WXF3FraaCH56dZfc1');
 INSERT INTO `administrators` VALUES ('3', 'kom.huy@gmail.com', '$P$DBePVVE5wg46sDu8VI7j6Xucex3tEm0');
 INSERT INTO `administrators` VALUES ('4', 'kom.huy@gmail.wq', '$P$DS8NAOjLS7cWj1l4gGBv004dlmmXC71');
+
+-- ----------------------------
+-- Table structure for advertising_banner
+-- ----------------------------
+DROP TABLE IF EXISTS `advertising_banner`;
+CREATE TABLE `advertising_banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(225) DEFAULT NULL,
+  `link` varchar(225) DEFAULT NULL,
+  `sort_order` int(11) DEFAULT NULL,
+  `location` varchar(127) DEFAULT NULL,
+  `image` varchar(225) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of advertising_banner
+-- ----------------------------
+INSERT INTO `advertising_banner` VALUES ('1', '21', 'google.com11', '1', 'right', 'news/Choc-Drip-Gelato-Cake.1483457723.jpg', '2016-09-15 20:13:28', '1');
+INSERT INTO `advertising_banner` VALUES ('2', 'Happy birthday', 'http://stackoverflow.com/questions/2659253/how-to-select-the-last-record-from-mysql-table-using-sql-syntax', '0', 'left', 'news/Taco_Party_0.1483457686.gif', '2017-01-03 21:38:08', '1');
+INSERT INTO `advertising_banner` VALUES ('4', 'aS D', '$src', '0', 'top', 'news/b62cb58c0bfbc3992c7c8d36f1cd3878.1483457731.gif', '2017-01-03 22:35:38', '1');
 
 -- ----------------------------
 -- Table structure for banners
@@ -11592,37 +11616,28 @@ CREATE TABLE `leason` (
   `file_leason` varchar(225) NOT NULL DEFAULT '0',
   `title` varchar(550) DEFAULT NULL,
   `description` longtext,
+  `language_id` int(11) DEFAULT '1',
   `status` tinyint(1) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   `create_by` varchar(127) DEFAULT NULL,
   `update_by` varchar(127) DEFAULT NULL,
   `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of leason
 -- ----------------------------
-INSERT INTO `leason` VALUES ('19', '10', 'asgw', '<p>asdgasdg</p>', '1', null, null, 'admin', '2017-01-02 21:08:50');
-INSERT INTO `leason` VALUES ('20', '10', 'asdដសាដង', '<ul>\n<li>asdg</li>\n<li>sad</li>\n<li>gas&nbsp;</li>\n<li>dg</li>\n<li>asdg&nbsp;</li>\n<li>sdag<a href=\"https://www.google.com.kh/url?sa=i&amp;rct=j&amp;q=&amp;esrc=s&amp;source=images&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwivuvbR44bNAhXoUKYKHVUqDtkQjRwIBw&amp;url=http%3A%2F%2Fwww.clipartpanda.com%2Fcategories%2Fnation-clipart&amp;psig=AFQjCNGmfEYVelXpLnoQ99DeEOzjA71BEQ&amp;ust=1464868788074950\"><img src=\"https://www.google.com.kh/url?sa=i&amp;rct=j&amp;q=&amp;esrc=s&amp;source=images&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwivuvbR44bNAhXoUKYKHVUqDtkQjRwIBw&amp;url=http%3A%2F%2Fwww.clipartpanda.com%2Fcategories%2Fnation-clipart&amp;psig=AFQjCNGmfEYVelXpLnoQ99DeEOzjA71BEQ&amp;ust=1464868788074950\" alt=\"\" /><iframe src=\"//www.youtube.com/embed/pMUC7b7wc-k\" width=\"560\" height=\"314\" allowfullscreen=\"allowfullscreen\"></iframe></a></li>\n<li>asdg</li>\n<li>asdg</li>\n<li>asdgសាដងឹេាយេសដវាសវ</li>\n</ul>', '1', null, null, 'admin', '2017-01-02 21:04:39');
-INSERT INTO `leason` VALUES ('77', 'leason/Choc-Drip-Gelato-Cake.1483368732.jpg', 'asdg asg', '', '1', '2017-01-02 21:52:15', 'admin', null, null);
-INSERT INTO `leason` VALUES ('78', 'leason/employee query.1483368746.PNG', 'as ASF', '', '1', '2017-01-02 21:52:37', 'admin', null, null);
-INSERT INTO `leason` VALUES ('79', 'leason/employee query.1483368807.PNG', 'Q# FWSCA', '<p>C ASF&nbsp;</p>', '1', '2017-01-02 21:53:29', 'admin', null, null);
-INSERT INTO `leason` VALUES ('80', 'leason/Choc-Drip-Gelato-Cake.1483368896.jpg', '32322323', '<p>sad sgd</p>', '1', '2017-01-02 21:54:57', 'admin', null, null);
-INSERT INTO `leason` VALUES ('81', 'leason/employee query.1483368904.PNG', 'asdg', '<p>asdg asdg&nbsp;</p>', '1', '2017-01-02 21:55:05', 'admin', null, null);
-INSERT INTO `leason` VALUES ('82', 'leason/employee query.1483368911.PNG', 'sad', '<p>s sg&nbsp;</p>', '1', '2017-01-02 21:55:12', 'admin', null, null);
-INSERT INTO `leason` VALUES ('83', 'leason/Choc-Drip-Gelato-Cake.1483368918.jpg', 'as', '<p>asdg asgd&nbsp;</p>', '1', '2017-01-02 21:55:19', 'admin', null, null);
-INSERT INTO `leason` VALUES ('84', 'leason/Choc-Drip-Gelato-Cake.1483368924.jpg', 'asdf', '<p>asd asd&nbsp;</p>', '1', '2017-01-02 21:55:25', 'admin', null, null);
-INSERT INTO `leason` VALUES ('85', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'asd', '<p>asd as</p>', '1', '2017-01-02 21:55:32', 'admin', null, null);
-INSERT INTO `leason` VALUES ('86', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'asd', '<p>asd as</p>', '1', '2017-01-02 22:02:26', 'admin', null, null);
-INSERT INTO `leason` VALUES ('87', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'asd12e12e12e', '<p>asd asS AS AS AS F</p>', '1', '2017-01-02 22:02:34', 'admin', null, null);
-INSERT INTO `leason` VALUES ('88', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'asd12e12e12e', '<p>asd asS AS AS AS Fas fasf at3 t2332 tegwdzsv dv&nbsp;</p>', '1', '2017-01-02 22:02:59', 'admin', null, null);
-INSERT INTO `leason` VALUES ('89', '', 'asd', '<p>asdg asdg&nbsp;</p>', '1', '2017-01-02 22:03:21', 'admin', null, null);
-INSERT INTO `leason` VALUES ('90', '', 'asd', '<p>asdg asdg&nbsp;</p>', '1', '2017-01-02 22:03:26', 'admin', null, null);
-INSERT INTO `leason` VALUES ('91', '', 'asd', '<p>asdg asdg&nbsp;</p>', '1', '2017-01-02 22:03:32', 'admin', null, null);
-INSERT INTO `leason` VALUES ('92', 'leason/employee query.1483369433.PNG', 'asdf asd !@!', '<p>asd as gd</p>', '1', '2017-01-02 22:03:56', 'admin', null, null);
-INSERT INTO `leason` VALUES ('93', 'leason/employee query.1483369433.PNG', 'asdf asd !@!  3r233  23', '<p>asd as gdtt32323t 23232332 23<strong>23 23 232<em>35 23</em></strong></p>', '1', '2017-01-02 22:04:08', 'admin', null, null);
-INSERT INTO `leason` VALUES ('94', 'leason/employee query.1483369433.PNG', 'asdf asd !@!  3r233  23', '<p>asd as gdtt32323t 23232332 23<strong>23 23 232<em>35 23</em></strong></p>', '1', '2017-01-02 22:04:19', 'admin', null, null);
+INSERT INTO `leason` VALUES ('95', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'Accounting Lesson', '<p>asd as</p>', '1', '1', '2017-01-02 23:04:17', 'admin', null, null);
+INSERT INTO `leason` VALUES ('79', 'leason/employee query.1483368807.PNG', 'Q# FWSCA', '<p>C ASF&nbsp;</p>', '1', '1', '2017-01-02 21:53:29', 'admin', null, null);
+INSERT INTO `leason` VALUES ('83', 'leason/Choc-Drip-Gelato-Cake.1483368918.jpg', 'as', '<p>asdg asgd&nbsp;</p>', '1', '1', '2017-01-02 21:55:19', 'admin', null, null);
+INSERT INTO `leason` VALUES ('86', 'leason/15681823_1259904984067217_1484198774_o.1483368931.png', 'asd', '<p>asd as</p>', '1', '1', '2017-01-02 22:02:26', 'admin', null, null);
+INSERT INTO `leason` VALUES ('98', 'leason/2016 Nov(24) - Translate.1483376176.xlsx', 'sda g', '<p>as sd&nbsp;</p>', '1', '1', '2017-01-02 23:56:18', 'admin', null, null);
+INSERT INTO `leason` VALUES ('99', 'leason/adventure.1483376193.sql', 'asg asdg @@@@@! EV', '<p>a wtg</p>', '1', '1', '2017-01-02 23:56:36', 'admin', null, null);
+INSERT INTO `leason` VALUES ('100', 'leason/70.1483376202.docx', 'sd S FD', '<p>ASD D&nbsp;</p>', '1', '1', '2017-01-02 23:56:44', 'admin', null, null);
+INSERT INTO `leason` VALUES ('101', 'leason/Document_Real_estate.1483376210.pdf', 'sd f23', '<p>&nbsp;ASDF&nbsp;</p>', '1', '1', '2017-01-02 23:56:51', 'admin', null, null);
+INSERT INTO `leason` VALUES ('102', 'leason/index.1483376220.php', 'SFA', '<p>&nbsp;af asdf</p>', '1', '1', '2017-01-02 23:57:04', 'admin', null, null);
+INSERT INTO `leason` VALUES ('103', 'leason/Angular-Toturies.1483376235.pptx', 'a bFq', '<p>&nbsp;23 tb</p>', '1', '1', '2017-01-02 23:57:21', 'admin', null, null);
 
 -- ----------------------------
 -- Table structure for location
@@ -12606,8 +12621,25 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('lf9pqqjas4fi4puprpkr3ofa33', '1483369942', 'sessiontoken|s:32:\"b0f60e96fc522ff810a91bbe9f619c35\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('nabhu8lbhfe74ppsdda04bi7m7', '1483369930', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('4mts1rn1ksaogjto4mo96riee2', '1483419950', 'sessiontoken|s:32:\"e143838591afdc671284cef810539daf\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('70plg8pr9qht34ag4st88mfi70', '1483456229', 'sessiontoken|s:32:\"464e9c2908b57b4f28e22282dd6c8175\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('83msl5qn5j2vertrdd02pigmu1', '1483456319', 'sessiontoken|s:32:\"a8cb93d4682f87991685d54bb0838cd1\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('9gs7rskn43u87ckniait3pb7i5', '1483456435', 'sessiontoken|s:32:\"b2a1442cb06c6b71b0bacb945fdfa6ec\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('aob2ju8vhbokcomofccdj233v2', '1483456181', 'sessiontoken|s:32:\"b6712b095b00ded27f9a0af37f6c09ca\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('b2lldk8pfn6oi5n95i3un91qi5', '1483456210', 'sessiontoken|s:32:\"2ddf82ccd01fb5082609813ed6e56899\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('erva8o2mhsfami1o26smem5554', '1483456241', 'sessiontoken|s:32:\"691d7ca9fe52c5c173ebd645bab6761a\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('ll8fudak8rk4u4fkhbajt0p9m2', '1483454304', 'sessiontoken|s:32:\"081fce7ac17077601e5db7cb08af8c26\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('nabhu8lbhfe74ppsdda04bi7m7', '1483376381', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('nsjvtfa8p512dn845726phsbh5', '1483456365', 'sessiontoken|s:32:\"84bf3aee356e70cf8b275316be320884\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('obpvhr8jdbj398gu163sparka2', '1483428615', 'sessiontoken|s:32:\"188ec063915bc971e8d29e7b5737e082\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('p3ud90jondde0d3l57abk7j503', '1483457826', 'sessiontoken|s:32:\"367118395e04c38289b8c4e96bd882fe\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('pe1s3thg58relvl3g9f4u4p4f7', '1483457698', 'sessiontoken|s:32:\"667dda59249183a884801976191adccc\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('r0kqmbqlcugp1179jav36l35n1', '1483458365', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('s9o1lgl6c55tq5c95bmu515cv4', '1483457795', 'sessiontoken|s:32:\"e943a7d9e7faeb95ae905841c922c147\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('u53qkvadnq4lso16ch53fo38r2', '1483457721', 'sessiontoken|s:32:\"780ce8f8d32d47a6ac84869a9c574481\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('u7dlnlb2hm7vlo8r2gto3lpkn2', '1483456984', 'sessiontoken|s:32:\"94366b25920bd53ba8ab632659c6b592\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('u92sh0pkmp96sfqgusc18ifn57', '1483376423', 'sessiontoken|s:32:\"34bab30505792fa2df0bc9b285cdec2b\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"89110\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:34;customers_email_address|s:9:\"ii@ii.com\";user_type|s:6:\"normal\";customer_default_address_id|s:2:\"28\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('ukvflv96uuf2db10i6l94748i2', '1483458367', 'sessiontoken|s:32:\"bba2873aa431adb32e5f6f84a1dc549a\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 
 -- ----------------------------
 -- Table structure for specials
@@ -12717,7 +12749,11 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('0', 'Guest', 'lf9pqqjas4fi4puprpkr3ofa33', '', '1483364862', '1483369941', '/hrJob/');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 'pe1s3thg58relvl3g9f4u4p4f7', '', '1483456990', '1483457697', '/hrJob/index.php');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 'u53qkvadnq4lso16ch53fo38r2', '', '1483457705', '1483457720', '/hrJob/index.php');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 's9o1lgl6c55tq5c95bmu515cv4', '', '1483457745', '1483457795', '/hrJob/index.php');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 'p3ud90jondde0d3l57abk7j503', '', '1483457826', '1483457826', '/hrjob/');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 'ukvflv96uuf2db10i6l94748i2', '', '1483457831', '1483458367', '/hrJob/index.php');
 
 -- ----------------------------
 -- Table structure for zones
