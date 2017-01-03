@@ -37,8 +37,6 @@
     $customer_info = tep_db_fetch_array($query);
     $countRow = tep_db_num_rows($query);
 ?>
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849c71a603c3db"></script>
 <br>
 <div class="container">
 <?php

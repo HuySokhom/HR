@@ -26,7 +26,7 @@
         <!-- /.header-brand -->
         <?php
           if(tep_db_num_rows($query) > 0) {
-        ?>
+            ?>
             <div class="col-md-7">
               <a href="<?php echo $ad['link']; ?>" target="_blank">
                 <img src="images/<?php echo $ad['image']; ?>"
@@ -51,7 +51,13 @@
             <li><a href="logoff.php"><i class="fa fa-sign-out"></i> Sign Out</a></li>
           ';
           }?>
-          <li><a href="account.php#/manage/post" class="primary">Post Job Now</a></li>
+          <?php
+          if(!tep_session_is_registered('customer_id')) {
+            ?>
+            <li><a href="account.php#/manage/post" class="primary">Post Job Now</a></li>
+            <?php
+          }
+          ?>
         </ul><!-- /.header-actions -->
 
         <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".header-nav">
