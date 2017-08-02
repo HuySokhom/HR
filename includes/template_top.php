@@ -28,9 +28,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo tep_output_string_protected($oscTemplate->getTitle()); ?></title>
     <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-    <meta name="description" http-equiv="Description" content="HrKing, Job online cambodia, hrking the best job in cambodia, <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
-    <meta name="keywords" content="HrKing, Job online cambodia, hrking the best job in cambodia, <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
-    <meta name="author" content="KRKING">
+    <meta name="description" http-equiv="Description" content="aseanHr, Job online cambodia, aseanHr the best job in cambodia, <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
+    <meta name="keywords" content="aseanHr, Job online cambodia, aseanHr the best job in cambodia, <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
+    <meta name="author" content="aseanHr">
     <link rel="canonical" href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
     <meta http-equiv="ROBOTS" content="INDEX, FOLLOW">
     <link rel="shortcut icon" href="assets/favicon.png">
@@ -38,8 +38,9 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">
     <link href="assets/libraries/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="assets/libraries/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/profession-blue-navy.css" rel="stylesheet" type="text/css" id="style-primary">
+    <link href="assets/css/profession-purple-red.css" rel="stylesheet" type="text/css" id="style-primary">
     <link href="assets/fonts/profession/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/style.css" rel="stylesheet" type="text/css">
     <?php echo $oscTemplate->getBlocks('header_tags'); ?>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849c71a603c3db"></script>
