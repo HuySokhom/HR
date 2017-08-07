@@ -70,10 +70,10 @@
             Search By 
             <span class="caret"></span></button>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li><a href="javascript:;">Function</a></li>
-              <li><a href="javascript:;">Industry</a></li>
-              <li><a href="javascript:;">Location</a></li>
-              <li><a href="javascript:;">Salary</a></li>
+              <li><a href="javascript:;" data-toggle="modal" data-target="#function">Functions</a></li>
+              <li><a href="javascript:;" data-toggle="modal" data-target="#industry">Industries</a></li>
+              <li><a href="javascript:;" data-toggle="modal" data-target="#location">Locations</a></li>
+              <li><a href="javascript:;" data-toggle="modal" data-target="#salary">Salaries</a></li>
             </ul>
           </div><!-- /btn-group -->
         </div>
@@ -98,7 +98,7 @@
             <a href="job_seekers.php">
               <i class="fa fa-file-text"></i>
               <br/>
-              CV
+              CVs
             </a>
           </li>
           <!-- <li>
@@ -110,9 +110,9 @@
           </li> -->
           <li>
             <a href="contact_us.php">
-              <i class="fa fa-envelope-o"></i>
+              <i class="fa fa-phone"></i>
               <br/>
-              Contact
+              Contact Us
             </a>
           </li>
 
@@ -143,16 +143,48 @@
                 ';
                 }?>
             </ul><!-- /.sub-menu -->
-          </li>
-          
+          </li>          
         </ul>
-
-        <!-- <ul class="header-actions nav nav-pills">
-        
+        <!-- <ul class="header-actions nav nav-pills">        
         </ul> -->
-
       </div><!-- /.container -->
     </div><!-- /.header-bottom -->
   </div><!-- /.header -->
 </div>
 <!-- /.header-wrapper-->
+
+<!-- Modal For Function PopUp -->
+<div id="function" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Functions</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="filter-list">
+            <?php echo tep_get_categories_list();?>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal For Locations PopUp -->
+<div id="function" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Functions</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="filter-list">
+            <?php echo tep_get_categories_list();?>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

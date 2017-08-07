@@ -1,9 +1,29 @@
+body{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif, "Khmer OS";
+}
 .header-nav li a .fa {
     color: #c7d1d8;
     font-size: 20px;
     margin-left: 10px;
     vertical-align: 1px;
 }
-.header-nav li a .fa:hover {
+.header-nav li a:hover {
     color: #ed1c24;
 }
+.collapse {
+    display: block;
+    visibility: visible;
+}
+ul.filter-list li {
+    float: left;
+    padding: 0px;
+    width: 32%;
+}
+@media (min-width: 768px){
+    .header-nav li {
+        margin: 0px 0px 0px 0px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        position: relative;
+    }
+};
