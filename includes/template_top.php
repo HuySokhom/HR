@@ -46,5 +46,5 @@
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849c71a603c3db"></script>
 </head>
 <body class="hero-content-dark footer-dark">
-<div class="page-wrapper" ng-cloak>
+<div class="page-wrapper" class="ng-cloak">
     <?php require(DIR_WS_INCLUDES . 'header.php');?>

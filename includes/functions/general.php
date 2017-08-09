@@ -594,6 +594,16 @@ function tep_get_location($id = '') {
 
     return $categories_array;
   }
+// functionality for get location display list
+  function tep_get_province_list($locations_array = '') {
+    if (!is_array($locations_array)) $locations_array = array();
+
+    $location_query = tep_db_query("select id, name from location order by name");
+    while ($locations = tep_db_fetch_array($location_query)) {
+      $locations_array[] = array('id' => $locations['id'], 'text' => $locations['name']);
+    }
+    return $locations_array;
+  }
 
   // functionality for get location
   function tep_get_province($locations_array = '') {

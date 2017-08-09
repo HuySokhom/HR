@@ -72,7 +72,7 @@
             <ul class="dropdown-menu dropdown-menu-right">
               <li><a href="javascript:;" data-toggle="modal" data-target="#function">Functions</a></li>
               <li><a href="javascript:;" data-toggle="modal" data-target="#industry">Industries</a></li>
-              <li><a href="javascript:;" data-toggle="modal" data-target="#location">Locations</a></li>
+              <li><a href="javascript:;" data-toggle="modal" data-target="#locations">Locations</a></li>
               <li><a href="javascript:;" data-toggle="modal" data-target="#salary">Salaries</a></li>
             </ul>
           </div><!-- /btn-group -->
@@ -87,7 +87,7 @@
           </li>
 
           <li>
-            <a href="employers.php">
+            <a href="jobs_list.php">
               <i class="fa fa-briefcase"></i>
               <br/>
               Jobs
@@ -99,6 +99,13 @@
               <i class="fa fa-file-text"></i>
               <br/>
               CVs
+            </a>
+          </li>
+          <li>
+            <a href="employers.php">
+              <i class="fa fa-briefcase"></i>
+              <br/>
+              Companys
             </a>
           </li>
           <!-- <li>
@@ -172,17 +179,17 @@
 </div>
 
 <!-- Modal For Locations PopUp -->
-<div id="function" class="modal fade" role="dialog">
+<div id="locations" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Functions</h4>
+        <h4 class="modal-title">Locatons</h4>
       </div>
       <div class="modal-body">
         <ul class="filter-list">
-            <?php echo tep_get_categories_list();?>
+            <?php echo tep_get_province();?>
         </ul>
       </div>
     </div>
