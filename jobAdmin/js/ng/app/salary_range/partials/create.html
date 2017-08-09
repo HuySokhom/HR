@@ -1,0 +1,97 @@
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h3 class="push-down-0">
+            Leason Information
+        </h3>
+    </div>
+    <div class="panel-body">
+        <form name="leasonForm" novalidate role="form" class="form-horizontal">
+            <div class="form-group" ng-class="{ 'has-error': leasonForm.title.$invalid && leasonForm.$submitted }">
+                <label class="col-md-2 control-label">
+                    Title:
+                    <span class="required">* </span>
+                </label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" ng-model="vm.leason.title" name="title" required="" />
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': leasonForm.file.$invalid && leasonForm.$submitted }">
+                <label class="col-md-2 control-label">
+                    File Leason:
+                    <span class="required">* </span>
+                </label>
+                <div class="col-md-4">
+                    <input
+                        type="file"
+                        name="file"
+                        ng-required="!vm.leason.file_leason"
+                        ng-model="vm.picFile"
+                        name="file"
+                        ngf-max-size="10MB"
+                        ngf-model-invalid="errorFiles"
+                        ngf-select="vm.uploadPic(vm.picFile)"
+                    >
+                    <i ng-show="myForm.file.$error.maxSize">
+                        File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 10M
+                    </i>
+                    <a
+                        ng-show="vm.leason.file_leason"
+                        data-ng-href="../{{vm.leason.file_leason}}"
+                        target="_blank"
+                    >
+                        {{vm.leason.file_leason}}
+                    </a>
+                    <span class="progress" ng-show="vm.picFile.progress >= 0">
+                        <div
+                            style="width:{{vm.picFile.progress}}%"
+                            ng-bind="vm.picFile.progress + '%'"
+                        >
+                        </div>
+                    </span>
+                    <span ng-show="vm.picFile.result">Upload Successful</span>
+                    <span class="err" ng-show="vm.errorMsg">{{errorMsg}}</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': leasonForm.description.$invalid && leasonForm.$submitted }">
+                <label class="col-md-2 control-label">
+                    Description:
+                    <span class="required">* </span>
+                </label>
+                <div class="col-md-9">
+                    <textarea class="form-control"
+                              name="description"
+                              required
+                              data-ng-model="vm.leason.description"
+                              ui-tinymce="vm.tinymceOptions"
+                              rows="15"
+                    ></textarea>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <label class="col-md-2 control-label">
+                </label>
+                <div class="col-md-9">
+                    <a
+                        class="btn btn-default"
+                        ui-sref="leason.list"
+                        href="javascript:;"
+                    >
+                        <i class="fa fa-close"></i>
+                        Close
+                    </a>
+                    <button
+                        class="btn btn-primary"
+                        data-ng-disabled="!vm.disabled"
+                        data-ng-click="vm.save();"
+                    >
+                        <i class="fa fa-save"></i>
+                        Save
+                    </button>
+                </div>
+            </div> 
+        </form>
+    </div>
+</div>
+

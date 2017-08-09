@@ -5,12 +5,12 @@
     <!-- START X-NAVIGATION -->
     <ul class="x-navigation">
       <li class="xn-logo">
-        <a href="#/">HR King</a>
+        <a href="#/">Asean HR</a>
         <a href="#" class="x-navigation-control"></a>
       </li>
       <li class="xn-profile">
         <a href="#/" class="profile-mini">
-          <img src="images/icons/ico.png" alt="Logo"/>
+          <img src="images/icon.png" alt="Logo"/>
         </a>
         <div class="profile text-center">
             <h3 class="profile-data-name">
@@ -38,7 +38,10 @@
 <!--            <a href="#/popular_location"><span class="fa fa-clock-o"></span> Popular Search</a>-->
 <!--          </li>-->
           <li>
-            <a ui-sref="leason"><span class="fa fa-file-pdf-o"></span> Leason</a>
+            <a ui-sref="industries"><span class="fa fa-file-pdf-o"></span> Industries</a>
+          </li>
+          <li>
+            <a ui-sref="salary_range"><span class="fa fa-file-pdf-o"></span> Salary range</a>
           </li>
 <!--          <li>-->
 <!--            <a href="#/news_type"><span class="fa fa-crop"></span> News Type</a>-->
@@ -78,7 +81,7 @@
       <!-- SEARCH -->
       <li>
         <a href=" <?php echo tep_catalog_href_link(); ?>" target="_blank">
-          <?php echo HEADER_TITLE_ONLINE_CATALOG ?>
+          View Online
         </a>
       </li>
       <!-- END SEARCH -->

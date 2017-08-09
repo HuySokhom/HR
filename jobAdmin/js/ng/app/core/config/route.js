@@ -110,26 +110,51 @@ app.config([
 				templateUrl: 'js/ng/app/search_location/partials/index.html',
 				controller: 'search_popular_ctrl as vm'
 			})
-
-			.state('leason', {
-                url: '/leason',
+			/**
+			 * Route for Salary Range
+			 */
+			.state('salary_range', {
+                url: '/salary_range',
                 template: '<div ui-view></div>',
-                redirectTo: 'leason.list'
+                redirectTo: 'salary_range.list'
             })
-			.state('leason.list', {
+			.state('salary_range.list', {
 				url: '',
-				templateUrl: 'js/ng/app/leason/partials/index.html',
-				controller: 'leason_ctrl as vm'
+				templateUrl: 'js/ng/app/salary_range/partials/index.html',
+				controller: 'salary_range_ctrl as vm'
 			})
-			.state('leason.create', {
+			.state('salary_range.create', {
 				url: '/create',
-				templateUrl: 'js/ng/app/leason/partials/create.html',
-				controller: 'create_ctrl as vm'
+				templateUrl: 'js/ng/app/salary_range/partials/create.html',
+				controller: 'salary_range_create_ctrl as vm'
 			})
-			.state('leason.edit', {
+			.state('salary_range.edit', {
 				url: '/edit/:id',
-				templateUrl: 'js/ng/app/leason/partials/create.html',
-				controller: 'create_ctrl as vm'
+				templateUrl: 'js/ng/app/salary_range/partials/create.html',
+				controller: 'salary_range_create_ctrl as vm'
+			})
+			/**
+			 * Route for Industries
+			 */
+			.state('industries', {
+                url: '/industries',
+                template: '<div ui-view></div>',
+                redirectTo: 'salary_range.list'
+            })
+			.state('industries.list', {
+				url: '',
+				templateUrl: 'js/ng/app/industries/partials/index.html',
+				controller: 'industries_ctrl as vm'
+			})
+			.state('industries.create', {
+				url: '/create',
+				templateUrl: 'js/ng/app/industries/partials/create.html',
+				controller: 'industries_create_ctrl as vm'
+			})
+			.state('industries.edit', {
+				url: '/edit/:id',
+				templateUrl: 'js/ng/app/industries/partials/create.html',
+				controller: 'industries_create_ctrl as vm'
 			})
 			.state('advertisement', {
 				url: '/advertisement',

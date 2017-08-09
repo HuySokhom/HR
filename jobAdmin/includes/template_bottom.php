@@ -129,14 +129,23 @@
     src="js/ng/app/advertising_banner/controller/advertising_banner_ctrl.js"
 ></script>
 
-<!--- Add leason_ctrl plugin -->
+<!--- Add industries plugin -->
 <script
     type="text/javascript"
-    src="js/ng/app/leason/controller/index_ctrl.js"
+    src="js/ng/app/industries/controller/index_ctrl.js"
 ></script>
 <script
     type="text/javascript"
-    src="js/ng/app/leason/controller/create_ctrl.js"
+    src="js/ng/app/industries/controller/create_ctrl.js"
+></script>
+<!--- Add Salary plugin -->
+<script
+    type="text/javascript"
+    src="js/ng/app/salary_range/controller/index_ctrl.js"
+></script>
+<script
+    type="text/javascript"
+    src="js/ng/app/salary_range/controller/create_ctrl.js"
 ></script>
 
 </body>
