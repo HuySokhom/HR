@@ -94,7 +94,7 @@
     <div class="col-md-8">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page-header">Recent Job Offers</h2>
+                <h4 class="page-header">Recent Job Offers</h4>
 
                 <div class="positions-list">
                     <!-- position-list-item -->
@@ -147,7 +147,7 @@
                     foreach($array_featured_company as $feature) {
                         echo '<a href="'. tep_href_link(FILENAME_INFORMATION, 
                                 'info_id=' . $feature['customers_id'] ) .'">
-                                <img src="images/'. $feature['photo_thumbnail'] .'" style="width: 100px;">
+                                <img src="images/'. $feature['photo_thumbnail'] .'" class="feature_logo">
                             </a>';
                     }
                 ?>
@@ -167,36 +167,38 @@
                 </blockquote>
             </div>
         </div>
-        <h4>Find Your Best Candidate</h4>
-        <div class="row mt-60">
-            <div class="candidate-boxes">
-                <?php
-                    foreach($array_candidate as $candidate) {
-                        echo '
-                            <div class="col-sm-3 col-md-6 col-xs-6">
-                                <div class="candidate-box">
-                                    <div class="candidate-box-image">
-                                        <a href="' . tep_href_link(FILENAME_INFORMATION, 'info_id=' . $candidate['customers_id']) . '">
-                                            <img
-                                                src="images/' . $candidate['photo_thumbnail'] . '"
-                                                alt="' . $candidate['company_name'] . '"
-                                                class="img-responsive"
-                                            />
-                                        </a>
-                                    </div>
-                                    <!-- /.candidate-box-image -->
+        <div class="features-company">
+            <h4>Find Your Best Candidate</h4>
+            <div class="row mt-60">
+                <div class="candidate-boxes">
+                    <?php
+                        foreach($array_candidate as $candidate) {
+                            echo '
+                                <div class="col-sm-3 col-md-6 col-xs-6">
+                                    <div class="candidate-box">
+                                        <div class="candidate-box-image">
+                                            <a href="' . tep_href_link(FILENAME_INFORMATION, 'info_id=' . $candidate['customers_id']) . '">
+                                                <img
+                                                    src="images/' . $candidate['photo_thumbnail'] . '"
+                                                    alt="' . $candidate['company_name'] . '"
+                                                    class="img-responsive"
+                                                />
+                                            </a>
+                                        </div>
+                                        <!-- /.candidate-box-image -->
 
-                                    <div class="candidate-box-content">
-                                        <h2>' . $candidate['company_name'] . '</h2>
-                                        <h3>' . $candidate['skill_title'] . '</h3>
-                                    </div><!-- /.candidate-box-content -->
-                                </div><!-- /.candidate-box -->
-                            </div><!-- /.col-* -->
-                        ';
-                    }
-                ?>
+                                        <div class="candidate-box-content">
+                                            <h2>' . $candidate['company_name'] . '</h2>
+                                            <h3>' . $candidate['skill_title'] . '</h3>
+                                        </div><!-- /.candidate-box-content -->
+                                    </div><!-- /.candidate-box -->
+                                </div><!-- /.col-* -->
+                            ';
+                        }
+                    ?>
+                </div>
+                <!-- /.candidate-boxes -->
             </div>
-            <!-- /.candidate-boxes -->
         </div>
     <!-- /.row -->
     </div>

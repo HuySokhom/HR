@@ -12,7 +12,7 @@ app.controller(
 		var url = 'api/Industries/';
 		vm.init = function(params){
 			Restful.get(url, params).success(function(data){
-				vm.leason = data;
+				vm.model = data;
 				vm.totalItems = data.count;
 			});
 		};

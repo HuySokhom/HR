@@ -139,7 +139,7 @@ app.config([
 			.state('industries', {
                 url: '/industries',
                 template: '<div ui-view></div>',
-                redirectTo: 'salary_range.list'
+                redirectTo: 'industries.list'
             })
 			.state('industries.list', {
 				url: '',
