@@ -7,7 +7,7 @@ require_once('includes/application_top.php');
 
 
 // strip relative path from request
-$request_alias = substr($_SERVER['REQUEST_URI'], strlen(DIR_WS_HTTP_CATALOG));
+$request_alias = substr($_SERVER['REQUEST_URI'], strlen(DIR_WS_HTTPS_ADMIN));
 $request_alias_pieces = explode('?', $request_alias);
 $request_file = $request_alias_pieces[0];
 
@@ -42,7 +42,6 @@ switch( $request_method ) {
 			}
 			echo json_encode( RestApiUtil::utf8Encode($r['data']) );
 		} catch( Exception $e ) {
-				
 			print_r($e);exit;
 			header('Error', true, $e->getCode() > 0 ? $e->getCode() : 400);
 		}
