@@ -9,16 +9,16 @@ use
 class Object extends DbObj {
 		
 	protected
-		$from,
-		$to
+		$fromSalary,
+		$toSalary
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
-				'from',
-				'to'
+				'from_salary',
+				'to_salary'
 			)
 		);
 
@@ -28,8 +28,8 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				from,
-				to
+				from_salary,
+				to_salary
 			FROM
 				salary_range
 			WHERE
@@ -56,8 +56,8 @@ class Object extends DbObj {
 			UPDATE
 				salary_range
 			SET 
-				from = '" .  $this->getTitle() . "',
-				to = '" .  $this->getDescription() . "',
+				from_salary = '" .  $this->getFromSalary() . "',
+				to_salary = '" .  $this->getToSalary() . "',
 				update_by = '" .  $this->getUpdateBy() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
@@ -96,16 +96,16 @@ class Object extends DbObj {
 			INSERT INTO
 				salary_range
 			(
-				from,
-				to,
+				from_salary,
+				to_salary,
 				create_by,
 				status,
 				create_date
 			)
 				VALUES
 			(
- 				'" . $this->getFrom() . "',
- 				'" . $this->getTo() . "',
+ 				'" . $this->getFromSalary() . "',
+ 				'" . $this->getToSalary() . "',
  				'" . $this->getCreateBy() . "',
  				1,
  				NOW()
@@ -113,20 +113,20 @@ class Object extends DbObj {
 		");
 	}
 	
-	public function setTo( $string ){
-		$this->to = (string)$string;
+	public function setToSalary( $string ){
+		$this->toSalary = (int)$string;
 	}
 	
-	public function getTo(){
-		return $this->to;
+	public function getToSalary(){
+		return $this->toSalary;
 	}
 
-	public function setFrom( $string ){
-		$this->from = (string)$string;
+	public function setFromSalary( $string ){
+		$this->fromSalary = (int)$string;
 	}
 	
-	public function getFrom(){
-		return $this->from;
+	public function getFromSalary(){
+		return $this->fromSalary;
 	}
 	
 }

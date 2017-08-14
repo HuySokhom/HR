@@ -9,6 +9,7 @@ class RestApiIndustries extends RestApi {
 
 	public function get($params){
 		$col = new NewsTypeCol();
+		$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		// start limit page
 		$showDataPerPage = 10;

@@ -56,27 +56,34 @@
 
     <div class="header-bottom">
       <div class="container">
-        <div class="input-group" style="float:left; margin: 10px 10px 10px 0px;width:400px;">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button" style="padding: 0px 0px;">
-              <img src="assets/favicon.png" style="width:38px;"/>
-            </button>
-          </span>
-          <input type="text" class="form-control" placeholder="Search...">
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" 
-            data-toggle="dropdown" 
-            aria-haspopup="true" aria-expanded="false">
-            Search By 
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><a href="javascript:;" data-toggle="modal" data-target="#function">Functions</a></li>
-              <li><a href="javascript:;" data-toggle="modal" data-target="#industry">Industries</a></li>
-              <li><a href="javascript:;" data-toggle="modal" data-target="#locations">Locations</a></li>
-              <li><a href="javascript:;" data-toggle="modal" data-target="#salary">Salaries</a></li>
-            </ul>
-          </div><!-- /btn-group -->
-        </div>
+        <?php
+          echo
+              tep_draw_form('advanced_search', tep_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false),
+                  'get',
+                  'class="form-horizontal" onsubmit="return check_form(this);"') . tep_hide_session_id();
+        ?>
+          <div class="input-group" style="float:left; margin: 10px 10px 10px 0px;width:400px;">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit" style="padding: 0px 0px;">
+                <img src="assets/favicon.png" style="width:38px;"/>
+              </button>
+            </span>
+            <input type="text" class="form-control" name="keywords" placeholder="Search...">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" 
+              data-toggle="dropdown" 
+              aria-haspopup="true" aria-expanded="false">
+              Search By 
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="javascript:;" data-toggle="modal" data-target="#function">Functions</a></li>
+                <li><a href="javascript:;" data-toggle="modal" data-target="#industry">Industries</a></li>
+                <li><a href="javascript:;" data-toggle="modal" data-target="#locations">Locations</a></li>
+                <li><a href="javascript:;" data-toggle="modal" data-target="#salary">Salaries</a></li>
+              </ul>
+            </div><!-- /btn-group -->
+          </div>
+        </form>
         <ul class="header-nav nav nav-pills collapse menu" style="float:right;">
           <li>
             <a href="index.php">
@@ -105,7 +112,7 @@
             <a href="employers.php">
               <i class="fa fa-briefcase"></i>
               <br/>
-              Companys
+              Companies
             </a>
           </li>
           <!-- <li>
@@ -189,7 +196,7 @@
       </div>
       <div class="modal-body">
         <ul class="filter-list">
-            <?php echo tep_get_province();?>
+            <?php echo tep_get_province_list();?>
         </ul>
       </div>
     </div>

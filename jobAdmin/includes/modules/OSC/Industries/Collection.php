@@ -20,4 +20,8 @@ class Collection extends StdCollection {
 		$this->addWhere("l.id = '" . (int)$arg. "' ");
 	}
 
+	public function filterByTitle($arg){
+		$this->addWhere("l.name like '%" . $arg. "%' ");
+	}
+
 }

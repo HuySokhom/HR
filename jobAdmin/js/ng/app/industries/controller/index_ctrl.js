@@ -1,5 +1,5 @@
 app.controller(
-	'industries__ctrl', [
+	'industries_ctrl', [
 	'$scope'
 	, 'Restful'
 	, '$state'
@@ -14,6 +14,7 @@ app.controller(
 			Restful.get(url, params).success(function(data){
 				vm.model = data;
 				vm.totalItems = data.count;
+				console.log(data);
 			});
 		};
 		vm.init(vm.params);

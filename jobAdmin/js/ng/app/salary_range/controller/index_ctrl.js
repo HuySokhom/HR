@@ -9,10 +9,10 @@ app.controller(
 		var vm = this;
 		vm.service = new Services();
 		vm.params = {};
-		var url = 'api/Leason/';
+		var url = 'api/SalaryRange/';
 		vm.init = function(params){
 			Restful.get(url, params).success(function(data){
-				vm.leason = data;
+				vm.model = data;
 				vm.totalItems = data.count;
 			});
 		};
@@ -32,7 +32,7 @@ app.controller(
 			vm.index = $index;
 			$alertify.okBtn("Ok")
 				.cancelBtn("Cancel")
-				.confirm("Are you sure want to delete this news?", function (ev) {
+				.confirm("Are you sure want to delete this record?", function (ev) {
 					// The click event is in the
 					// event variable, so you can use
 					// it here.

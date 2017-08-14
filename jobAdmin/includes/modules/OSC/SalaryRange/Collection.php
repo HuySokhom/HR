@@ -20,4 +20,12 @@ class Collection extends StdCollection {
 		$this->addWhere("l.id = '" . (int)$arg. "' ");
 	}
 
+	public function orderById( $arg ){
+		$this->addOrderBy('l.id', $arg);
+	}
+
+	public function filterByTitle($arg){
+		$this->addWhere("l.from_salary BETWEEN '" . (int)$arg. "' AND '" . (int)$arg. "'");
+	}
+
 }

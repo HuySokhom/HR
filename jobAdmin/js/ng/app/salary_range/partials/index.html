@@ -1,140 +1,124 @@
-<div class="row">
-	<div class="col-md-2">
-		<a
-			class="btn btn-default"
-			ui-sref="leason.create"
-		>
-			<span class="fa fa-plus"></span>
-			Add New
-		</a>
+
+
+<!-- START STRIPED TABLE SAMPLE -->
+<div class="panel panel-default">
+	<div class="panel-heading ui-draggable-handle">
+		<h3 class="panel-title">Salary Range</h3>
 	</div>
-	<form>
-		<div class="row">
-			<div class="form-group has-feedback col-sm-4">
-				<div class="input-group">
-					<input
-						type="text"
-						class="form-control"
-						placeholder="Search ID..."
-						data-ng-model="vm.id"
-						data-ng-keypress="($event.which === 13) ? search() : 0"
-					/>
-					<span class="input-group-btn">
-						<button class="btn btn-default"
-								data-ng-click="vm.search()"
-								type="button">Search</button>
-					</span>
+	<div class="panel-body">
+		<form>
+			<div class="col-sm-4">
+				<div class="form-group has-feedback">
+					<div class="input-group">
+						<input type="text"
+								class="form-control"
+								placeholder="Search..."
+								data-ng-model="vm.search_title"
+								data-ng-keypress="($event.which === 13) ? search() : 0"
+						/>
+						<span class="input-group-btn">
+							<button class="btn btn-default"
+									data-ng-click="vm.search()"
+									type="button">Search</button>
+						</span>
+					</div>
 				</div>
 			</div>
-			<div class="form-group has-feedback col-sm-4">
-				<div class="input-group">
-					<input
-							type="text"
-							class="form-control"
-							placeholder="Search Title..."
-							data-ng-model="vm.search_title"
-							data-ng-keypress="($event.which === 13) ? search() : 0"
-					/>
-					<span class="input-group-btn">
-						<button class="btn btn-default"
-								data-ng-click="vm.search()"
-								type="button">Search</button>
-					</span>
-				</div>
+			<a class="btn btn-default pull-right"
+				ui-sref="salary_range.create"
+			>
+				<span class="fa fa-plus"></span>
+				Add New
+			</a>
+		</form>
+		<br>
+		<br>
+		<br>
+		<table class="table table-striped" style="font-size: 12px;">
+			<thead>
+				<th width="5%">
+					#
+				</th>
+				<th width="80%">
+					Range
+				</th>
+				<th width="15%">
+					Action
+				</th>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="n in vm.model.elements">
+					<td>
+						{{$index + 1}}
+					</td>
+					<td>
+						{{n.from_salary}} - {{n.to_salary}}
+					</td>
+					<td>
+						<a
+							class="btn btn-default"
+							ui-sref="salary_range.edit({id: n.id})"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Edit"
+							tooltip
+						>
+							<span class="fa fa-pencil-square-o"></span>
+						</a>
+						<button
+							class="btn btn-danger"
+							data-ng-click="vm.remove(n.id, $index);"
+							data-toggle="modals"
+							data-placement="top"
+							data-target="#messages"
+							title="Delete"
+							tooltip
+						>
+							<span class="fa fa-trash"></span>
+						</button>
+						<button
+							class="btn btn-success"
+							data-ng-click="vm.updateStatus(n);"
+							data-ng-if="n.status == 1"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Active"
+							tooltip
+						>
+							<span class="fa fa-check-square-o"></span>
+						</button>
+						<button
+							class="btn btn-warning"
+							data-ng-if="n.status == 0"
+							data-ng-click="vm.updateStatus(n);"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Inactive"
+							tooltip
+						>
+							<span class="fa fa-minus-square-o"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div data-ng-if="vm.model.elements == 0">
+			<div class="alert alert-danger alert-dismissible">
+				<strong>Warning!</strong> No Record Found.
 			</div>
 		</div>
-	</form>
-	<div class="clearfix"></div>
-	<br/>
-	<table class="table table-bordered table-striped" style="font-size: 12px;">
-		<thead>
-			<th width="5%">
-				No
-			</th>
-			<th width="80%">
-				Title
-			</th>
-			<th width="15%">
-				Action
-			</th>
-		</thead>
-		<tr data-ng-repeat="n in vm.leason.elements">
-			<td>
-				{{$index + 1}}
-			</td>
-			<td>
-				{{n.title}}
-			</td>
-			<td>
-				<a
-					class="btn btn-default"
-					ui-sref="leason.edit({id: n.id})"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Edit"
-					tooltip
-				>
-					<span class="fa fa-pencil-square-o"></span>
-				</a>
-				<button
-					class="btn btn-danger"
-					data-ng-click="vm.remove(n.id, $index);"
-					data-toggle="modals"
-					data-placement="top"
-					data-target="#messages"
-					title="Delete"
-					tooltip
-				>
-					<span class="glyphicon glyphicon-trash"></span>
-				</button>
-				<button
-					class="btn btn-success"
-					data-ng-click="vm.updateStatus(n);"
-					data-ng-if="n.status == 1"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Active"
-					tooltip
-				>
-					<span class="fa fa-check-square-o"></span>
-				</button>
-				<button
-					class="btn btn-warning"
-					data-ng-if="n.status == 0"
-					data-ng-click="vm.updateStatus(n);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Inactive"
-					tooltip
-				>
-					<span class="fa fa-minus-square-o"></span>
-				</button>
-			</td>
-		</tr>
-	</table>
-	<div
-		data-ng-if="vm.leason.elements == 0"
-	>
-		<div class="alert alert-danger alert-dismissible">
-			<strong>Warning!</strong> No News Post.
+		<div data-ng-if="!vm.model" class="text-center" >
+			<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
 		</div>
-	</div>
-	<div
-		data-ng-if="!vm.leason"
-		class="align_center"
-	>
-	<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
-	</div>
-	<div
-		class="panel-footer"
-	>
-		<pagination
-			total-items="vm.totalItems"
-			ng-model="vm.currentPage"
-			ng-change="vm.pageChanged()"
-			max-size="5"
-			items-per-page="10"
-			boundary-links="true"
-		></pagination>
+		<div class="panel-footer">
+			<pagination
+				total-items="vm.totalItems"
+				ng-model="vm.currentPage"
+				ng-change="vm.pageChanged()"
+				max-size="5"
+				items-per-page="10"
+				boundary-links="true"
+			></pagination>
+		</div>                           
 	</div>
 </div>

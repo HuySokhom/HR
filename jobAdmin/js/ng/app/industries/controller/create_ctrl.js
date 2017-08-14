@@ -1,5 +1,5 @@
 app.controller(
-	'industries_ctrl', [
+	'industries_create_ctrl', [
 	'$scope'
 	, 'Restful'
 	, 'Services'
@@ -15,9 +15,12 @@ app.controller(
 		var currentPage = $state.current.name;
 		if(currentPage == 'industries.edit'){
 			Restful.get('api/Industries/' + $stateParams.id).success(function(data){
-				vm.leason = data.elements[0];
+				vm.model = data.elements[0];
 				console.log(data);
 			});
+			vm.title = "Edit Industry";
+		}else{
+			vm.title = "Create Industry";
 		}
 
 		vm.save = function(){
@@ -30,7 +33,7 @@ app.controller(
 			if(currentPage == 'industries.edit'){
 				Restful.put('api/Industries', vm.model).success(function (data) {
 					console.log(data);
-					vm.service.alertMessage('Complete Save Success.');
+					vm.service.alertMessage('Update Success.');
 					$state.go('industries');
 				}).finally( function(data){
 					console.log(data);
