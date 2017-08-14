@@ -103,9 +103,9 @@
                             echo '
                                 <div class="positions-list-item">
                                     <h2>
-                                        <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) .'">
+                                        <b><a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) .'">
                                             '. $product['products_name'] .'
-                                        </a>
+                                        </a></b>
                                     </h2>
                                     <h3>
                                         <span>

@@ -13,11 +13,12 @@
         <div class="candidates-list">
             <div class="candidates-list-item" data-ng-repeat="data in data.elements">
                 <div class="candidates-list-item-heading">
-                    <div class="candidates-list-item-image">
+                    <!-- <div class="candidates-list-item-image">
                         <a href="{{renderLink(data.id, data.user_name)}}">
                             <img ng-src="images/{{data.photo_thumbnail}}">
                         </a>
-                    </div><!-- /.candidates-list-item-image -->
+                    </div> -->
+                    <!-- /.candidates-list-item-image -->
 
                     <div class="candidates-list-item-title">
                         <h2><a href="{{renderLink(data.id, data.company_name)}}">{{data.company_name}}</a></h2>

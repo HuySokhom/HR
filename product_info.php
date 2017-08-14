@@ -218,7 +218,7 @@
 			  </div><!-- /.company-card -->
 
 			  <div class="hero-content-carousel">
-				  <h2 style="color: #fff;">Hot Jobs</h2>
+				  <h2>Hot Jobs</h2>
 				  <ul class="cycle-slideshow vertical"
 					  data-cycle-fx="carousel"
 					  data-cycle-slides="li"

@@ -187,7 +187,7 @@
 
 <!-- Modal For Locations PopUp -->
 <div id="locations" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -197,6 +197,43 @@
       <div class="modal-body">
         <ul class="filter-list">
             <?php echo tep_get_province_list();?>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal For Salary PopUp -->
+<div id="salary" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Salary Range</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="filter-list">
+            <?php echo tep_get_salary_range_list();?>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal For Industries PopUp -->
+<div id="industry" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Industries Range</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="filter-list">
+            <?php echo tep_get_industry_list();?>
         </ul>
       </div>
     </div>

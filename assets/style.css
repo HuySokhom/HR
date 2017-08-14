@@ -46,6 +46,7 @@ ul.filter-list li {
 .page-header {
     text-transform: uppercase;
     padding-bottom: 8px;
+    font-weight: bold;
     margin: 40px 0 0px;
     border-bottom: 1px solid #eeeeee;
 }
@@ -59,9 +60,20 @@ ul.filter-list li {
     margin: 20px 0px 20px 0px;  
 }
 .feature_logo{
-    width: 100px;
+    width: 79px;
 }
 .features-company h4{
     border-bottom: 1px solid #eeeeee;
     padding-bottom: 10px;
+    font-weight: bold;
+}
+.position-list-item-action {
+    top: 45px;
+}
+.position-list-item-date {
+    top: 13px;
+}
+a{
+    color:#333; 
+    transition: color 0.15s linear;
 }

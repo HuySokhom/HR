@@ -596,14 +596,41 @@ function tep_get_location($id = '') {
   }
 // functionality for get location display list
   function tep_get_province_list($locations_array = '') {
-    if (!is_array($locations_array)) $locations_array = array();
+    $locations_list = '';
 
     $location_query = tep_db_query("select id, name from location order by name");
     while ($locations = tep_db_fetch_array($location_query)) {
-      $locations_array[] = array('id' => $locations['id'], 'text' => $locations['name']);
+      $countLocations = tep_db_query("select count(products_id) as count_location from products where province_id = '".  $locations['id'] . "' and products_status = 1 ");
+     $count = tep_db_fetch_array($countLocations);
+      $locations_list .= '<li><a 
+        href="advanced_search_result.php?keywords=&categories_id=&location='. $locations['id'] .'"> 
+          '. $locations['name'] .' (' . $count['count_location'] . ')
+          </a></li>';
     }
-    return $locations_array;
+    return $locations_list;
   }
+// functionality for get salary range display list
+  function tep_get_salary_range_list() {
+    $range_list = '';
+
+    $salary_query = tep_db_query("select id, from_salary, to_salary from salary_range");
+    while ($salary = tep_db_fetch_array($salary_query)) {
+      $range_list .= '<li><a href="advanced_search_result.php?keywords=&categories_id=&salary_from='. $salary['from_salary'] .'&to_salary='. $salary['to_salary'] .'"> 
+      '. $salary['from_salary'] . ' - ' . $salary['to_salary'] .' </a></li>';
+    }
+    return $range_list;
+  }
+  //Functionality for get List of Industries
+  function tep_get_industry_list(){
+    $list = '';
+
+    $query = tep_db_query("select id, name from industries");
+    while ($result = tep_db_fetch_array($query)) {
+      $list .= '<li><a href="advanced_search_result.php?keywords=&categories_id=&industries='. $result['id'] .'"> 
+      ' . $result['name'] .' </a></li>';
+    }
+    return $list;
+  };
 
   // functionality for get location
   function tep_get_province($locations_array = '') {
