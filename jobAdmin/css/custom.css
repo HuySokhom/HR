@@ -33,3 +33,10 @@ form .progress {
 .align-right{
 	float: right;
 }
+.panel-default .panel-heading, .panel-primary .panel-heading, .panel-success .panel-heading, .panel-info .panel-heading, .panel-warning .panel-heading, .panel-danger .panel-heading {
+    background: #ffffff;
+    border-color: #E5E5E5;
+}
+.require{
+	color: #E04B4A;
+}

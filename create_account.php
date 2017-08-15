@@ -328,7 +328,7 @@
             <div class="col-sm-7">
               <select name="type" class="form-control">
                 <option value="normal">Job Seeker</option>
-                <option value="agency">Employee</option>
+                <option value="agency">Employer</option>
               </select>
             </div>
           </div>

@@ -1,34 +1,22 @@
 <div class="panel">
 	<div class="panel-body">
-
-		<div class="form-group has-feedback col-sm-2">
-			<input
-				type="text"
-				placeholder="Search Id..."
-				style="width: 106%;"
-				class="form-control"
-				data-ng-model="id"
-				data-ng-keypress="($event.which === 13) ? search() : 0"
-			/>
-			<span class="glyphicon glyphicon-search form-control-feedback"></span>
-		</div>
 		<div class="form-group has-feedback col-sm-2">
 			<input
 				type="text"
 				placeholder="Search Title..."
 				style="width: 106%;"
 				class="form-control"
-				data-ng-model="search_title"
-				data-ng-keypress="($event.which === 13) ? search() : 0"
+				data-ng-model="vm.search_title"
+				data-ng-keypress="($event.which === 13) ? vm.search() : 0"
 			/>
 			<span class="glyphicon glyphicon-search form-control-feedback"></span>
 		</div>
 		<div class="form-group has-feedback col-sm-3">
 			<select
-				data-ng-model="category_id"
-				data-ng-options="c.categories_id as c.detail[0].categories_name for c in categoryList.elements"
+				data-ng-model="vm.category_id"
+				data-ng-options="c.categories_id as c.detail[0].categories_name for c in vm.categoryList.elements"
 				class="form-control"
-				data-ng-change="search();"
+				data-ng-change="vm.search();"
 				required
 			>
 				<option value="">--Filter By Category--</option>
@@ -36,52 +24,56 @@
 		</div>
 		<div class="form-group has-feedback col-sm-3">
 			<select
-				data-ng-model="customer_id"
-				data-ng-options="c.id as c.company_name for c in customerList.elements"
+				data-ng-model="vm.customer_id"
+				data-ng-options="c.id as c.company_name for c in vm.customerList.elements"
 				class="form-control"
-				data-ng-change="search();"
+				data-ng-change="vm.search();"
 				required
 			>
 				<option value="">--Filter By Customer--</option>
 			</select>
 		</div>
 		<div class="form-group has-feedback col-sm-2">
-			<h2 class="label label-info" data-ng-if="totalItems > 0">
-				Total of Items: {{totalItems}}
+			<h2 class="label label-info" data-ng-if="vm.totalItems > 0">
+				Total of Items: {{vm.totalItems}}
 			</h2>
 		</div>
+		<a class="pull-right btn btn-default" ui-sref="product_post">
+			<i class="fa fa-plus-circle"></i>
+			Create New Post
+		</a>
 		<div class="col-sm-12">
 			<table class="table table-striped table-bordered default-font">
 				<tr>
-					<th>
+					<th width="5%">
 						Id
 					</th>
-					<th>
+					<th width="15%">
 						Category
 					</th>
-					<th>
+					<th width="15%">
 						Name
 					</th>
-					<th>
+					<th width="15%">
 						Kind Of
 					</th>
-					<th>
+					<th width="5%">
 						View
 					</th>
-					<th>
+					<th width="15%">
 						Create By
 					</th>
-					<th width="270px;">
+					<th width="20%">
 						Action
 					</th>
 				</tr>
-				<tr data-ng-if="!products">
+				<tr data-ng-if="!vm.products">
 					<td colspan="8" align="center">
 						<img src="images/icons/gettestr-large-spinner-orange.gif"/>
 					</td>
 				</tr>
 				<tr
-						data-ng-repeat="p in products.elements"
+						data-ng-repeat="p in vm.products.elements"
 				>
 					<td>
 						{{p.id}}
@@ -99,8 +91,7 @@
 						<span data-ng-bind="p.product_detail[0].products_viewed" class="label label-primary"></span>
 					</td>
 					<td>
-						<span data-ng-bind="p.customers_detail[0].company_name" data-ng-if="p.customers_id != 0"></span>
-						<span data-ng-bind="p.create_by" data-ng-if="p.customers_id == 0"></span>
+						<span data-ng-bind="p.company_name"></span>
 					</td>
 					<td width="">
 						<button
@@ -150,7 +141,7 @@
 				</tr>
 			</table>
 			<div
-				data-ng-if="products.elements == 0"
+				data-ng-if="vm.products.elements == 0"
 			>
 				<div class="alert alert-danger alert-dismissible">
 					<strong>Warning!</strong> Empty Data.
@@ -158,16 +149,16 @@
 			</div>
 			<div
 				class="panel-footer"
-				data-ng-show="totalItems > 10"
+				data-ng-show="vm.totalItems > 10"
 			>
-				<pagination
-					total-items="totalItems"
-					ng-model="currentPage"
-					ng-change="pageChanged()"
+				<ul uib-pagination
+					total-items="vm.totalItems"
+					ng-model="vm.currentPage"
+					ng-change="vm.pageChanged()"
 					max-size="10"
 					items-per-page="10"
 					boundary-links="true"
-				></pagination>
+				></ul>
 			</div>
 		</div>
 	</div>

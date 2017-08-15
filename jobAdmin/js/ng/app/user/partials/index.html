@@ -7,52 +7,30 @@
 						type="text"
 						class="form-control"
 						placeholder="Search Name..."
-						data-ng-model="search_name"
-						data-ng-keypress="($event.which === 13) ? search() : 0"
+						data-ng-model="vm.search_name"
+						data-ng-keypress="($event.which === 13) ? vm.search() : 0"
 					>
 				<span class="input-group-btn">
-					<button class="btn btn-default" data-ng-click="search()" type="button">Search</button>
-				</span>
-				</div>
-
-			</div>
-			<div class="form-group has-feedback col-sm-3">
-				<div class="input-group">
-					<input
-						type="text"
-						class="form-control"
-						placeholder="Search ID..."
-						data-ng-model="id"
-						data-ng-keypress="($event.which === 13) ? search() : 0"
-					>
-				<span class="input-group-btn">
-					<button class="btn btn-default" data-ng-click="search()" type="button">Search</button>
+					<button class="btn btn-default" data-ng-click="vm.search()" type="button">Search</button>
 				</span>
 				</div>
 			</div>
 			<div class="form-group has-feedback col-sm-3">
-				<select class="form-control" data-ng-model="type" data-ng-change="search()">
+				<select class="form-control" data-ng-model="vm.type" data-ng-change="vm.search()">
 					<option value="">--Search Type--</option>
-					<option value="normal">Normal</option>
+					<option value="normal">Employee</option>
 					<option value="agency">Agency</option>
-					<option value="member">Member</option>
 				</select>
 			</div>
-			<div class="form-group has-feedback col-sm-3">
-				<select
-					data-ng-model="property_plan"
-					data-ng-options="n.id as n.name for n in sortType"
-					class="form-control"
-					data-ng-change="search()"
-				>
-					<option value="">--Select Plan--</option>
-				</select>
-			</div>
+			<a ui-sref="user_create" class="btn btn-default pull-right">
+				<i class="fa fa-plus-circle"></i>
+				Create New User
+			</a>
 		</div>
 	</div>
 	<div class="col-md-4">
 		Total:
-		<span class="label label-primary">{{totalItems}}</span>
+		<span class="label label-primary">{{vm.totalItems}}</span>
 	</div>
 	<div class="clearfix"></div>
 	<br/>
@@ -86,7 +64,7 @@
 				Action
 			</th>
 		</thead>
-		<tr data-ng-repeat="u in users.elements">
+		<tr data-ng-repeat="u in vm.users.elements">
 			<td>
 				{{u.id}}
 			</td>
@@ -118,7 +96,7 @@
 				<div data-ng-if="u.user_type == 'agency'">
 					<button
 						class="btn btn-success"
-						data-ng-click="updateStatus(u);"
+						data-ng-click="vm.updateStatus(u);"
 						data-ng-if="u.is_agency == 1"
 						data-toggle="tooltip"
 						data-placement="top"
@@ -130,7 +108,7 @@
 					<button
 						class="btn btn-warning"
 						data-ng-if="u.is_agency == 0"
-						data-ng-click="updateStatus(u);"
+						data-ng-click="vm.updateStatus(u);"
 						data-toggle="tooltip"
 						data-placement="top"
 						title="Inactive"
@@ -143,7 +121,7 @@
 			<td>
 				<button
 					class="btn btn-success"
-					data-ng-click="updateStatusApprove(u);"
+					data-ng-click="vm.updateStatusApprove(u);"
 					data-ng-if="u.is_publish == 1"
 					data-toggle="tooltip"
 					data-placement="top"
@@ -155,7 +133,7 @@
 				<button
 					class="btn btn-warning"
 					data-ng-if="u.is_publish == 0"
-					data-ng-click="updateStatusApprove(u);"
+					data-ng-click="vm.updateStatusApprove(u);"
 					data-toggle="tooltip"
 					data-placement="top"
 					title="Inactive"
@@ -167,7 +145,7 @@
 			<td>
 				<button
 					class="btn btn-default"
-					data-ng-click="edit(u.id);"
+					data-ng-click="vm.edit(u.id);"
 					data-toggle="tooltip"
 					data-placement="top"
 					title="Edit"
@@ -177,7 +155,7 @@
 				</button>
 				<button
 					class="btn btn-danger"
-					data-ng-click="remove(u.id, $index);"
+					data-ng-click="vm.remove(u.id, $index);"
 					data-toggle="modals"
 					data-placement="bottom"
 					data-target="#messages"
@@ -190,28 +168,25 @@
 		</tr>
 	</table>
 	<div
-			data-ng-if="users.elements == 0"
+			data-ng-if="vm.users.elements == 0"
 	>
 		<div class="alert alert-danger alert-dismissible">
 			<strong>Warning!</strong> Data Empty.
 		</div>
 	</div>
-	<div
-			data-ng-if="!users"
-			class="align_center"
-	>
+	<div data-ng-if="!vm.users" class="align_center" >
 		<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
 	</div>
 	<div
 			class="panel-footer"
 	>
-		<pagination
-			total-items="totalItems"
-			ng-model="currentPage"
-			ng-change="pageChanged()"
+		<ul uib-pagination
+			total-items="vm.totalItems"
+			ng-model="vm.currentPage"
+			ng-change="vm.pageChanged()"
 			max-size="5"
 			items-per-page="10"
 			boundary-links="true"
-		></pagination>
+		></ul>
 	</div>
 </div>

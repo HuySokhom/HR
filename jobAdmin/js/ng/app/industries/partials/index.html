@@ -103,14 +103,14 @@
 		<div
 			class="panel-footer"
 		>
-			<pagination
+			<ul uib-pagination
 				total-items="vm.totalItems"
 				ng-model="vm.currentPage"
 				ng-change="vm.pageChanged()"
 				max-size="5"
 				items-per-page="10"
 				boundary-links="true"
-			></pagination>
+			></ul>
 		</div>     
 	</div>
 </div>

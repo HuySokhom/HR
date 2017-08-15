@@ -70,8 +70,6 @@ class Object extends DbObj {
 				skill = '" .  $this->dbEscape( $this->getSkill() ). "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
-					AND
-				language_id = '" . (int)$this->getLanguageId() . "'
 		");
     }
 
@@ -104,7 +102,7 @@ class Object extends DbObj {
  				'" . $this->dbEscape( $this->getProductsName() ) . "',
  				'" . $this->dbEscape( $this->getProductsDescription() ) . "',
 				'" . $this->getProductsId() . "',
-				'" . $this->getLanguageId() . "',
+				1,
 				'" . $this->getSkill() . "',
 				'" . $this->getBenefits() . "'
 			)

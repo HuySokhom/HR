@@ -30,6 +30,36 @@ class RestApiCustomer extends RestApi {
 		return $this->getReturn($col, $params);
 
 	}
+
+	public function post($params){
+		// check email existing
+		$check_email_query = tep_db_query("
+			SELECT
+				count(*) as total
+			FROM
+				" . TABLE_CUSTOMERS . "
+			WHERE
+				customers_email_address = '" . tep_db_input($params['PUT']['customers_email_address']) . "'"
+		);
+		$check_email = tep_db_fetch_array($check_email_query);
+
+		if ($check_email['total'] > 0) {
+			return array(
+				'data' => array(
+					'success' => 'false'
+				)
+			);
+		}else {
+			$obj = new CustomersObject();
+			$obj->setProperties( $params['POST'] );
+			$obj->insert();
+			return array(
+				'data' => array(
+					'id' => $obj->getId()
+				)
+			);
+		}
+	}
 	
 	public function put($params){
 		$cols = new CustomersCol();

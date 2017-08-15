@@ -5,6 +5,11 @@
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="form-group">
+							<label>Type</label> 
+							<select class="form-control" name="type" ng-model="vm.account.user_type">
+								<option value="normal">Normal</option>
+								<option value="agency">Agency</option>
+							</select>
 							<label>Photo</label>
 							<div class="center">
 								<img src="../images/icon-person.png"
@@ -25,11 +30,7 @@
 									File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
 								</i>
 								<span class="progress" ng-show="picFile.progress >= 0">
-									<div
-											style="width:{{picFile.progress}}%"
-											ng-bind="picFile.progress + '%'"
-									>
-									</div>
+									<div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'"></div>
 								</span>
 								<span ng-show="picFile.result">Upload Successful</span>
 								<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
@@ -83,7 +84,7 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label>Location</label>{{vm.account.customers_location}}
+								<label>Location</label>
 								<select
 										class="form-control"
 										data-ng-model="vm.account.customers_location"
@@ -123,6 +124,11 @@
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="form-group">
+							<label>Type</label> 
+								<select class="form-control" name="type" ng-model="vm.account.user_type">
+									<option value="normal">Normal</option>
+									<option value="agency">Agency</option>
+								</select>
 							<label>Photo</label>
 							<div class="center">
 								<img src="../images/icon-person.png"

@@ -191,7 +191,6 @@ class Object extends DbObj {
     }
 
 	public function delete() {
-
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
 		}
@@ -204,7 +203,52 @@ class Object extends DbObj {
 
 	}
 
-
+	public function insert() {	
+		$this->dbQuery("
+			INSERT INTO
+				customers
+			(
+				company_name,
+				summary,
+				customers_website,
+				skill_title,
+				working_history,
+				experience,
+				user_type,
+				customers_email_address,
+				photo,
+				customers_plan,
+				photo_thumbnail,
+				customers_telephone,
+				customers_fax,
+				customers_location,
+				detail,
+				customers_address,
+				create_date
+			)
+			VALUE
+			(
+				'" . $this->dbEscape( $this->getCompanyName() ) . "',
+				'" . $this->dbEscape( $this->getSummary() ) . "',
+				'" . $this->dbEscape( $this->getCustomersWebsite() ) . "',
+				'" . $this->dbEscape( $this->getSkillTitle() ) . "',
+				'" . $this->dbEscape( $this->getWorkingHistory() ) . "',
+				'" . $this->dbEscape( $this->getExperience() ) . "',
+				'" . $this->dbEscape( $this->getUserType() ) . "',
+				'" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',
+				'" . $this->dbEscape( $this->getPhoto() ) . "',
+				'" . $this->getCustomersPlan() . "',
+				'" . $this->dbEscape( $this->getPhotoThumbnail() ) . "',
+				'" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
+				'" . $this->dbEscape( $this->getCustomersFax() ) . "',
+				'" . (int)$this->getCustomersLocation() . "',
+				'" . $this->dbEscape( $this->getDetail() ). "',
+				'" . $this->dbEscape( $this->getCustomersAddress() ) . "',
+				NOW()
+			)			
+		");
+		$this->setId( $this->dbInsertId() );
+	}
 
 	public function update() {
 	

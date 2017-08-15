@@ -18,7 +18,7 @@
 <link rel="shortcut icon" href="image/icon.png">
 <title>Asean HR Recruitment</title>
 <base href="<?php echo ($request_type == 'SSL') ? HTTPS_SERVER . DIR_WS_HTTPS_ADMIN : HTTP_SERVER . DIR_WS_ADMIN; ?>" />
-<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<!-- <link rel="stylesheet" type="text/css" href="includes/stylesheet.css"> -->
 <link rel="stylesheet" type="text/css" href="css/theme-default.css">
 <link rel="stylesheet" type="text/css" href="css/select2/select2.css">
   <link rel="stylesheet" type="text/css" href="css/select2/select.css">
@@ -31,6 +31,7 @@
     rel="stylesheet"
     type="text/css"
 >
+<link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body data-ng-app="main">
   <?php require(DIR_WS_INCLUDES . 'header.php'); ?>

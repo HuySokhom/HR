@@ -7,17 +7,23 @@ app.controller(
 	, 'Upload'
 	, '$timeout'
 	, '$stateParams'
-	, function ($scope, Restful, Services, $location, Upload, $timeout, $stateParams){
+	, '$state'
+	, function ($scope, Restful, Services, $location, Upload, $timeout, $stateParams, $state){
 		var vm =this
 		var url = 'api/Customer/';
 		vm.service = new Services();
+		vm.account = {
+			user_type: 'agency'
+		};
 		// init tiny option
 		$scope.tinymceOptions = {};
 		vm.init = function(params){
-			Restful.get(url, params).success(function(data){
-                vm.account = data.elements[0];
-				console.log(vm.account);
-			});
+			if($state.current.name != 'user_create'){
+				Restful.get(url, params).success(function(data){
+					vm.account = data.elements[0];
+					console.log(vm.account);
+				});
+			}
             Restful.get("api/Location").success(function(data){
                 vm.locations = data.elements;
             });
@@ -28,15 +34,27 @@ app.controller(
 		// update functionality
 		vm.save = function(){
 			vm.disabled = false;
-			Restful.put('api/Customer/' + $stateParams.id, vm.account).success(function (data) {
-				vm.disabled = true;console.log(data);
-				if(data == 1){
-					vm.service.alertMessage('<b>Complete:</b> Update Success.');
-					$location.path('user');
-				}else{
-					vm.service.alertMessage('<b>Warning:</b> Email Existing. Please use other email.');
-				}
-			});
+			if($state.current.name != 'user_create'){
+				Restful.put('api/Customer/' + $stateParams.id, vm.account).success(function (data) {
+					vm.disabled = true;console.log(data);
+					if(data == 1){
+						vm.service.alertMessage('<b>Complete:</b> Update Success.');
+						$location.path('user');
+					}else{
+						vm.service.alertMessage('<b>Warning:</b> Email Existing. Please use other email.');
+					}
+				});
+			}else{
+				Restful.post('api/Customer/', vm.account).success(function (data) {
+					vm.disabled = true;console.log(data);
+					if(data == 1){
+						vm.service.alertMessage('<b>Complete:</b> Update Success.');
+						$location.path('user');
+					}else{
+						vm.service.alertMessage('<b>Warning:</b> Email Existing. Please use other email.');
+					}
+				});
+			}
 		};
 
 		//functionality upload

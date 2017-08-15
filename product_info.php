@@ -28,11 +28,12 @@
 			pd.skill,
 			pd.benefits,
 			pd.products_viewed,
-			p.salary,
+			p.salary_id,
 			DATE_FORMAT(p.products_date_added, '%d/%M/%Y') as products_date_added,
 			DATE_FORMAT(p.products_close_date, '%d/%M/%Y') as products_close_date
 		from
-			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, location l, customers cu
+			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, 
+			location l, customers cu
 		where
 			p.products_status = 1
 			    and 
@@ -49,6 +50,20 @@
 			pd.language_id = '" . (int)$languages_id . "'
 	");
 	$product_info = tep_db_fetch_array($product_info_query);
+
+	// query salary range if salary id > 0
+	if($product_info['salary_id'] > 0){
+		$salary_query = tep_db_query("
+			select
+				from_salary,
+				to_salary
+			from
+				salary_range
+			where
+				id = ". $product_info['salary_id'] ."
+		");
+		$salary_info = tep_db_fetch_array($salary_query);
+	}
 
 	// query hot jobs
 	$hot_product_query = tep_db_query("
@@ -136,8 +151,8 @@
 					  <dt>Salary</dt>
 					  <dd>
 						  <?php
-						  	if($product_info['salary'] > 0){
-								echo '$'.$product_info['salary'];
+						  	if($product_info['salary_id'] > 0){
+								echo '$'.$salary_info['from_salary'] . ' - $'.$salary_info['to_salary'];
 							}else{
 								echo "Negotiable";
 							}

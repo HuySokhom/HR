@@ -19,10 +19,10 @@ class Object extends DbObj {
 	protected
 		$customersId
 		, $productsId
-        , $salary
+        , $salaryId
         , $gender
 		, $provinceId
-        , $districtId
+        , $industryId
         , $villageId
 		, $productsImage
 		, $productsImageThumbnail
@@ -40,7 +40,7 @@ class Object extends DbObj {
 		, $customersDetail
 		, $mapLat
 		, $mapTitle
-		, $mapLong
+		, $companyName
 		, $productsPromote
         , $isPublish
         , $productsCloseDate
@@ -56,12 +56,14 @@ class Object extends DbObj {
                 'category_detail',
                 'customers_id',
                 'province_id',
-                'salary',
+                'industry_id',
+                'salary_id',
                 'products_close_date',
                 'create_date',
                 'create_by',
                 'products_status',
                 'products_kind_of',
+				'company_name',
                 'number_of_hire',
                 'gender',
                 'product_detail',
@@ -82,21 +84,22 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				customers_id,
-				products_promote,
-				categories_id,
-				province_id,
-				products_date_added,
-				products_status,
-				products_kind_of,
-				number_of_hire,
-				salary,
-				products_close_date,
-				create_by,
-				gender,
-				is_publish
+				p.customers_id,
+				p.products_promote,
+				p.categories_id,
+				p.province_id,
+				p.industry_id,
+				p.products_date_added,
+				p.products_status,
+				p.products_kind_of,
+				p.number_of_hire,
+				p.salary_id,
+				p.products_close_date,
+				p.gender,
+				p.is_publish,
+				c.company_name
 			FROM
-				products
+				products p inner join customers c on p.customers_id = c.customers_id
 			WHERE
 				products_id = '" . (int)$this->getId() . "'
 		");
@@ -196,7 +199,9 @@ class Object extends DbObj {
 				province_id = '" . (int)$this->getProvinceId() . "',
 				categories_id = '" . (int)$this->getCategoriesId() . "',
 				gender = '" . $this->getGender() . "',
-				salary = '" . $this->getSalary() . "',
+				customers_id = '" . (int)$this->getCustomersId() . "',
+				salary_id = '" . $this->getSalaryId() . "',
+				industry_id = '" . $this->getIndustryId() . "',
  				products_kind_of = '" . $this->getProductsKindOf() . "',
  				number_of_hire = '" . $this->getNumberOfHire() . "',
  				products_close_date = '" . $this->getProductsCloseDate() . "'
@@ -212,44 +217,34 @@ class Object extends DbObj {
 				products
 			(
 				customers_id,
-				map_long,
-				map_lat,
-				map_title,
 				categories_id,
 				province_id,
-				district_id,
-				village_id,
-				products_image,
-				products_image_thumbnail,
-				products_price,
+				industry_id,
+				gender,
+				salary_id,
+				number_of_hire,
 				products_date_added,
 				products_status,
 				create_date,
 				products_kind_of,
-				bed_rooms,
-				bath_rooms,
-				number_of_floors
+				products_close_date,
+				is_publish
 			)
 				VALUES
 			(
 				'" . (int)$this->getCustomersId() . "',
-				'" . $this->getMapLong() . "',
-				'" . $this->getMapLat() . "',
-				'" . $this->getMapTitle() . "',
 				'" . (int)$this->getCategoriesId() . "',
 				'" . (int)$this->getProvinceId() . "',
-				'" . (int)$this->getDistrictId() . "',
-				'" . (int)$this->getVillageId() . "',
- 				'" . $this->dbEscape( $this->getProductsImage() ) . "',
- 				'" . $this->dbEscape( $this->getProductsImageThumbnail() ) . "',
-				'" . $this->getProductsPrice() . "',
+				'" . (int)$this->getIndustryId() . "',
+				'" . $this->getGender() . "',
+				'" . (int)$this->getSalaryId() . "',
+				'" . $this->getNumberOfHire() . "',
  				NOW(),
  				1,
  				NOW(),
 				'" . $this->getProductsKindOf() . "',
-				'" . (int)$this->getBedRooms() . "',
-				'" . (int)$this->getBathRooms() . "',
-				'" . (int)$this->getNumberOfFloors() . "'
+				'" . $this->getProductsCloseDate() . "',
+				1
 			)
 		");	
 		$this->setProductsId( $this->dbInsertId() );
@@ -276,11 +271,11 @@ class Object extends DbObj {
 		$this->productsPromote = (int)$string;
 	}
 
-	public function getMapTitle(){
-		return $this->mapTitle;
+	public function getCompanyName(){
+		return $this->companyName;
 	}
-	public function setMapTitle( $string ){
-		$this->mapTitle = $string;
+	public function setCompanyName( $string ){
+		$this->companyName = $string;
 	}
 
 	public function getMapLong(){
@@ -409,11 +404,11 @@ class Object extends DbObj {
 		$this->categoriesId = (int)$int;
 	}
 
-    public function getNumberOfFloors(){
-        return $this->numberOfFloors;
+    public function getIndustryId(){
+        return $this->industryId;
     }
-    public function setNumberOfFloors( $int ){
-        $this->numberOfFloors = (int)$int;
+    public function setIndustryId( $int ){
+        $this->industryId = (int)$int;
     }
 
 	public function getCategoryDetail(){
@@ -430,11 +425,11 @@ class Object extends DbObj {
 		$this->customersDetail = $array;
 	}
 
-    public function getSalary(){
-        return $this->salary;
+    public function getSalaryId(){
+        return $this->salaryId;
     }
-    public function setSalary( $string ){
-        $this->salary = doubleval($string);
+    public function setSalaryId( $string ){
+        $this->salaryId = (int)$string;
     }
 
     public function getGender(){

@@ -6,16 +6,17 @@ app.controller(
 	, 'alertify'
 	, '$location'
 	, function ($scope, Restful, Services, $alertify, $location){
-		$scope.service = new Services();
+		var vm = this;
+		vm.service = new Services();
 		var url = 'api/Customer/';
-		$scope.init = function(params){
+		vm.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.users = data;
-				$scope.totalItems = data.count;
+				vm.users = data;
+				vm.totalItems = data.count;
 			});
 		};
-		$scope.init();
-		$scope.sortType = [
+		vm.init();
+		vm.sortType = [
 			{
 				id: 0,
 				name: 'Free Plan'
@@ -33,32 +34,32 @@ app.controller(
 				name: 'Pro Plan'
 			},
 		];
-		$scope.updateStatus = function(params){
+		vm.updateStatus = function(params){
 			params.is_agency == 1 ? params.is_agency = 0 : params.is_agency = 1;
             var data = {
                 agency: 'yes',
                 is_agency: params.is_agency
             };
 			Restful.patch(url + params.id, data ).success(function(data) {
-				$scope.service.alertMessage('<strong>Success: </strong>Update Success.');
+				vm.service.alertMessage('<strong>Success: </strong>Update Success.');
 			});
 		};
 
-		$scope.updateStatusApprove = function(params){
+		vm.updateStatusApprove = function(params){
 			params.is_publish == 1 ? params.is_publish = 0 : params.is_publish = 1;
 			var data = {
 				approve: 'yes',
                 is_publish: params.is_publish
 			};
 			Restful.patch(url + params.id, data).success(function(data) {
-				$scope.service.alertMessage('<strong>Success: </strong>Update Success.');
+				vm.service.alertMessage('<strong>Success: </strong>Update Success.');
 			});
 		};
 
 		// remove functionality
-		$scope.remove = function(id, $index){
-			$scope.id = id;
-			$scope.index = $index;
+		vm.remove = function(id, $index){
+			vm.id = id;
+			vm.index = $index;
 
 			$alertify.okBtn("Ok")
 					.cancelBtn("Cancel")
@@ -67,11 +68,11 @@ app.controller(
 						// event variable, so you can use
 						// it here.
 						ev.preventDefault();
-						Restful.delete( url + $scope.id ).success(function(data){
-							$scope.disabled = true;
-							$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-							$scope.init();
-							//$scope.news.elements.splice($scope.index, 1);
+						Restful.delete( url + vm.id ).success(function(data){
+							vm.disabled = true;
+							vm.service.alertMessage('<strong>Complete: </strong>Delete Success.');
+							vm.init();
+							//vm.news.elements.splice(vm.index, 1);
 							//$('#message').modal('hide');
 						});
 					}, function(ev) {
@@ -83,16 +84,16 @@ app.controller(
 
 		};
 		// search functionality
-		$scope.search = function(){
-			params.search_name = $scope.search_name;
-			params.id = $scope.id;
-			params.type = $scope.type;
-			params.plan = $scope.property_plan;
+		vm.search = function(){
+			params.search_name = vm.search_name;
+			params.id = vm.id;
+			params.type = vm.type;
+			params.plan = vm.property_plan;
 			console.log(params);
-			$scope.init(params);
+			vm.init(params);
 		};
 		// edit functionality
-		$scope.edit = function(id){
+		vm.edit = function(id){
 			$location.path('/user/edit/' + id);
 		};
 
@@ -100,12 +101,12 @@ app.controller(
 		 * start functionality pagination
 		 */
 		var params = {};
-		$scope.currentPage = 1;
+		vm.currentPage = 1;
 		//get another portions of data on page changed
-		$scope.pageChanged = function() {
-			$scope.pageSize = 10 * ( $scope.currentPage - 1 );
-			params.start = $scope.pageSize;
-			$scope.init(params);
+		vm.pageChanged = function() {
+			vm.pageSize = 10 * ( vm.currentPage - 1 );
+			params.start = vm.pageSize;
+			vm.init(params);
 		};
 	}
 ]);

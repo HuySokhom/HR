@@ -18,8 +18,6 @@
 <script type="text/javascript" src="js/plugins/moment.min.js"></script>
 <script type="text/javascript" src="js/plugins/fullcalendar/fullcalendar.min.js"></script>
 <!-- END PLUGINS -->
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKqUQ4QmbTWM_KNhkYg7erVxakz_0-noE&v=3.exp"></script>
 <!-- Plugin Lib Angular Js -->
 <script
     type="text/javascript"
@@ -53,7 +51,7 @@
 ></script>
 <script
     type="text/javascript"
-    src="js/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.min.js"
+    src="js/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-2.4.0.js"
 ></script>
 <script
     type="text/javascript"

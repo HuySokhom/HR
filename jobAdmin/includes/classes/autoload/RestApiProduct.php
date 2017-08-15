@@ -43,38 +43,41 @@ class RestApiProduct extends RestApi {
 		$productObject = new ProductPostObj();
 		$userId = $this->getOwner()->getId();
 		$productObject->setCustomersId($userId);
-		$productObject->setProperties($params['POST']['products']);
+		$productObject->setProperties($params['POST']['product']);
 		$productObject->insert();
 		$productId = $productObject->getProductsId();
 
 		// save product to category
 		$productToCategoryObject = new ProductToCategoryObj();
 		$productToCategoryObject->setProductsId($productId);
-		$productToCategoryObject->setCategoriesId($params['POST']['products']['categories_id']);
+		$productToCategoryObject->setCategoriesId($params['POST']['product']['categories_id']);
 		$productToCategoryObject->insert();
 
 		// save product images
-		$productImageObject = new ProductImageObj();
-		$fields = $params['POST']['products_image'];
-		foreach ( $fields as $k => $v){
-			$productImageObject->setProductsId($productId);
-			$productImageObject->setProperties($v);
-			$productImageObject->insert();
-		}
+		// $productImageObject = new ProductImageObj();
+		// $fields = $params['POST']['products_image'];
+		// foreach ( $fields as $k => $v){
+		// 	$productImageObject->setProductsId($productId);
+		// 	$productImageObject->setProperties($v);
+		// 	$productImageObject->insert();
+		// }
 
 		// save product description
-		$fields = $params['POST']['products_description'];
+		$fields = $params['POST']['product_description'];
 		$productDetailObject = new ProductDescriptionObj();
-		foreach ( $fields as $k => $v){
-			$productDetailObject->setProductsId($productId);
-			$productDetailObject->setProperties($v);
-			$productDetailObject->insert();
-		}
-		unset($params);
+		$productDetailObject->setProductsId($productId);
+		$productDetailObject->setProperties($fields);
+		$productDetailObject->insert();
+		// foreach ( $fields as $k => $v){
+		// 	$productDetailObject->setProductsId($productId);
+		// 	$productDetailObject->setProperties($v);
+		// 	$productDetailObject->insert();
+		// }
+		//unset($params);
 		return array(
-				'data' => array(
-						'id' => $productId
-				)
+			'data' => array(
+				'id' => $productId
+			)
 		);
 	}
 
@@ -86,31 +89,30 @@ class RestApiProduct extends RestApi {
 			$cols->populate();
             $col = $cols->getFirstElement();
             $col->setProductsId($productId);
-            $col->setProperties($params['PUT']);
+            $col->setProperties($params['PUT']['product']);
             $col->update();
 
             // update category to product
             $productToCategoryObject = new ProductToCategoryObj();
             $productToCategoryObject->setProductsId($productId);
-            $productToCategoryObject->setCategoriesId($params['PUT']['categories_detail']);
+            $productToCategoryObject->setCategoriesId($params['PUT']['product']['categories_id']);
             $productToCategoryObject->update();
 
             // save product description
-            $fields = $params['PUT']['product_detail'];
+            $fields = $params['PUT']['product_description'];
             $productDetailObject = new ProductDescriptionObj();
-            foreach ( $fields as $k => $v){
-                $productDetailObject->setProductsId($productId);
-                $productDetailObject->setLanguageId(1);
-                $productDetailObject->setProperties($v);
-                $productDetailObject->update();
-                unset($v);
-            }
-
-            return array(
-				'data' => array(
-					'data' => 'update success'
-				)
-			);
+			$productDetailObject->setProductsId($productId);
+			$productDetailObject->setLanguageId(1);
+			$productDetailObject->setProperties($fields);
+			$productDetailObject->update();
+            // foreach ( $fields as $k => $v){
+            //     $productDetailObject->setProductsId($productId);
+            //     $productDetailObject->setLanguageId(1);
+            //     $productDetailObject->setProperties($v);
+            //     $productDetailObject->update();
+            //     unset($v);
+            // }
+            echo 'update success';
 		}
 	}
 

@@ -65,6 +65,11 @@ app.config([
 				templateUrl: 'js/ng/app/user/partials/index.html',
 				controller: 'user_ctrl as vm'
 			})
+			.state('user_create', {
+				url: '/user/create',
+				templateUrl: 'js/ng/app/user/partials/user_edit.html',
+				controller: 'user_edit_ctrl as vm'
+			})
 			.state('/user/edit/:id', {
 				url: '/user/edit/:id',
 				templateUrl: 'js/ng/app/user/partials/user_edit.html',
@@ -95,10 +100,10 @@ app.config([
 				templateUrl: 'js/ng/app/product/partials/index.html',
 				controller: 'product_ctrl as vm'
 			})
-			.state('/product/post', {
+			.state('product_post', {
 				url: '/product/post',
-				templateUrl: 'js/ng/app/product/partials/product_post.html',
-				controller: 'product_post_ctrl as vm'
+				templateUrl: 'js/ng/app/product/partials/product_edit.html',
+				controller: 'product_edit_ctrl as vm'
 			})
 			.state('/product/edit/:id', {
 				url: '/product/edit/:id',
