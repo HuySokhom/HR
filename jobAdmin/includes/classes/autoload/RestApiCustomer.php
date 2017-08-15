@@ -78,8 +78,8 @@ class RestApiCustomer extends RestApi {
 		$check_email = tep_db_fetch_array($check_email_query);
 
 		if ($check_email['total'] > 0) {
-			$result =  false;
-			echo $result;
+			echo 'duplicate';
+			return;
 		}else {
 			$cols->filterById($customerId);
 			if ($cols->getTotalCount() > 0) {
@@ -89,8 +89,8 @@ class RestApiCustomer extends RestApi {
 				$col->setUpdateBy($_SESSION['username']);
 				$col->setProperties($params['PUT']);
 				$col->update();
-				$result = true;
-				echo $result;
+				echo 'success';
+				return;
 			}
 		}
 	}

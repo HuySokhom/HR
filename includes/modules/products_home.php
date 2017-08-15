@@ -38,10 +38,7 @@
               and
             is_agency = 1
               and
-            status_approve = 1
-              and
-            is_publish = 1
-        order by rand()           
+            is_publish = 1       
     ");
     $num_featured = tep_db_num_rows($feature_query);
     $array_featured_company = [];
@@ -136,25 +133,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="features-company">
-            <h4>
-                FEATURED RECRUITERS
-            </h4>
-            <div class="features-img">
-                <div class="space m0">
-                <?php 
-                    foreach($array_featured_company as $feature) {
-                        echo '<a href="'. tep_href_link(FILENAME_INFORMATION, 
-                                'info_id=' . $feature['customers_id'] ) .'">
-                                <img src="images/'. $feature['photo_thumbnail'] .'" class="feature_logo">
-                            </a>';
-                    }
-                ?>
-                </div>
-            </div>
-        </div>
-        <div class="">
+    <div class="col-md-4">        
+        <div class="" style="margin-top: 30px;">
             <div class="fb-page"
                     data-href="https://www.facebook.com/skwebsolution/"
                     data-small-header="false" data-adapt-container-width="true"
@@ -165,6 +145,24 @@
                         SKWeb Solution
                     </a>
                 </blockquote>
+            </div>
+        </div>
+        <div class="features-company">
+            <h4>
+                FEATURED RECRUITERS
+            </h4>
+            <div class="features-img">
+                <div class="space m0">
+                <?php 
+                    foreach($array_featured_company as $feature) {
+                        echo '<a href="'. tep_href_link(FILENAME_INFORMATION, 
+                                'info_id=' . $feature['customers_id'] ) .'">
+                                <img src="images/'. $feature['photo_thumbnail'] .'" 
+                                    class="feature_logo">
+                            </a>';
+                    }
+                ?>
+                </div>
             </div>
         </div>
         <div class="features-company">

@@ -224,6 +224,7 @@ class Object extends DbObj {
 				customers_location,
 				detail,
 				customers_address,
+				is_publish,
 				create_date
 			)
 			VALUE
@@ -244,6 +245,7 @@ class Object extends DbObj {
 				'" . (int)$this->getCustomersLocation() . "',
 				'" . $this->dbEscape( $this->getDetail() ). "',
 				'" . $this->dbEscape( $this->getCustomersAddress() ) . "',
+				1,
 				NOW()
 			)			
 		");

@@ -16,7 +16,15 @@ app.controller(
 			user_type: 'agency'
 		};
 		// init tiny option
-		$scope.tinymceOptions = {};
+		vm.tinymceOptions = {
+			 onChange: function(e) {
+			// put logic here for keypress and cut/paste changes
+			},
+			inline: false,
+			plugins : 'advlist autolink link image lists charmap print preview',
+			skin: 'lightgray',
+			theme : 'modern'
+		};
 		vm.init = function(params){
 			if($state.current.name != 'user_create'){
 				Restful.get(url, params).success(function(data){
@@ -37,7 +45,7 @@ app.controller(
 			if($state.current.name != 'user_create'){
 				Restful.put('api/Customer/' + $stateParams.id, vm.account).success(function (data) {
 					vm.disabled = true;console.log(data);
-					if(data == 1){
+					if(data == 'success'){
 						vm.service.alertMessage('<b>Complete:</b> Update Success.');
 						$location.path('user');
 					}else{
@@ -47,7 +55,7 @@ app.controller(
 			}else{
 				Restful.post('api/Customer/', vm.account).success(function (data) {
 					vm.disabled = true;console.log(data);
-					if(data == 1){
+					if(data.id){
 						vm.service.alertMessage('<b>Complete:</b> Update Success.');
 						$location.path('user');
 					}else{
