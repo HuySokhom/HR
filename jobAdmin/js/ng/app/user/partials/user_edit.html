@@ -41,6 +41,15 @@
 					<div class="col-sm-9">
 						<div class="col-sm-6">
 							<div class="form-group">
+								<label>Industry</label>
+								<select class="form-control" data-ng-model="vm.account.industry_id"
+									data-ng-options="x.id as x.name for x in vm.industryList">
+									<option value="">Select</option>
+								</select>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
 								<label>Company Name</label>
 								<input type="text"
 									   class="form-control"

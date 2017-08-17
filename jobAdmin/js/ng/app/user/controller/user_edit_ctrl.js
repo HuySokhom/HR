@@ -34,6 +34,9 @@ app.controller(
 			}
             Restful.get("api/Location").success(function(data){
                 vm.locations = data.elements;
+			});
+			Restful.get("api/Industries").success(function(data){
+                vm.industryList = data.elements;
             });
 		};
 		var params = {id: $stateParams.id};

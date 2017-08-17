@@ -615,8 +615,10 @@ function tep_get_location($id = '') {
 
     $salary_query = tep_db_query("select id, from_salary, to_salary from salary_range");
     while ($salary = tep_db_fetch_array($salary_query)) {
+      $count = tep_db_query("select count(products_id) as count from products where salary_id = '".  $salary['id'] . "' and products_status = 1 ");
+     $number = tep_db_fetch_array($count);
       $range_list .= '<li><a href="advanced_search_result.php?keywords=&categories_id=&salary_from='. $salary['from_salary'] .'&to_salary='. $salary['to_salary'] .'"> 
-      '. $salary['from_salary'] . ' - ' . $salary['to_salary'] .' </a></li>';
+      '. $salary['from_salary'] . ' - ' . $salary['to_salary'] . ' (' . $number['count'] . ')</a></li>';
     }
     return $range_list;
   }

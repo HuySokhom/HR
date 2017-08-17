@@ -12,6 +12,7 @@ class Object extends DbObj {
 		$customersFirstname
 		, $customersLastname
 		, $customersFax
+		, $industryId
 		, $customersEmailAddress
 		, $customersAddress
 		, $customersPlan
@@ -50,6 +51,7 @@ class Object extends DbObj {
                 'customers_website',
 				'is_agency',
                 'skill_title',
+				'industry_id',
 				'photo',
 				'status',
                 'status_approve',
@@ -85,6 +87,7 @@ class Object extends DbObj {
 				user_type,
 				photo,
 				is_agency,
+				industry_id,
 				customers_fax,
 				photo_thumbnail,
 				customers_email_address,
@@ -209,6 +212,7 @@ class Object extends DbObj {
 				customers
 			(
 				company_name,
+				industry_id,
 				summary,
 				customers_website,
 				skill_title,
@@ -230,6 +234,7 @@ class Object extends DbObj {
 			VALUE
 			(
 				'" . $this->dbEscape( $this->getCompanyName() ) . "',
+				'" . $this->getIndustryId() . "',
 				'" . $this->dbEscape( $this->getSummary() ) . "',
 				'" . $this->dbEscape( $this->getCustomersWebsite() ) . "',
 				'" . $this->dbEscape( $this->getSkillTitle() ) . "',
@@ -263,6 +268,7 @@ class Object extends DbObj {
 				customers
 			SET
 				company_name = '" . $this->dbEscape( $this->getCompanyName() ) . "',
+				industry_id = '" . $this->getIndustryId() . "',
 				summary = '" . $this->dbEscape( $this->getSummary() ) . "',
 				customers_website = '" . $this->dbEscape( $this->getCustomersWebsite() ) . "',
 				skill_title = '" . $this->dbEscape( $this->getSkillTitle() ) . "',
@@ -283,6 +289,14 @@ class Object extends DbObj {
 				customers_id = '" . (int)$this->getId() . "'
 		");
 	
+	}
+
+	public function setIndustryId( $string ){
+		$this->industryId = (int)$string;
+	}
+
+	public function getIndustryId(){
+		return $this->industryId;
 	}
 
 	public function setCustomersFax( $string ){

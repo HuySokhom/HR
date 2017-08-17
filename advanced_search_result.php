@@ -294,9 +294,7 @@
 
   if (tep_not_null($location)) {
     $where_str .= "
-      and (p.province_id = '" . (int)$location . "'
-      or p.district_id = '" . (int)$location . "'
-      or p.village_id = '" . (int)$location . "')
+      and (p.province_id = '" . (int)$location . "')
     ";
   }
 
