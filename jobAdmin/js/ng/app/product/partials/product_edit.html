@@ -21,13 +21,15 @@
                         Categories:
                         <span class="require">*</span>
                     </label>
-                    <select data-ng-model="vm.model.product.categories_id"
+                    <categories-list-drop-down data-ng-model="vm.model.product.categories_id" 
+                        required="required" name="categories"></categories-list-drop-down>
+                    <!-- <select data-ng-model="vm.model.product.categories_id"
                         data-ng-options="c.categories_id as c.detail[0].categories_name for c in vm.categoryList.elements"
                         class="form-control"
                         required
                     >
                         <option value="">Select Category</option>
-                    </select>
+                    </select> -->
                     <label>
                         Job Type
                         <span class="require">*</span>
@@ -43,13 +45,16 @@
                         Agency
                         <span class="require">*</span>
                     </label>
-                    <select data-ng-model="vm.model.product.customers_id"
+                    <!-- <select data-ng-model="vm.model.product.customers_id"
                         data-ng-options="p.id as p.company_name for p in vm.customerList"
                         class="form-control"
                         required
                     >
                         <option value="">Select Agency</option>
-                    </select>
+                    </select> -->
+                    <customer-list-drop-down ng-model="vm.model.product.customers_id"
+                        required="required" name="agency"></customer-list-drop-down>
+         
                     <label>
                         Gender:
                         <span class="require">*</span>
@@ -108,6 +113,7 @@
                             ng-model="vm.model.product.products_close_date" 
                             name="expire_date"
                             is-open="vm.opened" 
+                            ng-click="vm.open()"
                             ng-required="true"/>
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" ng-click="vm.open()">

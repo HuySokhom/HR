@@ -69,7 +69,7 @@
   p.manufacturers_id, p.products_price, p.products_tax_class_id, 
   IF(s.status, s.specials_new_products_price, NULL) as specials_new_products_price, 
   IF(s.status, s.specials_new_products_price, p.products_price) as final_price,
-   cu.photo_thumbnail, cu.company_name, l.name as location
+   cu.photo, cu.company_name, l.name as location
   from " . TABLE_PRODUCTS_DESCRIPTION . " pd, 
   " . TABLE_PRODUCTS . " p left join " . TABLE_MANUFACTURERS . " m on p.manufacturers_id = m.manufacturers_id 
   left join " . TABLE_SPECIALS . " s on p.products_id = s.products_id, customers cu, location l

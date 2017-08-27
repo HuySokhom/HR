@@ -17,12 +17,11 @@ app.controller(
 		vm.genders = ["Male", "Female", "Both"];
 		vm.model = {
 			product: {
-				products_close_date: new Date()
+				products_close_date: new Date(moment().add(1, 'months'))
 			},
 			product_description: {}
 		};
 		vm.format = 'yyyy/MM/dd';
-  		vm.altInputFormats = ['M!/d!/yyyy'];
 		var url = 'api/Product/';
 		vm.service = new Services();
 
@@ -36,17 +35,13 @@ app.controller(
 					vm.model.product_description = data.elements[0].product_detail[0];
 				});
 			}
-            Restful.get("api/Category").success(function(data){
-                vm.categoryList = data;
-			});
+            // Restful.get("api/Category").success(function(data){
+            //     vm.categoryList = data;
+			// });
 			Restful.get("api/SalaryRange").success(function(data){
                 vm.salaryList = data;
 			});
 			
-			Restful.get("api/Customer", {type:'agency'}).success(function(data){
-				vm.customerList = data.elements;
-				console.log(data);
-			});
 			//  Restful.get("api/Industries").success(function(data){
             //     vm.industriesList = data;
             // });
@@ -55,7 +50,12 @@ app.controller(
             });
 		};
 		vm.init();
-
+		vm.bindCustomerList = function(text){
+			Restful.get("api/Customer", {type:'agency', search_name: text}).success(function(data){
+				vm.customerList = data.elements;
+				console.log(data);
+			});
+		};
 		// update functionality
 		vm.save = function(){
 			var d = vm.model.product.products_close_date.getDate();

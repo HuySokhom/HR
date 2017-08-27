@@ -2,7 +2,7 @@
 	class="btn btn-default default-font" 
 	data-toggle="modal" 
 	data-target="#banners"
-	data-ng-click="add();"
+	data-ng-click="vm.add();"
 >
 	<span class="glyphicon glyphicon-plus"></span>
 	Add Advertisement Image
@@ -26,13 +26,13 @@
 			Action
 		</th>
 	</tr>
-	<tr data-ng-if="!banners">
+	<tr data-ng-if="!vm.banners">
 		<td colspan="4" align="center">
 			<img src="images/icons/gettestr-large-spinner-orange.gif"/>
 		</td>
 	</tr>
 	<tr
-		data-ng-repeat="b in banners.elements"
+		data-ng-repeat="b in vm.banners.elements"
 	>
 		<td>
 			{{b.id}}
@@ -54,7 +54,7 @@
 			<button
 				class="btn"
 				data-ng-class="(b.status === 1) ? 'btn-success' : 'btn-warning'"
-				data-ng-click="updateStatus(b);"
+				data-ng-click="vm.updateStatus(b);"
 				data-toggle="tooltip"
 				data-placement="top"
 				title="{{(b.status === 1) ? 'Active' : 'Inactive'}}"
@@ -65,7 +65,7 @@
 			</button>
 			<button
 				class="btn btn-default"
-				data-ng-click="edit(b);"
+				data-ng-click="vm.edit(b);"
 				data-toggle="tooltip"
 				data-placement="top"
 				title="Edit"
@@ -75,7 +75,7 @@
 			</button>
 			<button
 				class="btn btn-danger"
-				data-ng-click="remove($index, b);"
+				data-ng-click="vm.remove($index, b);"
 				data-toggle="modals"
 				data-placement="top"
 				title="Delete"
@@ -87,14 +87,14 @@
 	</tr>
 </table>
 <div
-	data-ng-if="banners.elements == 0"
+	data-ng-if="vm.banners.elements == 0"
 >
 	<div class="alert alert-danger alert-dismissible">
 		<strong>Warning!</strong> Empty Data.
 	</div>
 </div>
 
-<form data-ng-submit="save();" name="myForm">
+<form data-ng-submit="vm.save();" name="myForm">
 	<div
 		class="modal fade"
 		id="banners"
@@ -125,7 +125,7 @@
 								<input
 									type="text"
 									class="form-control"
-									data-ng-model="data.title"
+									data-ng-model="vm.data.title"
 									required="required"
 								/>
 							</td>
@@ -137,12 +137,12 @@
 							<td>
 								<input
 									type="file"
-									ng-model="picFile"
+									ng-model="vm.picFile"
 									name="file"
 									accept="image/*"
 									ngf-max-size="2MB"
 									ngf-model-invalid="errorFiles"
-									ngf-select="uploadPic(picFile)"
+									ngf-select="vm.uploadPic(vm.picFile)"
 								>
 								<small>
 									recommand 800px * 85px
@@ -152,19 +152,19 @@
 								</i>
 								<div>
 									<img
-										ng-show="data.image"
+										ng-show="vm.data.image"
 										class="thumb"
 										src="../images/{{data.image}}"
 									>
-								<span class="progress" ng-show="picFile.progress >= 0">
+								<span class="progress" ng-show="vm.picFile.progress >= 0">
 									<div
 										style="width:{{picFile.progress}}%"
-										ng-bind="picFile.progress + '%'"
+										ng-bind="vm.picFile.progress + '%'"
 									>
 									</div>
 								</span>
-									<span ng-show="picFile.result">Upload Successful</span>
-									<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+									<span ng-show="vm.picFile.result">Upload Successful</span>
+									<span class="err" ng-show="errorMsg">{{vm.errorMsg}}</span>
 								</div>
 							</td>
 						</tr>
@@ -173,7 +173,7 @@
 								Sort Order:
 							</td>
 							<td>
-								<input type="text" data-ng-model="data.sort_order" class="form-control"/>
+								<input type="number" data-ng-model="vm.data.sort_order" class="form-control"/>
 							</td>
 						</tr>
 						<tr>
@@ -189,7 +189,8 @@
 								Location:
 							</td>
 							<td>
-								<select class="form-control" required="required" data-ng-model="data.location">
+								<select class="form-control" required="required" 
+									data-ng-model="vm.data.location">
 									<option value="top">Top Header</option>
 									<option value="right">Right</option>
 									<option value="left">Left</option>

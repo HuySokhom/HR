@@ -25,7 +25,7 @@ class Collection extends StdCollection {
 	}
 
 	public function filterByName( $arg ){
-		$this->addWhere("c.user_name LIKE '%" . $arg. "%' ");
+		$this->addWhere("c.user_name LIKE '%" . $arg. "%' OR c.company_name LIKE '%" . $arg. "%' ");
 	}
 
 	public function sortByDate( $arg ){

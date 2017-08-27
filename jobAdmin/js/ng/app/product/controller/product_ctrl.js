@@ -34,12 +34,12 @@ app.controller(
 				vm.totalItems = data.count;
 				console.log(data);
 			});
-			Restful.get("api/Category").success(function(data){
-				vm.categoryList = data;
-			});
-			Restful.get("api/Customer", {type: 'agency'}).success(function(data){
-				vm.customerList = data;
-			});
+			// Restful.get("api/Category").success(function(data){
+			// 	vm.categoryList = data;
+			// });
+			// Restful.get("api/Customer", {type: 'agency'}).success(function(data){
+			// 	vm.customerList = data;
+			// });
 		};
 		init(params);
 

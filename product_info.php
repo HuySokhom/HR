@@ -13,7 +13,7 @@
 			p.products_id,
 			p.customers_id,
 			cu.company_name,
-			cu.photo_thumbnail,
+			cu.photo,
 			cu.customers_email_address,
 			cu.customers_address,
 			cu.customers_website,
@@ -135,44 +135,79 @@
 				  </h1>
 			  </div><!-- /.position-header -->
 
-			  <div class="position-general-information">
-				  <dl>
-					  <dt>Location</dt>
-					  <dd><?php echo $product_info['province_name'];?></dd>
-
-					  <dt>Public Date</dt>
-					  <dd><?php echo $product_info['products_date_added'];?></dd>
-					  <dt>Close Date</dt>
-					  <dd><?php echo $product_info['products_close_date'];?></dd>
-
-					  <dt>Contract</dt>
-					  <dd><?php echo $product_info['products_kind_of'];?></dd>
-
-					  <dt>Salary</dt>
-					  <dd>
-						  <?php
-						  	if($product_info['salary_id'] > 0){
-								echo '$'.$salary_info['from_salary'] . ' - $'.$salary_info['to_salary'];
-							}else{
-								echo "Negotiable";
-							}
-						  ?>
-					  </dd>
-
-					  <dt>Number Of Hire</dt>
-					  <dd><?php echo $product_info['number_of_hire'];?></dd>
-
-					  <dt>Gender</dt>
-					  <dd><?php echo $product_info['gender'];?></dd>
-
-					  <dt>Job ID</dt>
-					  <dd>#<?php echo $product_info['products_id'];?></dd>
-
-					  <dt>View</dt>
-					  <dd>
-						  <?php echo $product_info['products_viewed'];?>
-					  </dd>
-				  </dl>
+			  <div class="position-general-information table-responsive">
+				<table class="table table-striped table-bordered">
+					<tr>
+						<td width="20%">
+							Location
+						</td>
+						<td width="30%">
+							<?php echo $product_info['province_name'];?>
+						</td>						
+						<td width="20%">
+							Contract
+						</td>
+						<td width="30%">
+							<?php echo $product_info['products_kind_of'];?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Public Date
+						</td>
+						<td>
+							<?php echo $product_info['products_date_added'];?>
+						</td>
+						<td>
+							Close Date
+						</td>
+						<td>
+							<?php echo $product_info['products_close_date'];?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Salary
+						</td>
+						<td>
+							<?php
+								if($product_info['salary_id'] > 0){
+									echo '$'.$salary_info['from_salary'] . ' - $'.$salary_info['to_salary'];
+								}else{
+									echo "Negotiable";
+								}
+							?>
+						</td>
+						<td>
+							Number Of Hire
+						</td>
+						<td>
+							<?php echo $product_info['number_of_hire'];?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Gender
+						</td>
+						<td>
+							<?php echo $product_info['gender'];?>
+						</td>
+						<td>
+							Job ID
+						</td>
+						<td>
+							#<?php echo $product_info['products_id'];?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							View
+						</td>
+						<td colspan="3">
+							<?php echo $product_info['products_viewed'];?>
+						</td>
+					</tr>
+  				</table>
 			  </div><!-- /.position-general-information -->
 
 			  <h3 class="page-header background-header">Description, duties, responsibilities</h3>
@@ -194,7 +229,7 @@
 			  <div class="company-card">
 				  <div class="company-card-image">
 					  <a href="<?php echo tep_href_link(FILENAME_INFORMATION, 'info_id=' . $product_info['customers_id']) ?>">
-						  <img src="images/<?php echo $product_info['photo_thumbnail'];?>" alt=""></a>
+						  <img src="images/<?php echo $product_info['photo'];?>" alt=""></a>
 					  </a>
 				  </div><!-- /.company-card-image -->
 
@@ -254,7 +289,7 @@
 						}
 					  ?>
 				  </ul>
-				  <a href="positions.php" class="hero-content-show-all">Show All</a>
+				  <a href="jobs_list.php" class="hero-content-show-all">Show All</a>
 			  </div>
 			  <div class="widget">
                   <img src="images/free-ads.jpg" class="img-responsive">

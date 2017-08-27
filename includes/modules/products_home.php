@@ -3,7 +3,7 @@
         select
             customers_id,
             company_name,
-            photo_thumbnail,
+            photo,
             skill_title
         from
             customers
@@ -28,7 +28,7 @@
     $feature_query = tep_db_query("
         select
             customers_id,
-            photo_thumbnail
+            photo
         from
             customers
         where
@@ -55,7 +55,7 @@
         p.create_date,
         pd.products_name,
         DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date,
-        cu.photo_thumbnail,
+        cu.photo,
         cu.company_name,
         l.name as location
       from
@@ -106,7 +106,7 @@
                                     </h2>
                                     <h3>
                                         <span>
-                                            <img src="images/'. $product['photo_thumbnail'] .'" alt="">
+                                            <img src="images/'. $product['photo'] .'" alt="">
                                         </span>
                                         '. $product['company_name'] .'
                                         <br>
@@ -157,7 +157,7 @@
                     foreach($array_featured_company as $feature) {
                         echo '<a href="'. tep_href_link(FILENAME_INFORMATION, 
                                 'info_id=' . $feature['customers_id'] ) .'">
-                                <img src="images/'. $feature['photo_thumbnail'] .'" 
+                                <img src="images/'. $feature['photo'] .'" 
                                     class="feature_logo">
                             </a>';
                     }
@@ -177,7 +177,7 @@
                                         <div class="candidate-box-image">
                                             <a href="' . tep_href_link(FILENAME_INFORMATION, 'info_id=' . $candidate['customers_id']) . '">
                                                 <img
-                                                    src="images/' . $candidate['photo_thumbnail'] . '"
+                                                    src="images/' . $candidate['photo'] . '"
                                                     alt="' . $candidate['company_name'] . '"
                                                     class="img-responsive"
                                                 />

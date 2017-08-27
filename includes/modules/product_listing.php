@@ -58,7 +58,7 @@
                                   </h2>
                                   <h3>
                                     <span>
-                                        <img src="images/' . $product['photo_thumbnail'] . '" alt="">
+                                        <img src="images/' . $product['photo'] . '" alt="">
                                     </span>
                                     ' . $product['company_name'] . ', ' . $product['location'] . '
                                     <br>

@@ -130,13 +130,25 @@
             </a>
           </li>
 
-          <li >
-            <a href="javascript:void(0)">
-              <i class="fa fa-user-circle-o"></i>
-              <br/>
-              Account
-            </a>
-
+          <li>
+            <?php
+              if(!tep_session_is_registered('customer_id')){
+                echo '
+                  <a href="javascript:void(0)">
+                    <i class="fa fa-user-circle-o"></i>
+                    <br/>
+                    Account
+                  </a>';
+              }else{
+                echo '
+                  <a href="javascript:void(0)">
+                    <img src="'.$_SESSION['photo_thumbnail'].'"/>
+                    <br/>
+                    '.$_SESSION['user_name'].'
+                  </a>
+                ';
+              }
+            ?>
             <ul class="sub-menu">
               <?php
                 if(!tep_session_is_registered('customer_id')){
@@ -149,8 +161,8 @@
                   Consulting
                 </a>
               </li>  -->
-                <li><a href="login.php">Login</a></li>
-                <li><a href="create_account.php">Sign Up</a></li>
+                <li><a href="login.php">Login Or Register</a></li>
+                <!-- <li><a href="create_account.php">Sign Up</a></li> -->
               <?php }else{
                 echo '<li><a href="account.php">My Profile</a></li>
                   <li><a href="logoff.php">Sign Out</a></li>

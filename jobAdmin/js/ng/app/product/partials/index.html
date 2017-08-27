@@ -12,7 +12,10 @@
 			<span class="glyphicon glyphicon-search form-control-feedback"></span>
 		</div>
 		<div class="form-group has-feedback col-sm-3">
-			<select
+			<categories-list-drop-down data-ng-model="vm.model.category_id" 
+				required="required" name="categories" data-ng-change="vm.search();"></categories-list-drop-down>
+			
+			<!-- <select
 				data-ng-model="vm.category_id"
 				data-ng-options="c.categories_id as c.detail[0].categories_name for c in vm.categoryList.elements"
 				class="form-control"
@@ -20,10 +23,12 @@
 				required
 			>
 				<option value="">--Filter By Category--</option>
-			</select>
+			</select> -->
 		</div>
 		<div class="form-group has-feedback col-sm-3">
-			<select
+			<customer-list-drop-down data-ng-model="vm.customer_id" data-ng-change="vm.search();"></customer-list-drop-down>
+				
+			<!-- <select
 				data-ng-model="vm.customer_id"
 				data-ng-options="c.id as c.company_name for c in vm.customerList.elements"
 				class="form-control"
@@ -31,7 +36,7 @@
 				required
 			>
 				<option value="">--Filter By Customer--</option>
-			</select>
+			</select> -->
 		</div>
 		<div class="form-group has-feedback col-sm-2">
 			<h2 class="label label-info" data-ng-if="vm.totalItems > 0">
@@ -96,7 +101,7 @@
 					<td width="">
 						<button
 							class="btn btn-default"
-							data-ng-click="edit(p.id);"
+							data-ng-click="vm.edit(p.id);"
 							data-toggle="tooltip"
 							data-placement="top"
 							title="Edit"
@@ -106,7 +111,7 @@
 						</button>
 						<button
 							class="btn btn-warning"
-							data-ng-click="updateStatus(p);"
+							data-ng-click="vm.updateStatus(p);"
 							data-ng-show="p.is_publish == 0"
 							data-toggle="tooltip"
 							data-placement="top"
@@ -117,7 +122,7 @@
 						</button>
 						<button
 							class="btn btn-success"
-							data-ng-click="updateStatus(p);"
+							data-ng-click="vm.updateStatus(p);"
 							data-ng-show="p.is_publish == 1"
 							data-toggle="tooltip"
 							data-placement="top"
@@ -129,7 +134,7 @@
 
 						<button
 							class="btn btn-danger"
-							data-ng-click="remove(p.id);"
+							data-ng-click="vm.remove(p.id);"
 							data-toggle="tooltip"
 							data-placement="top"
 							title="Remove"

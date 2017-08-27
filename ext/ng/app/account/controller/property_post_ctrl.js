@@ -9,10 +9,7 @@ app.controller(
 	, '$log'
 	, function ($scope, Restful, Services, $location, Upload, $timeout, $log){
 		$scope.service = new Services();
-
-		$scope.rangeSalary = ['50$ -> 100$', '100$ -> 200$',
-			'200$ -> 500$', '500$ -> 1000$', '1000$ -> 2000$',
-			'2000$ -> 4000$', 'Negotiation'];
+		$scope.rangeSalary = [];
 		$scope.propertyTypes = ["Part-Time", "Full-Time"];
 		$scope.genders = ["Male", "Female", "Both"];
 		// init category
@@ -22,6 +19,9 @@ app.controller(
 			});
 			Restful.get("api/Location").success(function(data){
 				$scope.provinces = data;
+			});
+			Restful.get("api/SalaryRange").success(function(data){
+				$scope.rangeSalary = data.elements;
 			});
 		};
 		$scope.initCategory();
@@ -39,7 +39,7 @@ app.controller(
 				$scope.communes = data;
 			});
 		};
-		$scope.expire_date = moment().format('DD-MM-YYYY');
+		$scope.expire_date = moment().add(1, 'month').format('DD-MM-YYYY');
 		// save functionality
 		$scope.save = function(){
 			// set object to save into news

@@ -19,7 +19,7 @@
             c.customers_telephone,
             c.customers_email_address,
             c.customers_address,
-            c.photo_thumbnail,
+            c.photo,
             c.experience,
             c.upload_cv,
             c.working_history,
@@ -54,7 +54,7 @@
                     <div class="col-md-12">
                         <div class="col-md-3">
                             <br/>
-                            <img src="images/<?php echo $customer_info['photo_thumbnail']; ?>" alt=""
+                            <img src="images/<?php echo $customer_info['photo']; ?>" alt=""
                                  class="img-thumbnail"/>
                         </div>
                         <!-- /.resume-main-image -->
@@ -151,7 +151,7 @@
         p.create_date,
         pd.products_name,
         DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date,
-        cu.photo_thumbnail,
+        cu.photo,
         cu.company_name,
         l.name as location
       from
@@ -186,7 +186,7 @@
             <div class="col-md-3 col-sm-4">
                 <div class="company-card">
                     <div class="company-card-image">
-                        <img src="images/<?php echo $customer_info['photo_thumbnail']; ?>" alt="">
+                        <img src="images/<?php echo $customer_info['photo']; ?>" alt="">
                     </div>
                     <!-- /.company-card-image -->
                     <div class="company-card-data">

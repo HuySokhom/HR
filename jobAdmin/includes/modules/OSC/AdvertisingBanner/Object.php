@@ -130,7 +130,7 @@ class Object extends DbObj {
 	}
 
 	public function setSortOrder( $string ){
-		$this->sortOrder = (string)$string;
+		$this->sortOrder = (int)$string;
 	}
 
 	public function getSortOrder(){

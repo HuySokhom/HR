@@ -14,11 +14,12 @@
 
 // needs to be included earlier to set the success message in the messageStack
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CREATE_ACCOUNT);
-
+// echo $sessiontoken;
+//   var_dump($HTTP_POST_VARS);exit;
   $process = false;
-  if (isset($HTTP_POST_VARS['action']) && ($HTTP_POST_VARS['action'] == 'process') && isset($HTTP_POST_VARS['formid']) && ($HTTP_POST_VARS['formid'] == $sessiontoken)) {
+  if (isset($HTTP_POST_VARS['action']) && ($HTTP_POST_VARS['action'] == 'process') && 
+    isset($HTTP_POST_VARS['formid'])) {
     $process = true;
-
 //    if (ACCOUNT_GENDER == 'true') {
 //      if (isset($HTTP_POST_VARS['gender'])) {
 //        $gender = tep_db_prepare_input($HTTP_POST_VARS['gender']);
@@ -57,34 +58,6 @@
     $confirmation = tep_db_prepare_input($HTTP_POST_VARS['confirmation']);
 
     $error = false;
-//    if (ACCOUNT_GENDER == 'true') {
-//      if ( ($gender != 'm') && ($gender != 'f') ) {
-//        $error = true;
-//
-//        $messageStack->add('create_account', ENTRY_GENDER_ERROR);
-//      }
-//    }
-
-//    if (strlen($firstname) < ENTRY_FIRST_NAME_MIN_LENGTH) {
-//      $error = true;
-//
-//      $messageStack->add('create_account', ENTRY_FIRST_NAME_ERROR);
-//    }
-//
-//    if (strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
-//      $error = true;
-//
-//      $messageStack->add('create_account', ENTRY_LAST_NAME_ERROR);
-//    }
-
-//    if (ACCOUNT_DOB == 'true') {
-//      if ((strlen($dob) < ENTRY_DOB_MIN_LENGTH) || (!empty($dob) && (!is_numeric(tep_date_raw($dob)) || !@checkdate(substr(tep_date_raw($dob), 4, 2), substr(tep_date_raw($dob), 6, 2), substr(tep_date_raw($dob), 0, 4))))) {
-//        $error = true;
-//
-//        $messageStack->add('create_account', ENTRY_DATE_OF_BIRTH_ERROR);
-//      }
-//    }
-
     if (strlen($email_address) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
       $error = true;
 
@@ -102,60 +75,6 @@
         $messageStack->add('create_account', ENTRY_EMAIL_ADDRESS_ERROR_EXISTS);
       }
     }
-
-//    if (strlen($street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
-//      $error = true;
-//
-//      $messageStack->add('create_account', ENTRY_STREET_ADDRESS_ERROR);
-//    }
-
-//    if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
-//      $error = true;
-//
-//      $messageStack->add('create_account', ENTRY_POST_CODE_ERROR);
-//    }
-
-//    if (strlen($city) < ENTRY_CITY_MIN_LENGTH) {
-//      $error = true;
-//
-//      $messageStack->add('create_account', ENTRY_CITY_ERROR);
-//    }
-
-//    if (is_numeric($country) == false) {
-//      $error = true;
-//
-//      $messageStack->add('create_account', ENTRY_COUNTRY_ERROR);
-//    }
-
-    if (ACCOUNT_STATE == 'true') {
-      $zone_id = 0;
-      $check_query = tep_db_query("select count(*) as total from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
-      $check = tep_db_fetch_array($check_query);
-      $entry_state_has_zones = ($check['total'] > 0);
-      if ($entry_state_has_zones == true) {
-        $zone_query = tep_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and (zone_name = '" . tep_db_input($state) . "' or zone_code = '" . tep_db_input($state) . "')");
-        if (tep_db_num_rows($zone_query) == 1) {
-          $zone = tep_db_fetch_array($zone_query);
-          $zone_id = $zone['zone_id'];
-        } else {
-          $error = true;
-
-          $messageStack->add('create_account', ENTRY_STATE_ERROR_SELECT);
-        }
-      } else {
-//        if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
-//          $error = true;
-//
-//          $messageStack->add('create_account', ENTRY_STATE_ERROR);
-//        }
-      }
-    }
-
-//    if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
-//      $error = true;
-//
-//      $messageStack->add('create_account', ENTRY_TELEPHONE_NUMBER_ERROR);
-//    }
 
 
     if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
@@ -274,19 +193,16 @@
     echo $messageStack->output('create_account');
   }
   ?>
-<div class="col-md-3">
-      <div class="filter-stacked">
-        <?php require('advanced_search_box_right.php');?>
-      </div>
-    </div>
     <div class="col-md-9">
 <div class="alert alert-warning">
   <?php echo sprintf(TEXT_ORIGIN_LOGIN, tep_href_link(FILENAME_LOGIN, tep_get_all_get_params(), 'SSL')); ?><span class="inputRequirement pull-right text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></span>
 </div>
 
-<?php echo tep_draw_form('create_account', tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'class="form-horizontal" onsubmit="return check_form(create_account);"', true) . tep_draw_hidden_field('action', 'process'); ?>
+<?php echo tep_draw_form('create_account', tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 
+      'post', 'class="form-horizontal" onsubmit="return check_form(create_account);"', true) 
+      . tep_draw_hidden_field('action', 'process'); ?>
 <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="form-group has-feedback">
@@ -344,29 +260,17 @@
   </div>
 </form>
 </div></div></div>
-    <div class="col-md-5">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <h4><?php echo MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER; ?></h4>
-      <p>
-        <i class="fa fa-hand-o-right"></i>
-        <?php echo MODULE_CONTENT_JOIN_FREE; ?>
-      </p>
-      <p>
-        <i class="fa fa-hand-o-right"></i>
-        <?php echo MODULE_CONTENT_SELL_OR_RENT; ?>
-      </p>
-      <p>
-        <i class="fa fa-hand-o-right"></i>
-        <?php echo MODULE_CONTENT_EASY_MANAGE; ?>
-      </p>
-    </div>
-  </div>
-    </div>
+   
   </div>
 </div>
+
+<div class="col-md-3">
+      <div class="filter-stacked">
+        <?php require('advanced_search_box_right.php');?>
+      </div>
+    </div>
 </div>
-<?php
+<?php 
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>

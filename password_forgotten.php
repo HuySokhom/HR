@@ -56,14 +56,10 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-<div class="container">
-  <br/>
-  <div class="col-md-3 col-sm-5 ">
-      <div class="filter-stacked">
-          <?php include('advanced_search_box_right.php');?>
-      </div>
-  </div>
-  <div class="col-md-9 col-sm-7">
+<div class="container" style="margin-bottom: 300px;">
+<br>
+<br>
+  <div class="">
   <?php
     if ($messageStack->size('password_forgotten') > 0) {
       echo $messageStack->output('password_forgotten');

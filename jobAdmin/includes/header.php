@@ -26,7 +26,7 @@
         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Catalog</span></a>
         <ul>
           <li><a href="#/category"><span class="fa fa-code-fork"></span> Categories</a></li>
-          <li><a href="#/product"><span class="fa fa-sitemap"></span> Products</a></li>
+          <li><a href="#/product"><span class="fa fa-sitemap"></span> Jobs</a></li>
           <li><a href="#/user"><span class="fa fa-users"></span> Users</a></li>
           <li>
             <a ui-sref="advertisement">
@@ -53,6 +53,8 @@
         <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Configuration</span></a>
         <ul>
           <li><a href="administrators.php">Administrators</a></li>
+          <li><a href="store_logo.php">Company Logo</a></li>
+          <li><a href="configuration.php?gID=1">Configuration</a></li>
 <!--          <li><a href="#/customer_plan">Customer Book Plan</a></li>-->
         </ul>
       </li>
