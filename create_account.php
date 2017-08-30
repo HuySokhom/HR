@@ -193,6 +193,7 @@
     echo $messageStack->output('create_account');
   }
   ?>
+  <div class="row">
     <div class="col-md-9">
 <div class="alert alert-warning">
   <?php echo sprintf(TEXT_ORIGIN_LOGIN, tep_href_link(FILENAME_LOGIN, tep_get_all_get_params(), 'SSL')); ?><span class="inputRequirement pull-right text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></span>
@@ -269,6 +270,7 @@
         <?php require('advanced_search_box_right.php');?>
       </div>
     </div>
+</div>
 </div>
 <?php 
   require(DIR_WS_INCLUDES . 'template_bottom.php');

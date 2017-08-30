@@ -54,7 +54,7 @@
       </div><!-- /.container -->
     </div><!-- /.header-top -->
 
-    <div class="header-bottom">
+    <div class="header-bottom hidden-xs">
       <div class="container">
         <?php
           echo
@@ -140,13 +140,23 @@
                     Account
                   </a>';
               }else{
-                echo '
-                  <a href="javascript:void(0)">
-                    <img src="'.$_SESSION['photo_thumbnail'].'"/>
-                    <br/>
-                    '.$_SESSION['user_name'].'
-                  </a>
-                ';
+                if($_SESSION['user_name']){
+                  $user = $_SESSION['user_type'] == "normal" ? $_SESSION['user_name'] : $_SESSION['company_name'];
+                  echo '
+                    <a href="javascript:void(0)">
+                      <img src="images/'.$_SESSION['user_photo'].'" class="img-circle" width="30px"/>
+                      <br/>
+                      $user
+                    </a>
+                  ';
+                }else{
+                  echo '
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-user-circle-o"></i>
+                      <br/>
+                      Account
+                    </a>';
+                }
               }
             ?>
             <ul class="sub-menu">

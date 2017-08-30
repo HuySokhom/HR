@@ -5,7 +5,8 @@ app.controller(
 	, 'Services'
 	, '$location'
 	, 'alertify'
-	, function ($scope, Restful, Services, $location, $alertify){
+	, '$timeout'
+	, function ($scope, Restful, Services, $location, $alertify, $timeout){
 		var vm = this;
 		vm.service = new Services();
 		vm.sortType = [
@@ -90,12 +91,15 @@ app.controller(
 		};
 		// search functionality
 		vm.search = function(){
-			params.search_title = vm.search_title;
-			params.id = vm.id;
-			params.type = vm.category_id;
-			params.sort_by = vm.sort_by;
-			params.customer_id = vm.customer_id;
-			init(params);
+			console.log('search');
+			$timeout(function() {				
+				params.search_title = vm.search_title;
+				params.id = vm.id;
+				params.type = vm.category_id;
+				params.sort_by = vm.sort_by;
+				params.customer_id = vm.customer_id;
+				init(params);
+			}, 50);
 		};
 		/**
 		 * start functionality pagination

@@ -51,11 +51,6 @@
 ?>
 <br>
 <div class="container">
-<div class="col-md-3 col-sm-6 ">
-  <div class="filter-stacked">
-    <?php include('advanced_search_box_right.php');?> 
-  </div>
-</div>
 <div class="col-md-9 col-sm-6">
   <div class="row">
 
@@ -114,6 +109,12 @@
     <?php 
   }
   ?>
+  </div>
+</div>
+
+<div class="col-md-3 col-sm-6 ">
+  <div class="filter-stacked">
+    <?php include('advanced_search_box_right.php');?> 
   </div>
 </div>
 </div>

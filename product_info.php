@@ -36,8 +36,8 @@
 			location l, customers cu
 		where
 			p.products_status = 1
-			    and 
-            p.is_publish = 1
+				and 
+			p.is_publish = 1
 				and
 			cu.customers_id = p.customers_id
 				and
@@ -85,7 +85,7 @@
 				and
 			pd.language_id = '" . (int)$languages_id . "'
 		order by
-        	p.products_promote desc, rand(), p.products_close_date desc
+			p.products_promote desc, rand(), p.products_close_date desc
 		limit 15
 	");
 	$array_hot = array();
@@ -97,7 +97,7 @@
 <br>
 <div class="container">
 <?php
-  if (tep_db_num_rows($product_info_query) < 1) {
+if (tep_db_num_rows($product_info_query) < 1) {
 ?>
 	<br>
 	<div class="col-md-3">
@@ -115,27 +115,27 @@
 	<br>
 	<br>
 <?php
-  } else {
-    tep_db_query("
-        UPDATE
-            " . TABLE_PRODUCTS_DESCRIPTION . "
-        SET
-            products_viewed = products_viewed+1
-        WHERE
-            products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
-    ");
+} else {
+	tep_db_query("
+		UPDATE
+			" . TABLE_PRODUCTS_DESCRIPTION . "
+		SET
+			products_viewed = products_viewed+1
+		WHERE
+			products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
+	");
 
 ?>
-	  <div class="row">
-		  <div class="col-sm-8">
-			  <div class="position-header">
-				  <h1>
-					  <?php echo $product_info['products_name'];?>
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="position-header">
+				<h1>
+					<?php echo $product_info['products_name'];?>
 						<!--<span>Urgent</span>-->
-				  </h1>
-			  </div><!-- /.position-header -->
+				</h1>
+			</div><!-- /.position-header -->
 
-			  <div class="position-general-information table-responsive">
+			<div class="position-general-information table-responsive">
 				<table class="table table-striped table-bordered">
 					<tr>
 						<td width="20%">
@@ -207,76 +207,94 @@
 							<?php echo $product_info['products_viewed'];?>
 						</td>
 					</tr>
-  				</table>
-			  </div><!-- /.position-general-information -->
+				</table>
+			</div><!-- /.position-general-information -->
 
-			  <h3 class="page-header background-header">Description, duties, responsibilities</h3>
-			  <p>
-				  <?php echo $product_info['products_description'];?>
-			  </p>
+			<h3 class="page-header background-header">Description</h3>
+			<p>
+				<?php echo $product_info['products_description'];?>
+			</p>
 
-			  <h3 class="page-header background-header">Other benefits</h3>
-			  <?php echo $product_info['benefits'];?>
+			<h3 class="page-header background-header">Requirements</h3>
+			<?php echo $product_info['skill'];?>
 
-			  <h3 class="page-header background-header">Personality requirements and skills</h3>
-			  <?php echo $product_info['skill'];?>
+			<h3 class="page-header background-header">Others</h3>
+			<?php echo $product_info['benefits'];?>
 
-			  <h3 class="page-header background-header">About Company</h3>
-			  <?php echo $product_info['detail'];?>
-		  </div><!-- /.col-* -->
+			<h3 class="page-header background-header">About Company</h3>
+			<?php echo $product_info['detail'];?>
+		</div><!-- /.col-* -->
 
-		  <div class="col-sm-4">
-			  <div class="company-card">
-				  <div class="company-card-image">
-					  <a href="<?php echo tep_href_link(FILENAME_INFORMATION, 'info_id=' . $product_info['customers_id']) ?>">
-						  <img src="images/<?php echo $product_info['photo'];?>" alt=""></a>
-					  </a>
-				  </div><!-- /.company-card-image -->
+		<div class="col-sm-4">
+			<div class="company-card">
+				<div class="company-card-image">
+					<a href="<?php echo tep_href_link(FILENAME_INFORMATION, 'info_id=' . $product_info['customers_id']) ?>">
+						<img src="images/<?php echo $product_info['photo'];?>" alt=""></a>
+					</a>
+				</div><!-- /.company-card-image -->
 
-				  <div class="company-card-data">
-					  <dl>
-						  <dt>Website</dt>
-						  <dd>
-							  <?php
-								  if($product_info['customers_website']){
-									  echo '
-										  <a href="http://' . $product_info['customers_website'] . '" target="_blank">
-											  ' . $product_info['customers_website'] . '
-										  </a>';
-								  }else{
-									  echo 'N/A';
-								  }
-							  ?>
-						  </dd>
+				<div class="company-card-data">
+				<form class="form-horizontal">
+					<div class="col-md-12">	
+						<div class="form-group">
+							<label class="col-sm-4">
+								Website
+							</label>
+							<div class="col-sm-8">
+								<?php
+									if($product_info['customers_website']){
+										echo '
+											<a href="http://' . $product_info['customers_website'] . '" target="_blank">
+												' . $product_info['customers_website'] . '
+											</a>';
+									}else{
+										echo 'N/A';
+									}
+								?>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4">
+								E-mail
+							</label>
+							<div class="col-sm-8">
+								<a href="mailto:<?php echo $product_info['customers_email_address'];?>">
+									<?php echo $product_info['customers_email_address'];?>
+								</a>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4">
+								Phone
+							</label>
+							<div class="col-sm-8">
+								<?php echo $product_info['customers_telephone'];?>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4">
+								Address
+							</label>
+							<div class="col-sm-8">
+								<?php echo $product_info['customers_address'];?>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="clearfix"></div>
+				</div><!-- /.company-card-data -->
+			</div><!-- /.company-card -->
 
-						  <dt>E-mail</dt>
-						  <dd>
-							  <a href="mailto:<?php echo $product_info['customers_email_address'];?>">
-								  <?php echo $product_info['customers_email_address'];?>
-							  </a>
-						  </dd>
-
-						  <dt>Phone</dt>
-						  <dd><?php echo $product_info['customers_telephone'];?></dd>
-
-						  <dt>Address</dt>
-						  <dd>
-							  <?php echo $product_info['customers_address'];?>
-						  </dd>						  
-					  </dl>
-				  </div><!-- /.company-card-data -->
-			  </div><!-- /.company-card -->
-
-			  <div class="hero-content-carousel">
-				  <h2>Hot Jobs</h2>
-				  <ul class="cycle-slideshow vertical"
-					  data-cycle-fx="carousel"
-					  data-cycle-slides="li"
-					  data-cycle-carousel-visible="10"
-					  data-cycle-carousel-vertical="true"
-				  >
-					  <?php
-					  	foreach($array_hot as $hot){
+			<div class="hero-content-carousel">
+				<h2>Hot Jobs</h2>
+				<ul class="cycle-slideshow vertical"
+					data-cycle-fx="carousel"
+					data-cycle-slides="li"
+					data-cycle-carousel-visible="10"
+					data-cycle-carousel-vertical="true"
+				>
+					<?php
+						foreach($array_hot as $hot){
 							echo '
 								<li>
 									<a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $hot['products_id']) .'"
@@ -287,23 +305,23 @@
 								</li>
 							';
 						}
-					  ?>
-				  </ul>
-				  <a href="jobs_list.php" class="hero-content-show-all">Show All</a>
-			  </div>
-			  <div class="widget">
-                  <img src="images/free-ads.jpg" class="img-responsive">
-			  </div><!-- /.widget -->
-		  </div><!-- /.col-* -->
-	  </div><!-- /.row -->
-	  <?php
-  }
+					?>
+				</ul>
+				<a href="jobs_list.php" class="hero-content-show-all">Show All</a>
+			</div>
+			<div class="widget">
+				<img src="images/free-ads.jpg" class="img-responsive">
+			</div><!-- /.widget -->
+		</div><!-- /.col-* -->
+	</div><!-- /.row -->
+	<?php
+}
 ?>
 </div><!-- /.container -->
 <br><br>
 <?php
-  require(DIR_WS_INCLUDES . 'template_bottom.php');
-  require(DIR_WS_INCLUDES . 'application_bottom.php');
+require(DIR_WS_INCLUDES . 'template_bottom.php');
+require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
 <script>
 

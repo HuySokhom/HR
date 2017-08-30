@@ -21,7 +21,7 @@ class Object extends DbObj {
 		, $productsId
 		, $provinceId
         , $gender
-        , $salary
+        , $salaryId
 		, $productsDateAdded
 		, $productsStatus
 		, $productsKindOf
@@ -44,7 +44,7 @@ class Object extends DbObj {
 				'category_detail',
 				'customers_id',
 				'province_id',
-                'salary',
+                'salary_id',
                 'products_close_date',
 				'create_date',
 				'create_by',
@@ -79,7 +79,7 @@ class Object extends DbObj {
 				products_status,
 				products_kind_of,
 				number_of_hire,
-				salary,
+				salary_id,
 				products_close_date,
 				create_by,
 				gender,
@@ -180,7 +180,7 @@ class Object extends DbObj {
 				province_id = '" . (int)$this->getProvinceId() . "',
 				categories_id = '" . (int)$this->getCategoriesId() . "',
 				gender = '" . $this->getGender() . "',
-				salary = '" . $this->getSalary() . "',
+				salary_id = '" . $this->getSalaryId() . "',
  				products_kind_of = '" . $this->getProductsKindOf() . "',
  				number_of_hire = '" . $this->getNumberOfHire() . "',
  				products_close_date = '" . $this->getProductsCloseDate() . "'

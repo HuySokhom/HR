@@ -3,7 +3,9 @@ use
     OSC\AdvertisingBanner\Collection
         as AdvertisingBannerCollection,
     OSC\AdvertisingBanner\Object
-        as AdvertisingBannerObject
+        as AdvertisingBannerObject,
+    OSC\AdvertisingDetail\Object
+        as AdvertisingDetailObject
 ;
 class RestApiAdvertisingBanner extends RestApi {
 
@@ -15,8 +17,11 @@ class RestApiAdvertisingBanner extends RestApi {
 
     public function post($params){
         $obj = new AdvertisingBannerObject();
-        $obj->setProperties($params['POST']);
+        $obj->setProperties($params['POST']['master']);
         $obj->insert();
+        $id = $obj->getId();
+        $detail = AdvertisingDetailObject();
+        $fields = $params['POST']['detail'];
         return array(
             'data' => array(
                 'id' => $obj->getId()

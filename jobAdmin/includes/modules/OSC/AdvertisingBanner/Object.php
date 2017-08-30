@@ -3,7 +3,8 @@
 namespace OSC\AdvertisingBanner;
 
 use
-	Aedea\Core\Database\StdObject as DbObj
+	Aedea\Core\Database\StdObject as DbObj,
+	OSC\AdvertisingBannerDetail as advertisingDetailCol;
 ;
 
 class Object extends DbObj {
@@ -14,8 +15,15 @@ class Object extends DbObj {
 		, $link
 		, $sortOrder
 		, $location
+		, $advertisingDetail
 	;
 	
+	public function __construct( $params = array() ){
+		parent::__construct($params);
+
+		$this->advertisingDetail = new advertisingDetailCol();
+	}
+
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
@@ -55,6 +63,9 @@ class Object extends DbObj {
 		}
 		
 		$this->setProperties($this->dbFetchArray($q));
+
+		$this->advertisingDetail->setFilter('advertising_id', $this->getId());
+		$this->advertisingDetail->populate();
 	}
 	
 	public function delete(){

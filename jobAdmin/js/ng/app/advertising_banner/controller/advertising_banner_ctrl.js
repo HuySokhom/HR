@@ -17,7 +17,19 @@ app.controller(
 				vm.picFile = null;
 			}
 		};
-
+		vm.multipleDemo = {};
+		vm.advertisingList = [
+			{ name: 'Top Header', id: 2},
+			{ name: 'Home Page',id: 3},
+			{ name: 'Job List',id: 4},
+			{ name: 'Job Description',  id: 5},
+			{ name: 'CV List',id: 6},
+			{ name: 'Company List', id:7},
+			{ name: 'Cv or Company Description', id: 8},
+		  ];
+		
+		vm.advertisingLocations = [vm.advertisingList[5], vm.advertisingList[4]];
+		  
 		function init(params){
 			Restful.get(params).success(function(data){
 				vm.banners = data;
@@ -38,16 +50,20 @@ app.controller(
 
 		vm.save = function(){			
 			console.log(vm.data);
+			var data = {
+				master: vm.data,
+				detail: vm.locationDetail
+			};
 			vm.isDisabled = true;
 			if( vm.data.id ){
-				Restful.put('api/AdvertisingBanner/' + vm.data.id, vm.data).success(function(data){
+				Restful.put('api/AdvertisingBanner/' + vm.data.id, data).success(function(data){
 					init('api/AdvertisingBanner/');
 					console.log(data);
 					$('#banners').modal('hide');
 					vm.isDisabled = false;
 				});
 			}else{
-				Restful.post('api/AdvertisingBanner/', vm.data).success(function(data){
+				Restful.post('api/AdvertisingBanner/', data).success(function(data){
 					console.log(data);
 					init('api/AdvertisingBanner');
 					$('#banners').modal('hide')

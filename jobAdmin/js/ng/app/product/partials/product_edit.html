@@ -6,6 +6,15 @@
             </h4>
             <div class="row">
                 <div class="col-md-6">
+                    <label>
+                        Job Title:
+                        <span class="require">*</span>
+                    </label>
+                    <input type="text" placeholder="Job Title"
+                        class="form-control"
+                        data-ng-model="vm.model.product_description.products_name"
+                        required
+                    />
                     <!-- <label>
                         Industries:
                         <span class="require">*</span>
@@ -66,15 +75,6 @@
                     >
                         <option value="">Select Gender</option>
                     </select>
-                    <label>
-                        Job Title:
-                        <span class="require">*</span>
-                    </label>
-                    <input type="text" placeholder="Job Title"
-                        class="form-control"
-                        data-ng-model="vm.model.product_description.products_name"
-                        required
-                    />
                     <label>
                         Salary:
                     </label>

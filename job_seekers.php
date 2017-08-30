@@ -4,11 +4,7 @@
 ?>
 <br>
 <div class="container" data-ng-controller="job_seeker_ctrl">
-    <div class="col-md-3 col-sm-5 ">
-        <div class="filter-stacked">
-            <?php include('advanced_search_box_right.php');?>
-        </div>
-    </div>
+    
     <div class="col-md-9 col-sm-7" ng-cloak>
         <div class="candidates-list">
             <div class="candidates-list-item" data-ng-repeat="data in data.elements">
@@ -61,6 +57,11 @@
                 items-per-page="10"
                 boundary-links="true"
             ></pagination>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-5 ">
+        <div class="filter-stacked">
+            <?php include('advanced_search_box_right.php');?>
         </div>
     </div>
 </div>

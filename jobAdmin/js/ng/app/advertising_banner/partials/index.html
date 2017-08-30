@@ -189,12 +189,29 @@
 								Location:
 							</td>
 							<td>
-								<select class="form-control" required="required" 
+								<ui-select multiple ng-model="vm.advertisingLocations" 
+									theme="bootstrap" 
+									sortable="true" 
+									close-on-select="false" 
+									style="width: 100%;">
+									<ui-select-match placeholder="Select">
+										{{$item.name}}
+									</ui-select-match>
+									<ui-select-choices repeat="row in vm.advertisingList">
+										<div ng-bind-html="row.name | highlight: $select.search"></div>
+									</ui-select-choices>
+								</ui-select>
+								<!-- <select class="form-control" required="required" 
 									data-ng-model="vm.data.location">
+									<option value="all">All</option>
 									<option value="top">Top Header</option>
-									<option value="right">Right</option>
-									<option value="left">Left</option>
-								</select>
+									<option value="home page">Home Page</option>
+									<option value="job list">Job List</option>
+									<option value="job description">Job Description</option>
+									<option value="cv list">CV List</option>
+									<option value="company list">Company List</option>
+									<option value="company or cv description">Company or CV Description</option>
+								</select> -->
 							</td>
 						</tr>
 					</table>

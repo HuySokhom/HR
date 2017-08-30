@@ -32,7 +32,7 @@ ul.filter-list li {
     }
 }
 .position-header h1 {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
 }
 .position-header {
@@ -94,11 +94,14 @@ a{
     color: #777;
 }
 h3.page-header {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     padding: 5px 0px 15px 0px;
     margin: 20px 0px 20px 0px;
 }
 .require{
     color: red;
+}
+.label-view-detail{
+    margin-top: -8px;
 }

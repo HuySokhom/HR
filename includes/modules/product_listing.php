@@ -37,12 +37,6 @@
     <br>
     <div class="container">
           <div class="row">
-              <div class="col-md-3 col-sm-4">
-                  <div class="filter-stacked">
-                      <?php include('advanced_search_box_right.php');?>
-                  </div><!-- /.filter-stacked -->
-
-              </div>
               <!-- /.col-* -->
               <div class="col-md-9 col-sm-8">
               <?php
@@ -94,12 +88,19 @@
               <?php
               } else {
               ?>
-                  <div class="col-md-12">
+                  <div class="">
                       <div class="alert alert-info"><?php echo TEXT_NO_PRODUCTS; ?></div>
                   </div>
                   <?php
               }
               ?>
               </div><!-- /.col-* -->
+              
+              <div class="col-md-3 col-sm-4">
+                  <div class="filter-stacked">
+                      <?php include('advanced_search_box_right.php');?>
+                  </div><!-- /.filter-stacked -->
+
+              </div>
           </div><!-- /.row -->
       </div><!-- /.container -->
