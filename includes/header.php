@@ -141,7 +141,7 @@
                   </a>';
               }else{
                 if($_SESSION['user_name']){
-                  $user = $_SESSION['user_type'] == "normal" ? $_SESSION['user_name'] : $_SESSION['company_name'];
+                  $user = $_SESSION['company_name'];
                   echo '
                     <a href="javascript:void(0)">
                       <img src="images/'.$_SESSION['user_photo'].'" class="img-circle" width="30px"/>

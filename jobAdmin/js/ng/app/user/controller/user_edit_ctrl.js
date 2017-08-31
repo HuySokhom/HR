@@ -13,9 +13,10 @@ app.controller(
 		var url = 'api/Customer/';
 		vm.service = new Services();
 		vm.account = {
-			user_type: 'agency'
+			user_type: 'agency',
+			photo: 'icon-person.png'
 		};
-		// init tiny option
+		// init tiny option,
 		vm.tinymceOptions = {
 			 onChange: function(e) {
 			// put logic here for keypress and cut/paste changes
