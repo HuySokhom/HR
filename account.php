@@ -20,6 +20,7 @@
 
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
+<link href="ext/ng/lib/angular-crop-image/ng-img-crop.css" rel="stylesheet" type="text/css">
 <link href="ext/ng/lib/angular-datetime/angularjs-datetime-picker.css" rel="stylesheet" type="text/css">
 <link href="ext/ng/lib/angular-trix/trix.css" rel="stylesheet" type="text/css">
 <div
@@ -108,7 +109,7 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/lib/angular-cookies/angular-cookies.min.js"
+	src="ext/ng/lib/angular-crop-image/ng-img-crop.js"
 ></script>
 <script
 	type="text/javascript"

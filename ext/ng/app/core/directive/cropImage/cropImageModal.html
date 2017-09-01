@@ -1,0 +1,68 @@
+﻿<form data-ng-submit="vm.save();" novalidate name="setting">
+    <div class="modal fade"
+        id="crop-image-popup"
+        data-keyboard="false"
+        data-backdrop="static">    
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        {{"UploadAnImage" | translate}}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cropArea text-center">
+                        <button class="btn btn-primary" 
+                            ngf-select ng-model="picFile" 
+                            ngf-max-size="1MB"
+                            name="file"
+                            ngf-accept="'image/*'">
+                            <i class="fa fa-download"></i>
+                            {{"UploadAnImage" | translate}}
+                        </button>
+                        <i ng-show="setting.file.$error.maxSize" class="error">
+                            File too large {{vm.errorFiles[0].size / 1000000|number:1}}MB: max 1M
+                        </i>
+                        <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+                            ngf-max-size="1MB"
+                            name="file"
+                            class="cropArea">
+                            <img-crop image="picFile | ngfDataUrl"                 
+                                result-image="croppedDataUrl" 
+                                area-type="square"
+                                result-image-size="800"
+                                ng-init="croppedDataUrl=''">
+                            </img-crop>
+                        </div>
+                        <!--<div>
+                            <img ng-src="{{croppedDataUrl}}" />
+                        </div>-->
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" ng-click="vm.cancel()" 
+                        data-ng-disabled="vm.loading"
+                        data-dismiss="modal">
+                        <i class="fa fa-close"></i>
+                        {{'Close' | translate}}
+                    </button>
+                    <button class="btn btn-success" 
+                            ng-click="vm.done();"
+                            data-ng-disabled="loading">
+                        <i class="fa fa-save" data-ng-if="!vm.loading"></i>
+                        <i class="fa fa-spinner fa-spin" data-ng-if="vm.loading"></i>
+                        {{"Save" | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<style type="text/css">
+    .cropArea {
+        /*overflow: hidden;*/
+        height: 250px;
+        margin: 10px 0px 60px 0px;
+    }
+</style>

@@ -5,10 +5,10 @@ var app = angular.module(
 		, 'ui.bootstrap'
 		, 'ngSanitize'
 		, 'ngFileUpload'
-		, 'ngCookies'
 		, 'ngAlertify'
 		, 'angularjs-datetime-picker'
 		, 'angularTrix'
+		, 'ngImgCrop'
 	]
 );
 // range with number

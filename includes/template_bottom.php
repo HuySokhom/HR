@@ -16,9 +16,9 @@
 
 </div>
 <!-- /.page-wrapper -->
-
-
 <script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="ext/sticky/jquery.sticky.js"></script>
+<script type="text/javascript" src="ext/pushy-js/pushy.min.js"></script>
  <script type="text/javascript" src="ext/bootstrap/js/bootstrap.min.js"></script> 
 <!-- <script type="text/javascript" src="assets/js/jquery.ezmark.js"></script> -->
 
@@ -38,13 +38,19 @@
 <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKqUQ4QmbTWM_KNhkYg7erVxakz_0-noE&v=3.exp"></script>-->
 <!-- Facebook Plugin-->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1423595867869606";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+<script>
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1423595867869606";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+$(document).ready(function(){
+    $(".header-bottom").sticky({topSpacing:0, zIndex: 99});
+  });
+
 </script>
 
 </body>

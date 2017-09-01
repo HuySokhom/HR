@@ -34,6 +34,9 @@
     <link rel="canonical" href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
     <meta http-equiv="ROBOTS" content="INDEX, FOLLOW">
     <link rel="shortcut icon" href="assets/favicon.png">
+    <link href="ext/pushy-js/normalize.css" rel="stylesheet" type="text/css">
+    <link href="ext/pushy-js/demo.css" rel="stylesheet" type="text/css">
+    <link href="ext/pushy-js/pushy.css" rel="stylesheet" type="text/css">
     <link href="ext/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">
     <link href="assets/libraries/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

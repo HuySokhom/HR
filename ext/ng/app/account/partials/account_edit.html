@@ -4,6 +4,7 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Photo</label>
+					<button ng-click="vm.showSnapPhoto()">Upload Photo</button>
 					<div class="center">
 						<img src="images/icon-person.png"
 							 data-ng-if="!vm.account.photo"
@@ -127,6 +128,7 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Photo</label>
+					<a ng-click="vm.showSnapPhoto()" href="javascript:;" class="btn btn-default">Upload Photo</a>
 					<div class="center">
 						<img src="images/icon-person.png"
 							 data-ng-if="!vm.account.photo"

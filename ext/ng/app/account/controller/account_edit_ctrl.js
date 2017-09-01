@@ -83,5 +83,10 @@ app.controller(
 				});
 			}
 		};
+
+		vm.showSnapPhoto = function(){
+			vm.hide = true;
+			$('#snap-photo-popup').modal('show');
+		};
 	}
 ]);
