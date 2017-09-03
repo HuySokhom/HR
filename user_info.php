@@ -54,7 +54,7 @@
                     <div class="col-md-12">
                         <div class="col-md-3">
                             <br/>
-                            <img src="images/<?php echo $customer_info['photo']; ?>" alt=""
+                            <img src="<?php echo $customer_info['photo']; ?>" alt=""
                                  class="img-thumbnail"/>
                         </div>
                         <!-- /.resume-main-image -->
@@ -186,7 +186,7 @@
             <div class="col-md-3 col-sm-4">
                 <div class="company-card">
                     <div class="company-card-image">
-                        <img src="images/<?php echo $customer_info['photo']; ?>" alt="">
+                        <img src="<?php echo $customer_info['photo']; ?>" alt="">
                     </div>
                     <!-- /.company-card-image -->
                     <div class="company-card-data">
@@ -194,9 +194,7 @@
                             <tr>
                                 <td>Website</td>
                                 <td>
-                                    <a
-                                            href="<?php echo $customer_info['customers_website']; ?>"
-                                    >
+                                    <a href="<?php echo $customer_info['customers_website']; ?>">
                                         <?php echo $customer_info['customers_website'] ? $customer_info['customers_website'] : "N/A"; ?>
                                     </a>
                                 </td>

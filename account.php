@@ -125,7 +125,7 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.min.js"
+	src="ext/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-2.4.0.js"
 ></script>
 <script
 	type="text/javascript"

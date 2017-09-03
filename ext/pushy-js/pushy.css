@@ -9,9 +9,10 @@
   height: 100%;
   top: 0;
   z-index: 9999;
-  background: #191918;
+  background: #f9f9f9;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  border-right: 1px solid #ddd;
   /* enables momentum scrolling in iOS overflow elements */
 }
 .pushy a {
@@ -21,7 +22,7 @@
   text-decoration: none;
 }
 .pushy a:hover {
-  color: #FFF;
+  /* color: #FFF; */
 }
 .pushy ul:first-child {
   margin-top: 10px;

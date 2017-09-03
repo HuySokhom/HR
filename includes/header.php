@@ -141,12 +141,14 @@
                   </a>';
               }else{
                 if($_SESSION['user_name']){
-                  $user = $_SESSION['company_name'];
+                  $user = $_SESSION['user_name'];
                   echo '
-                    <a href="javascript:void(0)">
-                      <img src="images/'.$_SESSION['user_photo'].'" class="img-circle" width="30px"/>
-                      <br/>
-                      $user
+                    <a href="javascript:void(0)" style="margin-top: -9px;">
+                      <img src="'.$_SESSION['user_photo'].'" class="img-circle" width="25px"/>
+                      <div>
+                        '.$_SESSION['user_name'].'
+                        <i class="fa fa-caret-down"></i>
+                      </div>
                     </a>
                   ';
                 }else{
@@ -237,11 +239,11 @@
               </a>';
           }else{
             if($_SESSION['user_name']){
-              $user = $_SESSION['company_name'];
+              $user = $_SESSION['user_name'];
               echo '
                 <a href="javascript:void(0)">
-                  <img src="images/'.$_SESSION['user_photo'].'" class="img-circle" width="30px"/>
-                  '.$user.'
+                  <img src="'.$_SESSION['user_photo'].'" class="img-circle" width="30px"/>
+                  '.$_SESSION['user_name'].'
                   <i class="fa fa-angle-down"></i>
                 </a>
               ';

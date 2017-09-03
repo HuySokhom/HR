@@ -97,7 +97,7 @@
           'customers_telephone' => $telephone,
           'customers_fax' => $fax,
           'customers_newsletter' => $newsletter,
-          'photo' => 'icon-person.png',
+          'photo' => 'images/icon-person.png',
           'customers_password' => tep_encrypt_password($password),
           'create_date' => $date
       );

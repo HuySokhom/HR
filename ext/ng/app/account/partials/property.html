@@ -1,15 +1,13 @@
 <div class="panel-body">
 	<div class="row">
 		<div class="col-md-3">
-			<button
-				class="btn btn-primary"
-				onclick="location.href='account.php#/manage/post';"
-			>
+			<a class="btn btn-primary"
+				ui-sref="/manage/post">
 				<span class="fa fa-plus-circle"></span>
 				Post Job
-			</button>
+			</a>
 			<span>
-				Total of Jobs: {{totalItems}}
+				Total of Jobs: {{vm.totalItems}}
 			</span>
 		</div>
 		<div class="col-md-9">
@@ -21,9 +19,9 @@
 							placeholder="Search Job Title..."
 							style="width: 106%;"
 							class="form-control"
-							data-ng-model="search_title"
+							data-ng-model="vm.search_title"
 							ng-model-options="{ debounce: 1000 }"
-							data-ng-change="search()"
+							data-ng-change="vm.search()"
 						/>
 						<span class="input-group-btn">
 							<button class="btn btn-default">
@@ -34,10 +32,10 @@
 				</div>
 				<div class="form-group has-feedback col-sm-4">
 					<select
-						data-ng-model="category_id"
-						data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
+						data-ng-model="vm.category_id"
+						data-ng-options="c.categories_id as c.categories_name for c in vm.categoryList.elements"
 						class="form-control"
-						data-ng-change="search();"
+						data-ng-change="vm.search();"
 						required
 					>
 						<option value="">Filter By Category</option>
@@ -46,129 +44,105 @@
 			</div>
 		</div>
 	</div>
-
-	<table class="table table-bordered table-striped">
-		<thead>
-			<th>
-				ID
-			</th>
-			<th>
-				Category
-			</th>
-			<th>
-				Job Title
-			</th>
-			<th>
-				Job Type
-			</th>
-			<th>
-				View
-			</th>
-			<th>
-				Expire Date
-			</th>
-			<th>
-				Status
-			</th>
-			<th width="100px">
-				Action
-			</th>
-		</thead>
-		<tr data-ng-repeat="p in products_post.elements">
-			<td>
-				{{p.products_id}}
-			</td>
-			<td>
-				{{p.categories_name}}
-			</td>
-			<td>
-				<span data-ng-bind="p.products_name"></span>
-			</td>
-
-			<td>
-				<span data-ng-bind="p.products_kind_of"></span>
-			</td>
-			<td>
-				<span data-ng-bind="p.products_viewed" class="label label-primary"></span>
-			</td>
-			<td>
-				<span data-ng-bind="p.products_close_date"></span>
-			</td>
-			<td>
-				<label class="label label-warning" ng-if="p.is_publish == 0">Pending</label>
-				<label class="label label-success" ng-if="p.is_publish == 1">Approve</label>
-			</td>
-			<td>
-				<!-- Single button -->
-				<div class="btn-group">
-				  <button type="button" 
-					  class="btn btn-default dropdown-toggle" 
-					  data-toggle="dropdown" 
-					  aria-haspopup="true" 
-					  aria-expanded="false"
-				  >
-				  		<i class="fa fa-cog"></i> 
-				  		<span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu">
-				    <li>
-				    	<a data-ng-click="link(p.products_id);" href="">
-				    		<i class="fa fa-eye"></i>
-				    		View this job
-			    		</a>
-				    </li>
-				    <li>
-				    	<a href="" data-ng-click="edit(p.products_id);">
-				    		<i class="fa fa-edit"></i>
-				    		Edit this job
-				    	</a>
-			    	</li>
-				    <li>
-				    	<a data-ng-click="updateStatus(p);" href="">
-				    		<i 
-					    		ng-class="p.products_status == 0 ? 'fa fa-check-square-o' : 'fa fa-minus' "
-					    	></i>
-					    	<span
-					    		data-ng-bind="p.products_status == 0 ? 'Enable this job' : 'Disable this job'"
-					    	>
-					    	</span>
-				    	</a>
-			    	</li>
-				    <li>
-					    <a href="" data-ng-click="remove($index, p.products_id);">
-					    <i class="fa fa-trash-o"></i>
-					    	Delete this job
-				    	</a>
-			    	</li>
-				  </ul>
-				</div>
-			</td>
-		</tr>
-	</table>
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<th width="5%">
+					#
+				</th>
+				<th width="12%">
+					Category
+				</th>
+				<th width="20%">
+					Job Title
+				</th>
+				<th width="5%">
+					View
+				</th>
+				<th width="10%">
+					Expire Date
+				</th>
+				<th width="5%">
+					Status
+				</th>
+				<th width="15%">
+					Action
+				</th>
+			</thead>
+			<tr data-ng-repeat="p in vm.products_post.elements">
+				<td>
+					{{$index + 1}}
+				</td>
+				<td>
+					{{p.categories_name}}
+				</td>
+				<td>
+					<span data-ng-bind="p.products_name"></span>
+				</td>
+				<td>
+					<span data-ng-bind="p.products_viewed" class="label label-primary"></span>
+				</td>
+				<td>
+					<span data-ng-bind="p.products_close_date"></span>
+				</td>
+				<td>
+					<label class="label label-warning" ng-if="p.is_publish == 0">Pending</label>
+					<label class="label label-success" ng-if="p.is_publish == 1">Approve</label>
+				</td>
+				<td>
+					<button data-ng-click="vm.link(p.products_id);" 
+						uib-tooltip="View Detial"
+						class="btn btn-xs">
+						<i class="fa fa-eye"></i>
+					</button>
+					<button ui-sref="manage_edit({id:p.products_id})" 
+						uib-tooltip="Edit"
+						class="btn btn-default btn-xs">
+						<i class="fa fa-edit"></i>
+					</button>
+					<button data-ng-click="vm.updateStatus(p);"
+						uib-tooltip="Disable"
+						ng-if="p.products_status != 0" class="btn btn-xs btn-success">
+						<i class="fa fa-check-square-o"></i>
+					</button>
+					
+					<button data-ng-click="vm.updateStatus(p);" uib-tooltip="Enable" ng-if="p.products_status == 0" class="btn btn-xs btn-warning">
+						<i class="fa fa-minus"></i>
+					</button>
+					<button  class="btn btn-xs btn-danger" uib-tooltip="Delete" data-ng-click="vm.remove($index, p.products_id);">
+						<i class="fa fa-trash-o"></i>						
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
 	<div
-		data-ng-if="products_post.elements == 0"
+		data-ng-if="vm.products_post.elements == 0"
 	>
 		<div class="alert alert-danger">
 			<strong>Warning!</strong> Empty Data.
 		</div>
 	</div>
 	<div
-		data-ng-if="!products_post"
+		data-ng-if="!vm.products_post"
 		class="align_center"
 	>
 	<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
 	</div>
-	<div
-		class="panel-footer"
-		data-ng-show="totalItems > 10"
-	>
-		<pagination
-			total-items="totalItems"
-			ng-model="currentPage"
-			ng-change="pageChanged()"
+	<div class="panel-footer">
+		<ul uib-pagination
+			previous-text="‹"
+			next-text="›"
+			first-text="«"
+			last-text="»"
+			total-items="vm.totalItems"
+			boundary-link-numbers="true" 
+			rotate="true"
+			ng-model="vm.currentPage"
+			ng-change="vm.pageChanged()"
 			max-size="5"
 			items-per-page="10"
 			boundary-links="true"
-		></pagination>
+		></ul>
 	</div>
 </div>

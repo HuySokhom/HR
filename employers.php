@@ -10,7 +10,7 @@
             <div class="companies-list-item" data-ng-repeat="data in data.elements">
                 <div class="companies-list-item-image">
                     <a href="{{renderLink(data.id, data.company_name)}}">
-                        <img ng-src="images/{{data.photo}}" alt="">
+                        <img ng-src="{{data.photo}}" class="img-circle">
                     </a>
                 </div>
                 <!-- /.companies-list-item-image -->

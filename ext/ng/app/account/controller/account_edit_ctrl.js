@@ -84,9 +84,23 @@ app.controller(
 			}
 		};
 
+		// start crop functionality
 		vm.showSnapPhoto = function(){
 			vm.hide = true;
-			$('#snap-photo-popup').modal('show');
+			$('#crop-image-popup').modal('show');
+		};
+		vm.done = function(){
+			$scope.resultImage = $scope.croppedDataUrl;
+			vm.loading = true;
+			Restful.post( 'api/ImageUploadBase64' , {fileName: $scope.resultImage}).success(function (data) {
+				console.log(data);
+				$('#crop-image-popup').modal('hide');
+				vm.account.photo =  data.fileName;
+				vm.account.photo_thumbnail =  data.fileName;
+				$scope.imagePath = data.fileName;
+			}).finally(function(){
+				vm.loading = false;
+			});
 		};
 	}
 ]);

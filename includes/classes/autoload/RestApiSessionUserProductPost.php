@@ -39,9 +39,9 @@ class RestApiSessionUserProductPost extends RestApi {
 				$showDataPerPage = 10;
 				$start = $params['GET']['start'];
 				$this->applyLimit($col,
-						array(
-								'limit' => array( $start, $showDataPerPage )
-						)
+					array(
+						'limit' => array( $start, $showDataPerPage )
+					)
 				);
 				$this->applyFilters($col, $params);
 				$this->applySortBy($col, $params);

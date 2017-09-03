@@ -229,7 +229,7 @@ if (tep_db_num_rows($product_info_query) < 1) {
 			<div class="company-card">
 				<div class="company-card-image">
 					<a href="<?php echo tep_href_link(FILENAME_INFORMATION, 'info_id=' . $product_info['customers_id']) ?>">
-						<img src="images/<?php echo $product_info['photo'];?>" alt=""></a>
+						<img src="<?php echo $product_info['photo'];?>" alt=""></a>
 					</a>
 				</div><!-- /.company-card-image -->
 

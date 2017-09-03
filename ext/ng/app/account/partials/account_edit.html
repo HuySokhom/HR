@@ -4,17 +4,16 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Photo</label>
-					<button ng-click="vm.showSnapPhoto()">Upload Photo</button>
 					<div class="center">
-						<img src="images/icon-person.png"
-							 data-ng-if="!vm.account.photo"
-							 style="width: 100%;margin-bottom: 10px;"
-							 class="img-thumbnail">
-						<img src="images/{{vm.account.photo}}"
+						<img src="{{vm.account.photo}}"
 							 data-ng-if="vm.account.photo"
 							 style="width: 100%;margin-bottom: 10px;"
 							 class="img-thumbnail">
-						<input type="file" accept="image/*"
+						<a ng-click="vm.showSnapPhoto()" class="btn btn-default" href="javascript:;">
+							<i class="fa fa-picture-o"></i>
+							Upload Photo
+						</a>
+						<!-- <input type="file" accept="image/*"
 							   ng-model="picFile"
 							   ngf-max-size="2MB"
 							   ngf-model-invalid="errorFiles"
@@ -31,7 +30,7 @@
 							</div>
 						</span>
 						<span ng-show="picFile.result">Upload Successful</span>
-						<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+						<span class="err" ng-show="errorMsg">{{errorMsg}}</span> -->
 					</div>
 				</div><!-- /.form-group-->
 			</div><!-- /.col-* -->
@@ -128,17 +127,16 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Photo</label>
-					<a ng-click="vm.showSnapPhoto()" href="javascript:;" class="btn btn-default">Upload Photo</a>
 					<div class="center">
-						<img src="images/icon-person.png"
-							 data-ng-if="!vm.account.photo"
-							 style="width: 100%;margin-bottom: 10px;"
-							 class="img-thumbnail">
-						<img src="images/{{vm.account.photo}}"
+						<img src="{{vm.account.photo}}"
 							 data-ng-if="vm.account.photo"
 							 style="width: 100%;margin-bottom: 10px;"
 							 class="img-thumbnail">
-						<input type="file" accept="image/*"
+						<a ng-click="vm.showSnapPhoto()" class="btn btn-default" href="javascript:;">
+							<i class="fa fa-picture-o"></i>
+							Upload Photo
+						</a>
+						<!-- <input type="file" accept="image/*"
 							   ng-model="picFile"
 							   ngf-max-size="1MB"
 							   name="fileImage"
@@ -156,7 +154,7 @@
 							</div>
 						</span>
 						<span ng-show="picFile.result.data">Upload Successful</span>
-						<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+						<span class="err" ng-show="errorMsg">{{errorMsg}}</span> -->
 					</div>
 					<hr />
 					<label>
@@ -202,7 +200,7 @@
 						<input type="text"
 							   class="form-control"
 							   required
-							   placeholder="Company Name..."
+							   placeholder="Full Name..."
 							   data-ng-model="vm.account.company_name"
 						/>
 					</div><!-- /.form-group -->
@@ -332,3 +330,72 @@
 		</button>
 	</div><!-- /.center -->
 </form>
+
+    <div class="modal fade"
+        id="crop-image-popup"
+        data-keyboard="false"
+        data-backdrop="static">    
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+						Upload Photo
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cropArea text-center">
+                        <button class="btn btn-primary" 
+                            ngf-select ng-model="picFile" 
+                            ngf-max-size="1MB"
+                            name="file"
+                            ngf-accept="'image/*'">
+                            <i class="fa fa-download"></i>
+                            Browse Upload Photo
+                        </button>
+                        <i ng-show="setting.file.$error.maxSize" class="error">
+                            File too large {{vm.errorFiles[0].size / 1000000|number:1}}MB: max 1M
+                        </i>
+                        <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+                            ngf-max-size="1MB"
+                            name="file"
+                            class="cropArea">
+                            <img-crop image="picFile | ngfDataUrl"                 
+                                result-image="croppedDataUrl" 
+                                area-type="square"
+								result-image-size="200"
+								result-image-quality="1"
+                                ng-init="croppedDataUrl=''">
+                            </img-crop>
+                        </div>
+                        <!--<div>
+                            <img ng-src="{{croppedDataUrl}}" />
+                        </div>-->
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" ng-click="vm.cancel()" 
+                        data-ng-disabled="vm.loading"
+                        data-dismiss="modal">
+                        <i class="fa fa-close"></i>
+                        Close
+                    </button>
+                    <button class="btn btn-primary" 
+                            ng-click="vm.done();"
+                            data-ng-disabled="loading">
+                        <i class="fa fa-save" data-ng-if="!vm.loading"></i>
+                        <i class="fa fa-spinner fa-spin" data-ng-if="vm.loading"></i>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<style type="text/css">
+    .cropArea {
+        /*overflow: hidden;*/
+        height: 250px;
+        margin: 10px 0px 60px 0px;
+    }
+</style>
+

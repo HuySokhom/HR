@@ -90,7 +90,7 @@
     <!-- /.filter -->
     <div class="col-md-8">
         <div class="row">
-            <div class="col-md-12">
+            <div class="">
                 <h4 class="page-header">Recent Job Offers</h4>
 
                 <div class="positions-list">
@@ -106,7 +106,7 @@
                                     </h2>
                                     <h3>
                                         <span>
-                                            <img src="images/'. $product['photo'] .'" alt="">
+                                            <img src="'. $product['photo'] .'" alt="">
                                         </span>
                                         '. $product['company_name'] .'
                                         <br>
@@ -133,7 +133,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">        
+    <div class="col-md-4">
         <div class="" style="margin-top: 30px;">
             <div class="fb-page"
                     data-href="https://www.facebook.com/Aseanhr-1827357880910799/"
@@ -157,7 +157,7 @@
                     foreach($array_featured_company as $feature) {
                         echo '<a href="'. tep_href_link(FILENAME_INFORMATION, 
                                 'info_id=' . $feature['customers_id'] ) .'">
-                                <img src="images/'. $feature['photo'] .'" 
+                                <img src="'. $feature['photo'] .'" 
                                     class="feature_logo">
                             </a>';
                     }
@@ -177,7 +177,7 @@
                                         <div class="candidate-box-image">
                                             <a href="' . tep_href_link(FILENAME_INFORMATION, 'info_id=' . $candidate['customers_id']) . '">
                                                 <img
-                                                    src="images/' . $candidate['photo'] . '"
+                                                    src="' . $candidate['photo'] . '"
                                                     alt="' . $candidate['company_name'] . '"
                                                     class="img-responsive"
                                                 />

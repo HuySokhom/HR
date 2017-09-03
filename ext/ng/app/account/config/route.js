@@ -6,7 +6,7 @@ app.config([
 			state('/manage', {
 				url: '/manage',
 				templateUrl: 'ext/ng/app/account/partials/property.html',
-                controller: 'property_ctrl',
+                controller: 'property_ctrl as vm',
 				resolve: {
 					getDetail: [
 						'Restful',
@@ -53,10 +53,10 @@ app.config([
 					]
 				}
 			})
-			.state('/manage/edit/:id', {
+			.state('manage_edit', {
 				url: '/manage/edit/:id',
-				templateUrl: 'ext/ng/app/account/partials/property_edit.html',
-				controller: 'property_edit_ctrl',
+				templateUrl: 'ext/ng/app/account/partials/property_post.html',
+				controller: 'property_post_ctrl',
 				resolve: {
 					getDetail: [
 						'Restful',

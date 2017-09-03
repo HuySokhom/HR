@@ -199,7 +199,7 @@ class Object extends DbObj {
 				categories_id,
 				province_id,
 				products_promote,
-				salary,
+				salary_id,
 				products_date_added,
 				products_status,
 				create_date,
@@ -215,7 +215,7 @@ class Object extends DbObj {
 				'" . (int)$this->getCategoriesId() . "',
 				'" . (int)$this->getProvinceId() . "',
  				'" . (int)$this->getProductsPromote() . "',
-				'" . $this->getSalary() . "',
+				'" . $this->getSalaryId() . "',
  				NOW(),
  				1,
  				NOW(),
@@ -384,11 +384,11 @@ class Object extends DbObj {
 		$this->productsCloseDate = $string;
 	}
 
-	public function getSalary(){
-		return $this->salary;
+	public function getSalaryId(){
+		return $this->salaryId;
 	}
-	public function setSalary( $string ){
-		$this->salary = $string;
+	public function setSalaryId( $string ){
+		$this->salaryId = $string;
 	}
 
 	public function getGender(){

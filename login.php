@@ -34,7 +34,7 @@
     }
 
     $customer_info_query = tep_db_query("select c.user_name, c.customers_limit_products, 
-      c.photo_thumbnail, c.company_name, c.customers_email_address, c.user_type, 
+      c.photo, c.company_name, c.customers_email_address, c.user_type, 
       c.customers_default_address_id, ab.entry_country_id, ab.entry_zone_id 
     from " . TABLE_CUSTOMERS . " c left join " . TABLE_ADDRESS_BOOK . " ab on (c.customers_id = ab.customers_id and c.customers_default_address_id = ab.address_book_id) 
     where c.customers_id = '" . (int)$login_customer_id . "'");
@@ -46,13 +46,13 @@
     $customers_email_address = $customer_info['customers_email_address'];
     tep_session_register('customers_email_address');
 
-    $user_name = $customer_info['user_name'];
+    $user_name = $customer_info['company_name'];
     tep_session_register('user_name');
 
     $user_type = $customer_info['user_type'];
     tep_session_register('user_type');
 
-    $user_photo = $customer_info['photo_thumbnail'];
+    $user_photo = $customer_info['photo'];
     tep_session_register('user_photo');
     
     $customer_default_address_id = $customer_info['customers_default_address_id'];
