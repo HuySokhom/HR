@@ -38,7 +38,7 @@
 						data-ng-change="vm.search();"
 						required
 					>
-						<option value="">Filter By Category</option>
+						<option value="">Filter By Function</option>
 					</select>
 				</div>
 			</div>
@@ -50,11 +50,11 @@
 				<th width="5%">
 					#
 				</th>
-				<th width="12%">
-					Category
-				</th>
 				<th width="20%">
 					Job Title
+				</th>
+				<th width="12%">
+					Function
 				</th>
 				<th width="5%">
 					View
@@ -74,10 +74,10 @@
 					{{$index + 1}}
 				</td>
 				<td>
-					{{p.categories_name}}
+					<span data-ng-bind="p.products_name"></span>
 				</td>
 				<td>
-					<span data-ng-bind="p.products_name"></span>
+					{{p.categories_name}}
 				</td>
 				<td>
 					<span data-ng-bind="p.products_viewed" class="label label-primary"></span>

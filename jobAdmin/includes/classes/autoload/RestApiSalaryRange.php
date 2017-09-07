@@ -68,20 +68,14 @@ class RestApiSalaryRange extends RestApi {
 	}
 
 	public function delete(){
-		$cols = new SalaryObj();
-		$cols->filterById( $this->getId() );
-		if( $cols->getTotalCount() > 0 ){
-			$cols->populate();
-			$col = $cols->getFirstElement();
-			$col->setId($this->getId());
-			$col->delete();
-		}
+		$obj = new SalaryObj();
+		$obj->setId($this->getId());
+		$obj->delete();
 		return array(
 			'data' => array(
 				'data' => 'success'
 			)
 		);
-
 	}
 
 }

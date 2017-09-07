@@ -38,7 +38,7 @@
     <div class="container">
           <div class="row">
               <!-- /.col-* -->
-              <div class="col-md-9 col-sm-8">
+              <div class="col-md-8 col-sm-7">
               <?php
               if($row > 0) {
                   foreach ($prod_list_contents as $product) {
@@ -96,7 +96,7 @@
               ?>
               </div><!-- /.col-* -->
               
-              <div class="col-md-3 col-sm-4">
+              <div class="col-md-4 col-sm-5">
                   <div class="filter-stacked">
                       <?php include('advanced_search_box_right.php');?>
                   </div><!-- /.filter-stacked -->

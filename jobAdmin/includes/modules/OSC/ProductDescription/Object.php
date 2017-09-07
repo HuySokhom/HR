@@ -103,8 +103,8 @@ class Object extends DbObj {
  				'" . $this->dbEscape( $this->getProductsDescription() ) . "',
 				'" . $this->getProductsId() . "',
 				1,
-				'" . $this->getSkill() . "',
-				'" . $this->getBenefits() . "'
+				'" . $this->dbEscape($this->getSkill()). "',
+				'" . $this->dbEscape($this->getBenefits()) . "'
 			)
 		");
     }

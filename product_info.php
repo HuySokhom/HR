@@ -238,6 +238,16 @@ if (tep_db_num_rows($product_info_query) < 1) {
 					<div class="col-md-12">	
 						<div class="form-group">
 							<label class="col-sm-4">
+								Company
+							</label>
+							<div class="col-sm-8">
+								<?php
+									echo $product_info['company_name'];
+								?>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4">
 								Website
 							</label>
 							<div class="col-sm-8">

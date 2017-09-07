@@ -19,6 +19,9 @@ app.controller(
 			Restful.get("api/Location").success(function(data){
 				vm.locations = data.elements;
 			});
+			Restful.get("api/Industry").success(function(data){
+				vm.industriesList = data.elements;
+			});
 		};
 		vm.init();
 

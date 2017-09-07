@@ -5,7 +5,7 @@
 <br>
 <div class="container" data-ng-controller="job_seeker_ctrl">
     
-    <div class="col-md-9 col-sm-7" ng-cloak>
+    <div class="col-md-8 col-sm-7" ng-cloak>
         <div class="candidates-list">
             <div class="candidates-list-item" data-ng-repeat="data in data.elements">
                 <div class="candidates-list-item-heading">
@@ -59,7 +59,7 @@
             ></pagination>
         </div>
     </div>
-    <div class="col-md-3 col-sm-5 ">
+    <div class="col-md-4 col-sm-5">
         <div class="filter-stacked">
             <?php include('advanced_search_box_right.php');?>
         </div>

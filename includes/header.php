@@ -30,13 +30,13 @@
         <?php
           if(tep_db_num_rows($query) > 0) {
             ?>
-            <div class="col-md-7 col-sm-7">
+            <div class="col-md-9 col-sm-9">
               <a href="<?php echo $ad['link']; ?>" target="_blank">
                 <img src="images/<?php echo $ad['image']; ?>"
                      alt="<?php echo $ad['title']; ?>"
                      title="<?php echo $ad['title']; ?>"
                      border="0"
-                     style="max-height: 85px;"
+                     style="max-height: 100px;width: 100%"
                      class="img-responsive"/>
               </a>
             </div>

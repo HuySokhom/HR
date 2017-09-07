@@ -5,7 +5,7 @@
 <br>
 <div class="container" data-ng-controller="employers_ctrl" >
     
-    <div class="col-md-9 col-sm-8" ng-cloak>
+    <div class="col-md-8 col-sm-7" ng-cloak>
         <div class="companies-list" data-ng-if="data.count > 0">
             <div class="companies-list-item" data-ng-repeat="data in data.elements">
                 <div class="companies-list-item-image">
@@ -71,7 +71,7 @@
         </div>
 
     </div>
-    <div class="col-md-3 col-sm-4">
+    <div class="col-md-4 col-sm-5">
         <div class="filter-stacked">
             <?php include('advanced_search_box_right.php');?>
         </div>

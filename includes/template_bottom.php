@@ -3,7 +3,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="footer-bottom-left">
-                    &copy; <a href="index.php">HRKing</a>, 2016 All rights reserved.
+                    &copy; <a href="index.php"><?php echo STORE_NAME;?></a>, 2016 All rights reserved.
                 </div><!-- /.footer-bottom-left -->
 
                 <div class="footer-bottom-right">

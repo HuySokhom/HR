@@ -30,7 +30,9 @@ class Object extends DbObj {
         , $summary
         , $workingHistory
         , $experience
-        , $uploadCv
+		, $uploadCv
+		, $industryId
+		, $industryName
 	;
 
 	public function __construct( $params = array() ){
@@ -44,7 +46,9 @@ class Object extends DbObj {
 				'id',
 				'user_name',
                 'summary',
-                'experience',
+				'experience',
+				'industry_id',
+				'industry_name',
                 'working_history',
 				'user_type',
 				'photo',
@@ -79,6 +83,8 @@ class Object extends DbObj {
 				customers_location,
 				skill_title,
 				company_name,
+				industry_id,
+				i.name as industry_name,
 				customers_website,
 				is_agency,
 				detail,
@@ -87,7 +93,7 @@ class Object extends DbObj {
                 working_history,
                 upload_cv
 			FROM
-				customers
+				customers c left join industries i on c.industry_id = i.id
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'
 		");
@@ -148,6 +154,7 @@ class Object extends DbObj {
 				customers
 			SET
 				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
+				industry_id = '" .  $this->getIndustryId() . "',
 				upload_cv = '" . $this->dbEscape( $this->getUploadCv() ) . "',
 				summary = '" . $this->dbEscape( $this->getSummary() ) . "',
 				skill_title = '" . $this->dbEscape( $this->getSkillTitle() ) . "',
@@ -169,8 +176,23 @@ class Object extends DbObj {
 	
 	}
 
+    public function setIndustryId( $string ){
+        $this->industryId = (int)$string;
+    }
+
+    public function getIndustryId(){
+        return $this->industryId;
+    }
+
     public function setUploadCv( $string ){
         $this->uploadCv = $string;
+    }
+
+    public function getIndustryName(){
+        return $this->industryName;
+    }
+    public function setIndustryName( $string ){
+        $this->industryName = $string;
     }
 
     public function getUploadCv(){

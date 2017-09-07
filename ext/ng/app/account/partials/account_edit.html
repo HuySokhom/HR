@@ -46,7 +46,18 @@
 							   data-ng-model="vm.account.company_name"
 						/>
 					</div><!-- /.form-group -->
-				</div>
+				</div>				
+				<div class="col-sm-6">
+						<div class="form-group">
+							<label>Industry</label>
+							<select class="form-control"
+								data-ng-model="vm.account.industry_id"
+								required
+								data-ng-options="x.id as x.name for x in vm.industriesList">
+								<option value="">--Select--</option>
+							</select>
+						</div><!-- /.form-group -->
+					</div>
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label>Email Address</label>

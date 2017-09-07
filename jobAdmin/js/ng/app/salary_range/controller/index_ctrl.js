@@ -41,6 +41,7 @@ app.controller(
 						vm.disabled = true;
 						vm.service.alertMessage('<strong>Complete: </strong>Delete Success.');
 						vm.init(vm.params);
+						console.log(data);
 					});
 				}, function(ev) {
 					// The click event is in the
