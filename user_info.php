@@ -141,6 +141,29 @@
                     <div class="filter-stacked">
                         <?php include('advanced_search_box_right.php'); ?>
                     </div>
+                    <?php
+                        $query = tep_db_query("
+                            select
+                                a.title,
+                                a.link,
+                                a.image,
+                                ad.name
+                            from
+                                advertising_banner a, advertising_detail ad
+                            where
+                                a.status = 1 
+                                    and 
+                                a.id = ad.advertising_banner_id
+                                    and
+                                ad.name = 'Cv or Company Description'
+                        ");
+                        while ($item = tep_db_fetch_array($query)) {
+                            //var_dump($item);
+                            echo "<div class='col-md-12 col-sm-6 col-xs-6'>
+                                <img src='images/". $item['image']."' class='img-responsive'/>
+                            </div>";
+                        }
+                    ?>
                 </div>
             </div>
             <?php

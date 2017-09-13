@@ -131,10 +131,12 @@ if (tep_db_num_rows($product_info_query) < 1) {
 			<div class="position-header">
 				<h1>
 					<?php echo $product_info['products_name'];?>
-						<!--<span>Urgent</span>-->
+					<button class="btn btn-info btn-xs pull-right">
+						<i class="fa fa-location-arrow"></i>
+						Apply Now
+					</button>
 				</h1>
-			</div><!-- /.position-header -->
-
+			</div>
 			<div class="position-general-information table-responsive">
 				<table class="table table-striped table-bordered">
 					<tr>
@@ -220,7 +222,12 @@ if (tep_db_num_rows($product_info_query) < 1) {
 
 			<h3 class="page-header background-header">Others</h3>
 			<?php echo $product_info['benefits'];?>
-
+			<p class="text-center" style="margin-top: 10px;">
+				<button class="btn btn-info btn-xs">
+					<i class="fa fa-location-arrow"></i>
+					Apply Now
+				</button>
+			</p>
 			<h3 class="page-header background-header">About Company</h3>
 			<?php echo $product_info['detail'];?>
 		</div><!-- /.col-* -->
@@ -319,9 +326,29 @@ if (tep_db_num_rows($product_info_query) < 1) {
 				</ul>
 				<a href="jobs_list.php" class="hero-content-show-all">Show All</a>
 			</div>
-			<div class="widget">
-				<img src="images/free-ads.jpg" class="img-responsive">
-			</div><!-- /.widget -->
+			<?php
+				$query = tep_db_query("
+					select
+						a.title,
+						a.link,
+						a.image,
+						ad.name
+						from
+						advertising_banner a, advertising_detail ad
+					where
+						a.status = 1 
+							and 
+						a.id = ad.advertising_banner_id
+							and
+						ad.name = 'Job Description'
+				");
+				while ($item = tep_db_fetch_array($query)) {
+					//var_dump($item);
+					echo "<div class='col-md-12 col-sm-6 col-xs-6'>
+						<img src='images/". $item['image']."' class='img-responsive'/>
+					</div>";
+				}
+			?>
 		</div><!-- /.col-* -->
 	</div><!-- /.row -->
 	<?php

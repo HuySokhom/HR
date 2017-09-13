@@ -14,7 +14,7 @@ app.controller(
 		vm.service = new Services();
 		vm.account = {
 			user_type: 'agency',
-			photo: 'icon-person.png'
+			photo: 'images/icon-person.png'
 		};
 		// init tiny option,
 		vm.tinymceOptions = {
@@ -32,6 +32,7 @@ app.controller(
 					vm.account = data.elements[0];
 					console.log(vm.account);
 				});
+				vm.isEdit = true;
 			}
             Restful.get("api/Location").success(function(data){
                 vm.locations = data.elements;
@@ -80,8 +81,8 @@ app.controller(
 					$timeout(function () {
 						console.log(response);
 						file.result = response.data;
-						vm.account.photo = response.data.image;
-						vm.account.photo_thumbnail = response.data.image_thumbnail;
+						vm.account.photo = 'images/' + response.data.image;
+						vm.account.photo_thumbnail = 'images' + response.data.image_thumbnail;
 					});
 				}, function (response) {
 					if (response.status > 0)

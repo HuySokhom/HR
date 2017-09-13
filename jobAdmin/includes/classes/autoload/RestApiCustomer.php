@@ -50,8 +50,12 @@ class RestApiCustomer extends RestApi {
 				)
 			);
 		}else {
+			include(DIR_WS_FUNCTIONS . 'password_funcs.php');
 			$obj = new CustomersObject();
 			$obj->setProperties( $params['POST'] );
+			$password = tep_encrypt_password($params['POST']['customers_password']);
+			
+			$obj->setCustomersPassword($password);
 			$obj->insert();
 			return array(
 				'data' => array(
@@ -89,6 +93,13 @@ class RestApiCustomer extends RestApi {
 				$col->setUpdateBy($_SESSION['username']);
 				$col->setProperties($params['PUT']);
 				$col->update();
+
+				if($params['PUT']['customers_password']){				
+					include(DIR_WS_FUNCTIONS . 'password_funcs.php');
+					$password = tep_encrypt_password($params['PUT']['customers_password']);
+					$col->setCustomersPassword($password);
+					$col->updateUserPassword();
+				}
 				echo 'success';
 				return;
 			}

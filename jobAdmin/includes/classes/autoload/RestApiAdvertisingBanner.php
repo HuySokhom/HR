@@ -4,7 +4,7 @@ use
         as AdvertisingBannerCollection,
     OSC\AdvertisingBanner\Object
         as AdvertisingBannerObject,
-    OSC\AdvertisingDetail\Object
+    OSC\AdvertisingBannerDetail\Object
         as AdvertisingDetailObject
 ;
 class RestApiAdvertisingBanner extends RestApi {
@@ -20,8 +20,15 @@ class RestApiAdvertisingBanner extends RestApi {
         $obj->setProperties($params['POST']['master']);
         $obj->insert();
         $id = $obj->getId();
-        $detail = AdvertisingDetailObject();
-        $fields = $params['POST']['detail'];
+        
+        $fields = $params['POST']['detail'];        
+		$detail = new AdvertisingDetailObject();
+		foreach ( $fields as $k => $v){
+			$detail->setAdvertisingBannerId($id);
+			$detail->setProperties($v);
+			$detail->insert();
+        }
+        
         return array(
             'data' => array(
                 'id' => $obj->getId()
@@ -32,8 +39,18 @@ class RestApiAdvertisingBanner extends RestApi {
     public function put($params){
         $obj = new AdvertisingBannerObject();
         $obj->setId($this->getId());
-        $obj->setProperties($params['PUT']);
+        $obj->setProperties($params['PUT']['master']);
         $obj->update();
+        $fields = $params['PUT']['detail'];        
+        $detail = new AdvertisingDetailObject();
+        $detail->setId($this->getId());
+        $detail->delete();
+		foreach ( $fields as $k => $v){
+			$detail->setAdvertisingBannerId($this->getId());
+			$detail->setProperties($v);
+			$detail->insert();
+        }
+        
         return array(
             'data' => array(
                 'id' => $obj->getId()

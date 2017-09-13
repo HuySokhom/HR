@@ -143,7 +143,7 @@
                 if($_SESSION['user_name']){
                   $user = $_SESSION['user_name'];
                   echo '
-                    <a href="javascript:void(0)" style="margin-top: -9px;">
+                    <a href="javascript:void(0)" style="margin-top: -8px;">
                       <img src="'.$_SESSION['user_photo'].'" class="img-circle" width="25px"/>
                       <div>
                         '.$_SESSION['user_name'].'

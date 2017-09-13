@@ -10,7 +10,8 @@ class Object extends DbObj {
 		
 	protected
 		$advertisingBannerId
-		, $name,$adList
+		, $name
+		, $adList
 	;
 	
 	public function toArray( $params = array() ){
@@ -18,8 +19,7 @@ class Object extends DbObj {
 			'include' => array(
 				'id',
 				'advertising_banner_id',
-				'name',
-				'ad_list'
+				'name'
 			)
 		);
 
@@ -30,7 +30,7 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				advertising_banner_id,
-				name, ad_list
+				name
 			FROM
 				advertising_detail
 			WHERE
@@ -55,7 +55,7 @@ class Object extends DbObj {
 			DELETE FROM
 				advertising_detail
 			WHERE
-				id = '" . (int)$this->getId() . "'
+				advertising_banner_id = '" . (int)$this->getId() . "'
 		");
 	}
 
@@ -80,14 +80,12 @@ class Object extends DbObj {
 				advertising_detail
 			(
 				advertising_banner_id,
-				ad_list_id,
 				name,
 				create_date
 			)
 				VALUES
 			(
 				'" . (int)$this->getAdvertisingBannerId() . "',
-				'" . $this->getAdListId() . "',
 				'" . $this->getName() . "',
 				NOW()
 			)

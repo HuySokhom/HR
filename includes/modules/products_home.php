@@ -14,7 +14,7 @@
               and 
             is_publish = 1
         order by rand()
-            limit 12"
+            limit 8"
     );
     $num_candidate = tep_db_num_rows($candidate_query);
     $array_candidate = array();
@@ -165,6 +165,29 @@
                 </div>
             </div>
         </div>
+        <?php
+            $query = tep_db_query("
+                select
+                    a.title,
+                    a.link,
+                    a.image,
+                    ad.name
+                from
+                    advertising_banner a, advertising_detail ad
+                where
+                    a.status = 1 
+                        and 
+                    a.id = ad.advertising_banner_id
+                        and
+                    ad.name = 'Home Page'
+            ");
+            while ($item = tep_db_fetch_array($query)) {
+                //var_dump($item);
+                echo "<div class='col-md-12 col-sm-6 col-xs-6'>
+                    <img src='images/". $item['image']."' class='img-responsive'/>
+                </div>";
+            }
+        ?>
         <div class="features-company">
             <h4>Find Your Best Candidate</h4>
             <div class="row mt-60">

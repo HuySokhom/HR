@@ -4,7 +4,7 @@ namespace OSC\AdvertisingBanner;
 
 use
 	Aedea\Core\Database\StdObject as DbObj,
-	OSC\AdvertisingBannerDetail as advertisingDetailCol;
+	OSC\AdvertisingBannerDetail\Collection as advertisingDetailCol;
 ;
 
 class Object extends DbObj {
@@ -33,7 +33,8 @@ class Object extends DbObj {
 				'link',
 				'sort_order',
 				'location',
-				'status'
+				'status',
+				'advertising_detail'
 			)
 		);
 
@@ -64,7 +65,7 @@ class Object extends DbObj {
 		
 		$this->setProperties($this->dbFetchArray($q));
 
-		$this->advertisingDetail->setFilter('advertising_id', $this->getId());
+		$this->advertisingDetail->setFilter('Advertising_id', $this->getId());
 		$this->advertisingDetail->populate();
 	}
 	
@@ -180,4 +181,11 @@ class Object extends DbObj {
 		return $this->title;
 	}
 	
+	public function setAdvertisingDetail( $string ){
+		$this->advertisingDetail = (string)$string;
+	}
+	
+	public function getAdvertisingDetail(){
+		return $this->advertisingDetail;
+	}
 }

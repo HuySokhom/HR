@@ -50,7 +50,7 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <br>
-<div class="container">
+<div class="container" style="margin-bottom: 330px;">
 <div class="col-md-8 col-sm-7">
   <div class="row">
 

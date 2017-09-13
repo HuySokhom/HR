@@ -16,6 +16,7 @@ app.controller(
 			if(vm.picFile){
 				vm.picFile = null;
 			}
+			vm.advertisingLocations = [];
 		};
 		vm.multipleDemo = {};
 		vm.advertisingList = [
@@ -26,10 +27,8 @@ app.controller(
 			{ name: 'CV List',id: 6},
 			{ name: 'Company List', id:7},
 			{ name: 'Cv or Company Description', id: 8},
-		  ];
+		];
 		
-		vm.advertisingLocations = [vm.advertisingList[5], vm.advertisingList[4]];
-		  
 		function init(params){
 			Restful.get(params).success(function(data){
 				vm.banners = data;
@@ -45,15 +44,16 @@ app.controller(
 				vm.picFile = null;
 			}
 			vm.data = angular.copy(params);
+			vm.advertisingLocations = params.advertising_detail;
 			console.log(params);		
 		};
 
-		vm.save = function(){			
-			console.log(vm.data);
+		vm.save = function(){		
 			var data = {
 				master: vm.data,
-				detail: vm.locationDetail
-			};
+				detail: vm.advertisingLocations
+			};	
+			console.log(vm.data);
 			vm.isDisabled = true;
 			if( vm.data.id ){
 				Restful.put('api/AdvertisingBanner/' + vm.data.id, data).success(function(data){

@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col-md-12">
+<div class="panel">
+	<div class="panel-body">
 		<div class="row">
 			<div class="form-group has-feedback col-sm-3">
 				<div class="input-group">
@@ -34,70 +34,96 @@
 	</div>
 	<div class="clearfix"></div>
 	<br/>
-	<table class="table table-bordered table-striped" style="font-size: 12px;">
-		<thead>
-			<th>
-				Id
-			</th>
-			<th>
-				Type
-			</th>
-			<th>
-				Name
-			</th>
-			<th>
-				Email Address
-			</th>
-			<th>
-				Telephone
-			</th>
-			<th>
-				Address
-			</th>
-			<th style="width: 120px;">
-				Agency Partner
-			</th>
-			<th style="width: 50px;">
-				Publish
-			</th>
-			<th style="width: 140px;">
-				Action
-			</th>
-		</thead>
-		<tr data-ng-repeat="u in vm.users.elements">
-			<td>
-				{{u.id}}
-			</td>
-			<td>
-				<span
-					data-ng-class="{
-						'label-primary': (u.user_type == 'normal'),
-						'label-success': (u.user_type == 'member'),
-						'label-warning': (u.user_type == 'agency')
-					}"
-					class="label"
-				>
-					{{u.user_type}}
-				</span>
-			</td>
-			<td>
-				{{u.company_name}}
-			</td>
-			<td>
-				{{u.customers_email_address}}
-			</td>
-			<td>
-				<span data-ng-bind="u.customers_telephone"></span>
-			</td>
-			<td>
-				<span data-ng-bind="u.customers_address"></span>
-			</td>
-			<td align="center">
-				<div data-ng-if="u.user_type == 'agency'">
+	<div class="col-sm-12">
+		<table class="table table-bordered table-striped" style="font-size: 12px;">
+			<thead>
+				<th>
+					Id
+				</th>
+				<th>
+					Type
+				</th>
+				<th>
+					Name
+				</th>
+				<th>
+					Email Address
+				</th>
+				<th>
+					Telephone
+				</th>
+				<th>
+					Address
+				</th>
+				<th style="width: 120px;">
+					Agency Partner
+				</th>
+				<th style="width: 50px;">
+					Publish
+				</th>
+				<th style="width: 140px;">
+					Action
+				</th>
+			</thead>
+			<tr data-ng-repeat="u in vm.users.elements">
+				<td>
+					{{u.id}}
+				</td>
+				<td>
+					<span
+						data-ng-class="{
+							'label-primary': (u.user_type == 'normal'),
+							'label-success': (u.user_type == 'member'),
+							'label-warning': (u.user_type == 'agency')
+						}"
+						class="label"
+					>
+						{{u.user_type}}
+					</span>
+				</td>
+				<td>
+					{{u.company_name}}
+				</td>
+				<td>
+					{{u.customers_email_address}}
+				</td>
+				<td>
+					<span data-ng-bind="u.customers_telephone"></span>
+				</td>
+				<td>
+					<span data-ng-bind="u.customers_address"></span>
+				</td>
+				<td align="center">
+					<div data-ng-if="u.user_type == 'agency'">
+						<button
+							class="btn btn-success"
+							data-ng-click="vm.updateStatus(u);"
+							data-ng-if="u.is_agency == 1"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Active"
+							tooltip
+						>
+							<span class="fa fa-check-square-o"></span>
+						</button>
+						<button
+							class="btn btn-warning"
+							data-ng-if="u.is_agency == 0"
+							data-ng-click="vm.updateStatus(u);"
+							data-toggle="tooltip"
+							data-placement="top"
+							title="Inactive"
+							tooltip
+						>
+							<span class="fa fa-minus-square-o"></span>
+						</button>
+					</div>
+				</td>
+				<td>
 					<button
 						class="btn btn-success"
-						data-ng-click="vm.updateStatus(u);"
-						data-ng-if="u.is_agency == 1"
+						data-ng-click="vm.updateStatusApprove(u);"
+						data-ng-if="u.is_publish == 1"
 						data-toggle="tooltip"
 						data-placement="top"
 						title="Active"
@@ -107,8 +133,8 @@
 					</button>
 					<button
 						class="btn btn-warning"
-						data-ng-if="u.is_agency == 0"
-						data-ng-click="vm.updateStatus(u);"
+						data-ng-if="u.is_publish == 0"
+						data-ng-click="vm.updateStatusApprove(u);"
 						data-toggle="tooltip"
 						data-placement="top"
 						title="Inactive"
@@ -116,77 +142,51 @@
 					>
 						<span class="fa fa-minus-square-o"></span>
 					</button>
-				</div>
-			</td>
-			<td>
-				<button
-					class="btn btn-success"
-					data-ng-click="vm.updateStatusApprove(u);"
-					data-ng-if="u.is_publish == 1"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Active"
-					tooltip
-				>
-					<span class="fa fa-check-square-o"></span>
-				</button>
-				<button
-					class="btn btn-warning"
-					data-ng-if="u.is_publish == 0"
-					data-ng-click="vm.updateStatusApprove(u);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Inactive"
-					tooltip
-				>
-					<span class="fa fa-minus-square-o"></span>
-				</button>
-			</td>
-			<td>
-				<button
-					class="btn btn-default"
-					data-ng-click="vm.edit(u.id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Edit"
-					tooltip
-				>
-					<span class="fa fa-pencil-square-o"></span>
-				</button>
-				<button
-					class="btn btn-danger"
-					data-ng-click="vm.remove(u.id, $index);"
-					data-toggle="modals"
-					data-placement="bottom"
-					data-target="#messages"
-					title="Delete"
-					tooltip
-				>
-					<span class="glyphicon glyphicon-trash"></span>
-				</button>
-			</td>
-		</tr>
-	</table>
-	<div
-			data-ng-if="vm.users.elements == 0"
-	>
-		<div class="alert alert-danger alert-dismissible">
-			<strong>Warning!</strong> Data Empty.
+				</td>
+				<td>
+					<button
+						class="btn btn-default"
+						data-ng-click="vm.edit(u.id);"
+						data-toggle="tooltip"
+						data-placement="top"
+						title="Edit"
+						tooltip
+					>
+						<span class="fa fa-pencil-square-o"></span>
+					</button>
+					<button
+						class="btn btn-danger"
+						data-ng-click="vm.remove(u.id, $index);"
+						data-toggle="modals"
+						data-placement="bottom"
+						data-target="#messages"
+						title="Delete"
+						tooltip
+					>
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+				</td>
+			</tr>
+		</table>
+		<div data-ng-if="vm.users.elements == 0">
+			<div class="alert alert-danger alert-dismissible">
+				<strong>Warning!</strong> Data Empty.
+			</div>
 		</div>
-	</div>
-	<div data-ng-if="!vm.users" class="align_center" >
-		<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
-	</div>
-	<div
-			class="panel-footer"
-	>
-		<ul uib-pagination
-			total-items="vm.totalItems"
-			ng-model="vm.currentPage"
-			ng-change="vm.pageChanged()"
-			max-size="5"
-			items-per-page="10"
-			boundary-links="true"
-		></ul>
+		<div data-ng-if="!vm.users" class="align_center" >
+			<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+		</div>
+		<div
+				class="panel-footer"
+		>
+			<ul uib-pagination
+				total-items="vm.totalItems"
+				ng-model="vm.currentPage"
+				ng-change="vm.pageChanged()"
+				max-size="5"
+				items-per-page="10"
+				boundary-links="true"
+			></ul>
+		</div>
 	</div>
 </div>

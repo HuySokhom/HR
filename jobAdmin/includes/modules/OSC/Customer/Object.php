@@ -40,6 +40,7 @@ class Object extends DbObj {
         , $companyName
         , $skillTitle
         , $customersWebsite
+        , $customersPassword
 	;
 	
 	public function toArray( $params = array() ){
@@ -61,6 +62,7 @@ class Object extends DbObj {
 				'customers_address',
 				'customers_fax',
 				'customers_telephone',
+				'customers_password',
 				'customers_location',
 				'customers_plan',
 				'summary',
@@ -112,8 +114,22 @@ class Object extends DbObj {
 		$this->setProperties($this->dbFetchArray($q));
 	}
 
+	
+	public function updateUserPassword() {		
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+		$this->dbQuery("
+			UPDATE
+				customers
+			SET
+				customers_password = '" . $this->dbEscape( $this->getCustomersPassword() ) . "'
+			WHERE
+				customers_id = '" . (int)$this->getId() . "'
+		");
+	}
+	
 	public function updateUserType() {
-
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
 		}
@@ -126,7 +142,6 @@ class Object extends DbObj {
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'
 		");
-
 	}
 
 
@@ -228,6 +243,7 @@ class Object extends DbObj {
 				customers_location,
 				detail,
 				customers_address,
+				customers_password,
 				is_publish,
 				create_date
 			)
@@ -250,6 +266,7 @@ class Object extends DbObj {
 				'" . (int)$this->getCustomersLocation() . "',
 				'" . $this->dbEscape( $this->getDetail() ). "',
 				'" . $this->dbEscape( $this->getCustomersAddress() ) . "',
+				'" . $this->getCustomersPassword() . "',
 				1,
 				NOW()
 			)			
@@ -280,6 +297,7 @@ class Object extends DbObj {
 				customers_plan = '" . $this->getCustomersPlan() . "',
 				photo_thumbnail = '" . $this->dbEscape( $this->getPhotoThumbnail() ) . "',
 				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
+				customers_password = '" . $this->dbEscape( $this->getCustomersPassword() ) . "',
 				customers_fax = '" . $this->dbEscape( $this->getCustomersFax() ) . "',
 				customers_location = '" . (int)$this->getCustomersLocation() . "',
 				detail = '" . $this->dbEscape( $this->getDetail() ). "',
@@ -289,6 +307,14 @@ class Object extends DbObj {
 				customers_id = '" . (int)$this->getId() . "'
 		");
 	
+	}
+
+	public function setCustomersPassword( $string ){
+		$this->customersPassword = $string;
+	}
+
+	public function getCustomersPassword(){
+		return $this->customersPassword;
 	}
 
 	public function setIndustryId( $string ){
