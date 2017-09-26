@@ -9,6 +9,7 @@ var app = angular.module(
 		, 'angularjs-datetime-picker'
 		, 'angularTrix'
 		, 'ngImgCrop'
+		, '720kb.datepicker'
 	]
 );
 // range with number

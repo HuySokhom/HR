@@ -169,17 +169,17 @@ class RestApiSessionUserProductPost extends RestApi {
 				$cols->populate();
 				$col = $cols->getFirstElement();
 				$col->setProductsId($productId);
-				$col->setProperties($params['PUT']);
+				$col->setProperties($params['PUT']['products']);
 				$col->update();
 
 				// update category to product
 				$productToCategoryObject = new ProductToCategoryObj();
 				$productToCategoryObject->setProductsId($productId);
-				$productToCategoryObject->setCategoriesId($params['PUT']['categories_detail']);
+				$productToCategoryObject->setCategoriesId($params['PUT']['products']['categories_detail']);
 				$productToCategoryObject->update();
 
 				// save product description
-				$fields = $params['PUT']['product_detail'];
+				$fields = $params['PUT']['products_description'];
 				$productDetailObject = new ProductDescriptionObj();
 				foreach ( $fields as $k => $v){
 					$productDetailObject->setProductsId($productId);

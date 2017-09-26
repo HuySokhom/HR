@@ -21,7 +21,7 @@
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <link href="ext/ng/lib/angular-crop-image/ng-img-crop.css" rel="stylesheet" type="text/css">
-<link href="ext/ng/lib/angular-datetime/angularjs-datetime-picker.css" rel="stylesheet" type="text/css">
+<link href="ext/ng/lib/angular-date-picker-720kb/angular-datepicker.css" rel="stylesheet" type="text/css">
 <link href="ext/ng/lib/angular-trix/trix.css" rel="stylesheet" type="text/css">
 <div
 	class="container"
@@ -56,6 +56,18 @@
 									<?php echo ENTRY_MY_ACCOUNT;?>
 								</a>
 							</li>
+							<?php 
+								if($_SESSION['user_type'] == "normal"){
+									echo '
+										<li ui-sref-active="active">
+											<a ui-sref="manage_cv">
+												<icon class="fa fa-desktop"></icon>
+												Manage CV
+											</a>
+										</li>
+									';
+								}
+							?>
 							<?php
 								if($_SESSION['user_type'] == 'member'){
 							?>
@@ -133,6 +145,10 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
+	src="ext/ng/lib/angular-date-picker-720kb/angular-datepicker.min.js"
+></script>
+<script
+	type="text/javascript"
 	src="ext/ng/lib/angular-datetime/angularjs-datetime-picker.min.js"
 ></script>
 <script src="ext/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
@@ -186,4 +202,13 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <script
 	type="text/javascript"
 	src="ext/ng/app/account/directive/plan.js"
+></script>
+
+<script
+	type="text/javascript"
+	src="ext/ng/app/account/controller/cv_ctrl.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/app/account/controller/cv_post_ctrl.js"
 ></script>

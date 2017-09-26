@@ -111,20 +111,22 @@
                     <?php echo tep_draw_password_field('password', NULL, 'required aria-required="true" id="inputPassword" placeholder="' . ENTRY_PASSWORD . '"'); ?>
                   </div>
 
-                  <p class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_LOGIN, 
-                    'fa fa-sign-in', null, 'primary', NULL, 'btn-success'); ?></p>
+                  <p style="font-size: 14px;">
+                    <?php echo tep_draw_button("Login", 
+                      'fa fa-sign-in', null, 'primary', NULL, 'btn-success'); 
+                    ?>
+                    <a href="password_forgotten.php">
+                      <i class="fa fa-hand-o-right"></i>
+                      Forget Password?
+                    </a>
+                  </p>
 
                 </form>
               </div>
             </div>
 
             <p>
-              <a href="password_forgotten.php">
-                <button class="btn btn-default">
-                  <i class="fa fa-hand-o-right"></i>
-                  <?php echo MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN; ?>
-                </button>
-              </a>
+              
             </p>
 
           </div>
@@ -183,7 +185,7 @@
               <div class="buttonSet">
                 <div class="text-right">
                   <?php 
-                    echo tep_draw_button("Sing Up", 
+                    echo tep_draw_button("Create Account", 
                       'fa fa-check-square-o', null, 
                       'primary', null, 'btn-success'); 
                   ?>

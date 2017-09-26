@@ -131,7 +131,7 @@ if (tep_db_num_rows($product_info_query) < 1) {
 			<div class="position-header">
 				<h1>
 					<?php echo $product_info['products_name'];?>
-					<button class="btn btn-info btn-xs pull-right">
+					<button class="btn btn-info btn-apply pull-right" data-toggle="modal" data-target="#apply-job">
 						<i class="fa fa-location-arrow"></i>
 						Apply Now
 					</button>
@@ -223,7 +223,7 @@ if (tep_db_num_rows($product_info_query) < 1) {
 			<h3 class="page-header background-header">Others</h3>
 			<?php echo $product_info['benefits'];?>
 			<p class="text-center" style="margin-top: 10px;">
-				<button class="btn btn-info btn-xs">
+				<button class="btn btn-info btn-apply" data-toggle="modal" data-target="#apply-job">
 					<i class="fa fa-location-arrow"></i>
 					Apply Now
 				</button>
@@ -345,7 +345,7 @@ if (tep_db_num_rows($product_info_query) < 1) {
 				while ($item = tep_db_fetch_array($query)) {
 					//var_dump($item);
 					echo "<div class='col-md-12 col-sm-6 col-xs-6'>
-						<img src='images/". $item['image']."' class='img-responsive'/>
+						<img src='images/". $item['image']."' class='img-responsive ads'/>
 					</div>";
 				}
 			?>
@@ -387,3 +387,72 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 	});
 
 </script>
+
+
+<!-- Modal For Apply PopUp -->
+<div id="apply-job" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Apply Job</h4>
+      </div>
+      <div class="modal-body">
+	  	<form data-ng-submit="vm.save()" name="applyFrom" class="form-horizontal">
+			<div class="">
+				<div class="form-group">
+					<label class="col-xs-3 control-label">
+						Company
+					</label>
+					<div class="col-xs-9">					
+						<input type="text" class="form-control" readonly value="<?php echo $product_info['company_name'];?>"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-3 control-label">
+						Apply To
+					</label>
+					<div class="col-xs-9">					
+						<input type="text" class="form-control col-md-6" placeholder="To"/>
+						<input type="text" class="form-control col-md-6" placeholder="CC"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-3 control-label">
+						Position Apply For
+					</label>
+					<div class="col-xs-9">
+					<input type="text" class="form-control" value="<?php echo $product_info['products_name'];?>" readonly/>
+						
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-3 control-label">
+						Attach CV Form
+					</label>
+					<div class="col-xs-9">					
+						<input type="text" class="form-control" />
+						
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-3 control-label">
+						Description
+					</label>
+					<div class="col-xs-9">					
+						<textarea name="description" class="form-control" id="" rows="5"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-xs-3"></div>
+					<div class="col-xs-9">					
+						<button class="btn btn-apply">Submit</button>
+					</div>
+				</div>
+			</div>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>

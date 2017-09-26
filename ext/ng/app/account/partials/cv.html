@@ -1,13 +1,13 @@
-<div class="panel-body">
+<div class="">
 	<div class="row">
 		<div class="col-md-3">
 			<a class="btn btn-primary"
-				ui-sref="/manage/post">
+				ui-sref="manage_cv_post">
 				<span class="fa fa-plus-circle"></span>
-				Post Job
+				Post CV
 			</a>
 			<span>
-				Total of Jobs: {{vm.totalItems}}
+				Total of CV: {{vm.totalItems}}
 			</span>
 		</div>
 		<div class="col-md-9">
@@ -51,7 +51,7 @@
 					#
 				</th>
 				<th width="20%">
-					Job Title
+					Apply For
 				</th>
 				<th width="12%">
 					Function
@@ -69,15 +69,15 @@
 					Action
 				</th>
 			</thead>
-			<tr data-ng-repeat="p in vm.products_post.elements">
+			<tr data-ng-repeat="p in vm.cv_post.elements">
 				<td>
 					{{$index + 1}}
 				</td>
 				<td>
-					<span data-ng-bind="p.products_name"></span>
+					<span data-ng-bind="p.apply_for"></span>
 				</td>
 				<td>
-					{{p.categories_name}}
+					{{p.function}}
 				</td>
 				<td>
 					<span data-ng-bind="p.products_viewed" class="label label-primary"></span>
@@ -112,25 +112,22 @@
 					<button  class="btn btn-xs btn-danger" uib-tooltip="Delete" data-ng-click="vm.remove($index, p.products_id);">
 						<i class="fa fa-trash-o"></i>						
 					</button>
-					<button  class="btn btn-xs btn-primary" uib-tooltip="Refresh" data-ng-click="vm.refreshDate(p);">
-						<i class="fa fa-refresh"></i>						
-					</button>
 				</td>
 			</tr>
 		</table>
 	</div>
 	<div
-		data-ng-if="vm.products_post.elements == 0"
+		data-ng-if="vm.cv_post.elements == 0"
 	>
 		<div class="alert alert-danger">
 			<strong>Warning!</strong> Empty Data.
 		</div>
 	</div>
 	<div
-		data-ng-if="!vm.products_post"
+		data-ng-if="!vm.cv_post"
 		class="align_center"
 	>
-	<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+		<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
 	</div>
 	<div class="panel-footer">
 		<ul uib-pagination

@@ -39,6 +39,7 @@
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label>Company Name</label>
+						<span class="require">*</span>
 						<input type="text"
 							   class="form-control"
 							   required
@@ -48,19 +49,21 @@
 					</div><!-- /.form-group -->
 				</div>				
 				<div class="col-sm-6">
-						<div class="form-group">
-							<label>Industry</label>
-							<select class="form-control"
-								data-ng-model="vm.account.industry_id"
-								required
-								data-ng-options="x.id as x.name for x in vm.industriesList">
-								<option value="">--Select--</option>
-							</select>
-						</div><!-- /.form-group -->
-					</div>
+					<div class="form-group">
+						<label>Industry</label>
+						<span class="require">*</span>
+						<select class="form-control"
+							data-ng-model="vm.account.industry_id"
+							required
+							data-ng-options="x.id as x.name for x in vm.industriesList">
+							<option value="">--Select--</option>
+						</select>
+					</div><!-- /.form-group -->
+				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label>Email Address</label>
+						<span class="require">*</span>
 						<input type="text"
 							   class="form-control"
 							   placeholder="Email Address"
@@ -82,6 +85,7 @@
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label>Telephone</label>
+						<span class="require">*</span>
 						<input type="text"
 							   class="form-control"
 							   placeholder="Telephone..."
@@ -93,6 +97,7 @@
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label>Location</label>
+						<span class="require">*</span>
 						<select
 							class="form-control"
 							data-ng-model="vm.account.customers_location"
@@ -117,6 +122,7 @@
 		</div><!-- /.row -->
 
 		<h3 class="page-header">About Company Information</h3>
+		<span class="require">*</span>
 		<div class="">
 			<trix-editor
 					data-ng-model="vm.account.detail"
@@ -208,6 +214,7 @@
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label>Full Name</label>
+						<span class="require">*</span>
 						<input type="text"
 							   class="form-control"
 							   required
@@ -218,7 +225,77 @@
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
+						<label>Gender</label>
+						<span class="require">*</span>
+						<select class="form-control" data-ng-model="vm.account.customers_gender"
+							require data-ng-options="x as x for x in ['Male','Female']"></select>
+					</div><!-- /.form-group -->
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label>Date of Birth</label>
+						<span class="require">*</span>
+						<datepicker date-format="yyyy-MM-dd" selector="form-control">
+							<div class="input-group">
+								<input class="form-control" 
+									data-ng-model="vm.account.customers_dob" require
+									placeholder="Date of Brith"/>
+								<span class="input-group-addon">
+									<i class="fa fa-lg fa-calendar"></i>
+								</span>
+							</div>
+						</datepicker>
+					</div><!-- /.form-group -->
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label>Nationality</label>
+						<span class="require">*</span>
+						<input type="text" class="form-control" placeholder="Nationality" 
+						data-ng-model="vm.account.nationality" require/>
+					</div><!-- /.form-group -->
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label>Religion</label>
+						<span class="require">*</span>
+						<input type="text" class="form-control" placeholder="Religion" 
+						data-ng-model="vm.account.religion" require/>
+					</div><!-- /.form-group -->
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label>Health</label>
+						<span class="require">*</span>
+						<input type="text" class="form-control" placeholder="Health" 
+						data-ng-model="vm.account.health" require/>
+					</div><!-- /.form-group -->
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label>Marital Status</label>
+						<span class="require">*</span>
+						<select class="form-control" data-ng-model="vm.account.marital_status"
+							data-ng-options="x as x for x in ['Single','Divorced','Widowed', 'Married']"></select>
+					</div><!-- /.form-group -->
+				</div>
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label>Telephone</label>
+						<span class="require">*</span>
+						<input type="text"
+								class="form-control"
+								placeholder="Telephone..."
+								required
+								data-ng-model="vm.account.customers_telephone"
+						/>
+					</div><!-- /.form-group -->
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
 						<label>Email Address</label>
+						<span class="require">*</span>
 						<input type="text"
 							   class="form-control"
 							   placeholder="Email Address"
@@ -229,43 +306,49 @@
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label>Skill Title</label>
-						<input type="text"
-							   class="form-control"
-							   placeholder="Skill Title..."
-							   data-ng-model="vm.account.skill_title"
-						/>
+						<label>Country</label>
+						<span class="require">*</span>
+						<select class="form-control" required 
+							data-ng-model="vm.account.country"
+							data-ng-options="x.name as x.name for x in vm.countries track by x.name"></select>
 					</div><!-- /.form-group -->
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label>Telephone</label>
+						<label>State/City</label>
+						<span class="require">*</span>
 						<input type="text"
 							   class="form-control"
-							   placeholder="Telephone..."
-							   required
-							   data-ng-model="vm.account.customers_telephone"
+							   data-ng-if="vm.account.country != 'Cambodia'"
+							   placeholder="State City..."
+							   data-ng-model="vm.account.state_city"
 						/>
-					</div><!-- /.form-group -->
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label>Location</label>
-						<select
-								class="form-control"
+						<select class="form-control"
+								data-ng-if="vm.account.country == 'Cambodia'"
 								data-ng-model="vm.account.customers_location"
 								data-ng-options="location.id as location.name for location in vm.locations"
-								required
-						>
+								required>
 							<option value="">--Select--</option>
 						</select>
 					</div><!-- /.form-group -->
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label>Address</label>
+						<label>Current Position</label>
+						<span class="require">*</span>
+						<input type="text"
+							   class="form-control"
+							   placeholder="Current Position..."
+							   data-ng-model="vm.account.skill_title"
+						/>
+					</div><!-- /.form-group -->
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label>Present Address</label>
+						<span class="require">*</span>
 						<textarea required
-								  placeholder="Address Information..."
+								  placeholder="Present Address..."
 								  class="form-control"
 								  data-ng-model="vm.account.customers_address"
 						></textarea>
@@ -274,6 +357,7 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						<label>Summary</label>
+						<span class="require">*</span>
 						<trix-editor
 								data-ng-model="vm.account.summary"
 								angular-trix trix-initialize="trixInitialize(e, editor);"
@@ -292,6 +376,7 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						<label>Working History</label>
+						<span class="require">*</span>
 						<trix-editor
 								data-ng-model="vm.account.working_history"
 								angular-trix trix-initialize="trixInitialize(e, editor);"
@@ -310,6 +395,7 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						<label>Experience</label>
+						<span class="require">*</span>
 						<trix-editor
 								data-ng-model="vm.account.experience"
 								angular-trix trix-initialize="trixInitialize(e, editor);"

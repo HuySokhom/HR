@@ -1,0 +1,451 @@
+<form data-ng-submit="vm.save()" class="form-horizontal" name="accountForm">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header title-header text-center">
+                Cover Letter
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Full Name
+                    <span class="require">*</span>
+                </label> 
+                <div class="col-md-5">   
+                    <input type="text"
+                            class="form-control"
+                            required
+                            placeholder="Full Name..."
+                            data-ng-model="vm.model.company_name"/>
+                </div>      
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Present Address
+                    <span class="require">*</span>
+                </label> 
+                <div class="col-md-5">   
+                    <input type="text"
+                            class="form-control"
+                            required
+                            placeholder="Present Address..."
+                            data-ng-model="vm.model.customers_address"/>
+                </div>      
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Phone Number
+                    <span class="require">*</span>
+                </label> 
+                <div class="col-md-5">   
+                    <input type="text"
+                            class="form-control"
+                            required
+                            placeholder="Phone number..."
+                            data-ng-model="vm.model.customers_telephone"/>
+                </div>      
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Email
+                    <span class="require">*</span>
+                </label> 
+                <div class="col-md-5">   
+                    <input type="text"
+                            class="form-control"
+                            required
+                            placeholder="Email..."
+                            data-ng-model="vm.model.customers_email_address"/>
+                </div>      
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Apply For
+                    <span class="require">*</span>
+                </label> 
+                <div class="col-md-5">   
+                    <input type="text"
+                            class="form-control"
+                            required
+                            placeholder="Apply For..."
+                            data-ng-model="vm.model.apply_for"/>
+                </div>      
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Function
+                    <span class="require">*</span>
+                </label> 
+                <div class="col-md-5">   
+                    <input type="text"
+                            class="form-control"
+                            required
+                            placeholder="Full Name..."
+                            data-ng-model="vm.model.company_name"/>
+                </div>      
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Prefer Location
+                    <span class="require">*</span>
+                </label> 
+                <div class="col-md-5">   
+                    <input type="text"
+                            class="form-control"
+                            required
+                            placeholder="Prefer Location..."
+                            data-ng-model="vm.model.company_name"/>
+                </div>      
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Salary Expected
+                    <span class="require">*</span>
+                </label> 
+                <div class="col-md-5">   
+                    <input type="number"
+                            class="form-control"
+                            required
+                            placeholder="Salary Expected..."
+                            data-ng-model="vm.model.salary_expected"/>
+                </div>      
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Cover Summary
+                    <span class="require">*</span>
+                </label>
+                
+                <div class="col-md-10">
+                    <trix-editor
+                            data-ng-model="vm.model.cover_summary"
+                            angular-trix trix-initialize="trixInitialize(e, editor);"
+                            trix-change="trixChange(e, editor);"
+                            trix-selection-change="trixSelectionChange(e, editor);"
+                            trix-focus="trixFocus(e, editor);"
+                            trix-blur="trixBlur(e, editor);"
+                            trix-file-accept="trixFileAccept(e, editor);"
+                            trix-attachment-add="trixAttachmentAdd(e, editor);"
+                            placeholder="Experience..."
+                            trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                            style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
+                    </trix-editor>
+                </div>
+            </div>
+            <!-- START CV INFORMATION -->
+            <div class="row">
+                <div class="page-header title-header text-center col-md-12">
+                    Curriculum Vitae(CV)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Full Name
+                    <span class="require">*</span>
+                </label> 
+                <div class="col-md-5">   
+                    <input type="text"
+                            class="form-control"
+                            required
+                            placeholder="Full Name..."
+                            data-ng-model="vm.model.company_name"/>
+                </div>      
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Gender
+                    <span class="require">*</span>
+                </label>
+                <div class="col-md-5">
+                    <select class="form-control" data-ng-model="vm.model.customers_gender"
+                        require data-ng-options="x as x for x in ['Male','Female']"></select>
+                </div>   
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Date of Birth
+                    <span class="require">*</span>
+                </label>
+                <div class="col-md-5">
+                    <datepicker date-format="yyyy-MM-dd" selector="form-control">
+                        <div class="input-group">
+                            <input class="form-control" 
+                                data-ng-model="vm.model.customers_dob" require
+                                placeholder="Date of Brith"/>
+                            <span class="input-group-addon">
+                                <i class="fa fa-lg fa-calendar"></i>
+                            </span>
+                        </div>
+                    </datepicker>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Nationality
+                    <span class="require">*</span>
+                </label>                    
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Nationality" 
+                    data-ng-model="vm.model.nationality" require/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Religion
+                    <span class="require">*</span>
+                </label>  
+                <div class="col-md-5">                    
+                    <input type="text" class="form-control" placeholder="Religion" 
+                    data-ng-model="vm.model.religion" require/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Health
+                    <span class="require">*</span>
+                </label>  
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Health" 
+                    data-ng-model="vm.model.health" require/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Marital Status
+                    <span class="require">*</span>  
+                </label>                    
+                <div class="col-md-5">
+                    <select class="form-control" data-ng-model="vm.model.marital_status"
+                        data-ng-options="x as x for x in ['Single','Divorced','Widowed', 'Married']"></select>
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label class="col-md-2">
+                    Telephone
+                    <span class="require">*</span>
+                </label>          
+                <div class="col-md-5">                
+                    <input type="text"
+                            class="form-control"
+                            placeholder="Telephone..."
+                            required
+                            data-ng-model="vm.model.customers_telephone"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Email Address
+                    <span class="require">*</span>
+                </label>  
+                <div class="col-md-5">
+                    <input type="text"
+                            class="form-control"
+                            placeholder="Email Address"
+                            required
+                            data-ng-model="vm.model.customers_email_address"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Country
+                    <span class="require">*</span>
+                </label>
+                <div class="col-md-5">
+                    <select class="form-control" required 
+                        data-ng-model="vm.model.country"
+                        data-ng-options="x.name as x.name for x in vm.countries track by x.name"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    State/City
+                    <span class="require">*</span>
+                </label>
+                <div class="col-md-5">                
+                    <input type="text"
+                            class="form-control"
+                            data-ng-if="vm.model.country != 'Cambodia'"
+                            placeholder="State City..."
+                            data-ng-model="vm.model.state_city" />
+                    <select class="form-control"
+                            data-ng-if="vm.model.country == 'Cambodia'"
+                            data-ng-model="vm.model.customers_location"
+                            data-ng-options="location.id as location.name for location in vm.locations"
+                            required>
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">Current Position <span class="require">*</span></label>                
+                <div class="col-md-5">
+                    <input type="text"
+                            class="form-control"
+                            placeholder="Current Position..."
+                            data-ng-model="vm.model.skill_title"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2">
+                    Present Address
+                    <span class="require">*</span>
+                </label>
+                <div class="col-md-5">
+                    <textarea required
+                                placeholder="Present Address..."
+                                class="form-control"
+                                data-ng-model="vm.model.customers_address"
+                    ></textarea>
+                </div>
+            </div>
+            <!-- START Other -->
+            <div class="row">
+                <div class="page-header title-header col-md-12">
+                    Detail
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <trix-editor
+                            data-ng-model="vm.model.experience"
+                            angular-trix trix-initialize="trixInitialize(e, editor);"
+                            trix-change="trixChange(e, editor);"
+                            trix-selection-change="trixSelectionChange(e, editor);"
+                            trix-focus="trixFocus(e, editor);"
+                            trix-blur="trixBlur(e, editor);"
+                            trix-file-accept="trixFileAccept(e, editor);"
+                            trix-attachment-add="trixAttachmentAdd(e, editor);"
+                            placeholder="Experience..."
+                            trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                            style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
+                    </trix-editor>
+                </div>
+            </div>
+            <div class="row">
+                <div class="page-header title-header col-md-12">
+                    Working History
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <trix-editor
+                            data-ng-model="vm.model.working_history"
+                            angular-trix trix-initialize="trixInitialize(e, editor);"
+                            trix-change="trixChange(e, editor);"
+                            trix-selection-change="trixSelectionChange(e, editor);"
+                            trix-focus="trixFocus(e, editor);"
+                            trix-blur="trixBlur(e, editor);"
+                            trix-file-accept="trixFileAccept(e, editor);"
+                            trix-attachment-add="trixAttachmentAdd(e, editor);"
+                            placeholder="Working History..."
+                            trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                            style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
+                    </trix-editor>
+                </div>
+            </div>
+            <!-- START Other -->
+            <div class="row">
+                <div class="page-header title-header col-md-12">
+                    Summary
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <trix-editor
+                        data-ng-model="vm.model.summary"
+                        angular-trix trix-initialize="trixInitialize(e, editor);"
+                        trix-change="trixChange(e, editor);"
+                        trix-selection-change="trixSelectionChange(e, editor);"
+                        trix-focus="trixFocus(e, editor);"
+                        trix-blur="trixBlur(e, editor);"
+                        trix-file-accept="trixFileAccept(e, editor);"
+                        trix-attachment-add="trixAttachmentAdd(e, editor);"
+                        placeholder="Summary..."
+                        trix-attachment-remove="trixAttachmentRemove(e, editor);"
+                        style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
+                    </trix-editor>
+                </div>
+            </div>
+        </div><!-- /.col-* -->
+
+    </div><!-- /.row -->
+	<hr>
+	<div class="">
+		<a href="javascript" class="btn btn-default" ui-sref="/account">
+			<i class="fa fa-close"></i>
+			Discard
+		</a>
+		<button type="submit" class="btn btn-secondary" data-ng-disabled="vm.disabled">
+			<i class="fa fa-save"></i>
+			Save
+		</button>
+	</div><!-- /.center -->
+</form>
+
+    <div class="modal fade"
+        id="crop-image-popup"
+        data-keyboard="false"
+        data-backdrop="static">    
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+						Upload Photo
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cropArea text-center">
+                        <button class="btn btn-primary" 
+                            ngf-select ng-model="picFile" 
+                            ngf-max-size="1MB"
+                            name="file"
+                            ngf-accept="'image/*'">
+                            <i class="fa fa-download"></i>
+                            Browse Upload Photo
+                        </button>
+                        <i ng-show="setting.file.$error.maxSize" class="error">
+                            File too large {{vm.errorFiles[0].size / 1000000|number:1}}MB: max 1M
+                        </i>
+                        <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+                            ngf-max-size="1MB"
+                            name="file"
+                            class="cropArea">
+                            <img-crop image="picFile | ngfDataUrl"                 
+                                result-image="croppedDataUrl" 
+                                area-type="square"
+								result-image-size="200"
+								result-image-quality="1"
+                                ng-init="croppedDataUrl=''">
+                            </img-crop>
+                        </div>
+                        <!--<div>
+                            <img ng-src="{{croppedDataUrl}}" />
+                        </div>-->
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" ng-click="vm.cancel()" 
+                        data-ng-disabled="vm.loading"
+                        data-dismiss="modal">
+                        <i class="fa fa-close"></i>
+                        Close
+                    </button>
+                    <button class="btn btn-primary" 
+                            ng-click="vm.done();"
+                            data-ng-disabled="loading">
+                        <i class="fa fa-save" data-ng-if="!vm.loading"></i>
+                        <i class="fa fa-spinner fa-spin" data-ng-if="vm.loading"></i>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<style type="text/css">
+    .cropArea {
+        /*overflow: hidden;*/
+        height: 250px;
+        margin: 10px 0px 60px 0px;
+    }
+</style>
+

@@ -114,7 +114,17 @@
                     <span class="require">*</span>
                 </label>
                 <div class="col-md-8">
-                    <div class="input-group">
+                    <datepicker date-format="yyyy-MM-dd" selector="form-control">
+                        <div class="input-group">
+                            <input class="form-control" 
+                                data-ng-model="expire_date" require
+                                placeholder="expire date"/>
+                            <span class="input-group-addon">
+                                <i class="fa fa-lg fa-calendar"></i>
+                            </span>
+                        </div>
+                    </datepicker>
+                    <!-- <div class="input-group">
                         <input type="text" class="form-control" uib-datepicker-popup 
                             ng-model="expire_date" is-open="opened" 
                             datepicker-options="dateOptions" 
@@ -123,7 +133,7 @@
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
                         </span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -201,20 +211,16 @@
     <br>
     <div class="row col-md-12">
         <div class="align-right">
-            <button
-                class="btn btn-primary"
-                data-ng-disabled="!disabled"
-            >
+            <button class="btn btn-default"
+                ng-click="back($event);">
+                <i class="fa fa-close"></i>
+                Close
+            </button>
+            <button class="btn btn-primary"
+                data-ng-disabled="!disabled">
                 <i class="fa fa-save" data-ng-show="disabled"></i>
                 <i class="fa fa-refresh fa-spin" data-ng-hide="disabled"></i>
                 Save
-            </button>
-            <button
-                class="btn btn-default"
-                ng-click="back($event);"
-            >
-                <i class="fa fa-close"></i>
-                Close
             </button>
         </div>
     </div>  

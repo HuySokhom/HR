@@ -1,4 +1,4 @@
-<div class="panel-body">
+<div class="">
     <div ng-if="vm.account.user_type == 'agency'">
         <div class="row">
             <div class="col-sm-3">
@@ -89,33 +89,73 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Email Address:</label>
-                        <div data-ng-bind="vm.account.customers_email_address"
-                        ></div>
+                        <label>Gender:</label>
+                        <div data-ng-bind="vm.account.customers_gender"></div>
                     </div><!-- /.form-group -->
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Skill Title:</label>
+                        <label>Date of Birth:</label>
+                        <div data-ng-bind="vm.account.customers_dob"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Nationality:</label>
+                        <div data-ng-bind="vm.account.nationality"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Religion:</label>
+                        <div data-ng-bind="vm.account.religion"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Health:</label>
+                        <div data-ng-bind="vm.account.health"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Marital Status:</label>
+                        <div data-ng-bind="vm.account.marital_status"></div>
+                    </div><!-- /.form-group -->
+                </div>                
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Telephone:</label>
+                        <div data-ng-bind="vm.account.customers_telephone"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Email Address:</label>
+                        <div data-ng-bind="vm.account.customers_email_address"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Country:</label>
+                        <div data-ng-bind="vm.account.country"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>State/City:</label>
+                        <div data-ng-bind="vm.account.state_city"></div>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Current Position:</label>
                         <div data-ng-bind="vm.account.skill_title"></div>
                     </div><!-- /.form-group -->
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Telephone:</label>
-                        <div data-ng-bind="vm.account.customers_telephone"
-                        ></div>
-                    </div><!-- /.form-group -->
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Location:</label>
-                        <div data-ng-bind-html="vm.account.location[0].name"></div>
-                    </div><!-- /.form-group -->
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Address:</label>
+                        <label>Present Address:</label>
                         <div data-ng-bind-html="vm.account.customers_address"></div>
                     </div><!-- /.form-group -->
                 </div>

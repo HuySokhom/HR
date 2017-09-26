@@ -90,6 +90,84 @@ app.config([
 				controller: 'account_edit_ctrl',
 				controllerAs: 'vm'
 			})
+			/**
+			 * Start Route for Create CV
+			 */
+			.state('manage_cv', {
+				url: '/manage-cv',
+				templateUrl: 'ext/ng/app/account/partials/cv.html',
+                controller: 'cv_ctrl as vm',
+				resolve: {
+					getDetail: [
+						'Restful',
+						function (Restful) {
+							return Restful.get('api/UserSession').success(function(data){
+								return data;
+							});
+						}
+					],
+					detailResult: [ '$q', '$timeout', '$state', 'getDetail',
+						function ($q, $timeout, $state, getDetail) {
+							//console.log(getDetail.data.user_type);
+							if (getDetail.data.user_type != 'normal') {
+								// Prevent migration to default state
+								event.preventDefault();
+								$state.go('account');
+							}
+						}
+					]
+				}
+			})
+			.state('manage_cv_post', {
+				url: '/manage-cv/post',
+				templateUrl: 'ext/ng/app/account/partials/cv_post.html',
+				controller: 'cv_post_ctrl as vm',
+				resolve: {
+					getDetail: [
+						'Restful',
+						function (Restful) {
+							return Restful.get('api/UserSession').success(function(data){
+								return data;
+							});
+						}
+					],
+					detailResult: [ '$q', '$timeout', '$state', 'getDetail',
+						function ($q, $timeout, $state, getDetail) {
+							//console.log(getDetail.data.user_type);
+							if (getDetail.data.user_type != 'normal') {
+								// Prevent migration to default state
+								event.preventDefault();
+								$state.go('account');
+							}
+						}
+					]
+				}
+			})
+			.state('manage_cv_edit', {
+				url: '/manage-cv/edit/:id',
+				templateUrl: 'ext/ng/app/account/partials/cv_post.html',
+				controller: 'cv_post_ctrl as vm',
+				resolve: {
+					getDetail: [
+						'Restful',
+						function (Restful) {
+							return Restful.get('api/UserSession').success(function(data){
+								return data;
+							});
+						}
+					],
+					detailResult: [ '$q', '$timeout', '$state', 'getDetail',
+						function ($q, $timeout, $state, getDetail) {
+							//console.log(getDetail.data.user_type);
+							if (getDetail.data.user_type != 'normal') {
+								// Prevent migration to default state
+								event.preventDefault();
+								$state.go('account');
+							}
+						}
+					]
+				}
+			})
 		;
 		$urlRouterProvider.otherwise('/account');
 	}

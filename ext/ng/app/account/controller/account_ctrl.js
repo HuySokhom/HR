@@ -8,8 +8,8 @@ app.controller(
 		$scope.language_id = $('#language_id').val();
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
-				vm.account = data.elements[0];
 				console.log(data);
+				vm.account = data.elements[0];
 			});
 		};
 		$scope.init();

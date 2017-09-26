@@ -97,6 +97,7 @@
           'customers_telephone' => $telephone,
           'customers_fax' => $fax,
           'customers_newsletter' => $newsletter,
+          'customers_location' => 'Cambodia',
           'photo' => 'images/icon-person.png',
           'customers_password' => tep_encrypt_password($password),
           'create_date' => $date
@@ -253,11 +254,10 @@
         </div>
     <div class="buttonSet">
       <div class="text-right">
-        <?php 
-          echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 
-            'fa fa-chevron-right', null, 
-            'primary', null, 'btn-success'); 
-        ?>
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-check-square-o"></i>
+          Create Account
+        </button>
       </div>
   </div>
 </form>

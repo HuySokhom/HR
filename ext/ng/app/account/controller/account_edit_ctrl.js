@@ -22,6 +22,9 @@ app.controller(
 			Restful.get("api/Industry").success(function(data){
 				vm.industriesList = data.elements;
 			});
+			Restful.get("api/Country").success(function(data){
+				vm.countries = data.elements;
+			});
 		};
 		vm.init();
 
@@ -105,5 +108,6 @@ app.controller(
 				vm.loading = false;
 			});
 		};
+		
 	}
 ]);

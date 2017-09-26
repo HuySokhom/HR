@@ -20,6 +20,9 @@ class Object extends DbObj {
 		, $customersWebsite
 		, $isAgency
 		, $customersGender
+		, $country
+		, $stateCity
+		, $maritalStatus
 		, $userName
 		, $userType
 		, $photo
@@ -33,6 +36,10 @@ class Object extends DbObj {
 		, $uploadCv
 		, $industryId
 		, $industryName
+		, $nationality
+		, $religion
+		, $customersDob
+		, $health
 	;
 
 	public function __construct( $params = array() ){
@@ -52,6 +59,9 @@ class Object extends DbObj {
                 'working_history',
 				'user_type',
 				'photo',
+				'nationality',
+				'religion',
+				'health',
 				'photo_thumbnail',
 				'detail',
 				'customers_email_address',
@@ -60,6 +70,11 @@ class Object extends DbObj {
 				'customers_location',
 				'skill_title',
 				'company_name',
+				'marital_status',
+				'customers_gender',
+				'customers_dob',
+				'state_city',
+				'country',
 				'customers_website',
 				'location',
                 'upload_cv',
@@ -79,13 +94,21 @@ class Object extends DbObj {
 				photo_thumbnail,
 				customers_email_address,
 				customers_telephone,
+				customers_dob,
+				customers_gender,
 				customers_address,
+				marital_status,
+				state_city,
+				country,
 				customers_location,
 				skill_title,
 				company_name,
 				industry_id,
 				i.name as industry_name,
 				customers_website,
+				nationality,
+				religion,
+				health,
 				is_agency,
 				detail,
 				summary,
@@ -154,8 +177,16 @@ class Object extends DbObj {
 				customers
 			SET
 				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
+				customers_dob = '" . $this->getCustomersDob() . "',
+				nationality = '" . $this->dbEscape( $this->getNationality() ) . "',
+				religion = '" . $this->dbEscape( $this->getReligion() ) . "',
+				health = '" . $this->dbEscape( $this->getHealth() ) . "',
+				marital_status = '" . $this->dbEscape( $this->getMaritalStatus() ) . "',				
 				industry_id = '" .  $this->getIndustryId() . "',
 				upload_cv = '" . $this->dbEscape( $this->getUploadCv() ) . "',
+				state_city = '" . $this->dbEscape( $this->getStateCity() ) . "',
+				marital_status = '" . $this->dbEscape( $this->getMaritalStatus() ) . "',
+				country = '" . $this->dbEscape( $this->getCountry() ) . "',
 				summary = '" . $this->dbEscape( $this->getSummary() ) . "',
 				skill_title = '" . $this->dbEscape( $this->getSkillTitle() ) . "',
 				working_history = '" . $this->dbEscape( $this->getWorkingHistory() ) . "',
@@ -175,6 +206,62 @@ class Object extends DbObj {
 		");
 	
 	}
+	
+    public function setCustomersDob( $string ){
+        $this->customersDob = date('Y-m-d', strtotime($string));
+    }
+
+    public function getCustomersDob(){
+        return $this->customersDob;
+	}
+	
+    public function setHealth( $string ){
+        $this->health = $string;
+    }
+
+    public function getHealth(){
+        return $this->health;
+	}
+	
+    public function setReligion( $string ){
+        $this->religion = $string;
+    }
+
+    public function getReligion(){
+        return $this->religion;
+	}
+	
+    public function setNationality( $string ){
+        $this->nationality = $string;
+    }
+
+    public function getNationality(){
+        return $this->nationality;
+    }
+
+    public function setMaritalStatus( $string ){
+        $this->maritalStatus = $string;
+    }
+
+    public function getMaritalStatus(){
+        return $this->maritalStatus;
+    }
+
+    public function setCountry( $string ){
+        $this->country = $string;
+    }
+
+    public function getCountry(){
+        return $this->country;
+    }
+
+    public function setStateCity( $string ){
+        $this->stateCity = $string;
+    }
+
+    public function getStateCity(){
+        return $this->stateCity;
+    }
 
     public function setIndustryId( $string ){
         $this->industryId = (int)$string;

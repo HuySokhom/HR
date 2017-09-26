@@ -184,7 +184,7 @@
             while ($item = tep_db_fetch_array($query)) {
                 //var_dump($item);
                 echo "<div class='col-md-12 col-sm-6 col-xs-6'>
-                    <img src='images/". $item['image']."' class='img-responsive'/>
+                    <img src='images/". $item['image']."' class='ads img-responsive'/>
                 </div>";
             }
         ?>

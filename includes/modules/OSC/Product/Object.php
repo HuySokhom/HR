@@ -381,7 +381,7 @@ class Object extends DbObj {
 		return $this->productsCloseDate;
 	}
 	public function setProductsCloseDate( $string ){
-		$this->productsCloseDate = $string;
+		$this->productsCloseDate = date('Y-m-d', strtotime($string));
 	}
 
 	public function getSalaryId(){
