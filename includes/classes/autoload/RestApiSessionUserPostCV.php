@@ -2,7 +2,9 @@
 
 use
 	OSC\CV\Collection
-		as CVCol
+		as CVCol,
+	OSC\CV\Object
+		as CVObj
 ;
 
 class RestApiSessionUserPostCV extends RestApi {
@@ -11,16 +13,16 @@ class RestApiSessionUserPostCV extends RestApi {
 		$col = new CVCol();
 		$userId = $this->getId();
 		// start limit page
-//		$showDataPerPage = 10;
-//		$start = $params['GET']['start'];
-//		$this->applyLimit($col,
-//			array(
-//				'limit' => array( $start, $showDataPerPage )
-//			)
-//		);
-		
-		//$col->filterByCustomersId($userId);
-		// filter with default status 1
+		$showDataPerPage = 10;
+		$start = $params['GET']['start'];
+		$col->orderByRefreshDate('DESC');
+		$params['GET']['function'] ? $col->filterByFunction($params['GET']['function']) : '';
+		$params['GET']['apply_for'] ? $col->filterByApplyFor($params['GET']['apply_for']) : '';
+		$this->applyLimit($col,
+			array(
+				'limit' => array( $start, $showDataPerPage )
+			)
+		);
 		
 		$this->applyFilters($col, $params);
 		$this->applySortBy($col, $params);
@@ -36,23 +38,23 @@ class RestApiSessionUserPostCV extends RestApi {
 				403
 			);
 		}else {
-			$productObject = new CVCol();
+			$obj = new CVObj();
 			$userId = $this->getOwner()->getId();
-			$productObject->setCustomersId($userId);
+			$obj->setCustomerId($userId);
 			//$productObject->setProductsPromote($_SESSION['customer_plan']);
-			$productObject->setProperties($params['POST']['products']);
-			$productObject->insert();
+			$obj->setProperties($params['POST']);
+			$obj->insert();
 			
 			return array(
 				'data' => array(
-					'id' => $productId
+					'id' => $obj->getId()
 				)
 			);
 		}
 	}
 
 	public function put($params){
-		$userId = $this->getOwner()->getId();
+		$userId = $this->getOwner()->getId();var_dump($userId);
 		if( !$userId ){
 			throw new \Exception(
 				"403: Access Denied",
@@ -60,13 +62,14 @@ class RestApiSessionUserPostCV extends RestApi {
 			);
 		}else {
 			$cols = new CVCol();
-			$cols->filterByCustomersId($userId);
-			$productId = $this->getId();
-			$cols->filterById( $productId );
+			$cols->filterByCustomerId($userId);
+			$id = $this->getId();
+			$cols->filterById( $id );
 			if( $cols->getTotalCount() > 0 ){
 				$cols->populate();
 				$col = $cols->getFirstElement();
-				$col->setProductsId($productId);
+				$col->setId($id);
+				$col->setCustomerId($userId);
 				$col->setProperties($params['PUT']);
 				$col->update();
 				return array(
@@ -87,14 +90,15 @@ class RestApiSessionUserPostCV extends RestApi {
 			);
 		}else {
 			$cols = new CVCol();
-			$cols->filterByCustomersId($userId);
+			$cols->filterByCustomerId($userId);
 			$cols->filterById( $this->getId() );
 			if( $cols->getTotalCount() > 0 ){
 				$cols->populate();
 				$col = $cols->getFirstElement();
-				$col->setProductsId($this->getId());
+				$col->setId($this->getId());
+				$col->setCustomerId($userId);var_dump($col->getCustomerId());
 				if( $params['PATCH']['name'] == "update_status" ){
-					$col->setProductsStatus($params['PATCH']['status']);
+					$col->setStatus($params['PATCH']['status']);
 					$col->updateStatus();
 				}
 				elseif( $params['PATCH']['name'] == "promote_product" ){
@@ -162,38 +166,28 @@ class RestApiSessionUserPostCV extends RestApi {
 	}
 	
 	public function delete($params){
-		$userId = $this->getOwner()->getId();
+		$userId = $_SESSION['customer_id'];
 		if( !$userId ){
 			throw new \Exception(
 				"403: Access Denied",
 				403
 			);
 		}else {
-			if($params['DELETE']['image']){
-				$image = new ProductImageObj();
-				$image->setId($this->getId());
-				$image->delete();
-				return array(
-					'data' => array(
-						'data' => 'success'
-					)
-				);
-			}else {
-				$cols = new ProductPostCol();
-				$cols->filterByCustomersId($userId);
-				$cols->filterById($this->getId());
-				if ($cols->getTotalCount() > 0) {
-					$cols->populate();
-					$col = $cols->getFirstElement();
-					$col->setProductsId($this->getId());
-					$col->delete();
-				}
-				return array(
-					'data' => array(
-						'data' => 'success'
-					)
-				);
+			$cols = new CVCol();
+			$cols->filterByCustomerId($userId);
+			$cols->filterById($this->getId());
+			if ($cols->getTotalCount() > 0) {
+				$cols->populate();
+				$col = $cols->getFirstElement();
+				$col->setId($this->getId());
+				$col->setCustomerId($userId);
+				$col->delete();
 			}
+			return array(
+				'data' => array(
+					'data' => 'success'
+				)
+			);
 		}
 	}
 

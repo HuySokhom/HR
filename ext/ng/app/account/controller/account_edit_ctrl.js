@@ -14,6 +14,7 @@ app.controller(
 		vm.init = function(params){
 			Restful.get(url, params).success(function(data){
 				vm.account = data.elements[0];
+				vm.customers_location = {id: data.elements[0].customers_location};
 				console.log(data);
 			});
 			Restful.get("api/Location").success(function(data){

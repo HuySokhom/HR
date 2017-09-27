@@ -168,6 +168,31 @@ app.config([
 					]
 				}
 			})
+			.state('manage_cv_detail', {
+				url: '/manage-cv/detail/:id',
+				templateUrl: 'ext/ng/app/account/partials/cv_detail.html',
+				controller: 'cv_detail_ctrl as vm',
+				resolve: {
+					getDetail: [
+						'Restful',
+						function (Restful) {
+							return Restful.get('api/UserSession').success(function(data){
+								return data;
+							});
+						}
+					],
+					detailResult: [ '$q', '$timeout', '$state', 'getDetail',
+						function ($q, $timeout, $state, getDetail) {
+							//console.log(getDetail.data.user_type);
+							if (getDetail.data.user_type != 'normal') {
+								// Prevent migration to default state
+								event.preventDefault();
+								$state.go('account');
+							}
+						}
+					]
+				}
+			})
 		;
 		$urlRouterProvider.otherwise('/account');
 	}

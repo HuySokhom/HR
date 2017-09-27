@@ -110,9 +110,9 @@
           </li>
           <li>
             <a href="employers.php">
-              <i class="fa fa-briefcase"></i>
+              <i class="fa fa-building"></i>
               <br/>
-              Companies
+              Partners
             </a>
           </li>
           <!-- <li>
@@ -135,9 +135,9 @@
               if(!tep_session_is_registered('customer_id')){
                 echo '
                   <a href="javascript:void(0)">
-                    <i class="fa fa-user-circle-o"></i>
+                    <i class="fa fa-sign-in"></i>
                     <br/>
-                    Account
+                    Login
                   </a>';
               }else{
                 if($_SESSION['user_name']){
@@ -161,10 +161,11 @@
                 }
               }
             ?>
-            <ul class="sub-menu">
-              <?php
-                if(!tep_session_is_registered('customer_id')){
+            <?php
+                if(tep_session_is_registered('customer_id')){
               ?>
+            <ul class="sub-menu">
+              
               <!-- <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=1');?>">Recruitment</a></li>
               <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Training</a></li>
               <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=3');?>">Outsourcing</a></li>
@@ -173,14 +174,14 @@
                   Consulting
                 </a>
               </li>  -->
-                <li><a href="login.php">Login Or Register</a></li>
+                <!-- <li><a href="login.php">Login Or Register</a></li> -->
                 <!-- <li><a href="create_account.php">Sign Up</a></li> -->
-              <?php }else{
-                echo '<li><a href="account.php">My Profile</a></li>
+              
+                <li><a href="account.php">My Profile</a></li>
                   <li><a href="logoff.php">Sign Out</a></li>
-                ';
-                }?>
-            </ul><!-- /.sub-menu -->
+                
+                </ul><!-- /.sub-menu -->
+                <?php }?>
           </li>          
         </ul>
         <!-- <ul class="header-actions nav nav-pills">        

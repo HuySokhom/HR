@@ -79,7 +79,7 @@ class RestApiSessionUserProductPost extends RestApi {
 						c.categories_name,
 						pd.products_name,
 						pd.products_viewed,
-						DATE_FORMAT(p.products_close_date, '%d/%M/%Y') as products_close_date
+						DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date
 					from
 						products p, products_description pd, categories_description c
 					where

@@ -16,24 +16,32 @@ class Collection extends StdCollection {
 	}
 
 	public function filterByCustomerId( $arg ){
-		$this->addWhere("c.customer_id = '" . $arg . "'");
+		$this->addWhere("pc.customer_id = '" . $arg . "'");
 	}
 
-	public function filterByIsAgency( $arg ){
-		$this->addWhere("c.is_agency = '" . (int)$arg . "'");
+	public function filterByApplyFor( $arg ){
+		$this->addWhere("pc.apply_for like '%" . $arg . "%'");
+	}
+
+	public function filterByFunction( $arg ){
+		$this->addWhere("pc.function = '" . (int)$arg . "'");
 	}
 
 	public function filterByIsPublish( $arg ){
-		$this->addWhere("c.is_publish = '" . (int)$arg . "'");
+		$this->addWhere("pc.is_publish = '" . (int)$arg . "'");
 	}
 
 	public function filterById( $arg ){
-		$this->addWhere("c.id = '" . (int)$arg . "'");
+		$this->addWhere("pc.id = '" . (int)$arg . "'");
 	}
 
 	public function orderById($arg){
-		$this->addOrderBy("c.id", $arg);
+		$this->addOrderBy("pc.id", $arg);
 	}
 	
+	public function orderByRefreshDate( $arg ){
+		$this->addOrderBy("pc.refresh_date", $arg);
+	}
+
 
 }

@@ -310,7 +310,7 @@
 						<span class="require">*</span>
 						<select class="form-control" required 
 							data-ng-model="vm.account.country"
-							data-ng-options="x.name as x.name for x in vm.countries track by x.name"></select>
+							data-ng-options="x.id as x.name for x in vm.countries"></select>
 					</div><!-- /.form-group -->
 				</div>
 				<div class="col-sm-6">
@@ -319,14 +319,15 @@
 						<span class="require">*</span>
 						<input type="text"
 							   class="form-control"
-							   data-ng-if="vm.account.country != 'Cambodia'"
+							   data-ng-if="vm.account.country != 36"
 							   placeholder="State City..."
 							   data-ng-model="vm.account.state_city"
 						/>
 						<select class="form-control"
-								data-ng-if="vm.account.country == 'Cambodia'"
-								data-ng-model="vm.account.customers_location"
-								data-ng-options="location.id as location.name for location in vm.locations"
+								data-ng-if="vm.account.country == 36"
+								data-ng-model="vm.customers_location"
+								data-ng-change="vm.account.customers_location = vm.customers_location.id; vm.account.state_city = vm.customers_location.name;"
+								data-ng-options="location as location.name for location in vm.locations track by location.id"
 								required>
 							<option value="">--Select--</option>
 						</select>
@@ -343,7 +344,7 @@
 						/>
 					</div><!-- /.form-group -->
 				</div>
-				<div class="col-sm-6">
+				<div class="col-sm-12">
 					<div class="form-group">
 						<label>Present Address</label>
 						<span class="require">*</span>
@@ -353,66 +354,79 @@
 								  data-ng-model="vm.account.customers_address"
 						></textarea>
 					</div><!-- /.form-group -->
+				</div>				
+			</div>
+			
+			<!-- START Education -->
+			<div class="col-md-12">
+				<div class="page-header title-header">
+					Education Background
 				</div>
-				<div class="col-md-12">
-					<div class="form-group">
-						<label>Summary</label>
-						<span class="require">*</span>
-						<trix-editor
-								data-ng-model="vm.account.summary"
-								angular-trix trix-initialize="trixInitialize(e, editor);"
-								trix-change="trixChange(e, editor);"
-								trix-selection-change="trixSelectionChange(e, editor);"
-								trix-focus="trixFocus(e, editor);"
-								trix-blur="trixBlur(e, editor);"
-								trix-file-accept="trixFileAccept(e, editor);"
-								trix-attachment-add="trixAttachmentAdd(e, editor);"
-								placeholder="Summary..."
-								trix-attachment-remove="trixAttachmentRemove(e, editor);"
-								style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
-						</trix-editor>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="form-group">
-						<label>Working History</label>
-						<span class="require">*</span>
-						<trix-editor
-								data-ng-model="vm.account.working_history"
-								angular-trix trix-initialize="trixInitialize(e, editor);"
-								trix-change="trixChange(e, editor);"
-								trix-selection-change="trixSelectionChange(e, editor);"
-								trix-focus="trixFocus(e, editor);"
-								trix-blur="trixBlur(e, editor);"
-								trix-file-accept="trixFileAccept(e, editor);"
-								trix-attachment-add="trixAttachmentAdd(e, editor);"
-								placeholder="Working History..."
-								trix-attachment-remove="trixAttachmentRemove(e, editor);"
-								style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
-						</trix-editor>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="form-group">
-						<label>Experience</label>
-						<span class="require">*</span>
-						<trix-editor
-								data-ng-model="vm.account.experience"
-								angular-trix trix-initialize="trixInitialize(e, editor);"
-								trix-change="trixChange(e, editor);"
-								trix-selection-change="trixSelectionChange(e, editor);"
-								trix-focus="trixFocus(e, editor);"
-								trix-blur="trixBlur(e, editor);"
-								trix-file-accept="trixFileAccept(e, editor);"
-								trix-attachment-add="trixAttachmentAdd(e, editor);"
-								placeholder="Experience..."
-								trix-attachment-remove="trixAttachmentRemove(e, editor);"
-								style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
-						</trix-editor>
-					</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<trix-editor
+							data-ng-model="vm.account.experience"
+							angular-trix trix-initialize="trixInitialize(e, editor);"
+							trix-change="trixChange(e, editor);"
+							trix-selection-change="trixSelectionChange(e, editor);"
+							trix-focus="trixFocus(e, editor);"
+							trix-blur="trixBlur(e, editor);"
+							trix-file-accept="trixFileAccept(e, editor);"
+							trix-attachment-add="trixAttachmentAdd(e, editor);"
+							placeholder="Experience..."
+							trix-attachment-remove="trixAttachmentRemove(e, editor);"
+							style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
+					</trix-editor>
 				</div>
 			</div><!-- /.col-* -->
-
+			
+			<!-- START Working Experience -->
+			<div class="col-md-12">
+					<div class="page-header title-header">
+						Working Experience
+					</div>
+				</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<trix-editor
+							data-ng-model="vm.account.working_history"
+							angular-trix trix-initialize="trixInitialize(e, editor);"
+							trix-change="trixChange(e, editor);"
+							trix-selection-change="trixSelectionChange(e, editor);"
+							trix-focus="trixFocus(e, editor);"
+							trix-blur="trixBlur(e, editor);"
+							trix-file-accept="trixFileAccept(e, editor);"
+							trix-attachment-add="trixAttachmentAdd(e, editor);"
+							placeholder="Working History..."
+							trix-attachment-remove="trixAttachmentRemove(e, editor);"
+							style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
+					</trix-editor>
+				</div>
+			</div>
+			<!-- START Working Other -->
+			<div class="col-md-12">
+				<div class="page-header title-header">
+					Other
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<trix-editor
+							data-ng-model="vm.account.summary"
+							angular-trix trix-initialize="trixInitialize(e, editor);"
+							trix-change="trixChange(e, editor);"
+							trix-selection-change="trixSelectionChange(e, editor);"
+							trix-focus="trixFocus(e, editor);"
+							trix-blur="trixBlur(e, editor);"
+							trix-file-accept="trixFileAccept(e, editor);"
+							trix-attachment-add="trixAttachmentAdd(e, editor);"
+							placeholder="Summary..."
+							trix-attachment-remove="trixAttachmentRemove(e, editor);"
+							style="overflow: scroll;height: 200px;overflow-y: auto;overflow-x: auto;">
+					</trix-editor>
+				</div>
+			</div>
 		</div><!-- /.row -->
 	</div>
 	<hr>

@@ -16,6 +16,7 @@ class Object extends DbObj {
 		, $email
 		, $applyFor
 		, $function
+		, $functionName
 		, $salaryExpected
 		, $coverLetterSummery
 		, $fullName
@@ -25,7 +26,8 @@ class Object extends DbObj {
 		, $maritalStatus
 		, $religion
 		, $health
-		, $country
+		, $countryId
+		, $countryName
 		, $photo
 		, $stateCity
 		, $workingHistory
@@ -35,8 +37,16 @@ class Object extends DbObj {
 		, $viewed
 		, $coverLetterSummary
 		, $preferLocation
+		, $currentPosition
 	;
 	
+    public function setCurrentPosition( $string ){
+        $this->currentPosition = $string;
+    }
+    public function getCurrentPosition(){
+        return $this->currentPosition;
+	}
+
     public function setSalaryExpected( $string ){
         $this->salaryExpected = doubleval($string);
     }
@@ -59,7 +69,7 @@ class Object extends DbObj {
 	}
 
     public function setPreferLocation( $string ){
-        $this->preferLocation = $string;
+        $this->preferLocation = (int)$string;
     }
     public function getPreferLocation(){
         return $this->preferLocation;
@@ -107,11 +117,18 @@ class Object extends DbObj {
         return $this->maritalStatus;
     }
 
-    public function setCountry( $string ){
-        $this->country = $string;
+    public function setCountryId( $string ){
+        $this->countryId = (int)$string;
     }
-    public function getCountry(){
-        return $this->country;
+    public function getCountryId(){
+        return $this->countryId;
+    }
+
+    public function setCountryName( $string ){
+        $this->countryName = $string;
+    }
+    public function getCountryName(){
+        return $this->countryName;
     }
 
     public function setStateCity( $string ){
@@ -128,11 +145,17 @@ class Object extends DbObj {
         return $this->customerId;
     }
 
+    public function getFunctionName(){
+        return $this->functionName;
+    }
+    public function setFunctionName( $string ){
+        $this->functionName = $string;
+    }
     public function getFunction(){
         return $this->function;
     }
     public function setFunction( $string ){
-        $this->function = $string;
+        $this->function = (int)$string;
     }
 
     public function getApplyFor(){
@@ -215,6 +238,7 @@ class Object extends DbObj {
 				'viewed',
 				'phone_number',
 				'email',
+				'current_position',
                 'working_history',
 				'apply_for',
 				'photo',
@@ -227,11 +251,15 @@ class Object extends DbObj {
 				'prefer_location',
 				'full_name',
 				'function',
+				'function_name',
+				'create_date',
 				'marital_status',
 				'gender',
+				'country_name',
 				'dob',
 				'state_city',
-				'country',
+				'country_id',
+				'status',
 				'salary_expected',
                 'is_publish',
 			)
@@ -243,35 +271,41 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				customer_id,
-				summary,
-				experience,
-				viewed,
-				phone_number,
-				email,
-				cover_letter_summary,
-				working_history,
-				apply_for,
-				photo,
-				prefer_location,
-				nationality,
-				religion,
-				health,
-				present_address,
-				phone_number,
-				full_name,
-				function,
-				marital_status,
-				gender,
-				dob,
-				state_city,
-				country,
-				salary_expected,
-				is_publish
+				p.customer_id,
+				p.summary,
+				p.experience,
+				p.viewed,
+				p.phone_number,
+				p.email,
+				DATE_FORMAT(p.create_date, '%d/%m/%Y') as create_date,
+				p.cover_letter_summary,
+				p.working_history,
+				p.apply_for,
+				p.photo,
+				p.prefer_location,
+				p.nationality,
+				p.religion,
+				p.health,
+				current_position,
+				p.present_address,
+				p.phone_number,
+				p.full_name,
+				p.function,
+				cd.categories_name as function_name,
+				p.marital_status,
+				p.gender,
+				p.dob,
+				p.state_city,
+				country_id,
+				c.countries_name as country_name,
+				p.salary_expected,
+				p.is_publish,
+				p.status
 			FROM
-				post_cv
+				post_cv p LEFT JOIN countries c ON p.country_id = c.countries_id
+				INNER JOIN categories_description cd ON p.function = cd.categories_id
 			WHERE
-				id = '" . (int)$this->getId() . "'
+				p.id = '" . (int)$this->getId() . "'
 		");
 	
 		if( ! $this->dbNumRows($q) ){
@@ -286,7 +320,6 @@ class Object extends DbObj {
 
 
 	public function update() {
-	
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
 		}
@@ -295,37 +328,86 @@ class Object extends DbObj {
 			UPDATE
 				post_cv
 			SET
-				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
-				customers_dob = '" . $this->getCustomersDob() . "',
-				nationality = '" . $this->dbEscape( $this->getNationality() ) . "',
-				religion = '" . $this->dbEscape( $this->getReligion() ) . "',
-				health = '" . $this->dbEscape( $this->getHealth() ) . "',
-				marital_status = '" . $this->dbEscape( $this->getMaritalStatus() ) . "',				
-				industry_id = '" .  $this->getIndustryId() . "',
-				upload_cv = '" . $this->dbEscape( $this->getUploadCv() ) . "',
-				state_city = '" . $this->dbEscape( $this->getStateCity() ) . "',
-				marital_status = '" . $this->dbEscape( $this->getMaritalStatus() ) . "',
-				country = '" . $this->dbEscape( $this->getCountry() ) . "',
-				summary = '" . $this->dbEscape( $this->getSummary() ) . "',
-				skill_title = '" . $this->dbEscape( $this->getSkillTitle() ) . "',
-				working_history = '" . $this->dbEscape( $this->getWorkingHistory() ) . "',
-				experience = '" . $this->dbEscape( $this->getExperience() ) . "',
-				company_name = '" . $this->dbEscape( $this->getCompanyName() ) . "',
-				customers_email_address = '" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',
-				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
-				photo_thumbnail = '" . $this->dbEscape( $this->getPhotoThumbnail() ) . "',
-				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
-				customers_location = '" . (int)$this->getCustomersLocation() . "',
-				detail = '" . $this->dbEscape( $this->getDetail() ). "',
-				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "',
-				customers_website = '" . $this->dbEscape( $this->getCustomersWebsite() ) . "',
-				customers_location = '" . $this->dbEscape( $this->getCustomersLocation() ) . "'
+				present_address = '" . $this->dbEscape($this->getPresentAddress()) . "',
+				phone_number = '" . $this->dbEscape($this->getPhoneNumber()) . "',
+				current_position = '" . $this->dbEscape($this->getCurrentPosition()) . "',
+				email = '" . $this->dbEscape($this->getEmail()) . "',
+				apply_for = '" . $this->dbEscape($this->getApplyFor()) . "',
+				function = '" . $this->dbEscape($this->getFunction()) . "',
+				salary_expected = '" . $this->dbEscape($this->getSalaryExpected()) . "',
+				cover_letter_summary = '" . $this->dbEscape($this->getCoverLetterSummary()) . "',
+				full_name = '" . $this->dbEscape($this->getFullName()) . "',
+				gender = '" . $this->dbEscape($this->getGender()) . "',
+				dob = '" . $this->dbEscape($this->getDob()) . "',
+				nationality = '" . $this->dbEscape($this->getNationality()) . "',
+				religion = '" . $this->dbEscape($this->getReligion()) . "',
+				health = '" . $this->dbEscape($this->getHealth()) . "',
+				marital_status = '" . $this->dbEscape($this->getMaritalStatus()) . "',
+				country_id = '" . $this->dbEscape($this->getCountryId()) . "',
+				state_city = '" . $this->dbEscape($this->getStateCity()) . "',
+				working_history = '" . $this->dbEscape($this->getWorkingHistory()) . "',
+				experience = '" . $this->dbEscape($this->getExperience()) . "',
+				prefer_location = '" . $this->dbEscape($this->getPreferLocation()) . "',
+				summary = '" . $this->dbEscape($this->getSummary()) . "',
+				photo = '" . $this->dbEscape($this->getPhoto()) . "'
 			WHERE
-				customers_id = '" . (int)$this->getId() . "'
-		");
+				customer_id = '" . (int)$this->getCustomerId() . "'
+					AND 
+				id  = '" . (int)$this->getId() . "'
+		");	
+	}
+
 	
+	public function updateStatus() {
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+	
+		$this->dbQuery("
+			UPDATE
+				post_cv
+			SET
+				status = '" . $this->getStatus() . "'
+			WHERE
+				customer_id = '" . (int)$this->getCustomerId() . "'
+					AND 
+				id  = '" . (int)$this->getId() . "'
+		");	
 	}
 	
+	
+	public function refreshDate() {
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+	
+		$this->dbQuery("
+			UPDATE
+				post_cv
+			SET
+				refresh_date = NOW()
+			WHERE
+				customer_id = '" . (int)$this->getCustomerId() . "'
+					AND 
+				id  = '" . (int)$this->getId() . "'
+		");	
+	}
+
+	public function delete() {
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+	
+		$this->dbQuery("
+			DELETE FROM 
+				post_cv
+			WHERE
+				customer_id = " . (int)$this->getCustomerId() . "
+					AND 
+				id  = " . (int)$this->getId() . "
+		");	
+	}
+
 	public function insert(){	
 		$this->dbQuery("
 			INSERT INTO
@@ -334,6 +416,7 @@ class Object extends DbObj {
 				customer_id,
 				present_address,
 				phone_number,
+				current_position,
 				email,
 				apply_for,
 				function,
@@ -346,7 +429,7 @@ class Object extends DbObj {
 				religion,
 				health,
 				marital_status,
-				country,
+				country_id,
 				state_city,
 				working_history,
 				experience,
@@ -356,13 +439,15 @@ class Object extends DbObj {
 				is_publish,
 				viewed,
 				status,
+				refresh_date,
 				create_date
 			)
 				VALUES
 			(
 				'" . $this->dbEscape($this->getCustomerId()) . "',
  				'" . $this->dbEscape($this->getPresentAddress()) . "',
- 				'" . $this->dbEscape($this->getPhoneNumber()). "',
+				'" . $this->dbEscape($this->getPhoneNumber()). "',
+				'" . $this->dbEscape($this->getCurrentPosition()). "',
 				'" . $this->dbEscape($this->getEmail()) . "',
 				'" . $this->dbEscape($this->getApplyFor()) . "',
 				'" . $this->dbEscape($this->getFunction()) . "',
@@ -375,17 +460,18 @@ class Object extends DbObj {
 				'" . $this->dbEscape($this->getReligion()) . "',
 				'" . $this->dbEscape($this->getHealth()) . "',
 				'" . $this->dbEscape($this->getMaritalStatus()) . "',
-				'" . $this->dbEscape($this->getCountry()) . "',
+				'" . $this->dbEscape($this->getCountryId()) . "',
 				'" . $this->dbEscape($this->getStateCity()) . "',
 				'" . $this->dbEscape($this->getWorkingHistory()) . "',
 				'" . $this->dbEscape($this->getExperience()) . "',
 				'" . $this->dbEscape($this->getPreferLocation()) . "',
 				'" . $this->dbEscape($this->getSummary()) . "',
 				'" . $this->dbEscape($this->getPhoto()) . "',
-				 0,
-				 0,
-				 0,
- 				NOW()
+				0,
+				0,
+				0,
+				NOW(),
+				NOW()
 			)
 		");
 	}

@@ -80,7 +80,7 @@ class Object extends DbObj {
 				products_kind_of,
 				number_of_hire,
 				salary_id,
-				products_close_date,
+				DATE_FORMAT(products_close_date, '%Y/%m/%d') as products_close_date,
 				create_by,
 				gender,
 				is_publish
@@ -381,7 +381,7 @@ class Object extends DbObj {
 		return $this->productsCloseDate;
 	}
 	public function setProductsCloseDate( $string ){
-		$this->productsCloseDate = date('Y-m-d', strtotime($string));
+		$this->productsCloseDate = $string;
 	}
 
 	public function getSalaryId(){

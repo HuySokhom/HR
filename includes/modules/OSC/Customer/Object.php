@@ -21,6 +21,7 @@ class Object extends DbObj {
 		, $isAgency
 		, $customersGender
 		, $country
+		, $countryName
 		, $stateCity
 		, $maritalStatus
 		, $userName
@@ -75,6 +76,7 @@ class Object extends DbObj {
 				'customers_dob',
 				'state_city',
 				'country',
+				'country_name',
 				'customers_website',
 				'location',
                 'upload_cv',
@@ -100,6 +102,7 @@ class Object extends DbObj {
 				marital_status,
 				state_city,
 				country,
+				co.countries_name as country_name,
 				customers_location,
 				skill_title,
 				company_name,
@@ -116,7 +119,7 @@ class Object extends DbObj {
                 working_history,
                 upload_cv
 			FROM
-				customers c left join industries i on c.industry_id = i.id
+				customers c left join industries i on c.industry_id = i.id left join countries co on c.country = co.countries_id
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'
 		");
@@ -248,13 +251,21 @@ class Object extends DbObj {
     }
 
     public function setCountry( $string ){
-        $this->country = $string;
+        $this->country = (int)$string;
     }
 
     public function getCountry(){
         return $this->country;
     }
 
+    public function setCountryName( $string ){
+        $this->countryName = $string;
+    }
+
+    public function getCountryName(){
+        return $this->countryName;
+	}
+	
     public function setStateCity( $string ){
         $this->stateCity = $string;
     }

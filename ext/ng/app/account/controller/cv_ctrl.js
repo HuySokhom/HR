@@ -11,16 +11,17 @@ app.controller(
 	, function ($scope, Restful, Services, Upload, $timeout, $location, $alertify, $state){
 		var vm = this;
 		vm.service = new Services();
-		var params = {pagination: 'yes'};
-		var url = 'api/SessionUserPostCV/';
-		vm.init = function(params){
-			Restful.get(url, params).success(function(data){
-				vm.products_post = data;
+		vm.filter = {pagination: 'yes'};
+		var url = 'api/Session/User/PostCV/';
+
+		Restful.get("api/Category").success(function(data){
+			vm.categoryList = data;
+		});
+		vm.init = function(){
+			Restful.get(url, vm.filter).success(function(data){
+				vm.cv_post = data;
 				console.log(data);
 				vm.totalItems = data.count;
-			});
-			Restful.get("api/Category").success(function(data){
-				vm.categoryList = data;
 			});
 		};
 		vm.init();
@@ -31,15 +32,15 @@ app.controller(
 		};
 
 		vm.refreshDate = function(params){
-			Restful.patch('api/Session/User/ProductPost/' + params.products_id).success(function(data){
+			Restful.patch(url + params.id).success(function(data){
 				vm.init();
-				vm.service.alertMessage('<strong>Complete: </strong> Update Product Refresh Success.');
+				vm.service.alertMessage('<strong>Complete: </strong> Refresh Success.');
 			});
 		};
 
 		vm.promote = function(params){
 			var data = { products_promote: params.products_promote, name: "promote_product"};
-			Restful.patch('api/Session/User/ProductPost/' + params.products_id, data).success(function(data){
+			Restful.patch(url + params.id, data).success(function(data){
 				console.log(data);
 				if(data == 'success'){
 					vm.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
@@ -53,9 +54,11 @@ app.controller(
 		};
 
 		vm.updateStatus = function(params){
-			params.products_status == 1 ? params.products_status = 0 : params.products_status = 1;
-			var data = { status: params.products_status, name: "update_status"};
-			Restful.patch('api/Session/User/ProductPost/' + params.products_id, data).success(function(data){
+			params.status == 1 ? params.status = 0 : params.status = 1;
+			var data = { status: params.status, name: "update_status"};
+			var url = 'api/Session/User/PostCV/' + params.id;
+			Restful.patch(url, data).success(function(data){
+				vm.init();
 				vm.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
 			});
 		};
@@ -64,11 +67,11 @@ app.controller(
 			window.open('-p-' + id + '.html','_blank');
 		};
 
-		vm.remove = function($index, id){
+		vm.remove = function(id){
 			$alertify.okBtn("Ok")
 				.cancelBtn("Cancel")
 				.confirm("<b>Waring: </b>" +
-						"Are you sure want to delete this product.", function (ev) {
+						"Are you sure want to delete this cv?", function (ev) {
 					// The click event is in the
 					// event variable, so you can use
 					// it here.
@@ -76,8 +79,7 @@ app.controller(
 					Restful.delete( url + id ).success(function(data){
 						vm.disabled = true;
 						vm.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						vm.products_post.elements.splice($index, 1);
-						vm.init(params);
+						vm.init();
 					});
 				}, function(ev) {
 					// The click event is in the
@@ -88,10 +90,7 @@ app.controller(
 		};
 		// search functionality
 		vm.search = function(){
-			params.search_title = vm.search_title;
-			params.id = vm.id;
-			params.type = vm.category_id;
-			vm.init(params);
+			vm.init();
 		};
 		/**
 		 * start functionality pagination
@@ -100,8 +99,8 @@ app.controller(
 		//get another portions of data on page changed
 		vm.pageChanged = function() {
 			vm.pageSize = 10 * ( vm.currentPage - 1 );
-			params.start = vm.pageSize;
-			vm.init(params);
+			vm.filter.start = vm.pageSize;
+			vm.init();
 		};
 	}
 ]);

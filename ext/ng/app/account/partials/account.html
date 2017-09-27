@@ -138,7 +138,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Country:</label>
-                        <div data-ng-bind="vm.account.country"></div>
+                        <div data-ng-bind="vm.account.country_name"></div>
                     </div><!-- /.form-group -->
                 </div>
                 <div class="col-sm-6">
@@ -153,31 +153,46 @@
                         <div data-ng-bind="vm.account.skill_title"></div>
                     </div><!-- /.form-group -->
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="form-group">
                         <label>Present Address:</label>
                         <div data-ng-bind-html="vm.account.customers_address"></div>
                     </div><!-- /.form-group -->
+                </div>                
+            </div>
+            <!-- START  Education Background -->
+            <div class="col-sm-12">
+                <div class="page-header title-header col-md-12">
+                    Education Background
                 </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>Summary:</label>
-                        <div data-ng-bind-html="vm.account.summary"></div>
-                    </div><!-- /.form-group -->
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>Working History:</label>
-                        <div data-ng-bind-html="vm.account.working_history"></div>
-                    </div><!-- /.form-group -->
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>Experience:</label>
-                        <div data-ng-bind-html="vm.account.experience"></div>
-                    </div><!-- /.form-group -->
-                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div data-ng-bind-html="vm.account.experience"></div>
+                </div><!-- /.form-group -->
             </div><!-- /.col-* -->
+            <!-- START  Working Experience-->
+            <div class="col-sm-12">
+                <div class="page-header title-header col-md-12">
+                    Working Experience
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div data-ng-bind-html="vm.account.working_history"></div>
+                </div><!-- /.form-group -->
+            </div>
+            <!-- START  Other-->
+            <div class="col-sm-12">
+                    <div class="page-header title-header col-md-12">
+                        Other   
+                    </div>
+                </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div data-ng-bind-html="vm.account.summary"></div>
+                </div><!-- /.form-group -->
+            </div>
         </div>
     </div>
     <!-- /.row -->

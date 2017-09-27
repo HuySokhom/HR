@@ -29,8 +29,8 @@
 			pd.benefits,
 			pd.products_viewed,
 			p.salary_id,
-			DATE_FORMAT(p.products_date_added, '%d/%M/%Y') as products_date_added,
-			DATE_FORMAT(p.products_close_date, '%d/%M/%Y') as products_close_date
+			DATE_FORMAT(p.products_date_added, '%d/%m/%Y') as products_date_added,
+			DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date
 		from
 			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, 
 			location l, customers cu

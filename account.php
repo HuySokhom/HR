@@ -36,8 +36,14 @@
 		<div class="col-md-12">
 			<div class="panel with-nav-tabs panel-default">
 				<div class="panel-heading">
-					<div class="tab-content">
+					<div class="tab-content" style="margin-bottom: -40px;">
 						<ul class="nav nav-tabs" role="tablist">
+							<li ui-sref-active="active" ui-sref="/account">
+								<a href="account.php#/account">
+									<i class="fa fa-user"></i>
+									<?php echo ENTRY_MY_ACCOUNT;?>
+								</a>
+							</li>
 							<?php 
 								if($_SESSION['user_type'] == "agency"){
 									echo '
@@ -50,12 +56,6 @@
 									';
 								}
 							?>
-							<li ui-sref-active="active" ui-sref="/account">
-								<a href="account.php#/account">
-									<i class="fa fa-user"></i>
-									<?php echo ENTRY_MY_ACCOUNT;?>
-								</a>
-							</li>
 							<?php 
 								if($_SESSION['user_type'] == "normal"){
 									echo '
@@ -211,4 +211,8 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <script
 	type="text/javascript"
 	src="ext/ng/app/account/controller/cv_post_ctrl.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/app/account/controller/cv_detail_ctrl.js"
 ></script>
