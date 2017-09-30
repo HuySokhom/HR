@@ -12,13 +12,13 @@ class RestApiCustomer extends RestApi {
 	public function get($params){
 		$col = new CustomersCol();
 		$col->sortByDate('DESC');
-		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
-		$params['GET']['type'] ? $col->filterByType($params['GET']['type']) : '';
 
 		if($params['GET']['plan'] != ''){
 			$col->filterByPlan($params['GET']['plan']);
 		}
 		$params['GET']['search_name'] ? $col->filterByName($params['GET']['search_name']) : '';
+		$params['GET']['type'] ? $col->filterByType($params['GET']['type']) : '';
+		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		// start limit page
 		$showDataPerPage = 10;
 		$start = $params['GET']['start'];

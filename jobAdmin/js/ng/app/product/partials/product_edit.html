@@ -61,7 +61,7 @@
                     >
                         <option value="">Select Agency</option>
                     </select> -->
-                    <customer-list-drop-down ng-model="vm.model.product.customers_id"
+                    <customer-list-drop-down ng-model="vm.customer"
                         required="required" name="agency"></customer-list-drop-down>
          
                     <label>
@@ -107,20 +107,17 @@
                         Expire Date:
                         <span class="require">*</span>
                     </label>
-                    <p class="input-group">
-                        <input type="text" class="form-control" 
-                            uib-datepicker-popup="{{vm.format}}" 
-                            ng-model="vm.model.product.products_close_date" 
-                            name="expire_date"
-                            is-open="vm.opened" 
-                            ng-click="vm.open()"
-                            ng-required="true"/>
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="vm.open()">
-                                <i class="fa fa-calendar"></i>
-                            </button>
-                        </span>
-                    </p>
+                    <datepicker date-format="yyyy-MM-dd" selector="form-control">
+                        <div class="input-group">
+                            <input class="form-control" 
+                                ng-model="vm.model.product.products_close_date"
+                                required
+                                placeholder="Date of Brith" />
+                            <span class="input-group-addon">
+                                <i class="fa fa-lg fa-calendar"></i>
+                            </span>
+                        </div>
+                    </datepicker>
                 </div>
                 <div class="col-md-6">
                     <label>

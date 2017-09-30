@@ -15,7 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
 <meta name="robots" content="noindex,nofollow">
-<link rel="shortcut icon" href="image/icon.png">
+<link rel="shortcut icon" href="../assets/favicon.png">
 <title>Asean HR Recruitment</title>
 <base href="<?php echo ($request_type == 'SSL') ? HTTPS_SERVER . DIR_WS_HTTPS_ADMIN : HTTP_SERVER . DIR_WS_ADMIN; ?>" />
 <!-- <link rel="stylesheet" type="text/css" href="includes/stylesheet.css"> -->
@@ -31,6 +31,7 @@
     rel="stylesheet"
     type="text/css"
 >
+<link rel="stylesheet" type="text/css" href="js/ng/lib/angular-date-picker-720kb/angular-datepicker.min.css">
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body data-ng-app="main">

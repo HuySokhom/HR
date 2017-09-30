@@ -31,7 +31,7 @@
 			</select> -->
 		</div>
 		<div class="form-group has-feedback col-sm-3">
-			<customer-list-drop-down data-ng-model="vm.customer_id" data-ng-change="vm.search();"></customer-list-drop-down>
+			<customer-list-drop-down filter-type="'agency'" data-ng-model="vm.customer_id" data-ng-change="vm.search();"></customer-list-drop-down>
 				
 			<!-- <select
 				data-ng-model="vm.customer_id"
@@ -73,11 +73,14 @@
 					<th width="15%">
 						Name
 					</th>
-					<th width="15%">
+					<th width="10%">
 						Kind Of
 					</th>
 					<th width="5%">
 						View
+					</th>
+					<th width="10%">
+						Expire Date
 					</th>
 					<th width="15%">
 						Create By
@@ -106,6 +109,9 @@
 					</td>
 					<td>
 						<span data-ng-bind="p.product_detail[0].products_viewed" class="label label-primary"></span>
+					</td>
+					<td>
+						<span data-ng-bind="p.products_close_date"></span>
 					</td>
 					<td>
 						<span data-ng-bind="p.company_name"></span>

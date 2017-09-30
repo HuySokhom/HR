@@ -39,6 +39,7 @@
           <div class="row">
               <!-- /.col-* -->
               <div class="col-md-8 col-sm-7">
+              <h4 class="page-header">Recent Job Offers</h4>
               <?php
               if($row > 0) {
                   foreach ($prod_list_contents as $product) {
@@ -46,9 +47,11 @@
                             <div class="">
                               <div class="positions-list-item">
                                   <h2>
-                                      <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . '">
-                                        ' . $product['products_name'] . '
-                                      </a>
+                                        <b>
+                                            <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . '">
+                                                ' . $product['products_name'] . '
+                                            </a>
+                                        </b>
                                   </h2>
                                   <h3>
                                     <span>
@@ -97,7 +100,7 @@
               </div><!-- /.col-* -->
               
               <div class="col-md-4 col-sm-5">
-                  <div class="filter-stacked">
+                  <div class="">
                       <?php include('advanced_search_box_right.php');?>
                   </div><!-- /.filter-stacked -->
                   <?php

@@ -211,16 +211,21 @@ if (tep_db_num_rows($product_info_query) < 1) {
 					</tr>
 				</table>
 			</div><!-- /.position-general-information -->
-
-			<h3 class="page-header background-header">Description</h3>
+			<div class="page-header title-header">
+				Description
+			</div>
 			<p>
 				<?php echo $product_info['products_description'];?>
 			</p>
-
-			<h3 class="page-header background-header">Requirements</h3>
+			<div class="page-header title-header">
+				Requirements
+			</div>
+			
 			<?php echo $product_info['skill'];?>
-
-			<h3 class="page-header background-header">Others</h3>
+			<div class="page-header title-header">
+				Others
+			</div>
+			
 			<?php echo $product_info['benefits'];?>
 			<p class="text-center" style="margin-top: 10px;">
 				<button class="btn btn-info btn-apply" data-toggle="modal" data-target="#apply-job">
@@ -228,7 +233,9 @@ if (tep_db_num_rows($product_info_query) < 1) {
 					Apply Now
 				</button>
 			</p>
-			<h3 class="page-header background-header">About Company</h3>
+			<div class="page-header title-header">
+				About Company
+			</div>
 			<?php echo $product_info['detail'];?>
 		</div><!-- /.col-* -->
 

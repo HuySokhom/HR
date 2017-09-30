@@ -134,7 +134,7 @@
             <?php
               if(!tep_session_is_registered('customer_id')){
                 echo '
-                  <a href="javascript:void(0)">
+                  <a href="login.php">
                     <i class="fa fa-sign-in"></i>
                     <br/>
                     Login

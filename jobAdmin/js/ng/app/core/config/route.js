@@ -138,6 +138,35 @@ app.config([
 				templateUrl: 'js/ng/app/salary_range/partials/create.html',
 				controller: 'salary_range_create_ctrl as vm'
 			})
+			
+			/**
+			 * Route CV List
+			 */
+			.state('cv', {
+                url: '/cv',
+                template: '<div ui-view></div>',
+                redirectTo: 'cv.list'
+            })
+			.state('cv.list', {
+				url: '',
+				templateUrl: 'js/ng/app/cv/partials/cv.html',
+				controller: 'cv_ctrl as vm'
+			})
+			.state('cv.detail', {
+				url: '/detail/:id',
+				templateUrl: 'js/ng/app/cv/partials/cv_detail.html',
+				controller: 'cv_detail_ctrl as vm'
+			})
+			.state('cv.create', {
+				url: '/create',
+				templateUrl: 'js/ng/app/cv/partials/cv_post.html',
+				controller: 'cv_post_ctrl as vm'
+			})
+			.state('cv.edit', {
+				url: '/edit/:id',
+				templateUrl: 'js/ng/app/cv/partials/cv_post.html',
+				controller: 'cv_post_ctrl as vm'
+			})
 			/**
 			 * Route for Industries
 			 */

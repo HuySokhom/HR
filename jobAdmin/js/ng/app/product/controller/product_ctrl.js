@@ -97,7 +97,7 @@ app.controller(
 				params.id = vm.id;
 				params.type = vm.category_id;
 				params.sort_by = vm.sort_by;
-				params.customer_id = vm.customer_id;
+				params.customer_id = vm.customer_id ? vm.customer_id.id : '';
 				init(params);
 			}, 50);
 		};

@@ -1,0 +1,325 @@
+<form data-ng-submit="vm.save()" class="form-horizontal" name="accountForm">
+    <div class="panel">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-md-2">
+                        Candidate Name
+                        <span class="require">*</span>
+                    </label>
+                    <div class="col-md-5">
+                        <customer-list-drop-down data-ng-model="vm.model" 
+                            name="candidate" required="required" filter-type="'normal'"></customer-list-drop-down>
+                    </div>
+                </div>                
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="page-header title-header text-center">
+                        Cover Letter
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">
+                        Full Name
+                        <span class="require">*</span>
+                    </label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" required placeholder="Full Name..." data-ng-model="vm.model.company_name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">
+                        Present Address
+                        <span class="require">*</span>
+                    </label>
+                    <div class="col-md-5">
+                        <textarea type="text" class="form-control" required placeholder="Present Address..." data-ng-model="vm.model.customers_address"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">
+                        Phone Number
+                        <span class="require">*</span>
+                    </label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" required placeholder="Phone number..." data-ng-model="vm.model.customers_telephone"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">
+                        Email
+                        <span class="require">*</span>
+                    </label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" required placeholder="Email..." data-ng-model="vm.model.customers_email_address"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">
+                        Apply For
+                        <span class="require">*</span>
+                    </label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" required placeholder="Apply For..." data-ng-model="vm.apply_for" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">
+                        Function
+                        <span class="require">*</span>
+                    </label>
+                    <div class="col-md-5">
+                        <select data-ng-model="vm.function"
+                            data-ng-options="c.categories_id as c.detail[0].categories_name for c in vm.categoryList.elements"
+                            class="form-control"
+                            required>
+                            <option value="">Function</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">
+                        Prefer Location
+                        <span class="require">*</span>
+                    </label>
+                    <div class="col-md-5">
+                        <select class="form-control" data-ng-model="vm.prefer_location" 
+                            data-ng-options="location.id as location.name for location in vm.locations"
+                            required>
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">
+                        Salary Expected
+                        <span class="require">*</span>
+                    </label>
+                    <div class="col-md-5">
+                        <input type="number" class="form-control" required placeholder="Salary Expected..." data-ng-model="vm.salary_expected"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="page-header title-header col-md-12">
+                        Cover Letter Detail
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <textarea class="form-control"
+                            ui-tinymce="tinymceOptions"
+                            data-ng-model="vm.cover_summary"
+                            rows="15"
+                        ></textarea>
+                    </div>
+                </div>
+                <!-- START CV INFORMATION -->
+                <div class="row">
+                    <div class="page-header title-header text-center col-md-12">
+                        Curriculum Vitae(CV)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Full Name
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" required placeholder="Full Name..." data-ng-model="vm.model.company_name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Gender
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <select class="form-control" data-ng-model="vm.model.customers_gender" require data-ng-options="x as x for x in ['Male','Female']"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Date of Birth
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <datepicker date-format="yyyy-MM-dd" selector="form-control">
+                                    <div class="input-group">
+                                        <input class="form-control" data-ng-model="vm.model.customers_dob" require placeholder="Date of Brith" />
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lg fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </datepicker>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Nationality
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" placeholder="Nationality" data-ng-model="vm.model.nationality" require/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Religion
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" placeholder="Religion" data-ng-model="vm.model.religion" require/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Health
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" placeholder="Health" data-ng-model="vm.model.health" require/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Marital Status
+                                <span class="require">*</span>  
+                            </label>
+                            <div class="col-md-5">
+                                <select class="form-control" data-ng-model="vm.model.marital_status" data-ng-options="x as x for x in ['Single','Divorced','Widowed', 'Married']"></select>
+                            </div>
+                        </div>
+            
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Telephone
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" placeholder="Telephone..." required data-ng-model="vm.model.customers_telephone"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Email Address
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" placeholder="Email Address" required data-ng-model="vm.model.customers_email_address"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Country
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <select class="form-control" required data-ng-model="vm.model.country_id" data-ng-options="x.id as x.name for x in vm.countries"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                State/City
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" data-ng-if="vm.model.country_id != 36" placeholder="State City..." 
+                                    data-ng-model="vm.model.state_city"/>
+                                <select class="form-control" data-ng-if="vm.model.country_id == 36" 
+                                    data-ng-model="vm.model.customers_location" 
+                                    data-ng-options="location.id as location.name for location in vm.locations"
+                                    data-ng-change="vm.account.customers_location = vm.customers_location.id; vm.account.state_city = vm.customers_location.name;"
+                                    required>
+                                    <option value="">--Select--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">Current Position <span class="require">*</span></label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" placeholder="Current Position..." data-ng-model="vm.model.skill_title" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">
+                                Present Address
+                                <span class="require">*</span>
+                            </label>
+                            <div class="col-md-5">
+                                <textarea required placeholder="Present Address..." class="form-control" data-ng-model="vm.model.customers_address"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <img src="{{vm.model.photo}}" alt="" srcset="" class="img-thumbnail">
+                    </div>
+                </div>
+                
+                <!-- START Other -->
+                <div class="row">
+                    <div class="page-header title-header col-md-12">
+                        Education Background
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea class="form-control"
+                            ui-tinymce="tinymceOptions"
+                            data-ng-model="vm.model.experience"
+                            rows="15"
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="page-header title-header col-md-12">
+                        Working Experience
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea class="form-control"
+                            ui-tinymce="tinymceOptions"
+                            data-ng-model="vm.model.working_history"
+                            rows="15"
+                        ></textarea>
+                    </div>
+                </div>
+                <!-- START Other -->
+                <div class="row">
+                    <div class="page-header title-header col-md-12">
+                        Other
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea class="form-control"
+                            ui-tinymce="tinymceOptions"
+                            data-ng-model="vm.model.summary"
+                            rows="15"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-* -->
+            <div class="col-md-12" style="margin-top: 20px;">
+                <a href="javascript" class="btn btn-default" ui-sref="cv">
+                    <i class="fa fa-close"></i>
+                    Discard
+                </a>
+                <button type="submit" class="btn btn-primary" data-ng-disabled="vm.disabled">
+                    <i class="fa fa-save"></i>
+                    Save
+                </button>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</form>

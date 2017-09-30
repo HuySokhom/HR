@@ -11,13 +11,14 @@ class RestApiSessionUserPostCV extends RestApi {
 
 	public function get($params){
 		$col = new CVCol();
-		$userId = $this->getId();
 		// start limit page
 		$showDataPerPage = 10;
 		$start = $params['GET']['start'];
 		$col->orderByRefreshDate('DESC');
 		$params['GET']['function'] ? $col->filterByFunction($params['GET']['function']) : '';
 		$params['GET']['apply_for'] ? $col->filterByApplyFor($params['GET']['apply_for']) : '';
+		$userId = $this->getOwner()->getId();
+		$col->filterByCustomerId($userId);
 		$this->applyLimit($col,
 			array(
 				'limit' => array( $start, $showDataPerPage )

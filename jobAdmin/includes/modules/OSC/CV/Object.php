@@ -11,6 +11,7 @@ class Object extends DbObj {
 			
 	protected
 		$customerId
+		, $customerName
 		, $presentAddress
 		, $phoneNumber
 		, $email
@@ -153,6 +154,13 @@ class Object extends DbObj {
         return $this->customerId;
     }
 
+    public function setCustomerName( $string ){
+        $this->customerName = $string;
+    }
+    public function getCustomerName(){
+        return $this->customerName;
+	}
+	
     public function getFunctionName(){
         return $this->functionName;
     }
@@ -268,6 +276,7 @@ class Object extends DbObj {
 				'dob',
 				'state_city',
 				'country_id',
+				'customer_name',
 				'status',
 				'salary_expected',
                 'is_publish',
@@ -294,6 +303,7 @@ class Object extends DbObj {
 				p.prefer_location,
 				l.name as preferLocation_name,
 				p.nationality,
+				cu.company_name as customer_name,
 				p.religion,
 				p.health,
 				current_position,
@@ -313,8 +323,9 @@ class Object extends DbObj {
 				p.status
 			FROM
 				post_cv p LEFT JOIN countries c ON p.country_id = c.countries_id
-				INNER JOIN categories_description cd ON p.function = cd.categories_id
-				INNER JOIN location l ON l.id = p.prefer_location
+				LEFT JOIN categories_description cd ON p.function = cd.categories_id
+				LEFT JOIN location l ON l.id = p.prefer_location
+				LEFT JOIN customers cu ON cu.customers_id = p.customer_id
 			WHERE
 				p.id = '" . (int)$this->getId() . "'
 		");
@@ -355,6 +366,7 @@ class Object extends DbObj {
 				health = '" . $this->dbEscape($this->getHealth()) . "',
 				marital_status = '" . $this->dbEscape($this->getMaritalStatus()) . "',
 				country_id = '" . $this->dbEscape($this->getCountryId()) . "',
+				customer_id = '" . $this->getCustomerId() . "',
 				state_city = '" . $this->dbEscape($this->getStateCity()) . "',
 				working_history = '" . $this->dbEscape($this->getWorkingHistory()) . "',
 				experience = '" . $this->dbEscape($this->getExperience()) . "',
@@ -362,13 +374,10 @@ class Object extends DbObj {
 				summary = '" . $this->dbEscape($this->getSummary()) . "',
 				photo = '" . $this->dbEscape($this->getPhoto()) . "'
 			WHERE
-				customer_id = '" . (int)$this->getCustomerId() . "'
-					AND 
 				id  = '" . (int)$this->getId() . "'
 		");	
 	}
 
-	
 	public function updateStatus() {
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
@@ -380,12 +389,24 @@ class Object extends DbObj {
 			SET
 				status = '" . $this->getStatus() . "'
 			WHERE
-				customer_id = '" . (int)$this->getCustomerId() . "'
-					AND 
 				id  = '" . (int)$this->getId() . "'
 		");	
 	}
 	
+	public function updateStatusPublish() {
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+	
+		$this->dbQuery("
+			UPDATE
+				post_cv
+			SET
+				is_publish = '" . $this->getIsPublish() . "'
+			WHERE
+				id  = '" . (int)$this->getId() . "'
+		");	
+	}
 	
 	public function refreshDate() {
 		if( !$this->getId() ) {
@@ -398,8 +419,6 @@ class Object extends DbObj {
 			SET
 				refresh_date = NOW()
 			WHERE
-				customer_id = '" . (int)$this->getCustomerId() . "'
-					AND 
 				id  = '" . (int)$this->getId() . "'
 		");	
 	}
@@ -413,8 +432,6 @@ class Object extends DbObj {
 			DELETE FROM 
 				post_cv
 			WHERE
-				customer_id = " . (int)$this->getCustomerId() . "
-					AND 
 				id  = " . (int)$this->getId() . "
 		");	
 	}

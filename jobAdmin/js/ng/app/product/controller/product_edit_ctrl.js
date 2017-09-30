@@ -30,8 +30,9 @@ app.controller(
 				console.log($state.current.name);
 				Restful.get(url + $stateParams.id).success(function(data){
 					vm.model.product = data.elements[0];
-					vm.model.product.products_close_date = new Date(vm.model.product.products_close_date);
+					// vm.model.product.products_close_date = moment(vm.model.product.products_close_date).format("YYYY-MM-DD");
 					console.log(data);
+					vm.customer = {id: vm.model.product.customers_id, company_name: vm.model.product.company_name};
 					vm.model.product_description = data.elements[0].product_detail[0];
 				});
 			}
@@ -58,13 +59,14 @@ app.controller(
 		};
 		// update functionality
 		vm.save = function(){
-			var d = vm.model.product.products_close_date.getDate();
-			var m =  vm.model.product.products_close_date.getMonth();
-			m += 1;  
-			var y = vm.model.product.products_close_date.getFullYear();
-			vm.model.product.products_close_date = y+ "-" + m + "-" + d;
+			// var d = vm.model.product.products_close_date.getDate();
+			// var m =  vm.model.product.products_close_date.getMonth();
+			// m += 1;  
+			// var y = vm.model.product.products_close_date.getFullYear();
+			// vm.model.product.products_close_date = y+ "-" + m + "-" + d;
             vm.disabled = false;
 			console.log(vm.model);
+			vm.model.product.customers_id = vm.customer.id;
 			if($state.current.name == 'product_post'){
 				Restful.post(url, vm.model).success(function(data){
 					vm.disabled = true;

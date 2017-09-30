@@ -10,6 +10,7 @@ var app = angular.module(
         , 'ui.select'
         , 'ds.clock'
         , 'ui.calendar'
+		, '720kb.datepicker'
     ]
 );
 // range with number
@@ -35,6 +36,7 @@ app.directive('customerListDropDown', [
             restrict: 'AE',
             scope: {
                 ngModel: '=ngModel',
+                filterType: '=',
                 required: '@required',
                 ngChange: '&',
                 name: '@name',
@@ -51,7 +53,7 @@ app.directive('customerListDropDown', [
                             <ui-select-match placeholder="Search User">\
                                 {{$select.selected.company_name}}\
                             </ui-select-match>\
-                            <ui-select-choices repeat="u.id as u in vm.customerList"\
+                            <ui-select-choices repeat="u as u in vm.customerList"\
                                                 refresh="vm.bindCustomerList($select.search)"\
                                                 refresh-delay="0">\
                                 <div data-ng-bind-html="u.company_name | highlight: $select.search"></div>\
@@ -91,10 +93,12 @@ app.controller('customerListDropDownCtrl', [
         });
         vm.customerList = [];
         vm.bindCustomerList = function (filterText) {
-            var params = {type:'agency', search_name: filterText, status: 1};
+            var type = $scope.filterType ? $scope.filterType : '';
+            var params = {type: type, search_name: filterText, status: 1};
+            // console.log(params);
             return Restful.get("api/Customer", params).success(function(data){
 				vm.customerList = data.elements;
-				console.log(data);
+				// console.log(data);
 			});
         }
     }

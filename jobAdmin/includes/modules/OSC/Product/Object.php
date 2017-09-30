@@ -94,7 +94,7 @@ class Object extends DbObj {
 				p.products_kind_of,
 				p.number_of_hire,
 				p.salary_id,
-				p.products_close_date,
+				DATE_FORMAT(p.products_close_date, '%Y/%m/%d') as products_close_date,
 				p.gender,
 				p.is_publish,
 				c.company_name

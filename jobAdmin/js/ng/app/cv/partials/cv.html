@@ -1,0 +1,179 @@
+<div class="panel">
+	<div class="panel-body">
+		<div>
+			<div class="col-md-3">
+				<a class="btn btn-default"
+					ui-sref="cv.create">
+					<span class="fa fa-plus-circle"></span>
+					Create CV
+				</a>
+			</div>
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="input-group">
+							<input
+								type="text"
+								placeholder="Search Apply CV..."
+								style="width: 106%;"
+								class="form-control"
+								data-ng-model="vm.filter.apply_for"
+								ng-model-options="{ debounce: 1000 }"
+								data-ng-change="vm.search()"/>
+							<span class="input-group-btn">
+								<button class="btn btn-default">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="input-group">
+							<customer-list-drop-down filter-type="'normal'" 
+								data-ng-model="vm.customer" 
+								data-ng-change="vm.search();"></customer-list-drop-down>	
+							<span class="input-group-btn">
+								<button class="btn btn-default" 
+									data-ng-click="vm.customer=null;vm.search();">
+									<i class="fa fa-refresh"></i>
+								</button>
+							</span>
+						</div>			
+					</div>
+
+					<div class="form-group has-feedback col-sm-4">
+						<select
+							data-ng-model="vm.filter.function"
+							data-ng-options="c.categories_id as c.detail[0].categories_name for c in vm.categoryList.elements"
+							class="form-control"
+							data-ng-change="vm.search();"
+							required
+						>
+							<option value="">Filter By Function</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12"> 
+			<span class="label label-info">
+				Total of CV: {{vm.totalItems}}
+			</span>
+		</div>
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<th width="5%">
+							#
+						</th>
+						<th width="20%">
+							Apply For
+						</th>
+						<th width="12%">
+							Function
+						</th>
+						<th width="5%">
+							View
+						</th>
+						<th width="10%">
+							Create By
+						</th>
+						<th width="10%">
+							Create Date
+						</th>
+						<th width="5%">
+							Status
+						</th>
+						<th width="15%">
+							Action
+						</th>
+					</thead>
+					<tr data-ng-repeat="p in vm.cv_post.elements">
+						<td>
+							{{p.id}}
+						</td>
+						<td>
+							<span data-ng-bind="p.apply_for"></span>
+						</td>
+						<td>
+							{{p.function_name}}
+						</td>
+						<td>
+							<span data-ng-bind="p.viewed" class="label label-primary"></span>
+						</td>
+						<td>
+							{{p.customer_name}}
+						</td>
+						<td>
+							<span data-ng-bind="p.create_date"></span>
+						</td>
+						<td>
+							<label class="label label-primary" ng-if="p.is_publish == 0">Pending</label>
+							<label class="label label-success" ng-if="p.is_publish == 2">Approve</label>
+							<label class="label label-danger" ng-if="p.is_publish == 1">Reject</label>
+						</td>
+						<td>
+							<a ui-sref="cv.detail({id: p.id})" 
+								uib-tooltip="View Detial"
+								class="btn btn-xs">
+								<i class="fa fa-eye"></i>
+							</a>
+							<button ui-sref="cv.edit({id:p.id})" 
+								uib-tooltip="Edit"
+								class="btn btn-default btn-xs">
+								<i class="fa fa-edit"></i>
+							</button>
+							<button data-ng-click="vm.updateStatus(p);"
+								uib-tooltip="Publish"
+								ng-if="p.is_publish != 0" class="btn btn-xs btn-success">
+								<i class="fa fa-check-square-o"></i>
+							</button>
+							
+							<button data-ng-click="vm.updateStatus(p);" 
+								uib-tooltip="Not Yet Publish" 
+								ng-if="p.is_publish == 0" class="btn btn-xs btn-warning">
+								<i class="fa fa-minus"></i>
+							</button>
+							<button data-ng-click="vm.refreshDate(p);" uib-tooltip="Refresh" class="btn btn-xs btn-primary">
+								<i class="fa fa-refresh"></i>
+							</button>
+							<button  class="btn btn-xs btn-danger" uib-tooltip="Delete" data-ng-click="vm.remove(p.id);">
+								<i class="fa fa-trash-o"></i>						
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div
+				data-ng-if="vm.cv_post.elements == 0"
+			>
+				<div class="alert alert-danger">
+					<strong>Warning!</strong> Empty Data.
+				</div>
+			</div>
+			<div
+				data-ng-if="!vm.cv_post"
+				class="align_center"
+			>
+				<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<ul uib-pagination
+			previous-text="‹"
+			next-text="›"
+			first-text="«"
+			last-text="»"
+			total-items="vm.totalItems"
+			boundary-link-numbers="true" 
+			rotate="true"
+			ng-model="vm.currentPage"
+			ng-change="vm.pageChanged()"
+			max-size="5"
+			items-per-page="10"
+			boundary-links="true"
+		></ul>
+	</div>
+</div>

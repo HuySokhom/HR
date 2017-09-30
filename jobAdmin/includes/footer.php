@@ -53,6 +53,12 @@
     type="text/javascript"
     src="js/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-2.4.0.js"
 ></script>
+
+<script
+    type="text/javascript"
+    src="js/ng/lib/angular-date-picker-720kb/angular-datepicker.min.js"
+></script>
+
 <script
     type="text/javascript"
     src="js/ng/lib/angular-alertify/js/ngAlertify.js"

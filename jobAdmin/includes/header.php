@@ -28,6 +28,7 @@
           <li><a href="#/category"><span class="fa fa-code-fork"></span> Categories</a></li>
           <li><a href="#/product"><span class="fa fa-sitemap"></span> Jobs</a></li>
           <li><a href="#/user"><span class="fa fa-users"></span> Users</a></li>
+          <li><a href="#/cv"><span class="fa fa-file-text-o"></span> CVs</a></li>
           <li>
             <a ui-sref="advertisement">
               <span class="fa fa-film"></span>

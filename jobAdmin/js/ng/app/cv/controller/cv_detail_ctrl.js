@@ -8,7 +8,7 @@ app.controller(
 	, function ($scope, Restful, Services, $stateParams, $state){
 		var vm = this;
 		vm.service = new Services();
-		var url = "api/Session/User/PostCV/";
+		var url = "api/CV/";
 		vm.model = {};
 		// init setting
 		vm.init = function(){

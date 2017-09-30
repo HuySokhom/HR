@@ -40,3 +40,9 @@ form .progress {
 .require{
 	color: #E04B4A;
 }
+.title-header{
+    background: #eee;
+    font-weight: 600;
+    font-size: 18px;
+    padding-top: 10px;
+}
