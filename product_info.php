@@ -95,7 +95,7 @@
 
 ?>
 <br>
-<div class="container">
+<div class="container" data-ng-controller="product_info_ctrl as vm">
 <?php
 if (tep_db_num_rows($product_info_query) < 1) {
 ?>
@@ -131,10 +131,20 @@ if (tep_db_num_rows($product_info_query) < 1) {
 			<div class="position-header">
 				<h1>
 					<?php echo $product_info['products_name'];?>
-					<button class="btn btn-info btn-apply pull-right" data-toggle="modal" data-target="#apply-job">
-						<i class="fa fa-location-arrow"></i>
-						Apply Now
-					</button>
+					<?php 
+						if(!tep_session_is_registered('customer_id')){
+							echo '<button class="btn btn-info btn-apply pull-right" data-toggle="modal" data-target="#please-login">
+									<i class="fa fa-location-arrow"></i>
+									Apply Now
+								</button>';
+						}else{
+							echo '<button class="btn btn-info btn-apply pull-right" data-toggle="modal" data-target="#apply-job">
+									<i class="fa fa-location-arrow"></i>
+									Apply Now
+								</button>
+							';
+						}
+					?>
 				</h1>
 			</div>
 			<div class="position-general-information table-responsive">
@@ -228,10 +238,20 @@ if (tep_db_num_rows($product_info_query) < 1) {
 			
 			<?php echo $product_info['benefits'];?>
 			<p class="text-center" style="margin-top: 10px;">
-				<button class="btn btn-info btn-apply" data-toggle="modal" data-target="#apply-job">
-					<i class="fa fa-location-arrow"></i>
-					Apply Now
-				</button>
+				<?php 
+					if(!tep_session_is_registered('customer_id')){
+						echo '<button class="btn btn-info btn-apply" data-toggle="modal" data-target="#please-login">
+								<i class="fa fa-location-arrow"></i>
+								Apply Now
+							</button>';
+					}else{
+						echo '<button class="btn btn-info btn-apply" data-toggle="modal" data-target="#apply-job">
+								<i class="fa fa-location-arrow"></i>
+								Apply Now
+							</button>
+						';
+					}
+				?>
 			</p>
 			<div class="page-header title-header">
 				About Company
@@ -361,40 +381,22 @@ if (tep_db_num_rows($product_info_query) < 1) {
 	<?php
 }
 ?>
-</div><!-- /.container -->
-<br><br>
-<?php
-require(DIR_WS_INCLUDES . 'template_bottom.php');
-require(DIR_WS_INCLUDES . 'application_bottom.php');
-?>
-<script>
 
-	$(function() {
-		$('form').submit(function (e) {
-			var form = {
-				name: $('#name').val(),
-				email: $('#email').val(),
-				enquiry: $('#text').val()
-			};
-			e.preventDefault();
-			console.log(form);
-			$.ajax({
-				type: 'POST',
-				url: 'api/SendMail',
-				data: form,
-				success: function (response) {
-					console.log(response);
-					if (response == 0) {
-						// ============================ Not here, this would be too late
-						span.text('email does not exist');
-					}
-				}
-			});
-		});
-	});
-
-</script>
-
+<!-- Modal For Apply PopUp -->
+<div id="please-login" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+	  		Please login to apply job <i class="fa fa-hand-o-right"></i> <a style="color:#ed1c24;" href="login.php">Login Now</a>.
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal For Apply PopUp -->
 <div id="apply-job" class="modal fade" role="dialog">
@@ -421,8 +423,8 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 						Apply To
 					</label>
 					<div class="col-xs-9">					
-						<input type="text" class="form-control col-md-6" placeholder="To"/>
-						<input type="text" class="form-control col-md-6" placeholder="CC"/>
+						<input type="text"​​ readonly value="<?php echo $product_info['customers_email_address'];?>" class="form-control col-md-6" placeholder="To"/>
+						<input type="email" class="form-control col-md-6" placeholder="CC"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -439,8 +441,35 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 						Attach CV Form
 					</label>
 					<div class="col-xs-9">					
-						<input type="text" class="form-control" />
-						
+						<input type="radio" value="attachFile" name="attach" id="attach" data-ng-model="vm.attach">
+						Attach CV
+						<input type="radio" name="attach" value="browse" id="attach" data-ng-model="vm.attach">
+						Browse File
+						<div data-ng-if="vm.attach == 'browse'">
+							<input type="file" name="file" id="file" class="form-control">
+						</div>
+						<div data-ng-if="vm.attach == 'attachFile'">
+							<hr>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th width="1%">Select</th>
+										<th width="99%">Apply For</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="row in vm.data">
+										<td>
+											<input type="radio" value="attach" name="se;ect" 
+												id="attach" data-ng-model="row.attach">
+										</td>
+										<td>
+											{{row.apply_for}}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -448,7 +477,9 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 						Description
 					</label>
 					<div class="col-xs-9">					
-						<textarea name="description" class="form-control" id="" rows="5"></textarea>
+						<textarea name="description" class="form-control" id="" 
+							rows="5"
+							placeholder="Description"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
@@ -463,3 +494,53 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
     </div>
   </div>
 </div>
+
+</div><!-- /.container -->
+<br><br>
+<?php
+require(DIR_WS_INCLUDES . 'template_bottom.php');
+require(DIR_WS_INCLUDES . 'application_bottom.php');
+?>
+<script
+    type="text/javascript"
+    src="ext/ng/lib/angular/1.5.6/angular.min.js"
+></script>
+<!-- custom file -->
+<script
+    type="text/javascript"
+    src="ext/ng/app/product_info/main.js"
+></script>
+<script
+    type="text/javascript"
+    src="ext/ng/app/core/restful/restful.js"
+></script>
+<script
+    type="text/javascript"
+    src="ext/ng/app/product_info/controller/product_info_ctrl.js"
+></script>
+<script>
+	$(function() {
+		$('form').submit(function (e) {
+			var form = {
+				name: $('#name').val(),
+				email: $('#email').val(),
+				enquiry: $('#text').val()
+			};
+			e.preventDefault();
+			console.log(form);
+			$.ajax({
+				type: 'POST',
+				url: 'api/SendMail',
+				data: form,
+				success: function (response) {
+					console.log(response);
+					if (response == 0) {
+						// ============================ Not here, this would be too late
+						span.text('email does not exist');
+					}
+				}
+			});
+		});
+	});
+
+</script>

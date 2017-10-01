@@ -178,7 +178,7 @@
                 <!-- <li><a href="create_account.php">Sign Up</a></li> -->
               
                 <li><a href="account.php">My Profile</a></li>
-                  <li><a href="logoff.php">Sign Out</a></li>
+                  <li><a href="logoff.php">Log Out</a></li>
                 
                 </ul><!-- /.sub-menu -->
                 <?php }?>

@@ -4,31 +4,31 @@
 ?>
 <br>
 <div class="container" data-ng-controller="job_seeker_ctrl as vm">
-    <div class="row">
-        <div class="form-group has-feedback col-sm-3">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." 
-                    data-ng-model="vm.search_name" 
-                    data-ng-keypress="($event.which === 13) ? vm.search() : 0">
-            <span class="input-group-btn">
-                <button class="btn btn-default" data-ng-click="vm.search()" type="button">
-                    <i class="fa fa-search"></i>
-                </button>
-            </span>
+    
+    <div class="col-md-8 col-sm-7" ng-cloak>
+        <div class="row">
+            <div class="form-group has-feedback col-sm-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." 
+                        data-ng-model="vm.search_name" 
+                        data-ng-keypress="($event.which === 13) ? vm.search() : 0">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" data-ng-click="vm.search()" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+                </div>
+            </div>
+            <div class="form-group has-feedback col-sm-6">
+                <select name="function" id="function"
+                    data-ng-model="vm.function"
+                    class="form-control"
+                    data-ng-change="vm.search()"
+                    data-ng-options="x.categories_id as x.categories_name for x in vm.functionList">
+                    <option value="">Select Function</option>
+                </select>
             </div>
         </div>
-        <div class="form-group has-feedback col-sm-3">
-            <select name="function" id="function"
-                data-ng-model="vm.function"
-                class="form-control"
-                data-ng-change="vm.search()"
-                data-ng-options="x.categories_id as x.categories_name for x in vm.functionList">
-                <option value="">Select Function</option>
-            </select>
-        </div>
-    </div>
-    <div class="col-md-8 col-sm-7" ng-cloak>
-
         <div data-ng-if="vm.data.count == 0">
             <div class="row alert alert-danger">
                 <strong>Warning!</strong> Empty Data.
@@ -131,17 +131,19 @@
                                     Cover Letter
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <h4 class="pull-right">{{vm.model.full_name}}</h4>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <span class="pull-right"> Present address: {{vm.model.present_address}}</span>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <span class="pull-right"> Phone number: {{vm.model.phone_number}}</span>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <span class="pull-right"> Email: {{vm.model.email}}</span>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="pull-right">{{vm.model.full_name}}</h4>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <span class="pull-right"> Present address: {{vm.model.present_address}}</span>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <span class="pull-right"> Phone number: {{vm.model.phone_number}}</span>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <span class="pull-right"> Email: {{vm.model.email}}</span>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3">
