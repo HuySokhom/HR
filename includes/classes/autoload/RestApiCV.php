@@ -13,7 +13,7 @@ class RestApiCV extends RestApi {
 		$showDataPerPage = 40;
 		$start = $params['GET']['start'];
 		$params['GET']['function'] ? $col->filterByFunction($params['GET']['function']) : '';
-		$params['GET']['apply_for'] ? $col->filterByApplyFor($params['GET']['apply_for']) : '';
+		$params['GET']['apply_for'] ? $col->filterByApplyForAndId($params['GET']['apply_for']) : '';
 		
 		$col->filterByIsPublish(2);
 		$col->orderByRefreshDate('DESC');

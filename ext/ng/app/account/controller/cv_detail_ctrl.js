@@ -13,7 +13,7 @@ app.controller(
 		// init setting
 		vm.init = function(){
 			Restful.get(url + $stateParams.id).success(function(data){
-				console.log(data);
+				// console.log(data);
 				vm.model = data.elements[0];
 			});
 		};

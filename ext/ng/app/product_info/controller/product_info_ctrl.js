@@ -10,7 +10,7 @@ app.controller(
 			vm.loading = true;
 			Restful.get(url).success(function(data){
 				vm.data = data.elements;
-				console.log(vm.data);
+				// console.log(vm.data);
 			});
 		};
 		vm.init();

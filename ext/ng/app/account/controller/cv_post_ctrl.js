@@ -14,7 +14,7 @@ app.controller(
 		vm.initSetting = function(){
 			if($state.current.name == 'manage_cv_edit'){
 				Restful.get(url + $stateParams.id).success(function(data){
-					console.log(data);
+					//console.log(data);
 					var model = data.elements[0];
 					vm.id = model.id;
 					vm.model.country = model.country_id;
@@ -33,6 +33,7 @@ app.controller(
 					vm.model.health = model.health;
 					vm.model.marital_status = model.marital_status;
 					vm.model.state_city = model.state_city;
+					vm.model.customers_location = model.state_city;
 					vm.model.working_history = model.working_history;
 					vm.model.experience = model.experience;
 					vm.prefer_location = model.prefer_location;
@@ -44,7 +45,7 @@ app.controller(
 				});
 			}else{
 				Restful.get('api/Session/Customer/').success(function(data){
-					console.log(data);
+					//console.log(data);
 					vm.model = data.elements[0];
 					vm.model.country_id = vm.model.country;
 				});
@@ -94,14 +95,14 @@ app.controller(
 					vm.disabled = false;
 					vm.service.alertMessage('<b>Complete: </b>Update Success.');
 					$state.go('manage_cv');
-					console.log(data);
+					//console.log(data);
 				});
 			}else{
 				Restful.post(url, data).success(function (data) {
 					vm.disabled = false;
 					vm.service.alertMessage('<b>Complete: </b>Save Success.');
 					$state.go('manage_cv');
-					console.log(data);
+					//console.log(data);
 				});
 			}
 		};

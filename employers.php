@@ -6,70 +6,72 @@
 <div class="container" data-ng-controller="employers_ctrl" >
     
     <div class="col-md-8 col-sm-7" ng-cloak>
-        <div class="companies-list" data-ng-if="data.count > 0">
-            <div class="companies-list-item" data-ng-repeat="data in data.elements">
-                <div class="companies-list-item-image">
-                    <a href="{{renderLink(data.id, data.company_name)}}">
-                        <img ng-src="{{data.photo}}" class="img-circle">
-                    </a>
-                </div>
-                <!-- /.companies-list-item-image -->
-
-                <div class="companies-list-item-heading">
-                    <h2>
+        <div class="row">
+            <h4 class="page-header">Partners List</h4>
+            <div class="companies-list" data-ng-if="data.count > 0">
+                <div class="companies-list-item" data-ng-repeat="data in data.elements">
+                    <div class="companies-list-item-image">
                         <a href="{{renderLink(data.id, data.company_name)}}">
-                            {{data.company_name}}
+                            <img ng-src="{{data.photo}}" class="img-circle">
                         </a>
-                    </h2>
-                    <h3>
-                        <i class="fa fa-map-marker"></i>
-                        {{data.location[0].name}}
-                    </h3>
-                </div>
-                <!-- /.companies-list-item-heading -->
+                    </div>
+                    <!-- /.companies-list-item-image -->
 
-                <div class="companies-list-item-count">
-                    <a href="{{renderLink(data.id, data.company_name)}}">{{data.total}} open positions</a>
-                </div>
-                <!-- /.positions-list-item-count -->
+                    <div class="companies-list-item-heading">
+                        <h2>
+                            <a href="{{renderLink(data.id, data.company_name)}}">
+                                {{data.company_name}}
+                            </a>
+                        </h2>
+                        <h3>
+                            <i class="fa fa-map-marker"></i>
+                            {{data.location[0].name}}
+                        </h3>
+                    </div>
+                    <!-- /.companies-list-item-heading -->
 
-                <div class="companies-list-item-rating">
-                    Website:
-                    <a href="http://{{data.customers_website}}" target="_blank">
-                        {{data.customers_website ? data.customers_website : 'N/A'}}
-                    </a>
+                    <div class="companies-list-item-count">
+                        <a href="{{renderLink(data.id, data.company_name)}}">{{data.total}} open positions</a>
+                    </div>
+                    <!-- /.positions-list-item-count -->
+
+                    <div class="companies-list-item-rating">
+                        Website:
+                        <a href="http://{{data.customers_website}}" target="_blank">
+                            {{data.customers_website ? data.customers_website : 'N/A'}}
+                        </a>
+                    </div>
+                    <!-- /.companies-list-item-rating -->
                 </div>
-                <!-- /.companies-list-item-rating -->
+                <!-- /.companies-list-item -->
             </div>
-            <!-- /.companies-list-item -->
-        </div>
 
-        <div
-            data-ng-if="data.count == 0"
-        >
-            <div class="alert alert-danger">
-                <strong>Warning!</strong> Empty Data.
+            <div
+                data-ng-if="data.count == 0"
+            >
+                <div class="alert alert-danger">
+                    <strong>Warning!</strong> Empty Data.
+                </div>
+            </div>
+            <div
+                data-ng-if="!data"
+                class="align_center"
+            >
+                <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+            </div>
+            <div
+                data-ng-show="totalItems > 10"
+            >
+                <pagination
+                    total-items="totalItems"
+                    ng-model="currentPage"
+                    ng-change="pageChanged()"
+                    max-size="5"
+                    items-per-page="10"
+                    boundary-links="true"
+                ></pagination>
             </div>
         </div>
-        <div
-            data-ng-if="!data"
-            class="align_center"
-        >
-            <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
-        </div>
-        <div
-            data-ng-show="totalItems > 10"
-        >
-            <pagination
-                total-items="totalItems"
-                ng-model="currentPage"
-                ng-change="pageChanged()"
-                max-size="5"
-                items-per-page="10"
-                boundary-links="true"
-            ></pagination>
-        </div>
-
     </div>
     <div class="col-md-4 col-sm-5">
         <div class="filter-stacked">
@@ -94,7 +96,7 @@
             while ($item = tep_db_fetch_array($query)) {
                 //var_dump($item);
                 echo "<div class='col-md-12 col-sm-6 col-xs-6'>
-                    <img src='images/". $item['image']."' class='img-responsive'/>
+                    <img src='images/". $item['image']."' class='img-responsive ads'/>
                 </div>";
             }
         ?>

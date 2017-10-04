@@ -1,18 +1,18 @@
 <?php
     $candidate_query = tep_db_query("
         select
-            customers_id,
-            company_name,
+            id,
+            customer_id,
+            full_name,
             photo,
-            skill_title
+            apply_for,
+            CONCAT( LOWER(REPLACE( full_name, ' ', '-' )), '-le-', id, '.html' ) as link
         from
-            customers
+            post_cv
         where
             status = 1
-              and
-            user_type = 'normal'
               and 
-            is_publish = 1
+            is_publish = 2
         order by rand()
             limit 8"
     );
@@ -192,16 +192,16 @@
             <h4>Find Your Best Candidate</h4>
             <div class="row mt-60">
                 <div class="candidate-boxes">
-                    <?php
+                    <?php 
                         foreach($array_candidate as $candidate) {
                             echo '
                                 <div class="col-sm-3 col-md-6 col-xs-6">
                                     <div class="candidate-box">
                                         <div class="candidate-box-image">
-                                            <a href="' . tep_href_link(FILENAME_INFORMATION, 'info_id=' . $candidate['customers_id']) . '">
+                                            <a href="' . $candidate['link'] . '">
                                                 <img
                                                     src="' . $candidate['photo'] . '"
-                                                    alt="' . $candidate['company_name'] . '"
+                                                    alt="' . $candidate['full_name'] . '"
                                                     class="img-responsive"
                                                 />
                                             </a>
@@ -209,8 +209,8 @@
                                         <!-- /.candidate-box-image -->
 
                                         <div class="candidate-box-content">
-                                            <h2>' . $candidate['company_name'] . '</h2>
-                                            <h3>' . $candidate['skill_title'] . '</h3>
+                                            <h2>' . $candidate['full_name'] . '</h2>
+                                            <h3>' . $candidate['apply_for'] . '</h3>
                                         </div><!-- /.candidate-box-content -->
                                     </div><!-- /.candidate-box -->
                                 </div><!-- /.col-* -->

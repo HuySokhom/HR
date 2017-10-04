@@ -1,12 +1,19 @@
 <?php
   $query = tep_db_query("
-    select
-      title, link, image
-    from
-      advertising_banner
-    where
-      status = 1 and location = 'top'
-    order by id desc limit 1
+      select
+        a.title,
+        a.link,
+        a.image,
+        ad.name
+      from
+        advertising_banner a, advertising_detail ad
+      where
+        a.status = 1 
+            and 
+        a.id = ad.advertising_banner_id
+            and
+        ad.name = 'Top Header'
+        order by a.id desc limit 1
   ");
   $ad = tep_db_fetch_array($query);
 ?>

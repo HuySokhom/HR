@@ -56,7 +56,7 @@ class Object extends DbObj {
 	}
 
     public function setSalaryExpected( $string ){
-        $this->salaryExpected = doubleval($string);
+        $this->salaryExpected = $string;
     }
     public function getSalaryExpected(){
         return $this->salaryExpected;
@@ -480,7 +480,7 @@ class Object extends DbObj {
 				'" . $this->dbEscape($this->getPhoto()) . "',
 				0,
 				0,
-				0,
+				1,
 				NOW(),
 				NOW()
 			)

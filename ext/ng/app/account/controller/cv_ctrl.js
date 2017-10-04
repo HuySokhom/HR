@@ -20,7 +20,7 @@ app.controller(
 		vm.init = function(){
 			Restful.get(url, vm.filter).success(function(data){
 				vm.cv_post = data;
-				console.log(data);
+				// console.log(data);
 				vm.totalItems = data.count;
 			});
 		};

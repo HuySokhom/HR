@@ -6,18 +6,21 @@
                     Cover Letter
                 </div>
             </div>
-            <div class="col-md-12">
-                <h4 class="pull-right">{{vm.model.full_name}}</h4>
+            <div class="cv-header pull-right">
+                <div class="text-right">
+                    <h4 class="">{{vm.model.full_name}}</h4>
+                </div>
+                <div class="text-right">
+                    <span class=""> Present address: {{vm.model.present_address}}</span>
+                </div>
+                <div class="text-right">
+                    <span class=""> Phone number: {{vm.model.phone_number}}</span>
+                </div>
+                <div class="text-right">
+                    <span class=""> Email: {{vm.model.email}}</span>
+                </div>
             </div>
-            <div class="col-md-12 text-center">
-                <span class="pull-right"> Present address: {{vm.model.present_address}}</span>
-            </div>
-            <div class="col-md-12 text-center">
-                <span class="pull-right"> Phone number: {{vm.model.phone_number}}</span>
-            </div>
-            <div class="col-md-12 text-center">
-                <span class="pull-right"> Email: {{vm.model.email}}</span>
-            </div>
+            <div class="clearfix"></div>
             <div class="form-group">
                 <label class="col-md-2">
                     Apply For
@@ -47,7 +50,7 @@
                     Salary Expected
                 </label>
                 <div class="col-md-5">
-                    {{vm.model.salary_expected | currency}}
+                    {{vm.model.salary_expected}}
                 </div>
             </div>
             <div class="row">

@@ -98,7 +98,7 @@
                         <span class="require">*</span>
                     </label>
                     <div class="col-md-5">
-                        <input type="number" class="form-control" required placeholder="Salary Expected..." data-ng-model="vm.salary_expected"
+                        <input type="text" class="form-control" required placeholder="Salary Expected..." data-ng-model="vm.salary_expected"
                         />
                     </div>
                 </div>
@@ -233,8 +233,8 @@
                                 <input type="text" class="form-control" data-ng-if="vm.model.country_id != 36" placeholder="State City..." 
                                     data-ng-model="vm.model.state_city"/>
                                 <select class="form-control" data-ng-if="vm.model.country_id == 36" 
-                                    data-ng-model="vm.model.customers_location" 
-                                    data-ng-options="location.id as location.name for location in vm.locations"
+                                    data-ng-model="vm.model.state_city" 
+                                    data-ng-options="location.name as location.name for location in vm.locations"
                                     data-ng-change="vm.account.customers_location = vm.customers_location.id; vm.account.state_city = vm.customers_location.name;"
                                     required>
                                     <option value="">--Select--</option>

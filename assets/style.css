@@ -123,6 +123,7 @@ h3.page-header {
 }
 .ads{
     padding: 15px 0px 15px 0px;
+    width: 100%;
 }
 .btn-apply, .btn-apply:hover{
     border: 1px solid #d07300;
@@ -150,4 +151,10 @@ h3.page-header {
 }
 .pointer{
     cursor: pointer;
+}
+.cv-header{
+    width: 40%;
+}
+.text-right{
+    text-align: right;
 }

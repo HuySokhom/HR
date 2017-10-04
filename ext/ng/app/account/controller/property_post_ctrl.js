@@ -19,7 +19,7 @@ app.controller(
 		$scope.init = function(params){
 			if($state.current.name == "manage_edit"){
 				Restful.get(url + $stateParams.id, params).success(function(data){
-					console.log(data);
+					// console.log(data);
 					var model = data.elements[0];
 					vm.id = model.id;
 					$scope.categories_id = model.categories_id;
@@ -95,11 +95,11 @@ app.controller(
 					$scope.disabled = true;
 					$scope.service.alertMessage('<b>Complete: </b>Save Success.');
 					$location.path('manage');
-					console.log(data);
+					// console.log(data);
 				});
 			}else{
 				Restful.put(url + vm.id, data).success(function (data) {
-					console.log(data);
+					// console.log(data);
 					$scope.disabled = true;
 					$scope.service.alertMessage('<b>Complete: </b>Update Success.');
 					$location.path('manage');

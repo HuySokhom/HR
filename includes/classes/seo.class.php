@@ -641,7 +641,7 @@ class SEO_URL{
                                            'newsdesk_reviews_id' => '-nri-',
                                            'newsdesk_article_id' => '-nra-',
                                            'pages_id' => '-pm-',
-                                           'lesson_id' => '-le-',
+                                           'cv_id' => '-le-',
                                            'products_id_review' => '-pr-',
                                            'products_id_review_info' => '-pri-',
                                            'tPath' => '-t-'
@@ -1013,10 +1013,10 @@ class SEO_URL{
                                                    break;
                                    } # end switch
                             break;
-                                case 'lesson_id':
+                                case 'cv_id':
                                    switch(true){
-                                           case ($page == 'lesson_info.php'):
-                                                   $url = $this->make_url($page, $this->get_lesson($p2[1]), $p2[0], $p2[1], '.html');
+                                           case ($page == 'cv_info.php'):
+                                                   $url = $this->make_url($page, $this->get_cv($p2[1]), $p2[0], $p2[1], '.html');
                                                    break;
                                            default: 
                                                    $container[$p2[0]] = $p2[1];
@@ -1571,7 +1571,7 @@ class SEO_URL{
  * @param integer $poID
  * @return string
  */
-		function get_lesson($ID){
+		function get_cv($ID){echo $ID;exit;
                 switch(true){
                         case ($this->attributes['USE_SEO_CACHE_GLOBAL'] == 'true' && defined('LESSON' . $ID)):
                                 if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['CACHE_QUERY_SAVINGS']++;
@@ -1584,13 +1584,19 @@ class SEO_URL{
                                 break;
                         default:
                                 if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['NUMBER_QUERIES']++;
-                                $sql = "SELECT title
-                                                FROM leason
-                                                WHERE id='".(int)$ID."'
-                                                AND language_id='".(int)$this->languages_id."' 
-                                                LIMIT 1";
+                                $sql = "SELECT 
+                                                full_name
+                                        FROM 
+                                                post_cv
+                                        WHERE 
+                                                status = 1
+                                                        and
+                                                is_publish = 2
+                                                        and
+                                                id = ".(int)$ID."
+                                        LIMIT 1";
                                 $result = $this->DB->FetchArray( $this->DB->Query( $sql ) );
-                                $poName = $this->strip( $result['title'] );
+                                $poName = $this->strip( $result['full_name'] );
                                 $this->cache['POLLS'][$ID] = $poName;
                                 if ($this->attributes['USE_SEO_PERFORMANCE_CHECK'] == 'true') $this->performance['QUERIES']['LESSON'][] = $sql;
                                 $return = $poName;

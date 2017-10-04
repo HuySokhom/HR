@@ -31,7 +31,7 @@ app.controller(
 
 		$scope.init = function(params){
 			Restful.get(url + $stateParams.id, params).success(function(data){
-				console.log(data);
+				// console.log(data);
 				$scope.model = data.elements[0];
 
 			});
@@ -43,7 +43,7 @@ app.controller(
 			console.log( $scope.model);
 			$scope.disabled = true;
 			Restful.put(url + $stateParams.id, $scope.model).success(function (data) {
-				console.log(data);
+				// console.log(data);
 				$scope.disabled = false;
 				$scope.service.alertMessage('<b>Complete: </b>Update Success.');
 				$location.path('manage');

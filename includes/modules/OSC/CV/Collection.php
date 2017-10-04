@@ -23,6 +23,10 @@ class Collection extends StdCollection {
 		$this->addWhere("pc.apply_for like '%" . $arg . "%'");
 	}
 
+	public function filterByApplyForAndId( $arg ){
+		$this->addWhere("pc.apply_for like '%" . $arg . "%' OR pc.id = ".$arg." ");
+	}
+
 	public function filterByFunction( $arg ){
 		$this->addWhere("pc.function = '" . (int)$arg . "'");
 	}

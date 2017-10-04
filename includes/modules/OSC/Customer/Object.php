@@ -188,7 +188,7 @@ class Object extends DbObj {
 				industry_id = '" .  $this->getIndustryId() . "',
 				upload_cv = '" . $this->dbEscape( $this->getUploadCv() ) . "',
 				state_city = '" . $this->dbEscape( $this->getStateCity() ) . "',
-				marital_status = '" . $this->dbEscape( $this->getMaritalStatus() ) . "',
+				customers_gender = '" . $this->dbEscape( $this->getCustomersGender() ) . "',
 				country = '" . $this->dbEscape( $this->getCountry() ) . "',
 				summary = '" . $this->dbEscape( $this->getSummary() ) . "',
 				skill_title = '" . $this->dbEscape( $this->getSkillTitle() ) . "',
