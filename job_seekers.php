@@ -7,6 +7,7 @@
     
     <div class="col-md-8" ng-cloak>
         <div class="row">
+            <h4 class="page-header">CVs List</h4>
             <div class="form-group has-feedback col-sm-6">
                 <div class="input-group row">
                     <input type="text" class="form-control" placeholder="Search..." 
@@ -27,9 +28,9 @@
                     data-ng-options="x.categories_id as x.categories_name for x in vm.functionList">
                     <option value="">Select Function</option>
                 </select>
-            </div>
-            <h4 class="page-header">CVs List</h4>
-        
+            </div>       
+            <div class="clearfix"></div>
+            <hr style="margin-top: 10px; margin-bottom: 10px;"/> 
             <div data-ng-if="vm.data.count == 0">
                 <div class="alert alert-danger">
                     <strong>Warning!</strong> Empty Data.
@@ -57,7 +58,7 @@
                         
                     </div><!-- /.candidates-list-item-location -->
 
-                    <div class="candidates-list-item-profile">
+                    <div class="candidates-list-item-profile text-right">
                         <div>ID: {{data.id}}</div>
                         <div class="pull-right"><i class="fa fa-map-marker"></i> {{data.preferLocation_name}}</div>                        
                     </div><!-- /.candidates-list-item-rating -->

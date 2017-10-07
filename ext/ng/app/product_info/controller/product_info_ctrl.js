@@ -5,7 +5,7 @@ app.controller(
 	, 'Restful'
 	, function ($scope, $sce, Restful){
 		var vm = this;
-		var url = 'api/CV/';
+		var url = 'api/Session/User/PostCV';
 		vm.init = function(){
 			vm.loading = true;
 			Restful.get(url).success(function(data){

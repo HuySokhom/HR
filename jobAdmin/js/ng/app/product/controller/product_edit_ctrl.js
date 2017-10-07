@@ -17,7 +17,7 @@ app.controller(
 		vm.genders = ["Male", "Female", "Both"];
 		vm.model = {
 			product: {
-				products_close_date: new Date(moment().add(1, 'months'))
+				products_close_date: moment().add(1, 'months').format("YYYY-MM-DD")
 			},
 			product_description: {}
 		};

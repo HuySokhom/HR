@@ -171,24 +171,25 @@
             <?php
                 if(tep_session_is_registered('customer_id')){
               ?>
-            <ul class="sub-menu">
-              
-              <!-- <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=1');?>">Recruitment</a></li>
-              <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Training</a></li>
-              <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=3');?>">Outsourcing</a></li>
-              <li>
-                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=4');?>">
-                  Consulting
-                </a>
-              </li>  -->
-                <!-- <li><a href="login.php">Login Or Register</a></li> -->
-                <!-- <li><a href="create_account.php">Sign Up</a></li> -->
-              
-                <li><a href="account.php">My Profile</a></li>
+              <ul class="sub-menu">
+                  
+                  <!-- <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=1');?>">Recruitment</a></li>
+                  <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Training</a></li>
+                  <li><a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=3');?>">Outsourcing</a></li>
+                  <li>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=4');?>">
+                      Consulting
+                    </a>
+                  </li>  -->
+                    <!-- <li><a href="login.php">Login Or Register</a></li> -->
+                    <!-- <li><a href="create_account.php">Sign Up</a></li> -->
+                  
+                  <li><a href="account.php">My Profile</a></li>
+                  <li><a href="account_password.php">Change Password</a></li>
                   <li><a href="logoff.php">Log Out</a></li>
                 
                 </ul><!-- /.sub-menu -->
-                <?php }?>
+              <?php }?>
           </li>          
         </ul>
         <!-- <ul class="header-actions nav nav-pills">        
@@ -240,10 +241,10 @@
         <?php
           if(!tep_session_is_registered('customer_id')){
             echo '
-              <a href="javascript:void(0)">
-                <i class="fa fa-user-circle-o"></i>
-                Account
-                <i class="fa fa-angle-down"></i>
+              <a href="login.php">
+                <i class="fa fa-sign-in"></i>
+                
+                Login
               </a>';
           }else{
             if($_SESSION['user_name']){
@@ -279,7 +280,9 @@
             <li><a href="login.php">Login Or Register</a></li>
             <!-- <li><a href="create_account.php">Sign Up</a></li> -->
           <?php }else{
-            echo '<li><a href="account.php">My Profile</a></li>
+            echo '
+              <li><a href="account.php">My Profile</a></li>
+              <li><a href="account_password.php">Change Password</a></li>
               <li><a href="logoff.php">Sign Out</a></li>
             ';
             }?>

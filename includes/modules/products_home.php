@@ -74,6 +74,8 @@
             and
         cu.customers_id = p.customers_id
             and
+        date(p.products_close_date) >= date(NOW())
+            and
         pd.language_id = '" . (int)$languages_id . "'
             order by
         p.products_id desc, p.products_close_date desc
@@ -88,8 +90,23 @@
     }
 ?>
     <!-- /.filter -->
-    <div class="col-md-8">
+    <div class="col-md-8">        
         <div class="row">
+            <div class="post-action col-md-12">
+                <a class="btn btn-default col-md-4 btn-apply" 
+                    href="account.php#/manage-cv/post">
+                    <i class="fa fa-file-text"></i>
+                    Upload Your CVs
+                </a>
+                <a href="job_seekers.php" class="btn btn-apply btn-default col-md-4">
+                    <i class="fa fa-search"></i>
+                    Search CVs
+                </a>
+                <a href="account.php#/manage/post" class="btn btn-apply btn-default col-md-4">
+                    <i class="fa fa-sticky-note"></i>
+                    Post Jobs
+                </a>
+            </div>
             <div class="">
                 <h4 class="page-header">Recent Job Offers</h4>
 
@@ -194,27 +211,39 @@
                 <div class="candidate-boxes">
                     <?php 
                         foreach($array_candidate as $candidate) {
-                            echo '
-                                <div class="col-sm-3 col-md-6 col-xs-6">
-                                    <div class="candidate-box">
-                                        <div class="candidate-box-image">
-                                            <a href="' . $candidate['link'] . '">
-                                                <img
-                                                    src="' . $candidate['photo'] . '"
-                                                    alt="' . $candidate['full_name'] . '"
-                                                    class="img-responsive"
-                                                />
-                                            </a>
-                                        </div>
-                                        <!-- /.candidate-box-image -->
+                            // echo '
+                            //     <div class="col-sm-3 col-md-6 col-xs-6">
+                            //         <div class="candidate-box">
+                            //             <div class="candidate-box-image">
+                            //                 <a href="' . $candidate['link'] . '">
+                            //                     <img
+                            //                         src="' . $candidate['photo'] . '"
+                            //                         alt="' . $candidate['full_name'] . '"
+                            //                         class="img-responsive"
+                            //                     />
+                            //                 </a>
+                            //             </div>
+                            //             <!-- /.candidate-box-image -->
 
-                                        <div class="candidate-box-content">
+                            //             <div class="candidate-box-content">
+                            //                 <h2>' . $candidate['full_name'] . '</h2>
+                            //                 <h3>' . $candidate['apply_for'] . '</h3>
+                            //             </div><!-- /.candidate-box-content -->
+                            //         </div><!-- /.candidate-box -->
+                            //     </div><!-- /.col-* -->
+                            // ';
+                            echo '
+                            <div class="col-sm-3 col-md-6 col-xs-6">
+                                <div class="candidate-box">
+                                    <div class="candidate-box-content">
+                                        <a href="' . $candidate['link'] . '">
                                             <h2>' . $candidate['full_name'] . '</h2>
-                                            <h3>' . $candidate['apply_for'] . '</h3>
-                                        </div><!-- /.candidate-box-content -->
-                                    </div><!-- /.candidate-box -->
-                                </div><!-- /.col-* -->
-                            ';
+                                        </a>
+                                        <h3>' . $candidate['apply_for'] . '</h3>                                    
+                                    </div><!-- /.candidate-box-content -->
+                                </div><!-- /.candidate-box -->
+                            </div><!-- /.col-* -->
+                        ';
                         }
                     ?>
                 </div>

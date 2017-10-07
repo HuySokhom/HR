@@ -75,7 +75,11 @@
 		from
 			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, customers cu
 		where
-			p.products_status = '1'
+			p.products_status = 1
+				and
+			p.is_publish = 1
+				and
+			date(p.products_close_date) >= date(NOW())
 				and
 			cu.customers_id = p.customers_id
 				and
@@ -100,16 +104,39 @@
 if (tep_db_num_rows($product_info_query) < 1) {
 ?>
 	<br>
-	<div class="col-md-3">
-		<div class="filter-stacked">
-			<?php include('advanced_search_box_right.php'); ?>
-		</div>
-	</div>
 	<div class="col-md-8">
 		<div class="alert alert-warning"><?php echo TEXT_PRODUCT_NOT_FOUND; ?></div>
 		<div class="pull-right">
 			<?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fa fa-mail-forward', tep_href_link(FILENAME_DEFAULT)); ?>
 		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="">
+			<?php include('advanced_search_box_right.php'); ?>
+		</div>
+		<?php
+			$query = tep_db_query("
+				select
+					a.title,
+					a.link,
+					a.image,
+					ad.name
+					from
+					advertising_banner a, advertising_detail ad
+				where
+					a.status = 1 
+						and 
+					a.id = ad.advertising_banner_id
+						and
+					ad.name = 'Job Description'
+			");
+			while ($item = tep_db_fetch_array($query)) {
+				//var_dump($item);
+				echo "<div class='col-md-12 col-sm-6 col-xs-6'>
+					<img src='images/". $item['image']."' class='img-responsive ads'/>
+				</div>";
+			}
+		?>
 	</div>
 	<br>
 	<br>
@@ -465,6 +492,11 @@ if (tep_db_num_rows($product_info_query) < 1) {
 										</td>
 										<td>
 											{{row.apply_for}}
+										</td>
+									</tr>
+									<tr data-ng-if="vm.data.length == 0">
+										<td colspan="2">
+											<b>No Record Found.</b>
 										</td>
 									</tr>
 								</tbody>
