@@ -86,12 +86,17 @@
 						<div class="text-right">
 							<span> Present address: <?php echo $info['present_address'];?></span>
 						</div>
-						<div class="text-right">
-							<span> Phone number: <?php echo $info['phone_number'];?></span>
-						</div>
-						<div class="text-right">
-							<span> Email: <?php echo $info['email'];?></span>
-						</div>
+						<?php 
+							if (tep_session_is_registered('customer_id') == $info['customer_id']) {
+								echo '<div class="text-right">
+										<span> Phone number: '.$info['phone_number'].' </span>
+									</div>
+									<div class="text-right">
+										<span> Email: '. $info['email'] . '</span>
+									</div>';
+							}
+						?>
+						
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -161,14 +166,18 @@
 								<?php echo $info['gender'];?>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-md-3">
-								Date of Birth
-							</label>
-							<div class="col-md-9">
-								<?php echo $info['dob'];?>
-							</div>
-						</div>
+						<?php 
+							if (tep_session_is_registered('customer_id') == $info['customer_id']) {
+								echo '<div class="form-group">
+									<label class="col-md-3">
+										Date of Birth
+									</label>
+									<div class="col-md-9">
+										'. $info['dob'] .'
+									</div>
+								</div>';
+							}
+						?>						
 						<div class="form-group">
 							<label class="col-md-3">
 								Nationality

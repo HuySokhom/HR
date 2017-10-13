@@ -12,6 +12,9 @@
 
   require('includes/application_top.php');
 
+  $term_info_query = tep_db_query("select pages_content as content from page_description where id = 1");
+  $term_info = tep_db_fetch_array($term_info_query);
+
 // needs to be included earlier to set the success message in the messageStack
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CREATE_ACCOUNT);
 // echo $sessiontoken;
@@ -223,7 +226,7 @@
   }
   ?>
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
 <div class="alert alert-warning">
   <?php echo sprintf(TEXT_ORIGIN_LOGIN, tep_href_link(FILENAME_LOGIN, tep_get_all_get_params(), 'SSL')); ?><span class="inputRequirement pull-right text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></span>
 </div>
@@ -279,26 +282,60 @@
             </div>
           </div>
         </div>
-    <div class="buttonSet">
-      <div class="text-right">
-        <button type="submit" class="btn btn-success">
-          <i class="fa fa-check-square-o"></i>
-          Create Account
-        </button>
-      </div>
-  </div>
+
+        <div class="contentText">
+          <div class="form-group has-feedback">
+            <label for="inputPassword" class="control-label col-sm-5"></label>
+            <div class="col-sm-7">
+                <div class="">
+                    <label>
+                        <input type="checkbox" name="term" required>
+                        <a href="#" data-toggle="modal" data-target="#term">I accept all terms and conditions</a>
+                    </label>
+                </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="buttonSet">
+          <div class="text-right">
+            <button type="submit" class="btn btn-success">
+              <i class="fa fa-check-square-o"></i>
+              Create Account
+            </button>
+        </div>
+    </div>
 </form>
 </div></div></div>
    
   </div>
 </div>
 
-<div class="col-md-3">
-      <div class="filter-stacked">
+
+<div class="col-md-4">
+      <div class="">
         <?php require('advanced_search_box_right.php');?>
       </div>
     </div>
 </div>
+</div>
+
+<!-- Modal For Function PopUp -->
+<div id="term" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Terms and Conditions</h4>
+      </div>
+      <div class="modal-body">
+          <?php 
+            echo $term_info['content'];
+          ?>
+      </div>
+    </div>
+  </div>
 </div>
 <?php 
   require(DIR_WS_INCLUDES . 'template_bottom.php');

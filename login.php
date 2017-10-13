@@ -12,6 +12,9 @@
 
   require('includes/application_top.php');
 
+  $term_info_query = tep_db_query("select pages_content as content from page_description where id = 1");
+  $term_info = tep_db_fetch_array($term_info_query);
+
 // redirect the customer to a friendly cookie-must-be-enabled page if cookies are disabled (or the session has not started)
   if ($session_started == false) {
     if ( !isset($HTTP_GET_VARS['cookie_test']) ) {
@@ -182,20 +185,52 @@
                       </div>
                     </div>
                   </div>
-              <div class="buttonSet">
-                <div class="text-right">
-                  <?php 
-                    echo tep_draw_button("Create Account", 
-                      'fa fa-check-square-o', null, 
-                      'primary', null, 'btn-success'); 
-                  ?>
+                  <div class="contentText">
+                    <div class="form-group has-feedback">
+                      <label for="inputPassword" class="control-label col-sm-5"></label>
+                      <div class="col-sm-7">
+                          <div class="">
+                              <label>
+                                  <input type="checkbox" name="term" required>
+                                  <a href="#" data-toggle="modal" data-target="#term">I accept all terms and conditions</a>
+                              </label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="buttonSet">
+                    <div class="text-right">
+                      <?php 
+                        echo tep_draw_button("Create Account", 
+                          'fa fa-check-square-o', null, 
+                          'primary', null, 'btn-success'); 
+                      ?>
+                    </div>
                 </div>
-            </div>
           </form>
         </div>
       </div>
     </div>
     </div>
+</div>
+
+<!-- Modal For Function PopUp -->
+<div id="term" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Terms and Conditions</h4>
+      </div>
+      <div class="modal-body">
+          <?php 
+            echo $term_info['content'];
+          ?>
+      </div>
+    </div>
+  </div>
 </div>
 
 <?php

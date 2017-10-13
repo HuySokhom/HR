@@ -2,6 +2,7 @@ app.config([
 	'$stateProvider',
 	'$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
+		$urlRouterProvider.otherwise('/account');
 		$stateProvider.
 			state('/manage', {
 				url: '/manage',
@@ -47,7 +48,7 @@ app.config([
 							if (getDetail.data.user_type == 'normal') {
 								// Prevent migration to default state
 								event.preventDefault();
-								$state.go('account');
+								$state.go('/account');
 							}
 						}
 					]
@@ -112,7 +113,7 @@ app.config([
 							if (getDetail.data.user_type != 'normal') {
 								// Prevent migration to default state
 								event.preventDefault();
-								$state.go('account');
+								$state.go('/account');
 							}
 						}
 					]
