@@ -210,15 +210,18 @@
 								<?php echo $info['marital_status'];?>
 							</div>
 						</div>
-			
-						<div class="form-group">
-							<label class="col-md-3">
-								Telephone
-							</label>
-							<div class="col-md-9">
-								<?php echo $info['phone_number'];?>
-							</div>
-						</div>
+						<?php 
+							if (tep_session_is_registered('customer_id') == $info['customer_id']) {
+								echo '<div class="form-group">
+									<label class="col-md-3">
+										Telephone
+									</label>
+									<div class="col-md-9">
+										'. $info['phone_number'] .'
+									</div>
+								</div>';
+							}
+						?>
 						<div class="form-group">
 							<label class="col-md-3">
 								Email Address

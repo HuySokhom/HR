@@ -93,16 +93,16 @@
     <div class="col-md-8">        
         <div class="row">
             <div class="post-action col-md-12">
-                <a class="btn btn-default col-md-4 btn-apply" 
+                <a class="btn btn-default col-md-4 btn-action-home" 
                     href="account.php#/manage-cv/post">
                     <i class="fa fa-file-text"></i>
                     Upload Your CVs
                 </a>
-                <a href="job_seekers.php" class="btn btn-apply btn-default col-md-4">
+                <a href="job_seekers.php" class="btn btn-action-home btn-default col-md-4">
                     <i class="fa fa-search"></i>
                     Search CVs
                 </a>
-                <a href="account.php#/manage/post" class="btn btn-apply btn-default col-md-4">
+                <a href="account.php#/manage/post" class="btn btn-action-home btn-default col-md-4">
                     <i class="fa fa-sticky-note"></i>
                     Post Jobs
                 </a>
@@ -151,7 +151,7 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="" style="margin-top: 30px;">
+        <div class="" style="margin-top: 11px;">
             <div class="fb-page"
                     data-href="https://www.facebook.com/Aseanhr-1827357880910799/"
                     data-small-header="false" data-adapt-container-width="true"

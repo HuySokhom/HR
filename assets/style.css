@@ -167,5 +167,9 @@ h3.page-header {
 .post-action{
     padding-left: 0px;
     padding-right: 0px;
-    margin: 30px 0px 15px 0px;
+    margin: 11px 0px 15px 0px;
+}
+.btn-action-home:hover{
+    background: #ed1c24;
+    color: #fff;
 }

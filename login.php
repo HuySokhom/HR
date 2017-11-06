@@ -101,7 +101,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="login-form">
-            <h4><b>Login</b></h4>
+            <h4><b>Please login your account here!</b></h4>
             <div class="panel panel-default">
               <div class="panel-body">
                 <?php echo tep_draw_form('login', tep_href_link(FILENAME_LOGIN, 'action=process', 'SSL'), 'post', '', true); ?>
@@ -135,7 +135,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <h4><strong>Register</strong></h4>
+          <h4><strong>Don't have account?</strong></h4>
           <?php echo tep_draw_form('create_account', tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 
           'post', 'class="form-horizontal" onsubmit="return check_form(create_account);"', true) 
           . tep_draw_hidden_field('action', 'process'); ?>
