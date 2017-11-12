@@ -149,7 +149,14 @@
 						>
 							<span class="fa fa-check-square-o"></span>
 						</button>
-
+						<button  class="btn btn-primary" 
+							data-toggle="tooltip"
+							data-placement="top"
+							tooltip
+							title="Refresh"
+							data-ng-click="vm.refreshDate(p);">
+							<i class="fa fa-refresh"></i>						
+						</button>
 						<button
 							class="btn btn-danger"
 							data-ng-click="vm.remove(p.id);"

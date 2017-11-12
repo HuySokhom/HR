@@ -33,6 +33,7 @@ class RestApiProducts extends RestApi {
 					and
 				p.customers_id = '" . $userId . "'
 					order by
+				p.products_date_added desc,
 				p.create_date desc
 				limit $start, $showDataPerPage
 		");

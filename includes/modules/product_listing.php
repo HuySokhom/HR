@@ -118,6 +118,8 @@
                                 a.id = ad.advertising_banner_id
                                     and
                                 ad.name = 'Job List'
+                            order by
+                                a.sort_order asc
                         ");
                         while ($item = tep_db_fetch_array($query)) {
                             //var_dump($item);

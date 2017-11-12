@@ -32,7 +32,7 @@ app.controller(
 		vm.refreshDate = function(params){
 			Restful.patch('api/Session/User/ProductPost/' + params.products_id).success(function(data){
 				vm.init();
-				vm.service.alertMessage('<strong>Complete: </strong> Update Product Refresh Success.');
+				vm.service.alertMessage('<strong>Complete: </strong> Refresh Job Success.');
 			});
 		};
 

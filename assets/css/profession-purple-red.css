@@ -17647,7 +17647,8 @@ ul.filter-list {
 
 .candidates-list-item-heading {
   float: left;
-  width: 250px; }
+  /* width: 250px;  */
+}
   .candidates-list-item-heading h2 {
     font-size: 15px;
     font-weight: 400;

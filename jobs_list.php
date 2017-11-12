@@ -82,7 +82,8 @@
     for ($i=0, $n=sizeof($column_list); $i<$n; $i++) {
       if ($column_list[$i] == 'PRODUCT_LIST_ID') {
         $HTTP_GET_VARS['sort'] = $i+1 . 'd';
-        $listing_sql .= " order by p.products_id DESC";
+        $listing_sql .= " order by 
+          p.products_date_added DESC";
         break;
       }
     }

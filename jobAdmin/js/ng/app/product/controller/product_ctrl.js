@@ -74,6 +74,7 @@ app.controller(
 
 		vm.refreshDate = function(param){
 			Restful.patch(url + param.id).success(function(data){
+				vm.service.alertMessage('<strong>Complete: </strong> Refresh Job Success.');
 				init(params);
 			});
 		};

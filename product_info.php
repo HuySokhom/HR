@@ -395,6 +395,8 @@ if (tep_db_num_rows($product_info_query) < 1) {
 						a.id = ad.advertising_banner_id
 							and
 						ad.name = 'Job Description'
+					order by
+						a.sort_order asc
 				");
 				while ($item = tep_db_fetch_array($query)) {
 					//var_dump($item);
