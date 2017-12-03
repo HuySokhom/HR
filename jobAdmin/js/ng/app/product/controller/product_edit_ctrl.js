@@ -11,7 +11,18 @@ app.controller(
 	, '$timeout'
 	, function ($scope, Restful, $stateParams, $state, Services, $location, $alertify, Upload, $timeout){
 		var vm = this;
-		vm.tinymceOptions = {};
+		vm.tinymceOptions = {
+			plugins: [
+				"advlist autolink lists link image charmap print preview hr anchor pagebreak",
+				"searchreplace wordcount visualblocks visualchars fullscreen",
+				"insertdatetime media nonbreaking save table contextmenu directionality",
+				"emoticons template paste textcolor colorpicker textpattern media code"
+			],
+			toolbar: "code undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+			toolbar2: "print preview media | forecolor backcolor emoticons",
+			image_advtab: true,
+			paste_data_images: true,
+		};
 		vm.disabled = true;
 		vm.propertyTypes = ["Part-Time", "Full-Time"];
 		vm.genders = ["Male", "Female", "Both"];

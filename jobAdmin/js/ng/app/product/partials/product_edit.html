@@ -124,7 +124,7 @@
                         Description, duties, responsibilities:
                         <span class="require">*</span>
                     </label>
-                    <textarea ui-tinymce="tinymceOptions"
+                    <textarea ui-tinymce="vm.tinymceOptions"
                               data-ng-model="vm.model.product_description.products_description"
                               class="form-control"
                               style="height: 250px;"
@@ -138,7 +138,7 @@
                             Other benefits:
                             <span class="require">*</span>
                         </label>
-                        <textarea ui-tinymce="tinymceOptions"
+                        <textarea ui-tinymce="vm.tinymceOptions"
                               data-ng-model="vm.model.product_description.benefits"
                               class="form-control"
                               style="height: 180px;"
@@ -149,7 +149,7 @@
                             Personality requirements and skills:
                             <span class="require">*</span>
                         </label>
-                        <textarea ui-tinymce="tinymceOptions"
+                        <textarea ui-tinymce="vm.tinymceOptions"
                               style="height: 180px;"
                             data-ng-model="vm.model.product_description.skill"
                             class="form-control"
