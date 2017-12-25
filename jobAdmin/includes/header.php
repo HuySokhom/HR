@@ -48,6 +48,7 @@
 <!--            <a href="#/news_type"><span class="fa fa-crop"></span> News Type</a>-->
 <!--          </li>-->
           <li><a href="#/content"><span class="fa fa-comments"></span>Content</a></li>
+          <li><a href="#/plan"><span class="fa fa-money"></span>Plan</a></li>
         </ul>
       </li>
       <li class="xn-openable">

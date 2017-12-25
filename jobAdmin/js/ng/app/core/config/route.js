@@ -195,6 +195,11 @@ app.config([
 				templateUrl: 'js/ng/app/advertising_banner/partials/index.html',
 				controller: 'advertising_banner_ctrl as vm'
 			})
+			.state('plan', {
+				url: '/plan',
+				templateUrl: 'js/ng/app/plan/partials/index.html',
+				controller: 'plan_ctrl as vm'
+			})
 		;
 		$urlRouterProvider.otherwise('/');
 		// use the HTML5 History API to remove # url

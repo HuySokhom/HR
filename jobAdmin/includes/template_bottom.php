@@ -161,5 +161,11 @@
         type="text/javascript"
         src="js/ng/app/cv/controller/cv_detail_ctrl.js"
     ></script>
+
+    
+    <script
+        type="text/javascript"
+        src="js/ng/app/plan/controller/index_ctrl.js"
+    ></script>
 </body>
 </html>
