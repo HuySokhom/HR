@@ -219,17 +219,18 @@
 									<div class="col-md-9">
 										'. $info['phone_number'] .'
 									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3">
+										Email Address
+									</label>
+									<div class="col-md-9">
+										'. $info['email'] .'
+									</div>
 								</div>';
 							}
 						?>
-						<div class="form-group">
-							<label class="col-md-3">
-								Email Address
-							</label>
-							<div class="col-md-9">
-								<?php echo $info['email'];?>
-							</div>
-						</div>
+						
 						<div class="form-group">
 							<label class="col-md-3">
 								Country
