@@ -47,6 +47,16 @@
     <?php echo $oscTemplate->getBlocks('header_tags'); ?>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849c71a603c3db"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111961682-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-111961682-1');
+    </script>
+
 </head>
 <body class="hero-content-dark footer-dark">
 <div class="page-wrapper" class="ng-cloak">

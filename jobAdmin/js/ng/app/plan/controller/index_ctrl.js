@@ -69,7 +69,7 @@ app.controller(
 					Restful.delete( 'api/Plan/' + params.id, params ).success(function(data){
 						vm.disabled = true;
 						vm.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						vm.banners.elements.splice($index, 1);
+						init();
 					});
 				}, function(ev) {
 					// The click event is in the
@@ -85,6 +85,7 @@ app.controller(
 			var data = { status: params.status, name: "update_status"};
 			Restful.patch('api/Plan/' + params.id, data).success(function(data){
 				console.log(data);
+				init();
 				vm.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
 			});
 		};

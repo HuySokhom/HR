@@ -232,3 +232,37 @@
         </div>
     </div>  
 </form>
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header title-header">
+                Choose Your Plan
+            </div>
+        </div>
+        <!-- Pricing -->
+        <div class="col-md-3" data-ng-repeat="row in plans">
+            <div class="pricing hover-effect">
+                <div class="pricing-head">
+                    <h3>
+                        {{row.name}}
+                    </h3>
+                    <h4>
+                        <i>
+                            {{row.price | currency}}
+                        </i>
+                        <span> Per Month </span>
+                    </h4>
+                </div>
+                <div class="pricing-footer">
+                    <p data-ng-bind-html="row.benefit">
+                    </p>
+                    <a href="javascript:;" class="btn yellow-crusta">
+                    Sign Up
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--//End Pricing -->
+    </div>
+</div>

@@ -16,6 +16,20 @@ class RestApiPlan extends RestApi {
 
 	}
 
+	public function patch($params){
+		$obj = new PlanObj();
+		$id = $this->getId();
+		$obj->setProperties($params['PATCH']);
+		$obj->setId($id);
+		$obj->updateStatus();
+		return array(
+			'data' => array(
+				'success' => 'true'
+			)
+		);
+
+	}
+
 	public function put($params){
 		$obj = new PlanObj();
 		$id = $this->getId();
@@ -42,4 +56,16 @@ class RestApiPlan extends RestApi {
 		);
 	}
 
+	public function delete($params){
+		$obj = new PlanObj();
+		$obj->setId($this->getId());
+		$obj->setProperties($params['POST']);
+		$obj->delete();
+		return array(
+			'data' => array(
+				'success' => 'true',
+				"id" => $this->getId()
+			)
+		);
+	}
 }

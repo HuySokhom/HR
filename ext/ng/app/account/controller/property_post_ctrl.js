@@ -49,6 +49,9 @@ app.controller(
 			Restful.get("api/SalaryRange").success(function(data){
 				$scope.rangeSalary = data.elements;
 			});
+			Restful.get("getPlan.php").success(function(data){
+				$scope.plans = data;console.log(data);
+			});
 		};
 		$scope.initSetting();
 		$scope.disabled = true;
