@@ -16,6 +16,7 @@ app.controller(
 		$scope.propertyTypes = ["Part-Time", "Full-Time"];
 		$scope.genders = ["Male", "Female", "Both"];
 		var url = "api/Session/User/ProductPost/";
+		$scope.saveDone = false;
 		$scope.init = function(params){
 			if($state.current.name == "manage_edit"){
 				Restful.get(url + $stateParams.id, params).success(function(data){
@@ -49,7 +50,7 @@ app.controller(
 			Restful.get("api/SalaryRange").success(function(data){
 				$scope.rangeSalary = data.elements;
 			});
-			Restful.get("getPlan.php").success(function(data){
+			Restful.get("api/Plan").success(function(data){
 				$scope.plans = data;console.log(data);
 			});
 		};
@@ -97,8 +98,8 @@ app.controller(
 				Restful.post(url, data).success(function (data) {
 					$scope.disabled = true;
 					$scope.service.alertMessage('<b>Complete: </b>Save Success.');
-					$location.path('manage');
-					// console.log(data);
+					// $location.path('manage');
+					$scope.saveDone = true;
 				});
 			}else{
 				Restful.put(url + vm.id, data).success(function (data) {
@@ -133,5 +134,16 @@ app.controller(
 				mode = data.mode;
 			return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
 		}
+
+		$scope.selectPlan = function(rangeIndex){
+			$scope.plans.elements.map(function(item, index){
+				if(rangeIndex === index){
+					item.selected = true;
+				}else{
+					item.selected = false;
+				}
+			});
+		};
+
 	}
 ]);

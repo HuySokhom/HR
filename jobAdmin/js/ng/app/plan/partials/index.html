@@ -16,16 +16,16 @@
 				<th width="20%">
 					Title
 				</th>
-				<th width="15%">
+				<th width="10%">
 					Price
 				</th>
-				<th width="20%">
+				<th width="25%">
 					Benefit
 				</th>
-				<th width="20%">
+				<th width="13%">
 					Display Image
 				</th>
-				<th width="20%">
+				<th width="10%">
 					Action
 				</th>
 			</tr>
@@ -53,36 +53,30 @@
 						data-ng-show="b.display_type"/>
 				</td>
 				<td>
-					<button
-						class="btn"
+					<button class="btn btn-default btn-xs"
 						data-ng-class="(b.status === 1) ? 'btn-success' : 'btn-warning'"
 						data-ng-click="vm.updateStatus(b);"
 						data-toggle="tooltip"
 						data-placement="top"
 						title="{{(b.status === 1) ? 'Active' : 'Inactive'}}"
-						tooltip
-					>				
+						tooltip>
 						<span class="fa" 
 							data-ng-class="(b.status === 1) ? 'fa-check-square-o' : 'fa fa-minus-circle'"></span>
 					</button>
-					<button
-						class="btn btn-default"
+					<button class="btn btn-default btn-xs"
 						data-ng-click="vm.edit(b);"
 						data-toggle="tooltip"
 						data-placement="top"
 						title="Edit"
-						tooltip
-					>
+						tooltip>
 						<span class="fa fa-pencil-square-o"></span>
 					</button>
-					<button
-						class="btn btn-danger"
+					<button class="btn btn-danger btn-xs"
 						data-ng-click="vm.remove($index, b);"
 						data-toggle="modals"
 						data-placement="top"
 						title="Delete"
-						tooltip
-					>
+						tooltip>
 						<span class="glyphicon glyphicon-trash"></span>
 					</button>
 				</td>
@@ -101,7 +95,7 @@
 		id="plan"
 		data-keyboard="false"
 		data-backdrop="static">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button
@@ -142,7 +136,11 @@
 								Benefit:
 							</td>
 							<td>
-								<textarea class="form-control" data-ng-model="vm.data.benefit"></textarea>
+								<textarea class="form-control"
+									ui-tinymce="tinymceOptions"
+									data-ng-model="vm.data.benefit"
+									rows="15"
+								></textarea>
 							</td>
 						</tr>
 						<tr>
