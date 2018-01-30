@@ -22,6 +22,9 @@
 				<th width="25%">
 					Benefit
 				</th>
+				<th width="5%">
+					Duration
+				</th>
 				<th width="13%">
 					Display Image
 				</th>
@@ -46,6 +49,9 @@
 				</td>
 				<td>
 					<span data-ng-bind-html="b.benefit"></span>
+				</td>
+				<td>
+					<span data-ng-bind="b.duration"></span>
 				</td>
 				<td>
 					<img ng-src="../images/{{b.display_type}}"
@@ -149,6 +155,14 @@
 							</td>
 							<td>
 								<input type="number" required class="form-control" data-ng-model="vm.data.sort_order" min="1"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Duration:
+							</td>
+							<td>
+								<input type="number" required class="form-control" data-ng-model="vm.data.duration" min="1"/>
 							</td>
 						</tr>
 						<tr>

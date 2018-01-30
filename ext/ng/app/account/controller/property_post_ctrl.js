@@ -18,7 +18,7 @@ app.controller(
 		var url = "api/Session/User/ProductPost/";
 		$scope.saveDone = false;
 		$scope.init = function(params){
-			if($state.current.name == "manage_edit"){
+			if($state.current.name == "manage_edit" || $state.current.name == "duplicate"){
 				Restful.get(url + $stateParams.id, params).success(function(data){
 					// console.log(data);
 					var model = data.elements[0];
@@ -50,25 +50,25 @@ app.controller(
 			Restful.get("api/SalaryRange").success(function(data){
 				$scope.rangeSalary = data.elements;
 			});
-			Restful.get("api/Plan").success(function(data){
-				$scope.plans = data;console.log(data);
-			});
+			// Restful.get("api/Plan").success(function(data){
+			// 	$scope.plans = data;console.log(data);
+			// });
 		};
 		$scope.initSetting();
 		$scope.disabled = true;
 		// functional for init district
-		$scope.initDistrict = function(id){
-			Restful.get("api/District/" + id).success(function(data){
-				$scope.districts = data;
-				$scope.communes = '';
-			});
-		};
-		// functional for init Commune
-		$scope.initCommune = function(id){
-			Restful.get("api/Village/" + id).success(function(data){
-				$scope.communes = data;
-			});
-		};
+		// $scope.initDistrict = function(id){
+		// 	Restful.get("api/District/" + id).success(function(data){
+		// 		$scope.districts = data;
+		// 		$scope.communes = '';
+		// 	});
+		// };
+		// // functional for init Commune
+		// $scope.initCommune = function(id){
+		// 	Restful.get("api/Village/" + id).success(function(data){
+		// 		$scope.communes = data;
+		// 	});
+		// };
 		$scope.expire_date = moment().add(1, 'month').format("YYYY-MM-DD");
 		// save functionality
 		$scope.save = function(){
@@ -94,12 +94,11 @@ app.controller(
 				]
 			};
 			$scope.disabled = false;
-			if(!vm.id){				
+			if(!vm.id || $state.current.name == "duplicate"){	
 				Restful.post(url, data).success(function (data) {
 					$scope.disabled = true;
 					$scope.service.alertMessage('<b>Complete: </b>Save Success.');
-					// $location.path('manage');
-					$scope.saveDone = true;
+					$state.go('plan', {id: data.id});
 				});
 			}else{
 				Restful.put(url + vm.id, data).success(function (data) {
@@ -135,15 +134,26 @@ app.controller(
 			return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
 		}
 
-		$scope.selectPlan = function(rangeIndex){
-			$scope.plans.elements.map(function(item, index){
-				if(rangeIndex === index){
-					item.selected = true;
-				}else{
-					item.selected = false;
-				}
-			});
-		};
+		// $scope.selectPlan = function(rangeIndex){
+		// 	$scope.selected = true;
+		// 	$scope.plans.elements.map(function(item, index){
+		// 		if(rangeIndex === index){
+		// 			$scope.promotionId = item.id;
+		// 			item.selected = true;
+		// 		}else{
+		// 			item.selected = false;
+		// 		}
+		// 	});
+		// };
 
+		// $scope.updatePlan = function(){
+		// 	$scope.disabled = false;
+		// 	Restful.post("api/Session/User/Plan/" + $scope.products_id, {promote_id: $scope.promotionId}).success(function (data) {
+		// 		// console.log(data);
+		// 		$scope.disabled = true;
+		// 		$scope.service.alertMessage('<b>Complete: </b>Update Success.');
+		// 		$location.path('manage');
+		// 	});
+		// };
 	}
 ]);

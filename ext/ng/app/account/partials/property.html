@@ -59,13 +59,13 @@
 				<th width="5%">
 					View
 				</th>
-				<th width="10%">
+				<th width="8%">
 					Expire Date
 				</th>
 				<th width="5%">
 					Status
 				</th>
-				<th width="15%">
+				<th width="18%">
 					Action
 				</th>
 			</thead>
@@ -114,6 +114,12 @@
 					</button>
 					<button  class="btn btn-xs btn-primary" uib-tooltip="Refresh" data-ng-click="vm.refreshDate(p);">
 						<i class="fa fa-refresh"></i>						
+					</button>
+					<button  class="btn btn-xs" uib-tooltip="Duplicate" ui-sref="duplicate({id:p.products_id})" >
+						<i class="fa fa-clone"></i>						
+					</button>
+					<button  class="btn btn-xs btn-primary" uib-tooltip="Update Plan" ui-sref="plan({id:p.products_id})">
+						<i class="fa fa-line-chart"></i>						
 					</button>
 				</td>
 			</tr>

@@ -190,6 +190,20 @@ class Object extends DbObj {
 
 	}
 
+	public function updatePlan(){
+		$this->dbQuery("
+			UPDATE
+				products
+			SET
+				products_promote = '" . $this->getProductsPromote() . "'
+			WHERE
+				products_id = '" . (int)$this->getProductsId() . "'
+					AND
+				customers_id = '" . (int)$this->getCustomersId() . "'
+		");
+
+	}
+
 	public function insert(){
 		$this->dbQuery("
 			INSERT INTO

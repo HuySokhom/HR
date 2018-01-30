@@ -13,7 +13,8 @@ class Object extends DbObj {
 		$price,
 		$benefit,
 		$sortOrder,
-		$displayType
+		$displayType,
+		$duration
 	;
 
 	// public function __construct( $params = array() ){
@@ -31,7 +32,8 @@ class Object extends DbObj {
 				'benefit',
 				'status',
 				'display_type',
-				'sort_order'
+				'sort_order',
+				'duration'
 			)
 		);
 		return parent::toArray($args);
@@ -45,7 +47,8 @@ class Object extends DbObj {
 				benefit,
 				display_type,
 				sort_order,
-				status
+				status,
+				duration
 			FROM
 				plan
 			WHERE
@@ -73,6 +76,7 @@ class Object extends DbObj {
 				plan
 			SET 
 				name = '" .  $this->getName() . "',
+				duration = '" .  $this->getDuration() . "',
 				display_type = '" .  $this->getDisplayType() . "',
 				price = '" .  $this->getPrice() . "',
 				sort_order = '" .  $this->getSortOrder() . "',
@@ -121,6 +125,7 @@ class Object extends DbObj {
 				price,
 				sort_order,
 				status,				
+				duration,
 				create_by,
 				create_date
 			)
@@ -132,6 +137,7 @@ class Object extends DbObj {
 				'" . $this->getPrice() . "',
 				'" . $this->getSortOrder() . "',
 				1,
+				'" . $this->getDuration() . "',
 				'" . $this->getCreateBy() . "',
 				NOW()
 			)
@@ -172,6 +178,14 @@ class Object extends DbObj {
 	}
 	public function getDisplayType(){
 		return $this->displayType;
+	}
+
+
+	public function setDuration( $string ){
+		$this->duration = (int)$string;
+	}
+	public function getDuration(){
+		return $this->duration;
 	}
 
 }

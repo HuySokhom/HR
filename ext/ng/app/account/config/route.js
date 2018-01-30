@@ -54,6 +54,32 @@ app.config([
 					]
 				}
 			})
+			.state('duplicate', {
+				url: '/duplicate/:id',
+				templateUrl: 'ext/ng/app/account/partials/property_post.html',
+				controller: 'property_post_ctrl',
+				resolve: {
+					getDetail: [
+						'Restful',
+						function (Restful) {
+							return Restful.get('api/UserSession').success(function(data){
+								return data;
+							});
+						}
+					],
+					detailResult: [ '$q', '$timeout', '$state', 'getDetail',
+						function ($q, $timeout, $state, getDetail) {
+							//console.log(getDetail.data.user_type);
+							if (getDetail.data.user_type == 'normal') {
+								// Prevent migration to default state
+								event.preventDefault();
+								$state.go('account');
+							}
+						}
+					]
+				}
+			})
+			
 			.state('manage_edit', {
 				url: '/manage/edit/:id',
 				templateUrl: 'ext/ng/app/account/partials/property_post.html',
@@ -189,6 +215,31 @@ app.config([
 								// Prevent migration to default state
 								event.preventDefault();
 								$state.go('account');
+							}
+						}
+					]
+				}
+			})
+			.state('plan', {
+				url: '/plan/:id',
+				templateUrl: 'ext/ng/app/account/partials/plan.html',
+				controller: 'plan_ctrl as vm',
+				resolve: {
+					getDetail: [
+						'Restful',
+						function (Restful) {
+							return Restful.get('api/UserSession').success(function(data){
+								return data;
+							});
+						}
+					],
+					detailResult: [ '$q', '$timeout', '$state', 'getDetail',
+						function ($q, $timeout, $state, getDetail) {
+							//console.log(getDetail.data.user_type);
+							if (getDetail.data.user_type == 'normal') {
+								// Prevent migration to default state
+								event.preventDefault();
+								$state.go('/account');
 							}
 						}
 					]
