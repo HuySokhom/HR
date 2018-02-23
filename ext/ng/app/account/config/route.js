@@ -58,6 +58,7 @@ app.config([
 				url: '/duplicate/:id',
 				templateUrl: 'ext/ng/app/account/partials/property_post.html',
 				controller: 'property_post_ctrl',
+				params: {obj: null},
 				resolve: {
 					getDetail: [
 						'Restful',
@@ -84,6 +85,7 @@ app.config([
 				url: '/manage/edit/:id',
 				templateUrl: 'ext/ng/app/account/partials/property_post.html',
 				controller: 'property_post_ctrl',
+				params: {obj: null},
 				resolve: {
 					getDetail: [
 						'Restful',

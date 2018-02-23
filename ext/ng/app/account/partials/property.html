@@ -65,7 +65,7 @@
 				<th width="5%">
 					Status
 				</th>
-				<th width="18%">
+				<th width="15%">
 					Action
 				</th>
 			</thead>
@@ -95,7 +95,7 @@
 						class="btn btn-xs">
 						<i class="fa fa-eye"></i>
 					</button>
-					<button ui-sref="manage_edit({id:p.products_id})" 
+					<button ui-sref="manage_edit({id:p.products_id, obj: p})" 
 						uib-tooltip="Edit"
 						class="btn btn-default btn-xs">
 						<i class="fa fa-edit"></i>
@@ -115,19 +115,14 @@
 					<button  class="btn btn-xs btn-primary" uib-tooltip="Refresh" data-ng-click="vm.refreshDate(p);">
 						<i class="fa fa-refresh"></i>						
 					</button>
-					<button  class="btn btn-xs" uib-tooltip="Duplicate" ui-sref="duplicate({id:p.products_id})" >
+					<button  class="btn btn-xs" uib-tooltip="Duplicate" ui-sref="duplicate({id:p.products_id, obj: p})" >
 						<i class="fa fa-clone"></i>						
-					</button>
-					<button  class="btn btn-xs btn-primary" uib-tooltip="Update Plan" ui-sref="plan({id:p.products_id})">
-						<i class="fa fa-line-chart"></i>						
 					</button>
 				</td>
 			</tr>
 		</table>
 	</div>
-	<div
-		data-ng-if="vm.products_post.elements == 0"
-	>
+	<div data-ng-if="vm.products_post.elements == 0">
 		<div class="alert alert-danger">
 			<strong>Warning!</strong> Empty Data.
 		</div>
